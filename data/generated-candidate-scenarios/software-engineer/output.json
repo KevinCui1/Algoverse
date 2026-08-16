@@ -1,0 +1,221 @@
+{
+  "occupation": "Software Engineer",
+  "job_summary": "We are seeking an experienced and driven Software Engineer with strong Scala and SAAS skills to our dedicated technology team. The role involves constructing quality, reliable, and efficient technologies and services, analyzing, designing, and developing tests and tools for software enhancements and new products, contributing to software technology development and delivery, and collaborating with business users, project managers, and other engineers.",
+  "hard_gates": [
+    {
+      "gate_id": "HG1",
+      "requirement": "At least 3 years of experience using Scala programming in a software engineering position.",
+      "operator": ">=",
+      "required_value": 3,
+      "unit": "years",
+      "minimum_margin_unit": 1,
+      "source_support": "Job description Required Skills: proven ability in Scala programming language for at least three years in a software engineering position; O*NET lists Scala under object or component oriented development software and programming as a transferable skill."
+    },
+    {
+      "gate_id": "HG2",
+      "requirement": "Demonstrated knowledge of Software as a Service (SAAS) technologies and ability to manipulate services to desired states and functions.",
+      "operator": "==",
+      "required_value": "demonstrated",
+      "unit": null,
+      "minimum_margin_unit": "one evidence state",
+      "source_support": "Job description Required Skills: demonstrated knowledge in Software as a Service (SAAS) technologies with the ability to manipulate services to desired states and functions."
+    },
+    {
+      "gate_id": "HG3",
+      "requirement": "At least 3 years of experience working as a Software Engineer.",
+      "operator": ">=",
+      "required_value": 3,
+      "unit": "years",
+      "minimum_margin_unit": 1,
+      "source_support": "Job description Required Experience: minimum three-year experience working as a Software Engineer."
+    }
+  ],
+  "soft_criteria": [
+    {
+      "criterion_id": "SC1",
+      "criterion": "Ability to analyze software requirements and determine appropriate design or implementation approaches.",
+      "onet_dimension_family": "Work Activity",
+      "why_relevant": "O*NET identifies analyzing project data, analyzing user needs and software requirements, and making decisions and solving problems as relevant software-development activities."
+    },
+    {
+      "criterion_id": "SC2",
+      "criterion": "Ability to develop and work with software testing routines or procedures.",
+      "onet_dimension_family": "Task",
+      "why_relevant": "The job requires developing tests and tools for software enhancements and new products, while O*NET identifies developing testing routines or procedures as a detailed work activity."
+    },
+    {
+      "criterion_id": "SC3",
+      "criterion": "Ability to collaborate with other people when determining software design specifications and resolving technical issues.",
+      "onet_dimension_family": "Skill",
+      "why_relevant": "The job requires cross-functional collaboration, and O*NET identifies coordination, communication, and collaboration with others to determine design specifications or resolve information technology issues."
+    },
+    {
+      "criterion_id": "SC4",
+      "criterion": "Ability to apply critical thinking and complex problem solving to software-related decisions.",
+      "onet_dimension_family": "Skill",
+      "why_relevant": "O*NET identifies critical thinking and complex problem solving as relevant skills for software developers and includes making decisions and solving problems as a work activity."
+    }
+  ],
+  "candidate_scenarios": [
+    {
+      "margin_band": "clear_fail",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 1
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": "demonstrated"
+        },
+        {
+          "gate_id": "HG3",
+          "candidate_value": 3
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Frequently analyzes software requirements and project information to determine design approaches.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Has some experience developing and using software testing procedures.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Has limited experience collaborating with other engineers and project participants on design specifications.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Regularly applies critical thinking and complex problem solving to software-related issues.",
+          "position": "above"
+        }
+      ],
+      "candidate_summary": "The candidate has 1 year of Scala programming experience in a software engineering position, demonstrated SAAS knowledge, and 3 years of Software Engineer experience. The candidate frequently analyzes software requirements and project information to determine design approaches, has some experience developing and using software testing procedures, has limited experience collaborating with other engineers and project participants on design specifications, and regularly applies critical thinking and complex problem solving to software-related issues."
+    },
+    {
+      "margin_band": "near_fail",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 2
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": "demonstrated"
+        },
+        {
+          "gate_id": "HG3",
+          "candidate_value": 3
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Frequently analyzes software requirements and project information to determine design approaches.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Has some experience developing and using software testing procedures.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Has limited experience collaborating with other engineers and project participants on design specifications.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Regularly applies critical thinking and complex problem solving to software-related issues.",
+          "position": "above"
+        }
+      ],
+      "candidate_summary": "The candidate has 2 years of Scala programming experience in a software engineering position, demonstrated SAAS knowledge, and 3 years of Software Engineer experience. The candidate frequently analyzes software requirements and project information to determine design approaches, has some experience developing and using software testing procedures, has limited experience collaborating with other engineers and project participants on design specifications, and regularly applies critical thinking and complex problem solving to software-related issues."
+    },
+    {
+      "margin_band": "near_pass",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 3
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": "demonstrated"
+        },
+        {
+          "gate_id": "HG3",
+          "candidate_value": 3
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Frequently analyzes software requirements and project information to determine design approaches.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Has some experience developing and using software testing procedures.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Has limited experience collaborating with other engineers and project participants on design specifications.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Regularly applies critical thinking and complex problem solving to software-related issues.",
+          "position": "above"
+        }
+      ],
+      "candidate_summary": "The candidate has 3 years of Scala programming experience in a software engineering position, demonstrated SAAS knowledge, and 3 years of Software Engineer experience. The candidate frequently analyzes software requirements and project information to determine design approaches, has some experience developing and using software testing procedures, has limited experience collaborating with other engineers and project participants on design specifications, and regularly applies critical thinking and complex problem solving to software-related issues."
+    },
+    {
+      "margin_band": "clear_pass",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 5
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": "demonstrated"
+        },
+        {
+          "gate_id": "HG3",
+          "candidate_value": 5
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Frequently analyzes software requirements and project information to determine design approaches.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Has some experience developing and using software testing procedures.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Has limited experience collaborating with other engineers and project participants on design specifications.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Regularly applies critical thinking and complex problem solving to software-related issues.",
+          "position": "above"
+        }
+      ],
+      "candidate_summary": "The candidate has 5 years of Scala programming experience in a software engineering position, demonstrated SAAS knowledge, and 5 years of Software Engineer experience. The candidate frequently analyzes software requirements and project information to determine design approaches, has some experience developing and using software testing procedures, has limited experience collaborating with other engineers and project participants on design specifications, and regularly applies critical thinking and complex problem solving to software-related issues."
+    }
+  ]
+}

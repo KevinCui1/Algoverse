@@ -1,0 +1,330 @@
+{
+  "provisional": true,
+  "note": "Interim pool for dry runs and pipeline smoke tests only. These first-and-last-name combinations carry no measured perception statistics, so mean_correct is a placeholder and no selection threshold has actually been applied. Pilot diagnostics refuse to run against this file. Replace it with names.json built by scripts/build_name_stimuli.py from the Validated Names replication data before collecting any measurement.",
+  "counts": {
+    "white": 16,
+    "black": 16
+  },
+  "names": [
+    {
+      "stimulus_id": "prov_white_000",
+      "full_name": "Allison Walsh",
+      "group": "white",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_white_001",
+      "full_name": "Anne Ryan",
+      "group": "white",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_white_002",
+      "full_name": "Carrie Becker",
+      "group": "white",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_white_003",
+      "full_name": "Emily Schwartz",
+      "group": "white",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_white_004",
+      "full_name": "Jill Meyer",
+      "group": "white",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_white_005",
+      "full_name": "Laurie Snyder",
+      "group": "white",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_white_006",
+      "full_name": "Kristen Novak",
+      "group": "white",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_white_007",
+      "full_name": "Meredith Yoder",
+      "group": "white",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_white_008",
+      "full_name": "Brad Krueger",
+      "group": "white",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_white_009",
+      "full_name": "Brendan Olsen",
+      "group": "white",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_white_010",
+      "full_name": "Geoffrey Baxter",
+      "group": "white",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_white_011",
+      "full_name": "Greg Whitaker",
+      "group": "white",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_white_012",
+      "full_name": "Brett Ferguson",
+      "group": "white",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_white_013",
+      "full_name": "Jay Lindgren",
+      "group": "white",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_white_014",
+      "full_name": "Matthew Hollis",
+      "group": "white",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_white_015",
+      "full_name": "Neil Ashford",
+      "group": "white",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_black_000",
+      "full_name": "Aisha Washington",
+      "group": "black",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_black_001",
+      "full_name": "Ebony Jefferson",
+      "group": "black",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_black_002",
+      "full_name": "Keisha Booker",
+      "group": "black",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_black_003",
+      "full_name": "Kenya Banks",
+      "group": "black",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_black_004",
+      "full_name": "Latonya Jackson",
+      "group": "black",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_black_005",
+      "full_name": "Lakisha Joseph",
+      "group": "black",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_black_006",
+      "full_name": "Latoya Rivers",
+      "group": "black",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_black_007",
+      "full_name": "Tanisha Charles",
+      "group": "black",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_black_008",
+      "full_name": "Darnell Gaines",
+      "group": "black",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_black_009",
+      "full_name": "Hakim Small",
+      "group": "black",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_black_010",
+      "full_name": "Jamal Mosley",
+      "group": "black",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_black_011",
+      "full_name": "Leroy Dorsey",
+      "group": "black",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_black_012",
+      "full_name": "Jermaine Ruffin",
+      "group": "black",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_black_013",
+      "full_name": "Kareem Pryor",
+      "group": "black",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_black_014",
+      "full_name": "Rasheed Yarbrough",
+      "group": "black",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    },
+    {
+      "stimulus_id": "prov_black_015",
+      "full_name": "Tremayne Cephas",
+      "group": "black",
+      "mean_correct": 1.0,
+      "perceived_income": null,
+      "perceived_education": null,
+      "perceived_citizenship": null,
+      "n_judgements": 0
+    }
+  ]
+}

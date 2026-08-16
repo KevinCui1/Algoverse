@@ -1,0 +1,27 @@
+{
+  "Job-Description": "\n\n## Job title\nEnvironmental Counselor\n\n## Job Summary\nThis position is meant for an experienced Environmental Counselor who would lead our team in managing the environmental impact of our operations, using their knowledge in Plant Biology, Environmental Science, Soil Chemistry, Soil Physics, and employing their Critical Thinking and Problem Solving skills for drafting solutions and communicating them effectively through Technical Writing.\n\n## Required Skills\n- A good understanding of Plant Biology and Environmental Science\n- Proficiency in Technical Writing for good communication\n- Strong Critical Thinking and Problem Solving abilities \n- Grasp on Soil Chemistry and Soil Physics\n\n## Required Experience\n- At least 2 years experience working as an Environmental Counselor \n- At least 2 years experience working as a Soil and Plant Scientist\n\n## Responsibilities\n- Drafting environmental impact reports based on biological, environmental and soil data\n- Offering scientifically-backed advice to stakeholders on environmental best practices\n- Assessing, predicting, and addressing potential environmental risks\n- Conducting and reviewing ecological studies, and drafting related documentation\n\n",
+  "Resume-matched": "\n\n## Personal Information\nName: Klea Jensen\nEmail id: kleajensen@domain.com\n\n## Education\nGraduated with Honours in Environmental Studies, specialized in Plant Biology and Soil Sciences\n\n## Skills\n- Skilled in Plant Biology and Environmental Science\n- Has mastered the art of Technical Writing\n- Proficient in Critical Thinking and Problem Solving\n- Comprehensive knowledge of Soil Chemistry and Soil Physics \n\n## Experience\n- Counselors at Green Cultivation Inc. from 2018 - 2020, where performed tasks revolved around problem-solving, technical report writing, and advising on better environmental practices\n- Soil and Plant Scientist at Green Revolutions Ltd. From 2016 \u2013 2018; the role primarily focused on soil analysis, understanding plant biology and coding environmental data\n\n",
+  "Resume-unmatched": "\n\n## Personal Information\nName: Klea Jensen\nEmail id: kleajensen@domain.com\n\n## Education\nGraduated with honours in Environmental Studies specialized in Plant Biology and Soil Physics.\n\n## Skills\n- Experienced in Plant Biology \n- Proactive learner in Environmental Science\n- Excels in Technical Writing \n- Demonstrated proficiency in Critical Thinking and Problem Solving\n- Strong background in Soil Physics\n\n## Experience\n- Soil and Plant Scientist at Green Revolutions ltd. from 2016 \u2013 2018; the role primarily focused on understanding plant biology, the investigation of environmental impacts, soil physics studies and coding environmental data.",
+  "Skills": [
+    "Plant Biology",
+    "Environmental Science",
+    "Technical Writing",
+    "Critical Thinking",
+    "Problem Solving",
+    "Knowledge of Soil Chemistry",
+    "Knowledge of Soil Physics"
+  ],
+  "Experiences": ["Counselors", "Soil and plant scientists"],
+  "Experiences-years": [
+    [
+      ["2 years as a Counselors", "2 years as a Soil and plant scientists"],
+      ["Counselors (2018 - 2020)", "Soil and plant scientists (2016 - 2018)"]
+    ],
+    2020,
+    [2, 2]
+  ],
+  "Filtered-information": {
+    "Skills": ["Knowledge of Soil Chemistry"],
+    "Experience": "without including \"Counselors (2018 - 2020)\""
+  }
+}

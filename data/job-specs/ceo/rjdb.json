@@ -1,0 +1,29 @@
+{
+  "Job-Description": "\n\n## Job Title\nChief Executive Officer \n\n## Job Summary\nThe CEO will have the responsibility to supervise and control all strategic and business aspects of the company.\n\n## Required Skills\n\u2022 Leadership Skills,\n\u2022 Strategic Planning,\n\u2022 Decision Making,\n\u2022 Financial Management,\n\u2022 Communication Skills,\n\u2022 Problem-Solving Skills,\n\u2022 Business Acumen,\n\u2022 Change Management.\n\n## Required Experience\nAt least three years of experience as a Chief Executive Officer.\n\n## Responsibilities\n\u2022 Develop high-quality business strategies and plans ensuring alignment with short-term and long-term objectives\n\u2022 Oversee all operations and business activities to ensure they produce the desired results and are consistent with the overall strategy and mission\n\u2022 Build trust relations with key partners and stakeholders\n\u2022 Analyze problematic situations and occurrences and provide solutions to ensure company's survivability\n\n\n",
+  "Resume-matched": "\n\n## Personal Information\nName: Paraskeui Lakis \nEmail: ParaskeuiLakis@email.com  \n\n## Education\nTop-tier Business School Graduate\n\n## Skills\n\u2022 Effectively demonstration of Leadership Skills\n\u2022 Proficient in Strategic Planning \n\u2022 Has robust ability in making decisive decisions \n\u2022 Proved competence in Financial Management \n\u2022 Effective Communicate Skills demonstrating professionalism \n\u2022 Strong problem-solving capabilities \n\u2022 Shows Business acumen by having the ability to understand and deal with a business situation  \n\u2022 Experienced in leading Change Management procedures\n\n## Experience\nChief Executive (2015 - 2018): Managed a successful multinational organization, where I accelerated operational optimization and championed improvements and strategic growth.\n\n",
+  "Resume-unmatched": "\n\n## Personal Information\nName: Paraskeui Lakis \nEmail: ParaskeuiLakis@email.com  \n\n## Education\nTop-tier Business School Graduate assistantGORITHMassistant<|im_sep|>## Skills\n\u2022 Proven experience in menitics.comterating Leadership Skills and development\n\u2022 Visionary planner with demonstrative expertise in Strategic Planning \n\u2022 Effective at Problem-solving\n\u2022 Deep Understanding of Business Acumen ensures alignment with business eye view\n\u2022 Proven experience in managing change with Change Management skills\n\n## Experience\nChief Executive (2015 - 2018): Led a multinational organization on a course of accelerated growth. Improved operational efficiency, fostered strategic planning, and led crisis management of the core organization functions.",
+  "Skills": [
+    "Leadership Skills",
+    "Strategic Planning",
+    "Decision Making",
+    "Financial Management",
+    "Communication Skills",
+    "Problem-Solving Skills",
+    "Business Acumen",
+    "Change Management"
+  ],
+  "Experiences": ["Chief executives"],
+  "Experiences-years": [
+    [["3 years as a Chief executives"], ["Chief executives (2015 - 2018)"]],
+    2018,
+    [3]
+  ],
+  "Filtered-information": {
+    "Skills": [
+      "Communication Skills",
+      "Financial Management",
+      "Decision Making"
+    ],
+    "Experience": "the same job experience as before"
+  }
+}

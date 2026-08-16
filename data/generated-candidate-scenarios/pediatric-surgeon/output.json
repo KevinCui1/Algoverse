@@ -1,0 +1,246 @@
+{
+  "occupation": "Pediatric Surgeon",
+  "job_summary": "A Pediatric Surgeon who diagnoses complex pediatric health issues, uses medical technology for patient care, manages cross-departmental projects to improve pediatric treatment procedures, communicates with patients and their families, and applies Mathematical, Analytical, Laboratory, Research, Communication, Creativity and Innovative Thinking, Scientific Software and Technology, Project Management, and pressure-resilience skills.",
+  "hard_gates": [
+    {
+      "gate_id": "HG1",
+      "requirement": "Experience as a Pediatric Surgeon",
+      "operator": ">=",
+      "required_value": 1,
+      "unit": "years",
+      "minimum_margin_unit": 1,
+      "source_support": "The source job description explicitly requires a minimum of 1 year of experience as a Pediatric Surgeon."
+    },
+    {
+      "gate_id": "HG2",
+      "requirement": "Experience as a Materials Scientist",
+      "operator": ">=",
+      "required_value": 4,
+      "unit": "years",
+      "minimum_margin_unit": 1,
+      "source_support": "The source job description explicitly requires 4 years of experience as a Materials Scientist."
+    },
+    {
+      "gate_id": "HG3",
+      "requirement": "Experience as an Agricultural and Food Science Technician",
+      "operator": ">=",
+      "required_value": 1,
+      "unit": "years",
+      "minimum_margin_unit": 1,
+      "source_support": "The source job description explicitly requires 1 year of experience as an Agricultural and Food Science Technician."
+    },
+    {
+      "gate_id": "HG4",
+      "requirement": "Experience as a Physicist",
+      "operator": ">=",
+      "required_value": 1,
+      "unit": "years",
+      "minimum_margin_unit": 1,
+      "source_support": "The source job description explicitly requires 1 year of experience as a Physicist."
+    }
+  ],
+  "soft_criteria": [
+    {
+      "criterion_id": "SC1",
+      "criterion": "Strength of analytical and mathematical problem-solving ability",
+      "onet_dimension_family": "Skill",
+      "why_relevant": "The job explicitly requires Mathematical and Analytical skills, and the role involves diagnosing complex pediatric health issues and analyzing patient and test information."
+    },
+    {
+      "criterion_id": "SC2",
+      "criterion": "Ability to conduct and apply research related to surgical techniques and patient outcomes",
+      "onet_dimension_family": "Task",
+      "why_relevant": "O*NET identifies conducting research to develop and test surgical techniques and conducting research to increase knowledge about medical issues as relevant tasks."
+    },
+    {
+      "criterion_id": "SC3",
+      "criterion": "Ability to communicate medical information effectively with patients, families, and other professionals",
+      "onet_dimension_family": "Work Activity",
+      "why_relevant": "The job explicitly requires Communication skills, while O*NET identifies explaining medical procedures or test results, conferring with family members, and conferring with other professionals as relevant work activities."
+    },
+    {
+      "criterion_id": "SC4",
+      "criterion": "Ability to manage and coordinate healthcare or surgical operations",
+      "onet_dimension_family": "Work Activity",
+      "why_relevant": "The job explicitly requires Project Management skills, and O*NET identifies managing healthcare operations and managing surgery services through planning, scheduling, and coordination."
+    }
+  ],
+  "candidate_scenarios": [
+    {
+      "margin_band": "clear_fail",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 0
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 1
+        },
+        {
+          "gate_id": "HG3",
+          "candidate_value": 0
+        },
+        {
+          "gate_id": "HG4",
+          "candidate_value": 0
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Demonstrates strong analytical and mathematical problem-solving ability when working with complex information.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Has limited demonstrated experience conducting and applying research related to surgical techniques and patient outcomes.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Shows communication ability that is broadly comparable to the role's communication needs.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Has strong experience managing and coordinating healthcare or surgical operations.",
+          "position": "above"
+        }
+      ],
+      "candidate_summary": "Pediatric Surgeon experience: 0 years. Materials Scientist experience: 1 year. Agricultural and Food Science Technician experience: 0 years. Physicist experience: 0 years. Analytical and mathematical problem-solving evidence: demonstrates strong analytical and mathematical problem-solving ability when working with complex information. Research evidence: has limited demonstrated experience conducting and applying research related to surgical techniques and patient outcomes. Communication evidence: shows communication ability that is broadly comparable to the role's communication needs. Healthcare and surgical operations evidence: has strong experience managing and coordinating healthcare or surgical operations."
+    },
+    {
+      "margin_band": "near_fail",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 1
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 4
+        },
+        {
+          "gate_id": "HG3",
+          "candidate_value": 1
+        },
+        {
+          "gate_id": "HG4",
+          "candidate_value": 0
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Demonstrates strong analytical and mathematical problem-solving ability when working with complex information.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Has limited demonstrated experience conducting and applying research related to surgical techniques and patient outcomes.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Shows communication ability that is broadly comparable to the role's communication needs.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Has strong experience managing and coordinating healthcare or surgical operations.",
+          "position": "above"
+        }
+      ],
+      "candidate_summary": "Pediatric Surgeon experience: 1 year. Materials Scientist experience: 4 years. Agricultural and Food Science Technician experience: 1 year. Physicist experience: 0 years. Analytical and mathematical problem-solving evidence: demonstrates strong analytical and mathematical problem-solving ability when working with complex information. Research evidence: has limited demonstrated experience conducting and applying research related to surgical techniques and patient outcomes. Communication evidence: shows communication ability that is broadly comparable to the role's communication needs. Healthcare and surgical operations evidence: has strong experience managing and coordinating healthcare or surgical operations."
+    },
+    {
+      "margin_band": "near_pass",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 1
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 4
+        },
+        {
+          "gate_id": "HG3",
+          "candidate_value": 1
+        },
+        {
+          "gate_id": "HG4",
+          "candidate_value": 1
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Demonstrates strong analytical and mathematical problem-solving ability when working with complex information.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Has limited demonstrated experience conducting and applying research related to surgical techniques and patient outcomes.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Shows communication ability that is broadly comparable to the role's communication needs.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Has strong experience managing and coordinating healthcare or surgical operations.",
+          "position": "above"
+        }
+      ],
+      "candidate_summary": "Pediatric Surgeon experience: 1 year. Materials Scientist experience: 4 years. Agricultural and Food Science Technician experience: 1 year. Physicist experience: 1 year. Analytical and mathematical problem-solving evidence: demonstrates strong analytical and mathematical problem-solving ability when working with complex information. Research evidence: has limited demonstrated experience conducting and applying research related to surgical techniques and patient outcomes. Communication evidence: shows communication ability that is broadly comparable to the role's communication needs. Healthcare and surgical operations evidence: has strong experience managing and coordinating healthcare or surgical operations."
+    },
+    {
+      "margin_band": "clear_pass",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 5
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 8
+        },
+        {
+          "gate_id": "HG3",
+          "candidate_value": 5
+        },
+        {
+          "gate_id": "HG4",
+          "candidate_value": 5
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Demonstrates strong analytical and mathematical problem-solving ability when working with complex information.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Has limited demonstrated experience conducting and applying research related to surgical techniques and patient outcomes.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Shows communication ability that is broadly comparable to the role's communication needs.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Has strong experience managing and coordinating healthcare or surgical operations.",
+          "position": "above"
+        }
+      ],
+      "candidate_summary": "Pediatric Surgeon experience: 5 years. Materials Scientist experience: 8 years. Agricultural and Food Science Technician experience: 5 years. Physicist experience: 5 years. Analytical and mathematical problem-solving evidence: demonstrates strong analytical and mathematical problem-solving ability when working with complex information. Research evidence: has limited demonstrated experience conducting and applying research related to surgical techniques and patient outcomes. Communication evidence: shows communication ability that is broadly comparable to the role's communication needs. Healthcare and surgical operations evidence: has strong experience managing and coordinating healthcare or surgical operations."
+    }
+  ]
+}

@@ -1,0 +1,222 @@
+{
+  "occupation": "Preschool Teacher",
+  "job_summary": "A Preschool Teacher responsible for educating and supporting children ages 2-5, planning lessons and activities that support emotional, intellectual, and social growth, managing the preschool classroom, and supervising and interacting with children in a nurturing way.",
+  "hard_gates": [
+    {
+      "gate_id": "HG1",
+      "requirement": "Experience in preschool",
+      "operator": ">=",
+      "required_value": 2,
+      "unit": "years",
+      "minimum_margin_unit": 1,
+      "source_support": "The source job description explicitly requires a minimum of 2 years of experience in preschool."
+    },
+    {
+      "gate_id": "HG2",
+      "requirement": "Experience in a special education environment",
+      "operator": ">=",
+      "required_value": 4,
+      "unit": "years",
+      "minimum_margin_unit": 1,
+      "source_support": "The source job description explicitly requires at least 4 years in a special education environment."
+    }
+  ],
+  "soft_criteria": [
+    {
+      "criterion_id": "SC1",
+      "criterion": "Ability to manage classroom behavior, rules, procedures, and daily preschool operations",
+      "onet_dimension_family": "Task",
+      "why_relevant": "The job requires Classroom Management, and O*NET lists establishing and enforcing behavior rules and procedures, preparing classrooms, and managing preschool activities."
+    },
+    {
+      "criterion_id": "SC2",
+      "criterion": "Ability to adapt teaching methods and activities to children's varying learning needs",
+      "onet_dimension_family": "Task",
+      "why_relevant": "The job requires Early Childhood Education and knowledge of Learning Disorders, while O*NET specifically lists adapting teaching methods, modifying materials for student needs, and developing strategies for students with special needs."
+    },
+    {
+      "criterion_id": "SC3",
+      "criterion": "Ability to plan and organize lessons and educational activities effectively",
+      "onet_dimension_family": "Work Activity",
+      "why_relevant": "The job requires Time Management, and O*NET identifies Organizing, Planning, and Prioritizing Work and Training and Teaching Others as relevant work activities."
+    },
+    {
+      "criterion_id": "SC4",
+      "criterion": "Ability to identify and address learning, developmental, or behavioral problems using problem-solving skills",
+      "onet_dimension_family": "Skill",
+      "why_relevant": "The job requires Problem-Solving Skills and knowledge of Learning Disorders, while O*NET identifies Critical Thinking, Complex Problem Solving, and monitoring student development and needs as relevant."
+    },
+    {
+      "criterion_id": "SC5",
+      "criterion": "Ability to work constructively with children, parents, guardians, and other teaching professionals",
+      "onet_dimension_family": "Work Activity",
+      "why_relevant": "The job requires Multicultural Sensitivity/Awareness, and O*NET identifies interpersonal relationships, communication, collaboration with teaching professionals, and discussions with parents or guardians as relevant activities."
+    }
+  ],
+  "candidate_scenarios": [
+    {
+      "margin_band": "clear_fail",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 0
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 1
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Demonstrates strong ability to manage classroom behavior, rules, procedures, and daily preschool operations.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Has limited demonstrated ability to adapt teaching methods and activities to children's varying learning needs.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Shows planning and organization ability that is broadly comparable to the role's needs.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Demonstrates strong ability to identify and address learning, developmental, or behavioral problems.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC5",
+          "candidate_evidence": "Has limited demonstrated experience working constructively with children, parents, guardians, and other teaching professionals.",
+          "position": "below"
+        }
+      ],
+      "candidate_summary": "Preschool experience: 0 years. Special education environment experience: 1 year. Classroom management evidence: demonstrates strong ability to manage classroom behavior, rules, procedures, and daily preschool operations. Adapted teaching evidence: has limited demonstrated ability to adapt teaching methods and activities to children's varying learning needs. Planning and organization evidence: shows planning and organization ability that is broadly comparable to the role's needs. Problem-solving evidence: demonstrates strong ability to identify and address learning, developmental, or behavioral problems. Collaboration evidence: has limited demonstrated experience working constructively with children, parents, guardians, and other teaching professionals."
+    },
+    {
+      "margin_band": "near_fail",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 1
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 4
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Demonstrates strong ability to manage classroom behavior, rules, procedures, and daily preschool operations.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Has limited demonstrated ability to adapt teaching methods and activities to children's varying learning needs.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Shows planning and organization ability that is broadly comparable to the role's needs.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Demonstrates strong ability to identify and address learning, developmental, or behavioral problems.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC5",
+          "candidate_evidence": "Has limited demonstrated experience working constructively with children, parents, guardians, and other teaching professionals.",
+          "position": "below"
+        }
+      ],
+      "candidate_summary": "Preschool experience: 1 year. Special education environment experience: 4 years. Classroom management evidence: demonstrates strong ability to manage classroom behavior, rules, procedures, and daily preschool operations. Adapted teaching evidence: has limited demonstrated ability to adapt teaching methods and activities to children's varying learning needs. Planning and organization evidence: shows planning and organization ability that is broadly comparable to the role's needs. Problem-solving evidence: demonstrates strong ability to identify and address learning, developmental, or behavioral problems. Collaboration evidence: has limited demonstrated experience working constructively with children, parents, guardians, and other teaching professionals."
+    },
+    {
+      "margin_band": "near_pass",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 2
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 4
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Demonstrates strong ability to manage classroom behavior, rules, procedures, and daily preschool operations.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Has limited demonstrated ability to adapt teaching methods and activities to children's varying learning needs.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Shows planning and organization ability that is broadly comparable to the role's needs.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Demonstrates strong ability to identify and address learning, developmental, or behavioral problems.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC5",
+          "candidate_evidence": "Has limited demonstrated experience working constructively with children, parents, guardians, and other teaching professionals.",
+          "position": "below"
+        }
+      ],
+      "candidate_summary": "Preschool experience: 2 years. Special education environment experience: 4 years. Classroom management evidence: demonstrates strong ability to manage classroom behavior, rules, procedures, and daily preschool operations. Adapted teaching evidence: has limited demonstrated ability to adapt teaching methods and activities to children's varying learning needs. Planning and organization evidence: shows planning and organization ability that is broadly comparable to the role's needs. Problem-solving evidence: demonstrates strong ability to identify and address learning, developmental, or behavioral problems. Collaboration evidence: has limited demonstrated experience working constructively with children, parents, guardians, and other teaching professionals."
+    },
+    {
+      "margin_band": "clear_pass",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 6
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 8
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Demonstrates strong ability to manage classroom behavior, rules, procedures, and daily preschool operations.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Has limited demonstrated ability to adapt teaching methods and activities to children's varying learning needs.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Shows planning and organization ability that is broadly comparable to the role's needs.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Demonstrates strong ability to identify and address learning, developmental, or behavioral problems.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC5",
+          "candidate_evidence": "Has limited demonstrated experience working constructively with children, parents, guardians, and other teaching professionals.",
+          "position": "below"
+        }
+      ],
+      "candidate_summary": "Preschool experience: 6 years. Special education environment experience: 8 years. Classroom management evidence: demonstrates strong ability to manage classroom behavior, rules, procedures, and daily preschool operations. Adapted teaching evidence: has limited demonstrated ability to adapt teaching methods and activities to children's varying learning needs. Planning and organization evidence: shows planning and organization ability that is broadly comparable to the role's needs. Problem-solving evidence: demonstrates strong ability to identify and address learning, developmental, or behavioral problems. Collaboration evidence: has limited demonstrated experience working constructively with children, parents, guardians, and other teaching professionals."
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "Job-Description": "\n\n## Job title\nMarriage and Family Therapists\n\n## Job Summary\nWe are seeking a dedicated and intelligent Marriage and Family Therapist into our growing practice. Our ideal candidate has an extraordinary ability to help individuals, couples, families to navigate relationships, solve interpersonal problems, improve communication, and reduce stress while promoting emotional health.\n\n## Required Skills\nThe eligible candidate must possess vital skills such as Attention to Detail, Arm-Hand Steadiness, Quality Control Analysis, Operation Monitoring, Judgment and Decision Making, Operation and Control, Active Learning, ability of Mathematics, and Learning Strategies.\n\n## Required Experience\nThe potential applicant must have at least 5 years of experience as a Marriage and family therapist. Other desperately needed experience includes at least 4 years as an Oral and maxillofacial surgeon, 4 years as a Ship engineer, 3 years as a Psychologist, 4 years as a Rehabilitation counselor, 4 years as a Floor sander and finisher, and 4 years as a Furniture finisher.\n\n## Responsibilities\nResponsibilities for the role include assessing clients\u2019 respective needs, designing tailored treatment plans, and operating responsibly. It further considers individual\u2019s knowledge of mathematical principles, maximizing learning strategies.\n\n",
+  "Resume-matched": "\n\n## Personal Information\nAlikhan Clarke \nalikhanc@gmail.com\n\n## Education\nMaster's Degree in Family Therapy\n\n## Skills\n1. Detailed attention to key issues leading to problem-solving.\n2. Steady arm-hand coordination to maintain professional effectiveness.\n3. Thorough quality control analysis to determine measures for improvement.\n4. Vigilant operation monitoring capable to detect and address issues timely. \n5. Decisive Judgment and decision-making ability.\n6. Proficient in operation and control strategies.\n7. Incredible active learning ability to understand new therapy methods.\n8. Proficient in Mathematics.\n9. Effective Learning strategies for self-improvement.\n\n## Experience\n- 2011 - 2016: Marriage and Family Therapists\n- 2007 - 2011: Oral and Maxillofacial Surgeon\n- 2003 - 2007: Ship Engineer\n- 2000 - 2003: Psychologist\n- 1996 - 2000: Rehabilitation Counselor\n- 1992 - 1996: Floor Sanders and Finisher\n- 1988 - 1992: Furniture finisher\n                \n",
+  "Resume-unmatched": "\n## Personal Information\nAlikhan Clarke \nalikhanc@gmail.com\n\n## Education\nMaster's Degree in Family Therapy\n\n## Skills\n1. Detailed attention to direct issues leading to attempts to essentially problem solve.\n2. Steady arm-hand proportion that maintains absolute professional effectiveness.\n3. Thorough quality control analysis essentially capable of determining measures for self-improvement.\n4. Vigilant operation monitoring to detect and address any prevailing performance issues.\n5. Exemplary judgement and varied decision-making ability most importantly.\n6. Prodigious ability toward active learning to comprehend novel therapy procedures.\n7. Seemly understanding of Mathematical principles.\n8. Cohesiveness in Learning approaches meant for professional self-enrichment.\n\n## Experience\n- 2011 - 2015: Marriage and Family Therapists.\n- 2007 - 2011: Oral and Maxillofacial Surgeon.\n- 2003 - 2007: Ship Engineer.\n- 2000 - 2003: Psychologist.\n- 1996 - 2000: Rehabilitation Counselor.\n- 1992 - 1996: Floor Sanders and Finisher.\n- 1988 - 1992: Furniture finisher.",
+  "Skills": [
+    "Attention to Detail",
+    "Arm-Hand Steadiness",
+    "Quality Control Analysis",
+    "Operation Monitoring",
+    "Judgment and Decision Making",
+    "Operation and Control",
+    "Active Learning",
+    "Mathematics",
+    "Learning Strategies"
+  ],
+  "Experiences": [
+    "Marriage and family therapists",
+    "Oral and maxillofacial surgeons",
+    "Ship engineers",
+    "Psychologists",
+    "Rehabilitation counselors",
+    "Floor sanders and finishers",
+    "Furniture finishers"
+  ],
+  "Experiences-years": [
+    [
+      [
+        "5 years as a Marriage and family therapists",
+        "4 years as a Oral and maxillofacial surgeons",
+        "4 years as a Ship engineers",
+        "3 years as a Psychologists",
+        "4 years as a Rehabilitation counselors",
+        "4 years as a Floor sanders and finishers",
+        "4 years as a Furniture finishers"
+      ],
+      [
+        "Marriage and family therapists (2011 - 2016)",
+        "Oral and maxillofacial surgeons (2007 - 2011)",
+        "Ship engineers (2003 - 2007)",
+        "Psychologists (2000 - 2003)",
+        "Rehabilitation counselors (1996 - 2000)",
+        "Floor sanders and finishers (1992 - 1996)",
+        "Furniture finishers (1988 - 1992)"
+      ]
+    ],
+    2016,
+    [5, 4, 4, 3, 4, 4, 4]
+  ],
+  "Filtered-information": {
+    "Skills": ["Operation and Control"],
+    "Experience": "instead of \"Marriage and family therapists (2011 - 2016)\" use \"Marriage and family therapists (2011 - 2015)\""
+  }
+}

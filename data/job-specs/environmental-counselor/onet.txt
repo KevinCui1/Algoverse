@@ -1,0 +1,134 @@
+https://www.onetonline.org/link/summary/19-2041.00
+Environmental Scientists and Specialists, Including Health
+
+Tasks
+Communicate scientific or technical information to the public, organizations, or internal audiences through oral briefings, written documents, workshops, conferences, training sessions, or public hearings.
+Monitor effects of pollution or land degradation and recommend means of prevention or control.
+Collect, synthesize, analyze, manage, and report environmental data, such as pollution emission measurements, atmospheric monitoring measurements, meteorological or mineralogical information, or soil or water samples.
+Review and implement environmental technical standards, guidelines, policies, and formal regulations that meet all appropriate requirements.
+Provide scientific or technical guidance, support, coordination, or oversight to governmental agencies, environmental programs, industry, or the public.
+Process and review environmental permits, licenses, or related materials.
+Conduct environmental audits or inspections or investigations of violations.
+Provide advice on proper standards and regulations or the development of policies, strategies, or codes of practice for environmental management.
+Prepare charts or graphs from data samples, providing summary information on the environmental relevance of the data.
+Research sources of pollution to determine their effects on the environment and to develop theories or methods of pollution abatement or control.
+Supervise or train students, environmental technologists, technicians, or other related staff.
+Monitor environmental impacts of development activities.
+Evaluate violations or problems discovered during inspections to determine appropriate regulatory actions or to provide advice on the development and prosecution of regulatory cases.
+Analyze data to determine validity, quality, and scientific significance and to interpret correlations between human activities and environmental effects.
+Investigate and report on accidents affecting the environment.
+Develop the technical portions of legal documents, administrative orders, or consent decrees.
+Design or direct studies to obtain technical environmental information about planned projects.
+Determine data collection methods to be employed in research projects or surveys.
+Conduct applied research on environmental topics, such as waste control or treatment or pollution abatement methods.
+Develop programs designed to obtain the most productive, non-damaging use of land.
+Plan or develop research models, using knowledge of mathematical and statistical concepts.
+Develop methods to minimize the impact of production processes on the environment, based on the study and assessment of industrial production, environmental legislation, and physical, biological, and social environments.
+
+Knowledge
+English Language — Knowledge of the structure and content of the English language including the meaning and spelling of words, and rules of composition and grammar.
+Biology — Knowledge of plant and animal organisms, their tissues, cells, functions, interdependencies, and interactions with each other and the environment.
+Customer and Personal Service — Knowledge of principles and processes for providing customer and personal services. This includes customer needs assessment, meeting quality standards for services, and evaluation of customer satisfaction.
+Law and Government — Knowledge of laws, legal codes, court procedures, precedents, government regulations, executive orders, agency rules, and the democratic political process.
+Computers and Electronics — Knowledge of circuit boards, processors, chips, electronic equipment, and computer hardware and software, including applications and programming.
+Public Safety and Security — Knowledge of relevant equipment, policies, procedures, and strategies to promote effective local, state, or national security operations for the protection of people, data, property, and institutions.
+Chemistry — Knowledge of the chemical composition, structure, and properties of substances and of the chemical processes and transformations that they undergo. This includes uses of chemicals and their interactions, danger signs, production techniques, and disposal methods.
+Administrative — Knowledge of administrative and office procedures and systems such as word processing, managing files and records, stenography and transcription, designing forms, and workplace terminology.
+Education and Training — Knowledge of principles and methods for curriculum and training design, teaching and instruction for individuals and groups, and the measurement of training effects.
+Mathematics — Knowledge of arithmetic, algebra, geometry, calculus, statistics, and their applications.
+Administration and Management — Knowledge of business and management principles involved in strategic planning, resource allocation, human resources modeling, leadership technique, production methods, and coordination of people and resources.
+
+Software Skills
+Analytical or scientific software — ADMS pollution modeling software; Laboratory information management system LIMS; Lakes Environmental EcoRisk View; Wolfel IMMI; 16 more
+Compliance software — Ecotech WinAQMS; Emissions tracking software; Material safety data sheet MSDS software; MIRS Compliance
+Computer aided design CAD software — Autodesk AutoCAD ; Bentley MicroStation
+Data base user interface and query software — Database software; Microsoft Access ; Structured query language SQL ; Tucows ChemBase; 5 more
+Development environment software — Microsoft Visual Basic
+Document management software — Adobe Acrobat ; Microsoft SharePoint Server
+Electronic mail software — Microsoft Outlook
+Enterprise resource planning ERP software — SAP software
+Geographic information system — ESRI ArcGIS software ; ESRI ArcInfo; Geographic information system GIS software; Geographic information system GIS systems In Demand ; 1 more
+Graphics or photo imaging software — Adobe Illustrator ; Corel CorelDraw Graphics Suite; Graphics software; SmugMug Flickr
+Internet browser software — Web browser software
+Map creation software — Geomechanical design analysis GDA software; Golden Software Surfer; Mapping software; RockWare ArcMap
+Object or component oriented development software — C++ ; Sun Microsystems Java
+Office suite software — Microsoft Office software
+Presentation software — Microsoft PowerPoint
+Project management software — Microsoft Project
+Spreadsheet software — Microsoft Excel
+Word processing software — Microsoft Word
+
+Essential Skills
+Active Listening — Giving full attention to what other people are saying, taking time to understand the points being made, asking questions as appropriate, and not interrupting at inappropriate times.
+Reading Comprehension — Understanding written sentences and paragraphs in work-related documents.
+Science — Using scientific rules and methods to solve problems.
+Speaking — Talking to others to convey information effectively.
+Writing — Communicating effectively in writing as appropriate for the needs of the audience.
+Critical Thinking — Using logic and reasoning to identify the strengths and weaknesses of alternative solutions, conclusions, or approaches to problems.
+Active Learning — Understanding the implications of new information for both current and future problem-solving and decision-making.
+Monitoring — Monitoring/Assessing performance of yourself, other individuals, or organizations to make improvements or take corrective action.
+Learning Strategies — Selecting and using training/instructional methods and procedures appropriate for the situation when learning or teaching new things.
+Mathematics — Using mathematics to solve problems.
+
+Transferable Skills
+Complex Problem Solving — Identifying complex problems and reviewing related information to develop and evaluate options and implement solutions.
+Coordination — Adjusting actions in relation to others' actions.
+Judgment and Decision Making — Considering the relative costs and benefits of potential actions to choose the most appropriate one.
+Time Management — Managing one's own time and the time of others.
+Instructing — Teaching others how to do something.
+Management of Personnel Resources — Motivating, developing, and directing people as they work, identifying the best people for the job.
+Social Perceptiveness — Being aware of others' reactions and understanding why they react as they do.
+Negotiation — Bringing others together and trying to reconcile differences.
+Persuasion — Persuading others to change their minds or behavior.
+Service Orientation — Actively looking for ways to help people.
+Systems Analysis — Determining how a system should work and how changes in conditions, operations, and the environment will affect outcomes.
+Systems Evaluation — Identifying measures or indicators of system performance and the actions needed to improve or correct performance, relative to the goals of the system.
+
+Work Activities
+Evaluating Information to Determine Compliance with Standards — Using relevant information and individual judgment to determine whether events or processes comply with laws, regulations, or standards.
+Getting Information — Observing, receiving, and otherwise obtaining information from all relevant sources.
+Working with Computers — Using computers and computer systems (including hardware and software) to program, write software, set up functions, enter data, or process information.
+Analyzing Data or Information — Identifying the underlying principles, reasons, or facts of information by breaking down information or data into separate parts.
+Communicating with People Outside the Organization — Communicating with people outside the organization, representing the organization to customers, the public, government, and other external sources. This information can be exchanged in person, in writing, or by telephone or e-mail.
+Identifying Objects, Actions, and Events — Identifying information by categorizing, estimating, recognizing differences or similarities, and detecting changes in circumstances or events.
+Communicating with Supervisors, Peers, or Subordinates — Providing information to supervisors, co-workers, and subordinates by telephone, in written form, e-mail, or in person.
+Making Decisions and Solving Problems — Analyzing information and evaluating results to choose the best solution and solve problems.
+Monitoring Processes, Materials, or Surroundings — Monitoring and reviewing information from materials, events, or the environment, to detect or assess problems.
+Updating and Using Relevant Knowledge — Keeping up-to-date technically and applying new knowledge to your job.
+Processing Information — Compiling, coding, categorizing, calculating, tabulating, auditing, or verifying information or data.
+Documenting/Recording Information — Entering, transcribing, recording, storing, or maintaining information in written or electronic/magnetic form.
+Establishing and Maintaining Interpersonal Relationships — Developing constructive and cooperative working relationships with others, and maintaining them over time.
+Interpreting the Meaning of Information for Others — Translating or explaining what information means and how it can be used.
+Organizing, Planning, and Prioritizing Work — Developing specific goals and plans to prioritize, organize, and accomplish your work.
+Scheduling Work and Activities — Scheduling events, programs, and activities, as well as the work of others.
+Estimating the Quantifiable Characteristics of Products, Events, or Information — Estimating sizes, distances, and quantities; or determining time, costs, resources, or materials needed to perform a work activity.
+Providing Consultation and Advice to Others — Providing guidance and expert advice to management or other groups on technical, systems-, or process-related topics.
+Inspecting Equipment, Structures, or Materials — Inspecting equipment, structures, or materials to identify the cause of errors or other problems or defects.
+Resolving Conflicts and Negotiating with Others — Handling complaints, settling disputes, and resolving grievances and conflicts, or otherwise negotiating with others.
+Performing for or Working Directly with the Public — Performing for people or dealing directly with the public. This includes serving customers in restaurants and stores, and receiving clients or guests.
+Developing and Building Teams — Encouraging and building mutual trust, respect, and cooperation among team members.
+Coaching and Developing Others — Identifying the developmental needs of others and coaching, mentoring, or otherwise helping others to improve their knowledge or skills.
+Guiding, Directing, and Motivating Subordinates — Providing guidance and direction to subordinates, including setting performance standards and monitoring performance.
+Thinking Creatively — Developing, designing, or creating new applications, ideas, relationships, systems, or products, including artistic contributions.
+Training and Teaching Others — Identifying the educational needs of others, developing formal educational or training programs or classes, and teaching or instructing others.
+
+Detailed Work Activities
+Provide technical information or assistance to public.
+Advise others about environmental management or conservation.
+Monitor environmental impacts of production or development activities.
+Compile environmental or climatological data.
+Develop environmental sustainability plans or projects.
+Assess compliance with environmental laws.
+Review environmental permits, plans, or reports.
+Research environmental impact of industrial or development activities.
+Advise others on matters of public policy.
+Prepare information or documentation related to legal or regulatory matters.
+Prepare research or technical reports on environmental issues.
+Plan environmental research.
+Supervise scientific or technical personnel.
+Supervise trainees.
+Direct technical activities or operations.
+Research impacts of environmental conservation initiatives.
+Develop plans to manage natural or renewable resources.
+Develop sustainable industrial or development methods.
+Develop theories or models of physical phenomena.

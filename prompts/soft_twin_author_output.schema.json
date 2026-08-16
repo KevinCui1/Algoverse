@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "soft_twin_author_output.schema.json",
+  "title": "Perturbed soft-criteria profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["soft_profile"],
+  "properties": {
+    "soft_profile": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["criterion_id", "candidate_evidence", "position"],
+        "properties": {
+          "criterion_id": {"type": "string"},
+          "candidate_evidence": {"type": "string"},
+          "position": {"type": "string", "enum": ["above", "below", "close"]}
+        }
+      }
+    }
+  }
+}

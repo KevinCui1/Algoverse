@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "scenario_author_output.schema.json",
+  "title": "Scenario-authoring draft response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "occupation",
+    "job_summary",
+    "hard_gates",
+    "soft_criteria",
+    "candidate_scenarios"
+  ],
+  "properties": {
+    "occupation": {"type": "string", "minLength": 1},
+    "job_summary": {"type": "string", "minLength": 1},
+    "hard_gates": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "gate_id",
+          "requirement",
+          "operator",
+          "required_value",
+          "unit",
+          "minimum_margin_unit",
+          "source_support"
+        ],
+        "properties": {
+          "gate_id": {"type": "string", "minLength": 1},
+          "requirement": {"type": "string", "minLength": 1},
+          "operator": {
+            "type": "string",
+            "enum": [">=", ">", "==", "in", "contains"]
+          },
+          "required_value": {
+            "oneOf": [
+              {"type": "number"},
+              {"type": "string"},
+              {"type": "array", "minItems": 1}
+            ]
+          },
+          "unit": {"type": ["string", "null"]},
+          "minimum_margin_unit": {
+            "oneOf": [
+              {"type": "number"},
+              {"type": "string"}
+            ]
+          },
+          "source_support": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "soft_criteria": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "criterion_id",
+          "criterion",
+          "onet_dimension_family",
+          "why_relevant"
+        ],
+        "properties": {
+          "criterion_id": {"type": "string", "minLength": 1},
+          "criterion": {"type": "string", "minLength": 1},
+          "onet_dimension_family": {
+            "type": "string",
+            "enum": ["Knowledge", "Skill", "Work Activity", "Task", "Other"]
+          },
+          "why_relevant": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "candidate_scenarios": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "margin_band",
+          "candidate_gate_values",
+          "soft_profile",
+          "candidate_summary"
+        ],
+        "properties": {
+          "margin_band": {
+            "type": "string",
+            "enum": ["clear_fail", "near_fail", "near_pass", "clear_pass"]
+          },
+          "candidate_gate_values": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 4,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["gate_id", "candidate_value"],
+              "properties": {
+                "gate_id": {"type": "string", "minLength": 1},
+                "candidate_value": {
+                  "oneOf": [
+                    {"type": "number"},
+                    {"type": "string"},
+                    {"type": "array"}
+                  ]
+                }
+              }
+            }
+          },
+          "soft_profile": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 5,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["criterion_id", "candidate_evidence", "position"],
+              "properties": {
+                "criterion_id": {"type": "string", "minLength": 1},
+                "candidate_evidence": {"type": "string", "minLength": 1},
+                "position": {
+                  "type": "string",
+                  "enum": ["above", "below", "close"]
+                }
+              }
+            }
+          },
+          "candidate_summary": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

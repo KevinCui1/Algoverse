@@ -1,0 +1,24 @@
+{
+  "Job-Description": "\n\n## Job Title\nChefs and Head Cooks\n\n## Job Summary\nWe seek a dedicated Chef and Head Cook with experience in producing exceptional dining experiences. The ideal candidate would be integral in overseeing the daily food prep as our restaurant is well-regarded for its fine dining. The right candidate will draw upon a passion for quality controls in food preparation as well as a good mastery of inventory operations alongside impeccable menu-planning capabilities.\n\n## Required Skills\n* Strong ability in Menu Planning\n* Exquisite communication abilities across diverse platforms and populations\n* Excellent capability in Inventory Management\n* High level of Attention to Detail\n\n## Required Experience\n* 1-year experience as Chefs and Head Cooks\n* 2 years of experience as Cooks - dealing in a wide variety of meals preparing.\n\n## Responsibilities\n* Planning and directing food prep and cooking.\n* Monitor safety and sanitation practices. \n* Direct kitchen operations, including dish preparation, cooking, baking etc.\n* Planning menus and ensuring uniform serving sizes and top quality in meals.\n\n",
+  "Resume-matched": "\n\n## Personal Information\nName: Eevi Lager\nEmail: eevi.lager@email.com\n\n## Education\nCulinary Arts Degree - Helsinki Culinary Institute, Finland\n\n## Skills\n* Brilliant Menu Planning skills - developed innovative menu items that increased customer satisfaction by 75%\n* Exceptional Communication skills - coordinated optimal communication channels among the team leading to improved team cohesion \n* Commodious Inventory Management skills - Reduced food waste at the last position by 40% through implementing highly effective inventory tracking system \n* High-level Attention to Detail- maintains the high quality and consistent chef-crafted menu items\n\n## Experience\n* Chefs and head cooks at Mathilda's Kitchen (2018 - 2019) - Excelled in crafting a diverse range of with attention to presentation, diet requirements, taste and quality controls.  \n* Cooks - all other kinds at Lisa's Catering (2016 - 2018) - Thorough experience in menu design, keeping inventory records, designing and testing new recipes.\n\n\n",
+  "Resume-unmatched": "\n\n## Personal Information\nName: Eevi Lager\nEmail: eevi.lager@email.com\n\n## Education\nCulinary Arts Degree - Helsinki Culinary Institute, Finland\n\n## Skills\n* Highly proficient in Inventory Management - Traditional and digital inventory tracking and compiling weekly inventory audit reports\n\n## Experience\n* Cooks - all other at Lisa's Catering (2016 - 2018) - worked on different catering projects with varying scale from private dinners to large gatherings.    \n",
+  "Skills": [
+    "Menu Planning",
+    "Communication",
+    "Inventory Management",
+    "Attention to Detail"
+  ],
+  "Experiences": ["Chefs and head cooks", "Cooks, all other"],
+  "Experiences-years": [
+    [
+      ["1 years as a Chefs and head cooks", "2 years as a Cooks - all other"],
+      ["Chefs and head cooks (2018 - 2019)", "Cooks - all other (2016 - 2018)"]
+    ],
+    2019,
+    [1, 2]
+  ],
+  "Filtered-information": {
+    "Skills": ["Attention to Detail", "Menu Planning", "Communication"],
+    "Experience": "without including \"Chefs and head cooks (2018 - 2019)\""
+  }
+}

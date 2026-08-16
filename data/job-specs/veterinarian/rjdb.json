@@ -1,0 +1,22 @@
+{
+  "Job-Description": "\n\n## Job title\nVeterinarian\n\n## Job Summary\nA deep-seated organization is looking for a seasoned, compassionate Veterinarian to join our animal care family. This integral position involves providing diagnostic, medical, and surgical services to our wide array of furry clientele. The pivotal role requires excellent problem-solving skills, unwavering professionalism, and admirable patient-focused mindset.\n\n## Required Skills\n1. Diagnosis and Treatment Planning: Ability to diagnose medical conditions and plan effective paths of treatment.\n2. Communication Skills: Exceptional ability to articulate complex information in a clear and understandable manner.\n3. Problem-Solving Skills: Astute capability in identifying issues and implementing efficient solutions.\n4. Compassion: Genuine care and kindness in handling pets and willingness to go the extra mile for their comfort.\n5. Detail Oriented: Exceptional accuracy and careful attention to the crudest details.\n\n## Required Experience\nMinimum of 5 years' experience as a Veterinarian.\n\n## Responsibilities\n1. Analyzing animal\u2019s conditions and issues utilizing diagnostic techniques and tools.\n2. Formulating efficient treatment plans tailored to each unique situation.\n3. Communicating medical reports, advice, and instructions coherently to pet owners.\n4. Conducting regular health checks and routine surgeries.\n\n\n",
+  "Resume-matched": "\n\n## Personal Information\nGabriela Baxter,\ngabriela.baxter@vetexample.com\n\n## Education\nDoctor of Veterinary Medicine (DVM)\n\n## Skills\n1. Mastery in formulating Diagnosis and Treating, which aids in treating animals most efficiently and precisely.\n2. Exceptional Communication Skills that creates clear understanding of medical conditions and courses of surgery to pet owners.\n3. Excellent Problem-Solving Abilities has contributed to identifying various pet disorders and plan needed recovery procedures.\n4. Strong Compassion for animals and their wellbeing, emphasizing on building pet-friendly clinical environment.\n5. Tremendously Detail Oriented, ensuring accuracy in executing peripheral tasks such as maintaining medical histories and scrutinizing imaging results.\n\n## Experience\nWorked as a Veterinarian (2010-2015) with unrivalled commitment in treating varied animal breeds; handled intricate surgeries, perfected vinegar-benevite analysis, collaborated in multi-functional pet healthcare teams, conveyed useful animal ` d=e4tbng procedures to pet.Appendages owners towards upkeeping pet health.\n\n",
+  "Resume-unmatched": "\n\n## Personal Information\nGabriela Baxter,\ngabriela.baxter@vetexample.com\n\n## Education\nDoctor of Veterinary Medicine (DVM)\n\n## Skills\n1. Demonstrable expertise in Diagnosis and Treatment Planning, ensuring accurate treatments for pet ailments.\n2. Powerful Communication Skills helpful in articulating complex medical terminologies into the comprehensive discourse to the pet owners.\n\n## Experience\nAs Veterinarian (2010 - 2015), Gabriela gained indispensable experience in diagnosing animal ailments; rolled out successful treatment plans that accounted for 90% recovery rate; superior communication tactic led to effective interviews to understand animal behavior and medical history while ensuring pet owners\u2019 complacency regarding our services.",
+  "Skills": [
+    "Diagnosis and Treatment Planning",
+    "Communication Skills",
+    "Problem-Solving Skills",
+    "Compassion",
+    "Detail Oriented"
+  ],
+  "Experiences": ["Veterinarians"],
+  "Experiences-years": [
+    [["5 years as a Veterinarians"], ["Veterinarians (2010 - 2015)"]],
+    2015,
+    [5]
+  ],
+  "Filtered-information": {
+    "Skills": ["Detail Oriented", "Problem-Solving Skills", "Compassion"],
+    "Experience": "the same job experience as before"
+  }
+}

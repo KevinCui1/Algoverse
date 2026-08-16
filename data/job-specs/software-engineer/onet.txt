@@ -1,0 +1,156 @@
+https://www.onetonline.org/link/summary/15-1252.00
+Software Developers
+
+Tasks
+Analyze user needs and software requirements to determine feasibility of design within time and cost constraints.
+Develop or direct software system testing or validation procedures, programming, or documentation.
+Confer with systems analysts, engineers, programmers and others to design systems and to obtain information on project limitations and capabilities, performance requirements and interfaces.
+Modify existing software to correct errors, adapt it to new hardware, or upgrade interfaces and improve performance.
+Prepare reports or correspondence concerning project specifications, activities, or status.
+Analyze information to determine, recommend, and plan installation of a new system or modification of an existing system.
+Store, retrieve, and manipulate data for analysis of system capabilities and requirements.
+Design, develop and modify software systems, using scientific analysis and mathematical models to predict and measure outcomes and consequences of design.
+Determine system performance standards.
+Consult with customers or other departments on project status, proposals, or technical issues, such as software system design or maintenance.
+Confer with data processing or project managers to obtain information on limitations or capabilities for data processing projects.
+Monitor functioning of equipment to ensure system operates in conformance with specifications.
+Coordinate installation of software system.
+Supervise the work of programmers, technologists and technicians and other engineering and scientific personnel.
+Supervise and assign work to programmers, designers, technologists, technicians, or other engineering or scientific personnel.
+Obtain and evaluate information on factors such as reporting formats required, costs, or security needs to determine hardware configuration.
+Train users to use new or modified equipment.
+
+Knowledge
+Computers and Electronics — Knowledge of circuit boards, processors, chips, electronic equipment, and computer hardware and software, including applications and programming.
+Customer and Personal Service — Knowledge of principles and processes for providing customer and personal services. This includes customer needs assessment, meeting quality standards for services, and evaluation of customer satisfaction.
+Mathematics — Knowledge of arithmetic, algebra, geometry, calculus, statistics, and their applications.
+English Language — Knowledge of the structure and content of the English language including the meaning and spelling of words, and rules of composition and grammar.
+
+Software Skills
+Access software — Citrix cloud computing software; PuTTY
+Administration software — Software distribution management software
+Analytical or scientific software — IBM SPSS Statistics ; SAS ; TensorFlow ; The MathWorks MATLAB ; 6 more
+Application server software — Atlassian Bitbucket ; GitLab ; Red Hat OpenShift ; Spring Boot ; 7 more
+Authentication server software — Single sign-on SSO
+Backup or archival software — Backup and archival software; Veritas NetBackup
+Business intelligence and data analysis software — Alteryx software ; Google Looker Analytics ; Microsoft Power BI ; Tableau ; 4 more
+Cloud-based data access and sharing software — Dropbox; Google Drive; Platform as a service PaaS; Slack
+Cloud-based management software — Amazon Web Services AWS CloudFormation ; IBM WebSphere MQ ; Oracle Cloud software ; Splunk Enterprise ; 2 more
+Clustering software — VMware
+Communications server software — IBM Domino
+Computer based training software — Moodle
+Configuration management software — Chef ; IBM Terraform ; Perforce Helix software; Puppet ; 6 more
+Content workflow software — Atlassian JIRA ; Emerald Software Group Emerald Green Office
+Customer relationship management CRM software — Blackbaud The Raiser's Edge; Oracle Eloqua; Salesforce software
+Data base management system software — Amazon DynamoDB ; Oracle Database ; Oracle PL/SQL ; Redis ; 21 more
+Data base reporting software — Microsoft SQL Server Reporting Services SSRS ; Oracle Business Intelligence Discoverer; SAP Business Intelligence; SAP Crystal Reports; 3 more
+Data base user interface and query software — Airtable; Blackboard software; GraphQL ; Prometheus ; 16 more
+Data mining software — Google Analytics ; Snowflake
+Desktop communications software — Skype
+Desktop publishing software — Adobe InDesign ; Microsoft Publisher
+Development environment software — Apache Kafka ; Apache Maven ; Oracle Java 2 Platform Enterprise Edition J2EE ; Oracle SQL Developer ; 62 more
+Device drivers or system software — Microsoft DirectX
+Document management software — Adobe Acrobat ; Document management system software; Microsoft SharePoint
+Electronic mail software — Google Gmail; IBM Notes; Microsoft Exchange; Microsoft Outlook
+Enterprise application integration software — Jenkins CI ; Microsoft Power Automate ; Microsoft Power Platform software ; Microsoft SQL Server Integration Services SSIS ; 7 more
+Enterprise resource planning ERP software — Oracle PeopleSoft ; SAP ERP ; SAP software ; Workday software ; 9 more
+Enterprise system management software — IBM Power Systems software
+Expert system software — Ansible software
+File versioning software — Apache Subversion SVN ; Git ; Version control software
+Filesystem software — File server software
+Financial analysis software — Delphi Technology; Oracle E-Business Suite Financials
+Graphical user interface development software — Figma ; Grafana Labs Grafana Cloud ; Graphical user interface GUI builder software; Salesforce Visualforce; 1 more
+Graphics or photo imaging software — Adobe Creative Cloud software ; Adobe Illustrator ; JamBoard; Trimble SketchUp Pro ; 4 more
+Information retrieval or search software — Apache Avro; LexisNexis
+Instant messaging software — Blink; GroupMe
+Internet directory services software — Microsoft Active Directory
+Internet protocol IP multimedia subsystem software — Voice over internet protocol VoIP system software
+Map creation software — ESRI ArcGIS software
+Metadata management software — Informatica software ; Quest Erwin Data Modeler; Talend Data Fabric
+Network conferencing software — LogMeIn GoToWebinar
+Network monitoring software — Nagios; Wireshark
+Network operation system software — IBM z/OS operating systems
+Network security and virtual private network VPN equipment software — Firewall software; Virtual private networking VPN software
+Object or component oriented development software — Apache Spark ; jQuery ; Scala ; TypeScript ; 34 more
+Object oriented data base management software — Hibernate ORM ; PostgreSQL
+Office suite software — LibreOffice; Microsoft Office software
+Operating system software — Apple iOS ; Google Android ; Microsoft Windows Server ; UNIX Shell ; 21 more
+Platform interconnectivity software — Migration software
+Portal server software — Apache HTTP Server
+Presentation software — Google Slides; Microsoft PowerPoint
+Procedure management software — Apache Airflow
+Process mapping and design software — Microsoft Visio
+Program testing software — Hewlett Packard LoadRunner; JUnit ; Selenium ; SonarQube; 21 more
+Project management software — Atlassian Confluence ; Microsoft Team Foundation Server ; Microsoft Teams ; Oracle Primavera Enterprise Project Portfolio Management ; 1 more
+Requirements analysis and system architecture software — IBM Rational RequisitePro; Requirements management software; Unified modeling language UML
+Sales and marketing software — Marketo Marketing Automation
+Spreadsheet software — Google Sheets ; Microsoft Excel
+Storage networking software — Amazon Simple Storage Service S3; Storage area network SAN software
+Switch or router software — Border Gateway Protocol BGP
+Transaction security and virus protection software — Encryption software; McAfee; NortonLifeLock cybersecurity software
+Transaction server software — Customer information control system CICS; IBM Middleware; Microsoft Internet Information Services (IIS); Object Management Group Object Request Broker; 1 more
+Video conferencing software — Cisco Webex ; Google Meet; LogMeIn GoToMeeting; Zoom ; 1 more
+Video creation and editing software — Adobe After Effects ; Flipgrid; Screencastify; YouTube; 1 more
+Web page creation and editing software — Adobe Dreamweaver; Google Sites; Social media sites; WordPress ; 1 more
+Web platform development software — Bootstrap ; React ; Spring Framework ; Vue.js ; 31 more
+Word processing software — 3M Post-it App; Google Docs ; Microsoft OneNote; Microsoft Word 
+
+Essential Skills
+Critical Thinking — Using logic and reasoning to identify the strengths and weaknesses of alternative solutions, conclusions, or approaches to problems.
+Active Learning — Understanding the implications of new information for both current and future problem-solving and decision-making.
+Reading Comprehension — Understanding written sentences and paragraphs in work-related documents.
+Active Listening — Giving full attention to what other people are saying, taking time to understand the points being made, asking questions as appropriate, and not interrupting at inappropriate times.
+Writing — Communicating effectively in writing as appropriate for the needs of the audience.
+Speaking — Talking to others to convey information effectively.
+Monitoring — Monitoring/Assessing performance of yourself, other individuals, or organizations to make improvements or take corrective action.
+
+Transferable Skills
+Programming — Writing computer programs for various purposes.
+Judgment and Decision Making — Considering the relative costs and benefits of potential actions to choose the most appropriate one.
+Systems Analysis — Determining how a system should work and how changes in conditions, operations, and the environment will affect outcomes.
+Complex Problem Solving — Identifying complex problems and reviewing related information to develop and evaluate options and implement solutions.
+Systems Evaluation — Identifying measures or indicators of system performance and the actions needed to improve or correct performance, relative to the goals of the system.
+Technology Design — Generating or adapting equipment and technology to serve user needs.
+Operations Analysis — Analyzing needs and product requirements to create a design.
+Time Management — Managing one's own time and the time of others.
+Coordination — Adjusting actions in relation to others' actions.
+
+Work Activities
+Working with Computers — Using computers and computer systems (including hardware and software) to program, write software, set up functions, enter data, or process information.
+Processing Information — Compiling, coding, categorizing, calculating, tabulating, auditing, or verifying information or data.
+Making Decisions and Solving Problems — Analyzing information and evaluating results to choose the best solution and solve problems.
+Thinking Creatively — Developing, designing, or creating new applications, ideas, relationships, systems, or products, including artistic contributions.
+Communicating with Supervisors, Peers, or Subordinates — Providing information to supervisors, co-workers, and subordinates by telephone, in written form, e-mail, or in person.
+Analyzing Data or Information — Identifying the underlying principles, reasons, or facts of information by breaking down information or data into separate parts.
+Updating and Using Relevant Knowledge — Keeping up-to-date technically and applying new knowledge to your job.
+Organizing, Planning, and Prioritizing Work — Developing specific goals and plans to prioritize, organize, and accomplish your work.
+Getting Information — Observing, receiving, and otherwise obtaining information from all relevant sources.
+Evaluating Information to Determine Compliance with Standards — Using relevant information and individual judgment to determine whether events or processes comply with laws, regulations, or standards.
+Documenting/Recording Information — Entering, transcribing, recording, storing, or maintaining information in written or electronic/magnetic form.
+Developing Objectives and Strategies — Establishing long-range objectives and specifying the strategies and actions to achieve them.
+Monitoring Processes, Materials, or Surroundings — Monitoring and reviewing information from materials, events, or the environment, to detect or assess problems.
+Identifying Objects, Actions, and Events — Identifying information by categorizing, estimating, recognizing differences or similarities, and detecting changes in circumstances or events.
+Interpreting the Meaning of Information for Others — Translating or explaining what information means and how it can be used.
+Establishing and Maintaining Interpersonal Relationships — Developing constructive and cooperative working relationships with others, and maintaining them over time.
+Scheduling Work and Activities — Scheduling events, programs, and activities, as well as the work of others.
+Providing Consultation and Advice to Others — Providing guidance and expert advice to management or other groups on technical, systems-, or process-related topics.
+
+Detailed Work Activities
+Monitor computer system performance to ensure proper operation.
+Analyze project data to determine specifications or requirements.
+Develop testing routines or procedures.
+Manage information technology projects or system activities.
+Modify software programs to improve performance.
+Collaborate with others to determine design specifications or details.
+Coordinate software or hardware installation.
+Communicate project information to others.
+Assess database performance.
+Prepare data for analysis.
+Apply mathematical principles or statistical approaches to solve problems in scientific or applied fields.
+Design software applications.
+Supervise information technology personnel.
+Develop performance metrics or standards related to information technology.
+Provide technical support for software maintenance or use.
+Collaborate with others to resolve information technology issues.
+Assign duties or work schedules to employees.
+Teach others to use computer equipment or hardware.

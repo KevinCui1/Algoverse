@@ -1,0 +1,19 @@
+# Persistent cache for model weights and run outputs.
+#
+# Weight download dominates wall-clock time for a run this size: the inference
+# itself is a few minutes, while pulling a 30B checkpoint is tens of minutes.
+# Caching the weights on a volume means that cost is paid once per model rather
+# than once per job, which matters most when a job is preempted and rescheduled.
+#
+# The namespace is shared, so this claims what the runs need and no more.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: hiringcue-cache
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 300Gi
+  storageClassName: rook-cephfs

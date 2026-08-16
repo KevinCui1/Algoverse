@@ -1,0 +1,221 @@
+{
+  "occupation": "Veterinarian",
+  "job_summary": "A Veterinarian provides diagnostic, medical, and surgical services to animals, including analyzing animal conditions, developing treatment plans, communicating medical information to animal owners, and conducting health checks and routine surgeries.",
+  "hard_gates": [
+    {
+      "gate_id": "HG1",
+      "requirement": "At least 5 years of experience as a Veterinarian.",
+      "operator": ">=",
+      "required_value": 5,
+      "unit": "years",
+      "minimum_margin_unit": 1,
+      "source_support": "Job description Required Experience: Minimum of 5 years' experience as a Veterinarian."
+    },
+    {
+      "gate_id": "HG2",
+      "requirement": "Demonstrated ability in diagnosis and treatment planning.",
+      "operator": "==",
+      "required_value": "demonstrated",
+      "unit": null,
+      "minimum_margin_unit": "one evidence state",
+      "source_support": "Job description Required Skills: Diagnosis and Treatment Planning; responsibilities include analyzing animal conditions and formulating treatment plans. O*NET lists examining animals to determine diseases or injuries and developing medical treatment plans."
+    },
+    {
+      "gate_id": "HG3",
+      "requirement": "Demonstrated communication skills for clearly communicating medical information to animal owners.",
+      "operator": "==",
+      "required_value": "demonstrated",
+      "unit": null,
+      "minimum_margin_unit": "one evidence state",
+      "source_support": "Job description Required Skills: Communication Skills; responsibilities include communicating medical reports, advice, and instructions coherently to pet owners. O*NET lists advising animal owners and communicating health and wellness information."
+    }
+  ],
+  "soft_criteria": [
+    {
+      "criterion_id": "SC1",
+      "criterion": "Ability to identify issues and implement efficient solutions when treating animals.",
+      "onet_dimension_family": "Skill",
+      "why_relevant": "The job description identifies problem-solving as a required skill, while O*NET identifies complex problem solving and making decisions and solving problems as relevant to veterinarians."
+    },
+    {
+      "criterion_id": "SC2",
+      "criterion": "Careful attention to accuracy when handling medical information, histories, examinations, and diagnostic results.",
+      "onet_dimension_family": "Work Activity",
+      "why_relevant": "The job description requires being detail oriented, and O*NET identifies documenting and recording information, analyzing medical data, and identifying information as relevant work activities."
+    },
+    {
+      "criterion_id": "SC3",
+      "criterion": "Demonstrated care and kindness toward animals and attention to their comfort and care.",
+      "onet_dimension_family": "Work Activity",
+      "why_relevant": "The job description requires compassion and a patient-focused mindset, while O*NET identifies assisting and caring for others and providing care for animals."
+    },
+    {
+      "criterion_id": "SC4",
+      "criterion": "Ability to analyze diagnostic information and use scientific information when making treatment decisions.",
+      "onet_dimension_family": "Knowledge",
+      "why_relevant": "O*NET identifies Biology, Medicine and Dentistry, and Science-related knowledge and skills, along with analyzing test data or images to inform diagnosis or treatment."
+    }
+  ],
+  "candidate_scenarios": [
+    {
+      "margin_band": "clear_fail",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 2
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": "demonstrated"
+        },
+        {
+          "gate_id": "HG3",
+          "candidate_value": "demonstrated"
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Frequently identifies treatment-related problems and develops practical solutions.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Pays careful attention to medical histories and diagnostic information, with generally accurate documentation.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Shows limited evidence of providing patient-focused care and attention to animal comfort.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Regularly analyzes diagnostic information when considering animal conditions and treatment options.",
+          "position": "above"
+        }
+      ],
+      "candidate_summary": "The candidate has 2 years of Veterinarian experience, demonstrated ability in diagnosis and treatment planning, and demonstrated communication skills for clearly communicating medical information to animal owners. The candidate frequently identifies treatment-related problems and develops practical solutions, pays careful attention to medical histories and diagnostic information with generally accurate documentation, shows limited evidence of providing patient-focused care and attention to animal comfort, and regularly analyzes diagnostic information when considering animal conditions and treatment options."
+    },
+    {
+      "margin_band": "near_fail",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 4
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": "demonstrated"
+        },
+        {
+          "gate_id": "HG3",
+          "candidate_value": "demonstrated"
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Frequently identifies treatment-related problems and develops practical solutions.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Pays careful attention to medical histories and diagnostic information, with generally accurate documentation.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Shows limited evidence of providing patient-focused care and attention to animal comfort.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Regularly analyzes diagnostic information when considering animal conditions and treatment options.",
+          "position": "above"
+        }
+      ],
+      "candidate_summary": "The candidate has 4 years of Veterinarian experience, demonstrated ability in diagnosis and treatment planning, and demonstrated communication skills for clearly communicating medical information to animal owners. The candidate frequently identifies treatment-related problems and develops practical solutions, pays careful attention to medical histories and diagnostic information with generally accurate documentation, shows limited evidence of providing patient-focused care and attention to animal comfort, and regularly analyzes diagnostic information when considering animal conditions and treatment options."
+    },
+    {
+      "margin_band": "near_pass",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 5
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": "demonstrated"
+        },
+        {
+          "gate_id": "HG3",
+          "candidate_value": "demonstrated"
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Frequently identifies treatment-related problems and develops practical solutions.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Pays careful attention to medical histories and diagnostic information, with generally accurate documentation.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Shows limited evidence of providing patient-focused care and attention to animal comfort.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Regularly analyzes diagnostic information when considering animal conditions and treatment options.",
+          "position": "above"
+        }
+      ],
+      "candidate_summary": "The candidate has 5 years of Veterinarian experience, demonstrated ability in diagnosis and treatment planning, and demonstrated communication skills for clearly communicating medical information to animal owners. The candidate frequently identifies treatment-related problems and develops practical solutions, pays careful attention to medical histories and diagnostic information with generally accurate documentation, shows limited evidence of providing patient-focused care and attention to animal comfort, and regularly analyzes diagnostic information when considering animal conditions and treatment options."
+    },
+    {
+      "margin_band": "clear_pass",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 8
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": "demonstrated"
+        },
+        {
+          "gate_id": "HG3",
+          "candidate_value": "demonstrated"
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Frequently identifies treatment-related problems and develops practical solutions.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Pays careful attention to medical histories and diagnostic information, with generally accurate documentation.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Shows limited evidence of providing patient-focused care and attention to animal comfort.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Regularly analyzes diagnostic information when considering animal conditions and treatment options.",
+          "position": "above"
+        }
+      ],
+      "candidate_summary": "The candidate has 8 years of Veterinarian experience, demonstrated ability in diagnosis and treatment planning, and demonstrated communication skills for clearly communicating medical information to animal owners. The candidate frequently identifies treatment-related problems and develops practical solutions, pays careful attention to medical histories and diagnostic information with generally accurate documentation, shows limited evidence of providing patient-focused care and attention to animal comfort, and regularly analyzes diagnostic information when considering animal conditions and treatment options."
+    }
+  ]
+}

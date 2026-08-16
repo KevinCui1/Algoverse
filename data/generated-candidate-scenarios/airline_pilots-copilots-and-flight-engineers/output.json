@@ -1,0 +1,196 @@
+{
+  "occupation": "Airline Pilots, Copilots, and Flight Engineers",
+  "job_summary": "Operate and coordinate airline flights, including route planning, aircraft system monitoring, communication with ground control and crew members, aircraft inspection and maintenance activities, and leadership during flight operations and emergencies.",
+  "hard_gates": [
+    {
+      "gate_id": "HG1",
+      "requirement": "Previous employment as an airline pilot, copilot, or flight engineer",
+      "operator": ">=",
+      "required_value": 3,
+      "unit": "years",
+      "minimum_margin_unit": 1,
+      "source_support": "The source job description explicitly requires previous employment as an airline pilot, copilot, or flight engineer for a minimum of 3 years."
+    },
+    {
+      "gate_id": "HG2",
+      "requirement": "Prior working experience as a ship or boat captain or operator",
+      "operator": ">=",
+      "required_value": 3,
+      "unit": "years",
+      "minimum_margin_unit": 1,
+      "source_support": "The source job description explicitly requires prior working experience as a ship or boat captain or operator for a minimum of 3 years."
+    }
+  ],
+  "soft_criteria": [
+    {
+      "criterion_id": "SC1",
+      "criterion": "Navigation and route-selection ability, including choosing appropriate routes, altitudes, or speeds",
+      "onet_dimension_family": "Task",
+      "why_relevant": "The job description requires exceptional navigation skills, and O*NET lists choosing routes, altitudes, and speeds and steering aircraft along planned routes as core tasks."
+    },
+    {
+      "criterion_id": "SC2",
+      "criterion": "Leadership and coordination of flight crews and other personnel",
+      "onet_dimension_family": "Skill",
+      "why_relevant": "The job description requires leadership and management skills, while O*NET identifies coordination and describes directing aircraft crew activities as part of the occupation."
+    },
+    {
+      "criterion_id": "SC3",
+      "criterion": "Mechanical knowledge and ability to identify or respond to aircraft equipment problems",
+      "onet_dimension_family": "Knowledge",
+      "why_relevant": "The job description requires solid mechanical knowledge, and O*NET identifies Mechanical knowledge and tasks involving aircraft inspection, malfunction reporting, and maintenance."
+    },
+    {
+      "criterion_id": "SC4",
+      "criterion": "Clear communication and information sharing with crew members, ground control, and other relevant personnel",
+      "onet_dimension_family": "Work Activity",
+      "why_relevant": "The job description requires outstanding communication skills, and O*NET lists communicating with supervisors, peers, and subordinates as well as coordinating vehicle movement and flight control activities."
+    }
+  ],
+  "candidate_scenarios": [
+    {
+      "margin_band": "clear_fail",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 0
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 1
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Demonstrates strong ability to select and follow appropriate transportation routes and consider operating conditions.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Demonstrates moderate ability to coordinate activities and lead other personnel.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Demonstrates limited mechanical knowledge and limited evidence of responding to aircraft equipment problems.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Demonstrates clear communication with crew members and other personnel involved in transportation operations.",
+          "position": "above"
+        }
+      ],
+      "candidate_summary": "Candidate has 0 years of airline pilot, copilot, or flight engineer experience and 1 year of ship or boat captain or operator experience. The soft profile shows above-level navigation and route-selection evidence, close-level leadership and coordination evidence, below-level mechanical knowledge evidence, and above-level communication evidence."
+    },
+    {
+      "margin_band": "near_fail",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 2
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 3
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Demonstrates strong ability to select and follow appropriate transportation routes and consider operating conditions.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Demonstrates moderate ability to coordinate activities and lead other personnel.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Demonstrates limited mechanical knowledge and limited evidence of responding to aircraft equipment problems.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Demonstrates clear communication with crew members and other personnel involved in transportation operations.",
+          "position": "above"
+        }
+      ],
+      "candidate_summary": "Candidate has 2 years of airline pilot, copilot, or flight engineer experience and 3 years of ship or boat captain or operator experience. The soft profile shows above-level navigation and route-selection evidence, close-level leadership and coordination evidence, below-level mechanical knowledge evidence, and above-level communication evidence."
+    },
+    {
+      "margin_band": "near_pass",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 3
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 3
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Demonstrates strong ability to select and follow appropriate transportation routes and consider operating conditions.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Demonstrates moderate ability to coordinate activities and lead other personnel.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Demonstrates limited mechanical knowledge and limited evidence of responding to aircraft equipment problems.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Demonstrates clear communication with crew members and other personnel involved in transportation operations.",
+          "position": "above"
+        }
+      ],
+      "candidate_summary": "Candidate has 3 years of airline pilot, copilot, or flight engineer experience and 3 years of ship or boat captain or operator experience. The soft profile shows above-level navigation and route-selection evidence, close-level leadership and coordination evidence, below-level mechanical knowledge evidence, and above-level communication evidence."
+    },
+    {
+      "margin_band": "clear_pass",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 6
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 6
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Demonstrates strong ability to select and follow appropriate transportation routes and consider operating conditions.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Demonstrates moderate ability to coordinate activities and lead other personnel.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Demonstrates limited mechanical knowledge and limited evidence of responding to aircraft equipment problems.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Demonstrates clear communication with crew members and other personnel involved in transportation operations.",
+          "position": "above"
+        }
+      ],
+      "candidate_summary": "Candidate has 6 years of airline pilot, copilot, or flight engineer experience and 6 years of ship or boat captain or operator experience. The soft profile shows above-level navigation and route-selection evidence, close-level leadership and coordination evidence, below-level mechanical knowledge evidence, and above-level communication evidence."
+    }
+  ]
+}

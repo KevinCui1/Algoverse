@@ -1,0 +1,30 @@
+{
+  "Job-Description": "\n\n## Job title\nPreschool Teacher\n\n## Job Summary\nThe perfect candidate for this position will have an understanding heart, a passion for teaching, and be experienced in early childhood education. They should not only have the ability to manage the entirety of a preschool classroom, but they should also have the knowledge and ability to address learning disorders that may arise. Time management and problem-solving are vital skills. Lastly, a sensitivity and positive perspective towards multi-cultures is mandatory.\n\n## Required Skills\n- Classroom Management \n- Early Childhood Education\n- Knowledge of Learning Disorders\n- Time Management\n- Problem-Solving Skills\n- Multicultural Sensitivity/Awareness\n\n## Required Experience\n- Minimum 2 years experience in preschool\n- At least 4 years in Special education environment\n\n## Responsibilities\n- To educate and ensure wellbeing of children aged 2-5 years\n- To handle lesson planning and also stimulate emotional, intellectual, and social growth of each child\n- To seamlessly manage operation of the preschool\n- Supervise and interact with kids in an enhancing and nurturing way\n  \n\n",
+  "Resume-matched": "\n\n## Personal Information\n- Name: Gabija Ivanauskaite\n- Email: ivanauskaitegabija@pedkiddo.edu\n\n## Education\n- Bachelor\u2019s Degree in Early Childhood Education\n\n## Skills\n- Proven Classroom Management abilities.\n- Excellent proficiency and knowledge in Early Childhood Education.\n- Deep understanding and skill to handle Learning Disorders.\n- High efficiency in Time Management.\n- Eminently skilled in Problem-Solving.\n- Cultural sensitivity and awareness towards a diverse multicultural environment.\n\n## Experience\n- Worked tirelessly for children's educational and emotional well being as a Preschool teacher from 2013 - 2015.\n- Enhanced learning experience for special kids while bringing positive behavioral changes utlising my skill set as a Special Education Teacher between 2009 - 2013.\n\n",
+  "Resume-unmatched": "\n\n## Personal Information\n- Name: Gabija Ivanauskaite\n- Email: ivanauskaitegabija@pedkiddo.edu\n\n## Education\n- Bachelor\u2019s Degree in Early Childhood Education\n\n## Skills\n- Proficient in Classroom Management.\n- Extensive knowledge and ability to handle and recognize Learning Disorders.\n- Top-tier Problem-Solving Skills.\n\n## Experience\n- Served as a Preschool teacher fostering creativity and introducing academic basics to children; worked in this role for a year from 2013 - 2014.\n- Helped to bridge the learning gap for kids with special needs while serving as a Special Education Teacher in duration of 2009 - 2013.",
+  "Skills": [
+    "Classroom Management",
+    "Early Childhood Education",
+    "Knowledge of Learning Disorders",
+    "Time Management",
+    "Problem-Solving Skills",
+    "Multicultural Sensitivity/Awareness"
+  ],
+  "Experiences": ["Special education teachers, preschool"],
+  "Experiences-years": [
+    [
+      ["2 years as a preschool", "4 years as a Special education teachers"],
+      ["preschool (2013 - 2015)", "Special education teachers (2009 - 2013)"]
+    ],
+    2015,
+    [2, 4]
+  ],
+  "Filtered-information": {
+    "Skills": [
+      "Multicultural Sensitivity/Awareness",
+      "Time Management",
+      "Early Childhood Education"
+    ],
+    "Experience": "instead of \"preschool (2013 - 2015)\" use \"preschool (2013 - 2014)\""
+  }
+}

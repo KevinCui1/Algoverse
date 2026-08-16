@@ -1,0 +1,222 @@
+{
+  "occupation": "Chief Executive Officer",
+  "job_summary": "Supervise and control the strategic and business aspects of the company, develop business strategies and plans, oversee operations, build relationships with key partners and stakeholders, and analyze problematic situations to provide solutions.",
+  "hard_gates": [
+    {
+      "gate_id": "HG1",
+      "requirement": "Previous experience in the Chief Executive Officer role",
+      "operator": "==",
+      "required_value": "Chief Executive Officer",
+      "unit": null,
+      "minimum_margin_unit": "role",
+      "source_support": "The source job description explicitly requires at least three years of experience as a Chief Executive Officer."
+    },
+    {
+      "gate_id": "HG2",
+      "requirement": "Minimum experience as a Chief Executive Officer",
+      "operator": ">=",
+      "required_value": 3,
+      "unit": "years",
+      "minimum_margin_unit": 1,
+      "source_support": "The source job description explicitly states that at least three years of experience as a Chief Executive Officer are required."
+    }
+  ],
+  "soft_criteria": [
+    {
+      "criterion_id": "SC1",
+      "criterion": "Ability to develop organizational objectives, strategies, and business plans",
+      "onet_dimension_family": "Work Activity",
+      "why_relevant": "The job description requires strategic planning and developing business strategies and plans, while O*NET lists developing objectives and strategies as a chief-executive work activity."
+    },
+    {
+      "criterion_id": "SC2",
+      "criterion": "Ability to make decisions and solve organizational problems",
+      "onet_dimension_family": "Skill",
+      "why_relevant": "The job description requires decision making and problem-solving skills, and O*NET identifies Judgment and Decision Making and Complex Problem Solving as transferable skills."
+    },
+    {
+      "criterion_id": "SC3",
+      "criterion": "Ability to direct and motivate personnel and coordinate organizational activities",
+      "onet_dimension_family": "Work Activity",
+      "why_relevant": "The job description requires leadership skills and oversight of operations, while O*NET lists guiding, directing, and motivating subordinates and coordinating the work of others."
+    },
+    {
+      "criterion_id": "SC4",
+      "criterion": "Ability to manage and monitor financial resources and organizational budgets",
+      "onet_dimension_family": "Knowledge",
+      "why_relevant": "The job description requires financial management, while O*NET identifies Economics and Accounting knowledge and Management of Financial Resources as relevant to chief executives."
+    },
+    {
+      "criterion_id": "SC5",
+      "criterion": "Ability to communicate and maintain relationships with organizational members and external stakeholders",
+      "onet_dimension_family": "Work Activity",
+      "why_relevant": "The job description requires communication skills and building trust with partners and stakeholders, while O*NET lists communicating with supervisors, peers, subordinates, and people outside the organization."
+    }
+  ],
+  "candidate_scenarios": [
+    {
+      "margin_band": "clear_fail",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": "Chief Executive Officer"
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 0
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Demonstrates strong ability to develop organizational objectives, strategies, and business plans.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Demonstrates moderate ability to make decisions and solve organizational problems.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Demonstrates limited evidence of directing and motivating personnel and coordinating organizational activities.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Demonstrates strong ability to manage and monitor financial resources and organizational budgets.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC5",
+          "candidate_evidence": "Demonstrates moderate ability to communicate and maintain relationships with organizational members and external stakeholders.",
+          "position": "close"
+        }
+      ],
+      "candidate_summary": "Candidate has Chief Executive Officer as the role and 0 years of Chief Executive Officer experience. The soft profile shows above-level strategic planning evidence, close-level decision-making and problem-solving evidence, below-level personnel leadership and coordination evidence, above-level financial management evidence, and close-level communication and stakeholder relationship evidence."
+    },
+    {
+      "margin_band": "near_fail",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": "Chief Executive Officer"
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 2
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Demonstrates strong ability to develop organizational objectives, strategies, and business plans.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Demonstrates moderate ability to make decisions and solve organizational problems.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Demonstrates limited evidence of directing and motivating personnel and coordinating organizational activities.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Demonstrates strong ability to manage and monitor financial resources and organizational budgets.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC5",
+          "candidate_evidence": "Demonstrates moderate ability to communicate and maintain relationships with organizational members and external stakeholders.",
+          "position": "close"
+        }
+      ],
+      "candidate_summary": "Candidate has Chief Executive Officer as the role and 2 years of Chief Executive Officer experience. The soft profile shows above-level strategic planning evidence, close-level decision-making and problem-solving evidence, below-level personnel leadership and coordination evidence, above-level financial management evidence, and close-level communication and stakeholder relationship evidence."
+    },
+    {
+      "margin_band": "near_pass",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": "Chief Executive Officer"
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 3
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Demonstrates strong ability to develop organizational objectives, strategies, and business plans.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Demonstrates moderate ability to make decisions and solve organizational problems.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Demonstrates limited evidence of directing and motivating personnel and coordinating organizational activities.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Demonstrates strong ability to manage and monitor financial resources and organizational budgets.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC5",
+          "candidate_evidence": "Demonstrates moderate ability to communicate and maintain relationships with organizational members and external stakeholders.",
+          "position": "close"
+        }
+      ],
+      "candidate_summary": "Candidate has Chief Executive Officer as the role and 3 years of Chief Executive Officer experience. The soft profile shows above-level strategic planning evidence, close-level decision-making and problem-solving evidence, below-level personnel leadership and coordination evidence, above-level financial management evidence, and close-level communication and stakeholder relationship evidence."
+    },
+    {
+      "margin_band": "clear_pass",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": "Chief Executive Officer"
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 7
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Demonstrates strong ability to develop organizational objectives, strategies, and business plans.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Demonstrates moderate ability to make decisions and solve organizational problems.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Demonstrates limited evidence of directing and motivating personnel and coordinating organizational activities.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Demonstrates strong ability to manage and monitor financial resources and organizational budgets.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC5",
+          "candidate_evidence": "Demonstrates moderate ability to communicate and maintain relationships with organizational members and external stakeholders.",
+          "position": "close"
+        }
+      ],
+      "candidate_summary": "Candidate has Chief Executive Officer as the role and 7 years of Chief Executive Officer experience. The soft profile shows above-level strategic planning evidence, close-level decision-making and problem-solving evidence, below-level personnel leadership and coordination evidence, above-level financial management evidence, and close-level communication and stakeholder relationship evidence."
+    }
+  ]
+}

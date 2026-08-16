@@ -1,0 +1,33 @@
+{
+  "Job-Description": "\n\n## Job title\nAirline pilots, copilots, and flight engineers \n\n## Job Summary\nWe're seeking a professional and experienced individual to join our team as an airline pilot, copilot, or flight engineer. Our perfect candidate will have substantial experience in the air and at sea, possessing remarkable knowledge in navigation and mechanics, and outstanding teamwork, communication, and leadership skills. \n\n## Required Skills\n- Exceptional navigation skills to chart optimal path routes and consider factors like weather conditions.\n- Proven leadership and management skills to coordinate with the airline staff and lead effectively for smooth operation.\n- Solid mechanical knowledge to understand and quickly resolve any aircraft malfunction.\n- Outstanding communication skills to communicate effectively with crew members and ground control effectively.\n\n## Required Experience\n- Previous employment in particular positions such as airline pilots, copilots and flight engineers for minimum 3 years.\n- Prior working experience minimum of 3 years as ship or boats captains and operators.\n\n## Responsibilities\n- Coordinating with ground control to decide on the best travel routes.\n- Checking and maintaining aircraft systems before, during, and after the flight.\n- Provision of optimal customer service and safety for all the passengers.\n- Leading airline crewmembers in emergency situations and diversion conditions.\n\n",
+  "Resume-matched": "\n\n## Personal Information\nName: Aleksandre Dimitrov\nEmail: Aleksandre.Dimitrov@email.com\n\n## Education\n- Aircraft Pilot (Private, Commercial) (B.A.)\n\n## Skills\n- Navigation Skills: Successfully navigated various airlines and marine vehicles in diverse conditions.\n- Leadership and Management Skills: Effectively led varied crews to ensure smooth operations.\n- Mechanical Knowledge: Experienced in routine maintenance, repairs and troubleshooting of key mechanical issues.\n- Communication Skills: Flourishing experience in stellar communication with crews and control towers.\n\n\n## Experience \n- Airline pilots - copilots - and flight engineers (2016 - 2019)\nManaged 600+ successful flights domestically and internationally by utilizing keen navigation and leadership skills.\n\n- Ship and boat captains and operators (2013 - 2016)\nDirected sea voyages safeguarding cargo and passengers by leveraging stellar navigation and management abilities.\n\n\n",
+  "Resume-unmatched": "\n\n## Personal Information\nName: Aleksandre Dimitrov\nEmail: Aleksandre.Dimitrov@email.com\n\n## Education\n- Aircraft Pilot (Private, Commercial) (B.A.)\n\n## Skills\n- Mechanical Knowledge: Demonstrable proficiency in diagnosing, repairing, and routine maintenance of varied mechanical systems.\n- Communication Skills: Practiced in maintaining clear, concise, and effective communication with team members and controllers.\n\n## Experience \n- Ship and boat captains and operators (2013 - 2016)\nManaged all aspects of shipboard operations, scheduled maintenance, and emergency procedures, implementing exceptional mechanical knowledge and communication abilities.",
+  "Skills": [
+    "Navigation Skills",
+    "Leadership and Management Skills",
+    "Mechanical Knowledge",
+    "Communication Skills"
+  ],
+  "Experiences": [
+    "Airline pilots, copilots, and flight engineers",
+    "Ship and boat captains and operators"
+  ],
+  "Experiences-years": [
+    [
+      [
+        "3 years as a Airline pilots - copilots - and flight engineers",
+        "3 years as a Ship and boat captains and operators"
+      ],
+      [
+        "Airline pilots - copilots - and flight engineers (2016 - 2019)",
+        "Ship and boat captains and operators (2013 - 2016)"
+      ]
+    ],
+    2019,
+    [3, 3]
+  ],
+  "Filtered-information": {
+    "Skills": ["Leadership and Management Skills", "Navigation Skills"],
+    "Experience": "without including \"Airline pilots - copilots - and flight engineers (2016 - 2019)\""
+  }
+}

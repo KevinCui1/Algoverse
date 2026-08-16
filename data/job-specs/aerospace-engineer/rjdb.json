@@ -1,0 +1,38 @@
+{
+  "Job-Description": "\n\n## Job title\nAerospace Engineer\n\n## Job Summary\nOur company is seeking a passionate and dynamic Aerospace Engineer responsible for designing, developing and aerodynamic testing of progressive air and spaceship parts, vehicles and systems. \n\n## Required Skills\n- Aptitude for Operation Monitoring\n- Active Listening\n- Exceptional Critical Thinking\n- Efficiency in Time Management\n- Expert in Complex Problem Solving\n- Skilled in Repairing\n\n## Required Experience\n- A minimum of two years experience in Aerospace Engineering\n- Four Years experience in being a Bus and Truck Mechanic as well as a Diesel Engine Specialist \n- Three years as a Food and Tobacco Roasting - Baking - and Drying Machine Operator and Tender\n\n## Responsibilities\n- Develop, design, and troubleshoot aerospace vehicles, system and components \n- Monitor equipment operations to ensure consistency and conformity with standard operating procedures\n- Participation in crucial operational procedures, including inspections, maintenance and repair work\n\n\n",
+  "Resume-matched": "\n\n## Personal Information\nName: Amelja Bosarge\nEmail: ameljabosarge@gmail.com\n\n## Education\nMaster's Degree in Aerospace Engineering\n\n## Skills\n- Proficient in Operation Monitoring\n- Active Listening and understanding of information being communicated \n- Strong Critical Thinking abilities\n- Efficient Time Management skills \n- Stimulating Complex Problem-Solving methods\n- Skilled in various forms of Repairing \n\n## Experience\n- Aerospace Engineer (2019-2021): Worked closely with pioneering spaces and airplane machinery, ensuring efficient performance, safety regulations and innovative design. Experience exploring novel engineering items and advanced technology were maintaining quality and cost-efficiency.\n- Bus and truck mechanics and diesel engine specialists (2015-2019): Performed detailed inspections, diagnosis and proactive preventive maintenance on a fixed or rotating basis.\n- Food and Tobacco roasting - baking - and drying machine operators and tenders (2012 - 2015): Operated and supervised the machinery to prepare, mix, cook and finishes the tobacco sectors and bakery goods products.\n\n\n",
+  "Resume-unmatched": "\n\n## Personal Information\nName: Amelja Bosarge \nEmail: ameljabosarge@gmail.com\n\n## Education\nMaster's Degree in Aerospace Engineering\n\n## Skills\n- Proficient in Operation Monitoring\n- Active Listening skills\n- Great Time Management abilities \n- Enhanced Repairing skills\n\n## Experience\n- Aerospace Engineer (2019-2020): Achieved company goals by consistently shunning operational shortcomings, crafting, and implementing renewed procedures into the existing structures. Surpassed targets by working on underperforming projects and initiating strategies redirecting productive functionalities.\n- Bus and truck mechanics and diesel engine specialists (2015-2019): Retained engine parts and undertook an assorted array of mechanical installations, routine checkups and prompt deliveries.\n- Food and Tobacco roasting - baking - and drying machine operators and tenders (2012 - 2015): Handled an array of machineries to prepare, store, cook and delivers consumable items effectively across diverse section of pharmaceutical industries and bakeries.\n",
+  "Skills": [
+    "Operation Monitoring",
+    "Active Listening",
+    "Critical Thinking",
+    "Time Management",
+    "Complex Problem Solving",
+    "Repairing"
+  ],
+  "Experiences": [
+    "Aerospace engineers",
+    "Bus and truck mechanics and diesel engine specialists",
+    "Food and tobacco roasting, baking, and drying machine operators and tenders"
+  ],
+  "Experiences-years": [
+    [
+      [
+        "2 years as a Aerospace engineers",
+        "4 years as a Bus and truck mechanics and diesel engine specialists",
+        "3 years as a Food and tobacco roasting - baking - and drying machine operators and tenders"
+      ],
+      [
+        "Aerospace engineers (2019 - 2021)",
+        "Bus and truck mechanics and diesel engine specialists (2015 - 2019)",
+        "Food and tobacco roasting - baking - and drying machine operators and tenders (2012 - 2015)"
+      ]
+    ],
+    2021,
+    [2, 4, 3]
+  ],
+  "Filtered-information": {
+    "Skills": ["Critical Thinking", "Complex Problem Solving"],
+    "Experience": "instead of \"Aerospace engineers (2019 - 2021)\" use \"Aerospace engineers (2019 - 2020)\""
+  }
+}

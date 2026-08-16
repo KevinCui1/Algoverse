@@ -1,0 +1,246 @@
+{
+  "occupation": "Marriage and Family Therapists",
+  "job_summary": "A Marriage and Family Therapist who assesses client needs, develops individualized treatment plans, helps clients address interpersonal and relationship problems, and uses the required skills of Attention to Detail, Arm-Hand Steadiness, Quality Control Analysis, Operation Monitoring, Judgment and Decision Making, Operation and Control, Active Learning, Mathematics, and Learning Strategies.",
+  "hard_gates": [
+    {
+      "gate_id": "HG1",
+      "requirement": "Experience as a Marriage and Family Therapist",
+      "operator": ">=",
+      "required_value": 5,
+      "unit": "years",
+      "minimum_margin_unit": 1,
+      "source_support": "The source job description explicitly requires at least 5 years of experience as a Marriage and Family Therapist."
+    },
+    {
+      "gate_id": "HG2",
+      "requirement": "Experience as an Oral and Maxillofacial Surgeon",
+      "operator": ">=",
+      "required_value": 4,
+      "unit": "years",
+      "minimum_margin_unit": 1,
+      "source_support": "The source job description explicitly requires at least 4 years of experience as an Oral and Maxillofacial Surgeon."
+    },
+    {
+      "gate_id": "HG3",
+      "requirement": "Experience as a Ship Engineer",
+      "operator": ">=",
+      "required_value": 4,
+      "unit": "years",
+      "minimum_margin_unit": 1,
+      "source_support": "The source job description explicitly requires at least 4 years of experience as a Ship Engineer."
+    },
+    {
+      "gate_id": "HG4",
+      "requirement": "Experience as a Psychologist",
+      "operator": ">=",
+      "required_value": 3,
+      "unit": "years",
+      "minimum_margin_unit": 1,
+      "source_support": "The source job description explicitly requires at least 3 years of experience as a Psychologist."
+    }
+  ],
+  "soft_criteria": [
+    {
+      "criterion_id": "SC1",
+      "criterion": "Ability to use judgment and decision making when addressing client needs and treatment decisions",
+      "onet_dimension_family": "Skill",
+      "why_relevant": "The job explicitly requires Judgment and Decision Making, while O*NET identifies Judgment and Decision Making as a transferable skill and Making Decisions and Solving Problems as a relevant work activity."
+    },
+    {
+      "criterion_id": "SC2",
+      "criterion": "Ability to use active learning and learning strategies to understand and apply new therapy methods",
+      "onet_dimension_family": "Skill",
+      "why_relevant": "The job explicitly requires Active Learning and Learning Strategies, and O*NET lists both as essential skills for Marriage and Family Therapists."
+    },
+    {
+      "criterion_id": "SC3",
+      "criterion": "Ability to assess client needs and develop individualized treatment plans",
+      "onet_dimension_family": "Task",
+      "why_relevant": "O*NET specifically lists collecting information about clients, determining client needs, and developing and implementing individualized treatment plans as core tasks."
+    },
+    {
+      "criterion_id": "SC4",
+      "criterion": "Ability to maintain accurate client records and written evaluations",
+      "onet_dimension_family": "Work Activity",
+      "why_relevant": "O*NET identifies Documenting/Recording Information as a relevant work activity and lists maintaining client records and writing reports or evaluations as detailed work activities."
+    }
+  ],
+  "candidate_scenarios": [
+    {
+      "margin_band": "clear_fail",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 0
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 1
+        },
+        {
+          "gate_id": "HG3",
+          "candidate_value": 1
+        },
+        {
+          "gate_id": "HG4",
+          "candidate_value": 0
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Demonstrates strong ability to use judgment and decision making when addressing client needs and treatment decisions.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Shows some ability to use active learning and learning strategies to understand and apply new therapy methods.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Has limited demonstrated experience assessing client needs and developing individualized treatment plans.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Has strong demonstrated ability to maintain client records and prepare written evaluations.",
+          "position": "above"
+        }
+      ],
+      "candidate_summary": "Marriage and Family Therapist experience: 0 years. Oral and Maxillofacial Surgeon experience: 1 year. Ship Engineer experience: 1 year. Psychologist experience: 0 years. Judgment and Decision Making evidence: demonstrates strong ability to use judgment and decision making when addressing client needs and treatment decisions. Active Learning and Learning Strategies evidence: shows some ability to use active learning and learning strategies to understand and apply new therapy methods. Treatment-plan evidence: has limited demonstrated experience assessing client needs and developing individualized treatment plans. Documentation evidence: has strong demonstrated ability to maintain client records and prepare written evaluations."
+    },
+    {
+      "margin_band": "near_fail",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 4
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 4
+        },
+        {
+          "gate_id": "HG3",
+          "candidate_value": 4
+        },
+        {
+          "gate_id": "HG4",
+          "candidate_value": 3
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Demonstrates strong ability to use judgment and decision making when addressing client needs and treatment decisions.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Shows some ability to use active learning and learning strategies to understand and apply new therapy methods.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Has limited demonstrated experience assessing client needs and developing individualized treatment plans.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Has strong demonstrated ability to maintain client records and prepare written evaluations.",
+          "position": "above"
+        }
+      ],
+      "candidate_summary": "Marriage and Family Therapist experience: 4 years. Oral and Maxillofacial Surgeon experience: 4 years. Ship Engineer experience: 4 years. Psychologist experience: 3 years. Judgment and Decision Making evidence: demonstrates strong ability to use judgment and decision making when addressing client needs and treatment decisions. Active Learning and Learning Strategies evidence: shows some ability to use active learning and learning strategies to understand and apply new therapy methods. Treatment-plan evidence: has limited demonstrated experience assessing client needs and developing individualized treatment plans. Documentation evidence: has strong demonstrated ability to maintain client records and prepare written evaluations."
+    },
+    {
+      "margin_band": "near_pass",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 5
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 4
+        },
+        {
+          "gate_id": "HG3",
+          "candidate_value": 4
+        },
+        {
+          "gate_id": "HG4",
+          "candidate_value": 3
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Demonstrates strong ability to use judgment and decision making when addressing client needs and treatment decisions.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Shows some ability to use active learning and learning strategies to understand and apply new therapy methods.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Has limited demonstrated experience assessing client needs and developing individualized treatment plans.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Has strong demonstrated ability to maintain client records and prepare written evaluations.",
+          "position": "above"
+        }
+      ],
+      "candidate_summary": "Marriage and Family Therapist experience: 5 years. Oral and Maxillofacial Surgeon experience: 4 years. Ship Engineer experience: 4 years. Psychologist experience: 3 years. Judgment and Decision Making evidence: demonstrates strong ability to use judgment and decision making when addressing client needs and treatment decisions. Active Learning and Learning Strategies evidence: shows some ability to use active learning and learning strategies to understand and apply new therapy methods. Treatment-plan evidence: has limited demonstrated experience assessing client needs and developing individualized treatment plans. Documentation evidence: has strong demonstrated ability to maintain client records and prepare written evaluations."
+    },
+    {
+      "margin_band": "clear_pass",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 8
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 7
+        },
+        {
+          "gate_id": "HG3",
+          "candidate_value": 7
+        },
+        {
+          "gate_id": "HG4",
+          "candidate_value": 6
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Demonstrates strong ability to use judgment and decision making when addressing client needs and treatment decisions.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Shows some ability to use active learning and learning strategies to understand and apply new therapy methods.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Has limited demonstrated experience assessing client needs and developing individualized treatment plans.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Has strong demonstrated ability to maintain client records and prepare written evaluations.",
+          "position": "above"
+        }
+      ],
+      "candidate_summary": "Marriage and Family Therapist experience: 8 years. Oral and Maxillofacial Surgeon experience: 7 years. Ship Engineer experience: 7 years. Psychologist experience: 6 years. Judgment and Decision Making evidence: demonstrates strong ability to use judgment and decision making when addressing client needs and treatment decisions. Active Learning and Learning Strategies evidence: shows some ability to use active learning and learning strategies to understand and apply new therapy methods. Treatment-plan evidence: has limited demonstrated experience assessing client needs and developing individualized treatment plans. Documentation evidence: has strong demonstrated ability to maintain client records and prepare written evaluations."
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+https://www.onetonline.org/link/summary/17-2011.00
+Aerospace Engineers
+
+Tasks
+Formulate mathematical models or other methods of computer analysis to develop, evaluate, or modify design, according to customer engineering requirements.
+Plan or conduct experimental, environmental, operational, or stress tests on models or prototypes of aircraft or aerospace systems or equipment.
+Formulate conceptual design of aeronautical or aerospace products or systems to meet customer requirements or conform to environmental regulations.
+Plan or coordinate investigation and resolution of customers' reports of technical problems with aircraft or aerospace vehicles.
+Write technical reports or other documentation, such as handbooks or bulletins, for use by engineering staff, management, or customers.
+Direct or coordinate activities of engineering or technical personnel involved in designing, fabricating, modifying, or testing of aircraft or aerospace products.
+Evaluate product data or design from inspections or reports for conformance to engineering principles, customer requirements, environmental regulations, or quality standards.
+Develop design criteria for aeronautical or aerospace products or systems, including testing methods, production costs, quality standards, environmental standards, or completion dates.
+Analyze project requests, proposals, or engineering data to determine feasibility, productibility, cost, or production time of aerospace or aeronautical products.
+Maintain records of performance reports for future reference.
+Diagnose performance problems by reviewing reports or documentation from customers or field engineers or by inspecting malfunctioning or damaged products.
+Direct aerospace research and development programs.
+Evaluate and approve selection of vendors by studying past performance or new advertisements.
+Design new or modify existing aerospace systems to reduce polluting emissions, such as nitrogen oxide, carbon monoxide, or smoke emissions.
+Design or engineer filtration systems that reduce harmful emissions.
+Develop and test autonomous systems for uncrewed aerospace vehicles.
+Develop software for aerospace systems.
+Evaluate biofuel performance specifications to determine feasibility for aerospace applications.
+
+Knowledge
+Engineering and Technology — Knowledge of the practical application of engineering science and technology. This includes applying principles, techniques, procedures, and equipment to the design and production of various goods and services.
+Mathematics — Knowledge of arithmetic, algebra, geometry, calculus, statistics, and their applications.
+Design — Knowledge of design techniques, tools, and principles involved in production of precision technical plans, blueprints, drawings, and models.
+Physics — Knowledge and prediction of physical principles, laws, their interrelationships, and applications to understanding fluid, material, and atmospheric dynamics, and mechanical, electrical, atomic and sub-atomic structures and processes.
+Computers and Electronics — Knowledge of circuit boards, processors, chips, electronic equipment, and computer hardware and software, including applications and programming.
+English Language — Knowledge of the structure and content of the English language including the meaning and spelling of words, and rules of composition and grammar.
+Mechanical — Knowledge of machines and tools, including their designs, uses, repair, and maintenance.
+Production and Processing — Knowledge of raw materials, production processes, quality control, costs, and other techniques for maximizing the effective manufacture and distribution of goods.
+
+Software Skills
+Analytical or scientific software — MathWorks Simulink In Demand ; The MathWorks MATLAB ; Universal Technical Systems TK Solver; Wolfram Research Mathematica; 34 more
+Computer aided design CAD software — Autodesk AutoCAD ; Dassault Systemes CATIA In Demand ; Dassault Systemes SolidWorks ; PTC Creo Parametric; 5 more
+Computer aided manufacturing CAM software — 1CadCam Unigraphics
+Configuration management software — IBM Rational ClearCase
+Data base user interface and query software — Microsoft Access ; Structure query language SQL
+Development environment software — C ; Microsoft Visual Basic ; Microsoft Visual Studio ; National Instruments LabVIEW; 5 more
+Electronic mail software — Microsoft Outlook
+Enterprise application integration software — Extensible markup language XML
+Enterprise resource planning ERP software — SAP software
+Graphics or photo imaging software — Image processing systems
+Object or component oriented development software — C# ; C++ ; Oracle Java ; Perl ; 2 more
+Office suite software — Microsoft Office software
+Operating system software — Linux ; Microsoft Windows ; Shell script ; UNIX ; 1 more
+Presentation software — Microsoft PowerPoint
+Process mapping and design software — Microsoft Visio
+Project management software — Microsoft Project ; PTC Pro/INTRALINK
+Requirements analysis and system architecture software — IBM Rational DOORS; IBM Rational RequisitePro
+Spreadsheet software — Microsoft Excel
+Word processing software — Microsoft Word 
+
+Essential Skills
+Critical Thinking — Using logic and reasoning to identify the strengths and weaknesses of alternative solutions, conclusions, or approaches to problems.
+Reading Comprehension — Understanding written sentences and paragraphs in work-related documents.
+Science — Using scientific rules and methods to solve problems.
+Active Listening — Giving full attention to what other people are saying, taking time to understand the points being made, asking questions as appropriate, and not interrupting at inappropriate times.
+Mathematics — Using mathematics to solve problems.
+Speaking — Talking to others to convey information effectively.
+Writing — Communicating effectively in writing as appropriate for the needs of the audience.
+Monitoring — Monitoring/Assessing performance of yourself, other individuals, or organizations to make improvements or take corrective action.
+Active Learning — Understanding the implications of new information for both current and future problem-solving and decision-making.
+Learning Strategies — Selecting and using training/instructional methods and procedures appropriate for the situation when learning or teaching new things.
+back to top
+
+Transferable Skills
+Complex Problem Solving — Identifying complex problems and reviewing related information to develop and evaluate options and implement solutions.
+Operations Analysis — Analyzing needs and product requirements to create a design.
+Judgment and Decision Making — Considering the relative costs and benefits of potential actions to choose the most appropriate one.
+Systems Evaluation — Identifying measures or indicators of system performance and the actions needed to improve or correct performance, relative to the goals of the system.
+Systems Analysis — Determining how a system should work and how changes in conditions, operations, and the environment will affect outcomes.
+Coordination — Adjusting actions in relation to others' actions.
+Quality Control Analysis — Conducting tests and inspections of products, services, or processes to evaluate quality or performance.
+Technology Design — Generating or adapting equipment and technology to serve user needs.
+Time Management — Managing one's own time and the time of others.
+Persuasion — Persuading others to change their minds or behavior.
+Instructing — Teaching others how to do something.
+Negotiation — Bringing others together and trying to reconcile differences.
+Social Perceptiveness — Being aware of others' reactions and understanding why they react as they do.
+
+Work Activities
+Working with Computers — Using computers and computer systems (including hardware and software) to program, write software, set up functions, enter data, or process information.
+Processing Information — Compiling, coding, categorizing, calculating, tabulating, auditing, or verifying information or data.
+Analyzing Data or Information — Identifying the underlying principles, reasons, or facts of information by breaking down information or data into separate parts.
+Making Decisions and Solving Problems — Analyzing information and evaluating results to choose the best solution and solve problems.
+Getting Information — Observing, receiving, and otherwise obtaining information from all relevant sources.
+Identifying Objects, Actions, and Events — Identifying information by categorizing, estimating, recognizing differences or similarities, and detecting changes in circumstances or events.
+Updating and Using Relevant Knowledge — Keeping up-to-date technically and applying new knowledge to your job.
+Documenting/Recording Information — Entering, transcribing, recording, storing, or maintaining information in written or electronic/magnetic form.
+Thinking Creatively — Developing, designing, or creating new applications, ideas, relationships, systems, or products, including artistic contributions.
+Communicating with Supervisors, Peers, or Subordinates — Providing information to supervisors, co-workers, and subordinates by telephone, in written form, e-mail, or in person.
+Interpreting the Meaning of Information for Others — Translating or explaining what information means and how it can be used.
+Monitoring Processes, Materials, or Surroundings — Monitoring and reviewing information from materials, events, or the environment, to detect or assess problems.
+Organizing, Planning, and Prioritizing Work — Developing specific goals and plans to prioritize, organize, and accomplish your work.
+Judging the Qualities of Objects, Services, or People — Assessing the value, importance, or quality of things or people.
+Evaluating Information to Determine Compliance with Standards — Using relevant information and individual judgment to determine whether events or processes comply with laws, regulations, or standards.
+Establishing and Maintaining Interpersonal Relationships — Developing constructive and cooperative working relationships with others, and maintaining them over time.
+Providing Consultation and Advice to Others — Providing guidance and expert advice to management or other groups on technical, systems-, or process-related topics.
+Training and Teaching Others — Identifying the educational needs of others, developing formal educational or training programs or classes, and teaching or instructing others.
+Drafting, Laying Out, and Specifying Technical Devices, Parts, and Equipment — Providing documentation, detailed instructions, drawings, or specifications to tell others about how devices, parts, equipment, or structures are to be fabricated, constructed, assembled, modified, maintained, or used.
+Communicating with People Outside the Organization — Communicating with people outside the organization, representing the organization to customers, the public, government, and other external sources. This information can be exchanged in person, in writing, or by telephone or e-mail.
+Inspecting Equipment, Structures, or Materials — Inspecting equipment, structures, or materials to identify the cause of errors or other problems or defects.
+Estimating the Quantifiable Characteristics of Products, Events, or Information — Estimating sizes, distances, and quantities; or determining time, costs, resources, or materials needed to perform a work activity.
+Scheduling Work and Activities — Scheduling events, programs, and activities, as well as the work of others.
+Coordinating the Work and Activities of Others — Getting members of a group to work together to accomplish tasks.
+Developing Objectives and Strategies — Establishing long-range objectives and specifying the strategies and actions to achieve them.
+Developing and Building Teams — Encouraging and building mutual trust, respect, and cooperation among team members.
+
+Detailed Work Activities
+Create models of engineering designs or methods.
+Test performance of electrical, electronic, mechanical, or integrated systems or equipment.
+Design electromechanical equipment or systems.
+Direct quality control activities.
+Prepare procedural documents.
+Direct design or development activities.
+Evaluate designs or specifications to ensure quality.
+Inspect equipment or systems.
+Investigate system, equipment, or product failures.
+Determine design criteria or specifications.
+Analyze design or requirements information for mechanical equipment or systems.
+Maintain operational records or records systems.
+Approve expenditures.
+Gather organizational performance information.
+Design systems to reduce harmful emissions.
+Research design or application of green technologies.

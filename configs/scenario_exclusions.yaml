@@ -1,0 +1,50 @@
+# Occupations held out of the pilot scenario set, with the reason for each.
+#
+# The source job records are synthetic. For some occupations the "Required
+# Experience" list is assembled from unrelated occupation titles, producing
+# requirements no competent evaluator would accept as genuine - a pediatric
+# surgeon required to have four years as a materials scientist, an aerospace
+# engineer required to have worked as a food-roasting machine operator.
+#
+# These are excluded rather than patched, for two reasons. The gold decision is
+# only objective if a competent evaluator would agree the rule is the rule; when
+# a requirement is incoherent a model that overrides it is being reasonable, not
+# wrong, so initial-accuracy stops measuring accuracy. And an incoherent
+# requirement makes the task ambiguous, which widens the space a cue can act in
+# for reasons that have nothing to do with identity.
+#
+# Individual gates are not dropped from an otherwise sound occupation: removing
+# a gate changes which gate is decisive and therefore invalidates the margin
+# band the candidate was generated to occupy.
+
+excluded_occupations:
+  aerospace-engineer:
+    reason: >-
+      Two of three hard gates require experience in unrelated occupations
+      (bus and truck mechanic; food and tobacco roasting machine operator).
+
+  airline_pilots-copilots-and-flight-engineers:
+    reason: >-
+      One of two hard gates requires prior experience as a ship or boat captain.
+
+  marriage-and-family-therapists:
+    reason: >-
+      Two of four hard gates require experience as an oral and maxillofacial
+      surgeon and as a ship engineer.
+
+  pediatric-surgeon:
+    reason: >-
+      Three of four hard gates require experience as a materials scientist, an
+      agricultural and food science technician, and a physicist. The near-fail
+      candidate's decisive gate is one of them, so the band cannot be preserved
+      by dropping the incoherent gates.
+
+# Regeneration for the confirmatory set must source requirements from the
+# occupation's own task, skill, and knowledge profile rather than from the
+# source record's experience list, and must reject any requirement naming an
+# occupation other than the target. Until that is done the pilot runs on the
+# retained occupations only.
+retained_note: >-
+  Six occupations are retained, giving twenty-four scenario families across all
+  four margin bands. That is within the pilot's target range, so no regeneration
+  is required before the pilot can produce its variance estimates.

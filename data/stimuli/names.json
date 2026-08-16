@@ -1,0 +1,1115 @@
+{
+  "source": {
+    "dataset": "Validated names for experimental studies on race and ethnicity",
+    "doi": "10.7910/DVN/LP4EAR",
+    "pooled_file": "study123.csv",
+    "names_file": "names.csv"
+  },
+  "minimum_mean_correct": 0.75,
+  "counts": {
+    "white": 88,
+    "black": 22
+  },
+  "names": [
+    {
+      "stimulus_id": "vn_black_013",
+      "full_name": "Ebony Jackson",
+      "group": "black",
+      "mean_correct": 0.7636,
+      "n_judgements": 55,
+      "perceived_income": 1.9090909090909092,
+      "perceived_education": 2.111111111111111,
+      "perceived_citizenship": 0.9454545454545454
+    },
+    {
+      "stimulus_id": "vn_black_033",
+      "full_name": "Lakisha Jackson",
+      "group": "black",
+      "mean_correct": 0.8913,
+      "n_judgements": 46,
+      "perceived_income": 1.7391304347826086,
+      "perceived_education": 1.5869565217391304,
+      "perceived_citizenship": 0.9565217391304348
+    },
+    {
+      "stimulus_id": "vn_black_034",
+      "full_name": "Lakisha Stone",
+      "group": "black",
+      "mean_correct": 0.7895,
+      "n_judgements": 57,
+      "perceived_income": 1.7142857142857142,
+      "perceived_education": 1.8928571428571428,
+      "perceived_citizenship": 0.8421052631578947
+    },
+    {
+      "stimulus_id": "vn_black_036",
+      "full_name": "Lakisha Washington",
+      "group": "black",
+      "mean_correct": 0.75,
+      "n_judgements": 56,
+      "perceived_income": 1.6607142857142858,
+      "perceived_education": 1.8928571428571428,
+      "perceived_citizenship": 0.9107142857142857
+    },
+    {
+      "stimulus_id": "vn_black_038",
+      "full_name": "Lakisha Williams",
+      "group": "black",
+      "mean_correct": 0.7681,
+      "n_judgements": 69,
+      "perceived_income": 1.7246376811594204,
+      "perceived_education": 1.9420289855072463,
+      "perceived_citizenship": 0.9855072463768116
+    },
+    {
+      "stimulus_id": "vn_black_039",
+      "full_name": "Lakisha Wood",
+      "group": "black",
+      "mean_correct": 0.8491,
+      "n_judgements": 53,
+      "perceived_income": 1.8867924528301887,
+      "perceived_education": 2.076923076923077,
+      "perceived_citizenship": 0.9056603773584906
+    },
+    {
+      "stimulus_id": "vn_black_040",
+      "full_name": "Latasha Burke",
+      "group": "black",
+      "mean_correct": 0.8065,
+      "n_judgements": 62,
+      "perceived_income": 1.8064516129032258,
+      "perceived_education": 1.901639344262295,
+      "perceived_citizenship": 0.9193548387096774
+    },
+    {
+      "stimulus_id": "vn_black_042",
+      "full_name": "Latasha Fox",
+      "group": "black",
+      "mean_correct": 0.75,
+      "n_judgements": 56,
+      "perceived_income": 1.7857142857142858,
+      "perceived_education": 1.9107142857142858,
+      "perceived_citizenship": 0.9464285714285714
+    },
+    {
+      "stimulus_id": "vn_black_043",
+      "full_name": "Latasha Jackson",
+      "group": "black",
+      "mean_correct": 0.8525,
+      "n_judgements": 61,
+      "perceived_income": 1.7540983606557377,
+      "perceived_education": 1.8852459016393444,
+      "perceived_citizenship": 0.9836065573770492
+    },
+    {
+      "stimulus_id": "vn_black_048",
+      "full_name": "Latasha Williams",
+      "group": "black",
+      "mean_correct": 0.7826,
+      "n_judgements": 69,
+      "perceived_income": 1.6470588235294117,
+      "perceived_education": 1.7794117647058822,
+      "perceived_citizenship": 0.8985507246376812
+    },
+    {
+      "stimulus_id": "vn_black_052",
+      "full_name": "Latonya Fox",
+      "group": "black",
+      "mean_correct": 0.7606,
+      "n_judgements": 71,
+      "perceived_income": 1.676056338028169,
+      "perceived_education": 1.619718309859155,
+      "perceived_citizenship": 0.9014084507042254
+    },
+    {
+      "stimulus_id": "vn_black_058",
+      "full_name": "Latonya Williams",
+      "group": "black",
+      "mean_correct": 0.8088,
+      "n_judgements": 68,
+      "perceived_income": 1.838235294117647,
+      "perceived_education": 1.8823529411764706,
+      "perceived_citizenship": 0.9411764705882353
+    },
+    {
+      "stimulus_id": "vn_black_060",
+      "full_name": "Latoya Burke",
+      "group": "black",
+      "mean_correct": 0.7903,
+      "n_judgements": 62,
+      "perceived_income": 1.8548387096774193,
+      "perceived_education": 1.967741935483871,
+      "perceived_citizenship": 0.9516129032258065
+    },
+    {
+      "stimulus_id": "vn_black_063",
+      "full_name": "Latoya Jackson",
+      "group": "black",
+      "mean_correct": 0.831,
+      "n_judgements": 71,
+      "perceived_income": 1.9428571428571428,
+      "perceived_education": 1.9295774647887325,
+      "perceived_citizenship": 0.971830985915493
+    },
+    {
+      "stimulus_id": "vn_black_066",
+      "full_name": "Latoya Washington",
+      "group": "black",
+      "mean_correct": 0.7636,
+      "n_judgements": 55,
+      "perceived_income": 1.7272727272727273,
+      "perceived_education": 1.9636363636363636,
+      "perceived_citizenship": 0.9272727272727272
+    },
+    {
+      "stimulus_id": "vn_black_082",
+      "full_name": "Tamika Fox",
+      "group": "black",
+      "mean_correct": 0.7937,
+      "n_judgements": 63,
+      "perceived_income": 1.8412698412698412,
+      "perceived_education": 2.0,
+      "perceived_citizenship": 0.9523809523809523
+    },
+    {
+      "stimulus_id": "vn_black_083",
+      "full_name": "Tamika Jackson",
+      "group": "black",
+      "mean_correct": 0.8644,
+      "n_judgements": 59,
+      "perceived_income": 1.88135593220339,
+      "perceived_education": 2.0508474576271185,
+      "perceived_citizenship": 0.9661016949152542
+    },
+    {
+      "stimulus_id": "vn_black_088",
+      "full_name": "Tamika Williams",
+      "group": "black",
+      "mean_correct": 0.8154,
+      "n_judgements": 65,
+      "perceived_income": 1.8307692307692307,
+      "perceived_education": 2.0,
+      "perceived_citizenship": 0.9384615384615385
+    },
+    {
+      "stimulus_id": "vn_black_089",
+      "full_name": "Tamika Wood",
+      "group": "black",
+      "mean_correct": 0.75,
+      "n_judgements": 56,
+      "perceived_income": 1.8214285714285714,
+      "perceived_education": 1.8392857142857142,
+      "perceived_citizenship": 0.9285714285714286
+    },
+    {
+      "stimulus_id": "vn_black_092",
+      "full_name": "Tanisha Fox",
+      "group": "black",
+      "mean_correct": 0.7561,
+      "n_judgements": 82,
+      "perceived_income": 1.7804878048780488,
+      "perceived_education": 1.8048780487804879,
+      "perceived_citizenship": 0.9512195121951219
+    },
+    {
+      "stimulus_id": "vn_black_096",
+      "full_name": "Tanisha Washington",
+      "group": "black",
+      "mean_correct": 0.8,
+      "n_judgements": 55,
+      "perceived_income": 1.8363636363636364,
+      "perceived_education": 1.7454545454545454,
+      "perceived_citizenship": 0.9636363636363636
+    },
+    {
+      "stimulus_id": "vn_black_098",
+      "full_name": "Tanisha Williams",
+      "group": "black",
+      "mean_correct": 0.7778,
+      "n_judgements": 54,
+      "perceived_income": 1.8148148148148149,
+      "perceived_education": 1.8703703703703705,
+      "perceived_citizenship": 0.9074074074074074
+    },
+    {
+      "stimulus_id": "vn_white_100",
+      "full_name": "David Hansen",
+      "group": "white",
+      "mean_correct": 0.7885,
+      "n_judgements": 104,
+      "perceived_income": 2.0096153846153846,
+      "perceived_education": 2.0865384615384617,
+      "perceived_citizenship": 0.9423076923076923
+    },
+    {
+      "stimulus_id": "vn_white_101",
+      "full_name": "David Hoffman",
+      "group": "white",
+      "mean_correct": 0.8542,
+      "n_judgements": 96,
+      "perceived_income": 2.125,
+      "perceived_education": 2.3125,
+      "perceived_citizenship": 0.9479166666666666
+    },
+    {
+      "stimulus_id": "vn_white_102",
+      "full_name": "David Johnston",
+      "group": "white",
+      "mean_correct": 0.7553,
+      "n_judgements": 94,
+      "perceived_income": 2.0106382978723403,
+      "perceived_education": 2.1914893617021276,
+      "perceived_citizenship": 0.9893617021276596
+    },
+    {
+      "stimulus_id": "vn_white_103",
+      "full_name": "David Larson",
+      "group": "white",
+      "mean_correct": 0.8125,
+      "n_judgements": 128,
+      "perceived_income": 2.0,
+      "perceived_education": 2.09375,
+      "perceived_citizenship": 0.9609375
+    },
+    {
+      "stimulus_id": "vn_white_104",
+      "full_name": "David Meyer",
+      "group": "white",
+      "mean_correct": 0.8462,
+      "n_judgements": 104,
+      "perceived_income": 2.048076923076923,
+      "perceived_education": 2.1346153846153846,
+      "perceived_citizenship": 0.9423076923076923
+    },
+    {
+      "stimulus_id": "vn_white_105",
+      "full_name": "David Olson",
+      "group": "white",
+      "mean_correct": 0.8365,
+      "n_judgements": 104,
+      "perceived_income": 1.9514563106796117,
+      "perceived_education": 2.0673076923076925,
+      "perceived_citizenship": 0.9038461538461539
+    },
+    {
+      "stimulus_id": "vn_white_106",
+      "full_name": "David Ryan",
+      "group": "white",
+      "mean_correct": 0.8857,
+      "n_judgements": 105,
+      "perceived_income": 1.9428571428571428,
+      "perceived_education": 2.0,
+      "perceived_citizenship": 0.9714285714285714
+    },
+    {
+      "stimulus_id": "vn_white_107",
+      "full_name": "David Schmidt",
+      "group": "white",
+      "mean_correct": 0.8462,
+      "n_judgements": 91,
+      "perceived_income": 2.0549450549450547,
+      "perceived_education": 2.2527472527472527,
+      "perceived_citizenship": 0.9010989010989011
+    },
+    {
+      "stimulus_id": "vn_white_108",
+      "full_name": "David Snyder",
+      "group": "white",
+      "mean_correct": 0.8586,
+      "n_judgements": 99,
+      "perceived_income": 1.9595959595959596,
+      "perceived_education": 2.202020202020202,
+      "perceived_citizenship": 0.9393939393939394
+    },
+    {
+      "stimulus_id": "vn_white_109",
+      "full_name": "David Wagner",
+      "group": "white",
+      "mean_correct": 0.8571,
+      "n_judgements": 105,
+      "perceived_income": 1.9903846153846154,
+      "perceived_education": 2.1904761904761907,
+      "perceived_citizenship": 0.9333333333333333
+    },
+    {
+      "stimulus_id": "vn_white_111",
+      "full_name": "James Hoffman",
+      "group": "white",
+      "mean_correct": 0.8725,
+      "n_judgements": 102,
+      "perceived_income": 2.088235294117647,
+      "perceived_education": 2.264705882352941,
+      "perceived_citizenship": 0.9607843137254902
+    },
+    {
+      "stimulus_id": "vn_white_113",
+      "full_name": "James Larson",
+      "group": "white",
+      "mean_correct": 0.7527,
+      "n_judgements": 93,
+      "perceived_income": 2.010989010989011,
+      "perceived_education": 2.0549450549450547,
+      "perceived_citizenship": 0.9032258064516129
+    },
+    {
+      "stimulus_id": "vn_white_114",
+      "full_name": "James Meyer",
+      "group": "white",
+      "mean_correct": 0.7864,
+      "n_judgements": 103,
+      "perceived_income": 2.0097087378640777,
+      "perceived_education": 2.1650485436893203,
+      "perceived_citizenship": 0.9805825242718447
+    },
+    {
+      "stimulus_id": "vn_white_115",
+      "full_name": "James Olson",
+      "group": "white",
+      "mean_correct": 0.7812,
+      "n_judgements": 96,
+      "perceived_income": 1.9791666666666667,
+      "perceived_education": 1.9583333333333333,
+      "perceived_citizenship": 0.9583333333333334
+    },
+    {
+      "stimulus_id": "vn_white_116",
+      "full_name": "James Ryan",
+      "group": "white",
+      "mean_correct": 0.8488,
+      "n_judgements": 86,
+      "perceived_income": 1.930232558139535,
+      "perceived_education": 2.0232558139534884,
+      "perceived_citizenship": 0.9534883720930233
+    },
+    {
+      "stimulus_id": "vn_white_117",
+      "full_name": "James Schmidt",
+      "group": "white",
+      "mean_correct": 0.8447,
+      "n_judgements": 103,
+      "perceived_income": 2.0097087378640777,
+      "perceived_education": 2.174757281553398,
+      "perceived_citizenship": 0.9223300970873787
+    },
+    {
+      "stimulus_id": "vn_white_118",
+      "full_name": "James Snyder",
+      "group": "white",
+      "mean_correct": 0.8452,
+      "n_judgements": 84,
+      "perceived_income": 1.9642857142857142,
+      "perceived_education": 2.2023809523809526,
+      "perceived_citizenship": 0.9642857142857143
+    },
+    {
+      "stimulus_id": "vn_white_120",
+      "full_name": "John Hansen",
+      "group": "white",
+      "mean_correct": 0.8043,
+      "n_judgements": 92,
+      "perceived_income": 1.9782608695652173,
+      "perceived_education": 2.065934065934066,
+      "perceived_citizenship": 0.9565217391304348
+    },
+    {
+      "stimulus_id": "vn_white_121",
+      "full_name": "John Hoffman",
+      "group": "white",
+      "mean_correct": 0.8378,
+      "n_judgements": 111,
+      "perceived_income": 2.1171171171171173,
+      "perceived_education": 2.1981981981981984,
+      "perceived_citizenship": 0.9369369369369369
+    },
+    {
+      "stimulus_id": "vn_white_123",
+      "full_name": "John Larson",
+      "group": "white",
+      "mean_correct": 0.819,
+      "n_judgements": 105,
+      "perceived_income": 2.038095238095238,
+      "perceived_education": 2.257142857142857,
+      "perceived_citizenship": 0.9428571428571428
+    },
+    {
+      "stimulus_id": "vn_white_124",
+      "full_name": "John Meyer",
+      "group": "white",
+      "mean_correct": 0.8516,
+      "n_judgements": 128,
+      "perceived_income": 2.141732283464567,
+      "perceived_education": 2.15748031496063,
+      "perceived_citizenship": 0.96875
+    },
+    {
+      "stimulus_id": "vn_white_125",
+      "full_name": "John Olson",
+      "group": "white",
+      "mean_correct": 0.8283,
+      "n_judgements": 99,
+      "perceived_income": 1.9494949494949494,
+      "perceived_education": 2.04040404040404,
+      "perceived_citizenship": 0.9393939393939394
+    },
+    {
+      "stimulus_id": "vn_white_126",
+      "full_name": "John Ryan",
+      "group": "white",
+      "mean_correct": 0.8704,
+      "n_judgements": 108,
+      "perceived_income": 1.9444444444444444,
+      "perceived_education": 2.0186915887850465,
+      "perceived_citizenship": 0.9629629629629629
+    },
+    {
+      "stimulus_id": "vn_white_127",
+      "full_name": "John Schmidt",
+      "group": "white",
+      "mean_correct": 0.8817,
+      "n_judgements": 93,
+      "perceived_income": 2.053763440860215,
+      "perceived_education": 2.182795698924731,
+      "perceived_citizenship": 0.9247311827956989
+    },
+    {
+      "stimulus_id": "vn_white_128",
+      "full_name": "John Snyder",
+      "group": "white",
+      "mean_correct": 0.8596,
+      "n_judgements": 114,
+      "perceived_income": 1.9210526315789473,
+      "perceived_education": 2.0088495575221237,
+      "perceived_citizenship": 0.9736842105263158
+    },
+    {
+      "stimulus_id": "vn_white_129",
+      "full_name": "John Wagner",
+      "group": "white",
+      "mean_correct": 0.757,
+      "n_judgements": 107,
+      "perceived_income": 2.0093457943925235,
+      "perceived_education": 2.0934579439252334,
+      "perceived_citizenship": 0.9065420560747663
+    },
+    {
+      "stimulus_id": "vn_white_130",
+      "full_name": "Mark Hansen",
+      "group": "white",
+      "mean_correct": 0.8723,
+      "n_judgements": 94,
+      "perceived_income": 2.021276595744681,
+      "perceived_education": 2.127659574468085,
+      "perceived_citizenship": 0.9680851063829787
+    },
+    {
+      "stimulus_id": "vn_white_131",
+      "full_name": "Mark Hoffman",
+      "group": "white",
+      "mean_correct": 0.8857,
+      "n_judgements": 105,
+      "perceived_income": 2.1523809523809523,
+      "perceived_education": 2.1923076923076925,
+      "perceived_citizenship": 0.9714285714285714
+    },
+    {
+      "stimulus_id": "vn_white_132",
+      "full_name": "Mark Johnston",
+      "group": "white",
+      "mean_correct": 0.7553,
+      "n_judgements": 94,
+      "perceived_income": 1.851063829787234,
+      "perceived_education": 1.925531914893617,
+      "perceived_citizenship": 0.9680851063829787
+    },
+    {
+      "stimulus_id": "vn_white_133",
+      "full_name": "Mark Larson",
+      "group": "white",
+      "mean_correct": 0.8039,
+      "n_judgements": 102,
+      "perceived_income": 1.9705882352941178,
+      "perceived_education": 2.0784313725490198,
+      "perceived_citizenship": 0.9705882352941176
+    },
+    {
+      "stimulus_id": "vn_white_134",
+      "full_name": "Mark Meyer",
+      "group": "white",
+      "mean_correct": 0.8857,
+      "n_judgements": 105,
+      "perceived_income": 2.076923076923077,
+      "perceived_education": 2.085714285714286,
+      "perceived_citizenship": 0.9904761904761905
+    },
+    {
+      "stimulus_id": "vn_white_135",
+      "full_name": "Mark Olson",
+      "group": "white",
+      "mean_correct": 0.789,
+      "n_judgements": 109,
+      "perceived_income": 2.0091743119266057,
+      "perceived_education": 2.018348623853211,
+      "perceived_citizenship": 0.8807339449541285
+    },
+    {
+      "stimulus_id": "vn_white_136",
+      "full_name": "Mark Ryan",
+      "group": "white",
+      "mean_correct": 0.8191,
+      "n_judgements": 94,
+      "perceived_income": 1.946808510638298,
+      "perceived_education": 2.0,
+      "perceived_citizenship": 0.9361702127659575
+    },
+    {
+      "stimulus_id": "vn_white_137",
+      "full_name": "Mark Schmidt",
+      "group": "white",
+      "mean_correct": 0.8387,
+      "n_judgements": 93,
+      "perceived_income": 2.032258064516129,
+      "perceived_education": 2.0869565217391304,
+      "perceived_citizenship": 1.0
+    },
+    {
+      "stimulus_id": "vn_white_138",
+      "full_name": "Mark Snyder",
+      "group": "white",
+      "mean_correct": 0.819,
+      "n_judgements": 105,
+      "perceived_income": 2.048076923076923,
+      "perceived_education": 2.1523809523809523,
+      "perceived_citizenship": 0.9333333333333333
+    },
+    {
+      "stimulus_id": "vn_white_139",
+      "full_name": "Mark Wagner",
+      "group": "white",
+      "mean_correct": 0.8495,
+      "n_judgements": 93,
+      "perceived_income": 2.032608695652174,
+      "perceived_education": 2.2580645161290325,
+      "perceived_citizenship": 0.9354838709677419
+    },
+    {
+      "stimulus_id": "vn_white_140",
+      "full_name": "Mary Hansen",
+      "group": "white",
+      "mean_correct": 0.8019,
+      "n_judgements": 106,
+      "perceived_income": 1.8867924528301887,
+      "perceived_education": 2.141509433962264,
+      "perceived_citizenship": 0.9528301886792453
+    },
+    {
+      "stimulus_id": "vn_white_141",
+      "full_name": "Mary Hoffman",
+      "group": "white",
+      "mean_correct": 0.8438,
+      "n_judgements": 96,
+      "perceived_income": 2.0416666666666665,
+      "perceived_education": 2.1354166666666665,
+      "perceived_citizenship": 0.9375
+    },
+    {
+      "stimulus_id": "vn_white_142",
+      "full_name": "Mary Johnston",
+      "group": "white",
+      "mean_correct": 0.7579,
+      "n_judgements": 95,
+      "perceived_income": 1.9052631578947368,
+      "perceived_education": 2.0210526315789474,
+      "perceived_citizenship": 0.968421052631579
+    },
+    {
+      "stimulus_id": "vn_white_144",
+      "full_name": "Mary Meyer",
+      "group": "white",
+      "mean_correct": 0.9111,
+      "n_judgements": 90,
+      "perceived_income": 1.8222222222222222,
+      "perceived_education": 1.9111111111111112,
+      "perceived_citizenship": 0.9777777777777777
+    },
+    {
+      "stimulus_id": "vn_white_145",
+      "full_name": "Mary Olson",
+      "group": "white",
+      "mean_correct": 0.8152,
+      "n_judgements": 92,
+      "perceived_income": 1.923913043478261,
+      "perceived_education": 2.0543478260869565,
+      "perceived_citizenship": 0.9565217391304348
+    },
+    {
+      "stimulus_id": "vn_white_146",
+      "full_name": "Mary Ryan",
+      "group": "white",
+      "mean_correct": 0.8842,
+      "n_judgements": 95,
+      "perceived_income": 1.9042553191489362,
+      "perceived_education": 1.9263157894736842,
+      "perceived_citizenship": 0.9789473684210527
+    },
+    {
+      "stimulus_id": "vn_white_147",
+      "full_name": "Mary Schmidt",
+      "group": "white",
+      "mean_correct": 0.8242,
+      "n_judgements": 91,
+      "perceived_income": 1.879120879120879,
+      "perceived_education": 2.0224719101123596,
+      "perceived_citizenship": 0.9560439560439561
+    },
+    {
+      "stimulus_id": "vn_white_148",
+      "full_name": "Mary Snyder",
+      "group": "white",
+      "mean_correct": 0.8482,
+      "n_judgements": 112,
+      "perceived_income": 1.8839285714285714,
+      "perceived_education": 1.9642857142857142,
+      "perceived_citizenship": 0.9464285714285714
+    },
+    {
+      "stimulus_id": "vn_white_149",
+      "full_name": "Mary Wagner",
+      "group": "white",
+      "mean_correct": 0.8144,
+      "n_judgements": 97,
+      "perceived_income": 1.907216494845361,
+      "perceived_education": 1.9793814432989691,
+      "perceived_citizenship": 0.9587628865979382
+    },
+    {
+      "stimulus_id": "vn_white_150",
+      "full_name": "Michael Hansen",
+      "group": "white",
+      "mean_correct": 0.7872,
+      "n_judgements": 94,
+      "perceived_income": 2.0,
+      "perceived_education": 2.106382978723404,
+      "perceived_citizenship": 0.9574468085106383
+    },
+    {
+      "stimulus_id": "vn_white_151",
+      "full_name": "Michael Hoffman",
+      "group": "white",
+      "mean_correct": 0.8478,
+      "n_judgements": 92,
+      "perceived_income": 2.0869565217391304,
+      "perceived_education": 2.2282608695652173,
+      "perceived_citizenship": 0.9565217391304348
+    },
+    {
+      "stimulus_id": "vn_white_154",
+      "full_name": "Michael Meyer",
+      "group": "white",
+      "mean_correct": 0.8155,
+      "n_judgements": 103,
+      "perceived_income": 1.912621359223301,
+      "perceived_education": 1.9509803921568627,
+      "perceived_citizenship": 0.9611650485436893
+    },
+    {
+      "stimulus_id": "vn_white_156",
+      "full_name": "Michael Ryan",
+      "group": "white",
+      "mean_correct": 0.764,
+      "n_judgements": 89,
+      "perceived_income": 1.9325842696629214,
+      "perceived_education": 2.0224719101123596,
+      "perceived_citizenship": 0.9662921348314607
+    },
+    {
+      "stimulus_id": "vn_white_157",
+      "full_name": "Michael Schmidt",
+      "group": "white",
+      "mean_correct": 0.7879,
+      "n_judgements": 99,
+      "perceived_income": 2.0303030303030303,
+      "perceived_education": 2.282828282828283,
+      "perceived_citizenship": 0.898989898989899
+    },
+    {
+      "stimulus_id": "vn_white_158",
+      "full_name": "Michael Snyder",
+      "group": "white",
+      "mean_correct": 0.8152,
+      "n_judgements": 92,
+      "perceived_income": 1.9891304347826086,
+      "perceived_education": 2.108695652173913,
+      "perceived_citizenship": 0.9456521739130435
+    },
+    {
+      "stimulus_id": "vn_white_159",
+      "full_name": "Michael Wagner",
+      "group": "white",
+      "mean_correct": 0.9,
+      "n_judgements": 100,
+      "perceived_income": 1.97,
+      "perceived_education": 2.18,
+      "perceived_citizenship": 0.91
+    },
+    {
+      "stimulus_id": "vn_white_160",
+      "full_name": "Richard Hansen",
+      "group": "white",
+      "mean_correct": 0.7629,
+      "n_judgements": 97,
+      "perceived_income": 2.134020618556701,
+      "perceived_education": 2.247422680412371,
+      "perceived_citizenship": 0.9587628865979382
+    },
+    {
+      "stimulus_id": "vn_white_161",
+      "full_name": "Richard Hoffman",
+      "group": "white",
+      "mean_correct": 0.9247,
+      "n_judgements": 93,
+      "perceived_income": 2.3118279569892475,
+      "perceived_education": 2.4193548387096775,
+      "perceived_citizenship": 0.946236559139785
+    },
+    {
+      "stimulus_id": "vn_white_162",
+      "full_name": "Richard Johnston",
+      "group": "white",
+      "mean_correct": 0.7609,
+      "n_judgements": 92,
+      "perceived_income": 2.0,
+      "perceived_education": 2.1333333333333333,
+      "perceived_citizenship": 0.9782608695652174
+    },
+    {
+      "stimulus_id": "vn_white_163",
+      "full_name": "Richard Larson",
+      "group": "white",
+      "mean_correct": 0.7982,
+      "n_judgements": 109,
+      "perceived_income": 2.0275229357798166,
+      "perceived_education": 2.110091743119266,
+      "perceived_citizenship": 0.944954128440367
+    },
+    {
+      "stimulus_id": "vn_white_164",
+      "full_name": "Richard Meyer",
+      "group": "white",
+      "mean_correct": 0.8646,
+      "n_judgements": 96,
+      "perceived_income": 2.0833333333333335,
+      "perceived_education": 2.1157894736842104,
+      "perceived_citizenship": 0.9583333333333334
+    },
+    {
+      "stimulus_id": "vn_white_165",
+      "full_name": "Richard Olson",
+      "group": "white",
+      "mean_correct": 0.8333,
+      "n_judgements": 90,
+      "perceived_income": 2.111111111111111,
+      "perceived_education": 2.1777777777777776,
+      "perceived_citizenship": 0.9333333333333333
+    },
+    {
+      "stimulus_id": "vn_white_166",
+      "full_name": "Richard Ryan",
+      "group": "white",
+      "mean_correct": 0.828,
+      "n_judgements": 93,
+      "perceived_income": 2.032258064516129,
+      "perceived_education": 2.2580645161290325,
+      "perceived_citizenship": 0.9354838709677419
+    },
+    {
+      "stimulus_id": "vn_white_167",
+      "full_name": "Richard Schmidt",
+      "group": "white",
+      "mean_correct": 0.9053,
+      "n_judgements": 95,
+      "perceived_income": 2.1595744680851063,
+      "perceived_education": 2.3157894736842106,
+      "perceived_citizenship": 0.9473684210526315
+    },
+    {
+      "stimulus_id": "vn_white_168",
+      "full_name": "Richard Snyder",
+      "group": "white",
+      "mean_correct": 0.7564,
+      "n_judgements": 78,
+      "perceived_income": 2.0256410256410255,
+      "perceived_education": 2.141025641025641,
+      "perceived_citizenship": 0.9487179487179487
+    },
+    {
+      "stimulus_id": "vn_white_169",
+      "full_name": "Richard Wagner",
+      "group": "white",
+      "mean_correct": 0.8144,
+      "n_judgements": 97,
+      "perceived_income": 2.020618556701031,
+      "perceived_education": 2.1649484536082473,
+      "perceived_citizenship": 0.865979381443299
+    },
+    {
+      "stimulus_id": "vn_white_170",
+      "full_name": "Robert Hansen",
+      "group": "white",
+      "mean_correct": 0.7981,
+      "n_judgements": 104,
+      "perceived_income": 2.0776699029126213,
+      "perceived_education": 2.2718446601941746,
+      "perceived_citizenship": 0.9326923076923077
+    },
+    {
+      "stimulus_id": "vn_white_171",
+      "full_name": "Robert Hoffman",
+      "group": "white",
+      "mean_correct": 0.8725,
+      "n_judgements": 102,
+      "perceived_income": 2.049019607843137,
+      "perceived_education": 2.215686274509804,
+      "perceived_citizenship": 0.9607843137254902
+    },
+    {
+      "stimulus_id": "vn_white_173",
+      "full_name": "Robert Larson",
+      "group": "white",
+      "mean_correct": 0.8142,
+      "n_judgements": 113,
+      "perceived_income": 2.017699115044248,
+      "perceived_education": 2.144144144144144,
+      "perceived_citizenship": 0.9203539823008849
+    },
+    {
+      "stimulus_id": "vn_white_174",
+      "full_name": "Robert Meyer",
+      "group": "white",
+      "mean_correct": 0.8173,
+      "n_judgements": 104,
+      "perceived_income": 2.0,
+      "perceived_education": 2.230769230769231,
+      "perceived_citizenship": 0.9423076923076923
+    },
+    {
+      "stimulus_id": "vn_white_175",
+      "full_name": "Robert Olson",
+      "group": "white",
+      "mean_correct": 0.802,
+      "n_judgements": 101,
+      "perceived_income": 2.089108910891089,
+      "perceived_education": 2.297029702970297,
+      "perceived_citizenship": 0.9504950495049505
+    },
+    {
+      "stimulus_id": "vn_white_176",
+      "full_name": "Robert Ryan",
+      "group": "white",
+      "mean_correct": 0.8182,
+      "n_judgements": 110,
+      "perceived_income": 1.9363636363636363,
+      "perceived_education": 2.0825688073394497,
+      "perceived_citizenship": 0.9363636363636364
+    },
+    {
+      "stimulus_id": "vn_white_177",
+      "full_name": "Robert Schmidt",
+      "group": "white",
+      "mean_correct": 0.7961,
+      "n_judgements": 103,
+      "perceived_income": 2.0,
+      "perceived_education": 2.2427184466019416,
+      "perceived_citizenship": 0.9223300970873787
+    },
+    {
+      "stimulus_id": "vn_white_178",
+      "full_name": "Robert Snyder",
+      "group": "white",
+      "mean_correct": 0.8899,
+      "n_judgements": 109,
+      "perceived_income": 2.073394495412844,
+      "perceived_education": 2.1296296296296298,
+      "perceived_citizenship": 0.9541284403669725
+    },
+    {
+      "stimulus_id": "vn_white_179",
+      "full_name": "Robert Wagner",
+      "group": "white",
+      "mean_correct": 0.8257,
+      "n_judgements": 109,
+      "perceived_income": 2.1009174311926606,
+      "perceived_education": 2.2844036697247705,
+      "perceived_citizenship": 0.944954128440367
+    },
+    {
+      "stimulus_id": "vn_white_180",
+      "full_name": "Thomas Hansen",
+      "group": "white",
+      "mean_correct": 0.8381,
+      "n_judgements": 105,
+      "perceived_income": 1.9619047619047618,
+      "perceived_education": 2.1153846153846154,
+      "perceived_citizenship": 0.9047619047619048
+    },
+    {
+      "stimulus_id": "vn_white_181",
+      "full_name": "Thomas Hoffman",
+      "group": "white",
+      "mean_correct": 0.823,
+      "n_judgements": 113,
+      "perceived_income": 2.017699115044248,
+      "perceived_education": 2.2410714285714284,
+      "perceived_citizenship": 0.9380530973451328
+    },
+    {
+      "stimulus_id": "vn_white_183",
+      "full_name": "Thomas Larson",
+      "group": "white",
+      "mean_correct": 0.8396,
+      "n_judgements": 106,
+      "perceived_income": 1.9622641509433962,
+      "perceived_education": 2.1142857142857143,
+      "perceived_citizenship": 0.9528301886792453
+    },
+    {
+      "stimulus_id": "vn_white_184",
+      "full_name": "Thomas Meyer",
+      "group": "white",
+      "mean_correct": 0.8642,
+      "n_judgements": 81,
+      "perceived_income": 1.9876543209876543,
+      "perceived_education": 2.234567901234568,
+      "perceived_citizenship": 0.9382716049382716
+    },
+    {
+      "stimulus_id": "vn_white_185",
+      "full_name": "Thomas Olson",
+      "group": "white",
+      "mean_correct": 0.85,
+      "n_judgements": 80,
+      "perceived_income": 2.075,
+      "perceived_education": 2.1012658227848102,
+      "perceived_citizenship": 0.975
+    },
+    {
+      "stimulus_id": "vn_white_186",
+      "full_name": "Thomas Ryan",
+      "group": "white",
+      "mean_correct": 0.8197,
+      "n_judgements": 122,
+      "perceived_income": 1.8688524590163935,
+      "perceived_education": 1.9426229508196722,
+      "perceived_citizenship": 0.9344262295081968
+    },
+    {
+      "stimulus_id": "vn_white_187",
+      "full_name": "Thomas Schmidt",
+      "group": "white",
+      "mean_correct": 0.8641,
+      "n_judgements": 103,
+      "perceived_income": 2.029126213592233,
+      "perceived_education": 2.145631067961165,
+      "perceived_citizenship": 0.912621359223301
+    },
+    {
+      "stimulus_id": "vn_white_188",
+      "full_name": "Thomas Snyder",
+      "group": "white",
+      "mean_correct": 0.9048,
+      "n_judgements": 84,
+      "perceived_income": 1.9404761904761905,
+      "perceived_education": 2.0595238095238093,
+      "perceived_citizenship": 0.9761904761904762
+    },
+    {
+      "stimulus_id": "vn_white_189",
+      "full_name": "Thomas Wagner",
+      "group": "white",
+      "mean_correct": 0.9307,
+      "n_judgements": 101,
+      "perceived_income": 2.0297029702970297,
+      "perceived_education": 2.11,
+      "perceived_citizenship": 0.9108910891089109
+    },
+    {
+      "stimulus_id": "vn_white_190",
+      "full_name": "William Hansen",
+      "group": "white",
+      "mean_correct": 0.7742,
+      "n_judgements": 93,
+      "perceived_income": 2.086021505376344,
+      "perceived_education": 2.3118279569892475,
+      "perceived_citizenship": 0.946236559139785
+    },
+    {
+      "stimulus_id": "vn_white_191",
+      "full_name": "William Hoffman",
+      "group": "white",
+      "mean_correct": 0.8476,
+      "n_judgements": 105,
+      "perceived_income": 2.1333333333333333,
+      "perceived_education": 2.2476190476190476,
+      "perceived_citizenship": 0.9523809523809523
+    },
+    {
+      "stimulus_id": "vn_white_193",
+      "full_name": "William Larson",
+      "group": "white",
+      "mean_correct": 0.8353,
+      "n_judgements": 85,
+      "perceived_income": 2.1294117647058823,
+      "perceived_education": 2.152941176470588,
+      "perceived_citizenship": 0.9529411764705882
+    },
+    {
+      "stimulus_id": "vn_white_194",
+      "full_name": "William Meyer",
+      "group": "white",
+      "mean_correct": 0.8,
+      "n_judgements": 110,
+      "perceived_income": 2.0272727272727273,
+      "perceived_education": 2.172727272727273,
+      "perceived_citizenship": 0.9454545454545454
+    },
+    {
+      "stimulus_id": "vn_white_196",
+      "full_name": "William Ryan",
+      "group": "white",
+      "mean_correct": 0.7857,
+      "n_judgements": 98,
+      "perceived_income": 2.020408163265306,
+      "perceived_education": 2.173469387755102,
+      "perceived_citizenship": 0.9387755102040817
+    },
+    {
+      "stimulus_id": "vn_white_197",
+      "full_name": "William Schmidt",
+      "group": "white",
+      "mean_correct": 0.8739,
+      "n_judgements": 111,
+      "perceived_income": 2.081081081081081,
+      "perceived_education": 2.1818181818181817,
+      "perceived_citizenship": 0.9099099099099099
+    },
+    {
+      "stimulus_id": "vn_white_198",
+      "full_name": "William Snyder",
+      "group": "white",
+      "mean_correct": 0.8696,
+      "n_judgements": 92,
+      "perceived_income": 2.0543478260869565,
+      "perceived_education": 2.197802197802198,
+      "perceived_citizenship": 0.9565217391304348
+    },
+    {
+      "stimulus_id": "vn_white_199",
+      "full_name": "William Wagner",
+      "group": "white",
+      "mean_correct": 0.8478,
+      "n_judgements": 92,
+      "perceived_income": 2.0217391304347827,
+      "perceived_education": 2.142857142857143,
+      "perceived_citizenship": 0.9782608695652174
+    }
+  ]
+}

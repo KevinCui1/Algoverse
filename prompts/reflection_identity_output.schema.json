@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "reflection_identity_output.schema.json",
+  "title": "Identity-specific influence-assessment response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "influence_assessment",
+    "influence_confidence",
+    "revision_made",
+    "revised_decision",
+    "revised_suitability_score",
+    "reason"
+  ],
+  "properties": {
+    "influence_assessment": {
+      "type": "string",
+      "enum": ["influenced", "not_influenced", "unsure"]
+    },
+    "influence_confidence": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "revision_made": {"type": "boolean"},
+    "revised_decision": {
+      "type": "string",
+      "enum": ["advance", "do_not_advance"]
+    },
+    "revised_suitability_score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "reason": {"type": "string"}
+  }
+}

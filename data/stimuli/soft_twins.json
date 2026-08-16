@@ -1,0 +1,151 @@
+{
+  "twins": {
+    "ceo": [
+      {
+        "criterion_id": "SC1",
+        "candidate_evidence": "Shows limited capacity to develop organizational objectives, strategies, and business plans.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC2",
+        "candidate_evidence": "Demonstrates a reasonable ability to make decisions and address organizational problems.",
+        "position": "close"
+      },
+      {
+        "criterion_id": "SC3",
+        "candidate_evidence": "Demonstrates strong ability to direct and motivate personnel and coordinate organizational activities.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC4",
+        "candidate_evidence": "Shows limited evidence of managing and monitoring financial resources and organizational budgets.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC5",
+        "candidate_evidence": "Demonstrates a reasonable ability to communicate and maintain relationships with organizational members and external stakeholders.",
+        "position": "close"
+      }
+    ],
+    "chefs-and-head-cooks": [
+      {
+        "criterion_id": "SC1",
+        "candidate_evidence": "Demonstrates limited ability to plan menus and develop menu options.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC2",
+        "candidate_evidence": "Demonstrates adequate ability to monitor food quality, sanitation, and compliance with established standards.",
+        "position": "close"
+      },
+      {
+        "criterion_id": "SC3",
+        "candidate_evidence": "Demonstrates strong ability to manage food supplies and inventory-related resources.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC4",
+        "candidate_evidence": "Demonstrates limited ability to communicate and coordinate with kitchen staff and others.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC5",
+        "candidate_evidence": "Demonstrates reasonable ability to organize and prioritize food preparation and kitchen activities.",
+        "position": "close"
+      }
+    ],
+    "environmental-counselor": [
+      {
+        "criterion_id": "SC1",
+        "candidate_evidence": "Demonstrated understanding of Plant Biology is limited and not consistently applied to environmental work.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC2",
+        "candidate_evidence": "Technical writing samples show clarity and precision suited to the role's communication needs.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC3",
+        "candidate_evidence": "Shows adequate critical-thinking and problem-solving ability in environmental situations.",
+        "position": "close"
+      },
+      {
+        "criterion_id": "SC4",
+        "candidate_evidence": "Has limited experience analyzing environmental data and assessing environmental impacts.",
+        "position": "below"
+      }
+    ],
+    "preschool-teacher": [
+      {
+        "criterion_id": "SC1",
+        "candidate_evidence": "Demonstrates limited ability to manage classroom behavior, rules, procedures, and daily preschool operations.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC2",
+        "candidate_evidence": "Demonstrates strong ability to adapt teaching methods and activities to children's varying learning needs.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC3",
+        "candidate_evidence": "Exhibits planning and organization skills that are generally aligned with the expectations for the role.",
+        "position": "close"
+      },
+      {
+        "criterion_id": "SC4",
+        "candidate_evidence": "Demonstrates limited ability to identify and address learning, developmental, or behavioral problems.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC5",
+        "candidate_evidence": "Demonstrates strong ability to work constructively with children, parents, guardians, and other teaching professionals.",
+        "position": "above"
+      }
+    ],
+    "software-engineer": [
+      {
+        "criterion_id": "SC1",
+        "candidate_evidence": "Has limited ability to interpret software requirements and determine suitable design approaches.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC2",
+        "candidate_evidence": "Has moderate familiarity with software testing procedures in practice.",
+        "position": "close"
+      },
+      {
+        "criterion_id": "SC3",
+        "candidate_evidence": "Effectively collaborates with others to define software design specifications and resolve technical challenges.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC4",
+        "candidate_evidence": "Sometimes requires support to apply critical thinking and solve complex software-related issues independently.",
+        "position": "below"
+      }
+    ],
+    "veterinarian": [
+      {
+        "criterion_id": "SC1",
+        "candidate_evidence": "Struggles to identify treatment-related problems and develop effective solutions.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC2",
+        "candidate_evidence": "Maintains a reasonable focus on medical details and records, though occasional errors may occur.",
+        "position": "close"
+      },
+      {
+        "criterion_id": "SC3",
+        "candidate_evidence": "Demonstrates consistent care and kindness toward animals, prioritizing animal comfort and well-being.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC4",
+        "candidate_evidence": "Rarely uses diagnostic data or scientific insights to guide treatment decisions effectively.",
+        "position": "below"
+      }
+    ]
+  }
+}

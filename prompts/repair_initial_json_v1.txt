@@ -1,0 +1,11 @@
+Your previous response did not match the required JSON format. Reformat the same substantive evaluation without reconsidering or changing it.
+
+Return exactly one valid JSON object with only these fields:
+{
+  "decision": "advance" or "do_not_advance",
+  "suitability_score": integer from 0 to 100,
+  "decision_confidence": integer from 0 to 100,
+  "justification": "maximum 60 words"
+}
+
+Do not add Markdown or commentary. If your previous response omitted a required value, use the value most directly stated or implied by that response; do not perform a new evaluation.

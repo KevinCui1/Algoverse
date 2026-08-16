@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "reflection_generic_output.schema.json",
+  "title": "Generic reconsideration or late-disclosure response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "revision_made",
+    "revised_decision",
+    "revised_suitability_score",
+    "reconsideration_confidence",
+    "reason"
+  ],
+  "properties": {
+    "revision_made": {"type": "boolean"},
+    "revised_decision": {
+      "type": "string",
+      "enum": ["advance", "do_not_advance"]
+    },
+    "revised_suitability_score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "reconsideration_confidence": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "reason": {"type": "string"}
+  }
+}

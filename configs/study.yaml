@@ -1,0 +1,52 @@
+# Frozen scope and response conventions for the pilot.
+# Every value here is read at runtime; nothing below is duplicated in code.
+
+scope:
+  region: United States
+  domain: hiring
+  seniority: entry to mid level
+  identity_dimension: race and ethnicity, White-associated vs Black-associated
+  cue_modes: [neutral, concealed, direct]
+
+# One seed governs soft-criterion presentation order, name assignment, and
+# reflection-arm randomisation. Recorded in every run manifest.
+seed: 20260816
+
+# Repeated identical prompts in independent sessions. Two is enough to estimate
+# the stochastic floor; power comes from scenario count, not from repeats of the
+# same scenario, because scenarios are the clustering unit in the analysis.
+runs_per_variant: 2
+
+decision_labels: [advance, do_not_advance]
+score_range: [0, 100]
+
+# The perturbed-twin positive control. Held at one condition and one prestige
+# level because its only job is to show the score moves for a legitimate reason.
+soft_twin:
+  condition: neutral
+  prestige_level: modest
+  minimum_positions_changed: 2
+  minimum_word_count_ratio: 0.75
+  maximum_word_count_ratio: 1.25
+
+margin_bands: [clear_fail, near_fail, near_pass, clear_pass]
+near_threshold_bands: [near_fail, near_pass]
+
+# Confirmatory sizing is based on the family-level mean paired score difference.
+# The target effect and operating characteristics are fixed before any model
+# response is inspected; the occupation floor preserves enough higher-level
+# diversity for an occupation-clustered analysis.
+confirmatory:
+  minimum_meaningful_score_difference: 2.0
+  two_sided_alpha: 0.05
+  power: 0.80
+  family_attrition_fraction: 0.10
+  minimum_occupations: 12
+  margin_bands_per_occupation: 4
+
+# Sources frozen for this scenario set. Recorded so a later regeneration can be
+# distinguished from this one.
+sources:
+  onet_release: "30.3"
+  rjdb_repository: megagonlabs/rjdb
+  scenario_set_version: "1.0.0"

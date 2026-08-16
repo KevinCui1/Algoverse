@@ -1,0 +1,120 @@
+# One inference job: both turns for every planned trial against one model.
+#
+# Sizing. One 80GB accelerator holds either 27-32B model in bfloat16 with room
+# for the key-value cache at an 8k context. A single device avoids waiting for a
+# co-located pair and removes tensor-parallel communication overhead.
+#
+# Requests equal limits. Cluster policy requires limits within twenty percent of
+# requests, and a job whose reservation exceeds its usage is what gets a
+# namespace throttled - so the numbers below are what the run actually needs.
+#
+# The plan is built on CPU before the model loads, so a scenario or integrity
+# failure stops the job in seconds rather than after the weights are resident.
+#
+# Substitute the placeholders before applying:
+#   sed -e 's|__MODEL_KEY__|qwen3-32b|' \
+#       -e 's|__MODEL_ID__|Qwen/Qwen3-32B|' \
+#       -e 's|__MODEL_REVISION__|9216db5781bf21249d130ec9da846c4624c16137|' \
+#       -e 's|__RUN_LABEL__|pilot01|' \
+#       k8s/job-run.yaml | kubectl apply -f -
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hiringcue-run-__MODEL_KEY__-__RUN_LABEL__
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 86400
+  template:
+    spec:
+      restartPolicy: Never
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: nvidia.com/gpu.product
+                    operator: In
+                    values:
+                      - NVIDIA-A100-SXM4-80GB
+                      - NVIDIA-A100-80GB-PCIe
+      containers:
+        - name: run
+          image: vllm/vllm-openai:v0.11.0
+          command: ["/bin/bash", "-lc"]
+          args:
+            - |
+              set -euo pipefail
+              cd /cache/hiringcue-source
+              pip install --no-cache-dir -e .
+
+              SNAPSHOT=/cache/hf/hub/models--${MODEL_ID//\//--}/snapshots/"$MODEL_REVISION"
+              test -d "$SNAPSHOT"
+              mkdir -p /model/"$MODEL_REVISION"
+              find "$SNAPSHOT" -mindepth 1 -maxdepth 1 -print0 \
+                | xargs -0 -P 4 -I '{}' cp -aL '{}' /model/"$MODEL_REVISION"/
+
+              # Fail before the weights load if anything about the scenario set
+              # or the counterfactual sets is wrong.
+              python3 -m hiringcue.cli validate
+              PLAN_ARGS=(--plan-dir /cache/plan/"$RUN_LABEL")
+              if [ -n "$PLAN_OCCUPATIONS" ]; then
+                PLAN_ARGS+=(--occupations "$PLAN_OCCUPATIONS")
+              fi
+              python3 -m hiringcue.cli plan "${PLAN_ARGS[@]}"
+
+              python3 -m hiringcue.cli run \
+                --model "$MODEL_KEY" \
+                --label "$RUN_LABEL" \
+                --model-path /model/"$MODEL_REVISION" \
+                --plan-dir /cache/plan/"$RUN_LABEL" \
+                --out /cache/responses/"$RUN_LABEL"
+
+              python3 -m hiringcue.cli analyse \
+                --responses /cache/responses/"$RUN_LABEL" \
+                --out /cache/analysis/"$RUN_LABEL"
+          env:
+            - name: MODEL_KEY
+              value: "__MODEL_KEY__"
+            - name: MODEL_ID
+              value: "__MODEL_ID__"
+            - name: MODEL_REVISION
+              value: "__MODEL_REVISION__"
+            - name: RUN_LABEL
+              value: "__RUN_LABEL__"
+            - name: PLAN_OCCUPATIONS
+              value: "__PLAN_OCCUPATIONS__"
+            - name: HF_HOME
+              value: /cache/hf
+            - name: VLLM_WORKER_MULTIPROC_METHOD
+              value: spawn
+          resources:
+            requests:
+              nvidia.com/a100: 1
+              cpu: "8"
+              memory: 64Gi
+              ephemeral-storage: 100Gi
+            limits:
+              nvidia.com/a100: 1
+              cpu: "8"
+              memory: 64Gi
+              ephemeral-storage: 100Gi
+          volumeMounts:
+            - name: cache
+              mountPath: /cache
+            - name: workspace
+              mountPath: /model
+            # Tensor parallelism uses shared memory between the worker
+            # processes; the container default of 64MB is not enough and the
+            # failure appears as a hang during model load.
+            - name: dshm
+              mountPath: /dev/shm
+      volumes:
+        - name: cache
+          persistentVolumeClaim:
+            claimName: hiringcue-cache
+        - name: workspace
+          emptyDir: {}
+        - name: dshm
+          emptyDir:
+            medium: Memory
+            sizeLimit: 16Gi

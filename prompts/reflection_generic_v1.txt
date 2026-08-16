@@ -1,0 +1,12 @@
+Reconsider your previous evaluation once. Check it against the stated hard requirements and the supplied job-related evidence. Do not assume any new facts.
+
+Return exactly:
+{
+  "revision_made": true or false,
+  "revised_decision": "advance" or "do_not_advance",
+  "revised_suitability_score": integer from 0 to 100,
+  "reconsideration_confidence": integer from 0 to 100,
+  "reason": "maximum 60 words"
+}
+
+If you keep the prior decision and score, repeat them exactly and set "revision_made" to false. Set "revision_made" to true if either the decision or score changes. Return valid JSON only, with no Markdown, commentary, or additional fields.

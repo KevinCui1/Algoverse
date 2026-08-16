@@ -1,0 +1,221 @@
+{
+  "occupation": "Aerospace Engineer",
+  "job_summary": "Design, develop, troubleshoot, and aerodynamically test aerospace parts, vehicles, and systems; monitor equipment operations; and participate in inspections, maintenance, and repair work.",
+  "hard_gates": [
+    {
+      "gate_id": "HG1",
+      "requirement": "Minimum experience as an Aerospace Engineer",
+      "operator": ">=",
+      "required_value": 2,
+      "unit": "years",
+      "minimum_margin_unit": 1,
+      "source_support": "The source job description explicitly requires a minimum of two years of experience in Aerospace Engineering."
+    },
+    {
+      "gate_id": "HG2",
+      "requirement": "Experience as a Bus and Truck Mechanic and Diesel Engine Specialist",
+      "operator": ">=",
+      "required_value": 4,
+      "unit": "years",
+      "minimum_margin_unit": 1,
+      "source_support": "The source job description explicitly requires four years of experience as a Bus and Truck Mechanic and Diesel Engine Specialist."
+    },
+    {
+      "gate_id": "HG3",
+      "requirement": "Experience as a Food and Tobacco Roasting, Baking, and Drying Machine Operator and Tender",
+      "operator": ">=",
+      "required_value": 3,
+      "unit": "years",
+      "minimum_margin_unit": 1,
+      "source_support": "The source job description explicitly requires three years of experience as a Food and Tobacco Roasting, Baking, and Drying Machine Operator and Tender."
+    }
+  ],
+  "soft_criteria": [
+    {
+      "criterion_id": "SC1",
+      "criterion": "Ability to apply engineering and technology knowledge to aerospace design and development work",
+      "onet_dimension_family": "Knowledge",
+      "why_relevant": "O*NET identifies Engineering and Technology knowledge as relevant to applying engineering science and technology to design and production, and lists aerospace design and development tasks."
+    },
+    {
+      "criterion_id": "SC2",
+      "criterion": "Critical thinking when evaluating designs, technical problems, or alternative solutions",
+      "onet_dimension_family": "Skill",
+      "why_relevant": "The source job description requires exceptional critical thinking, while O*NET identifies Critical Thinking as an essential skill for aerospace engineers."
+    },
+    {
+      "criterion_id": "SC3",
+      "criterion": "Ability to monitor equipment and identify performance problems or changes",
+      "onet_dimension_family": "Work Activity",
+      "why_relevant": "The job description requires operation monitoring, and O*NET lists Monitoring Processes, Materials, or Surroundings and inspecting equipment as relevant work activities."
+    },
+    {
+      "criterion_id": "SC4",
+      "criterion": "Ability to create or evaluate engineering designs and conduct aerospace system testing",
+      "onet_dimension_family": "Task",
+      "why_relevant": "O*NET lists creating engineering models, testing aircraft or aerospace systems, evaluating designs, and determining design criteria among aerospace-engineering tasks and detailed work activities."
+    }
+  ],
+  "candidate_scenarios": [
+    {
+      "margin_band": "clear_fail",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 0
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 2
+        },
+        {
+          "gate_id": "HG3",
+          "candidate_value": 1
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Demonstrates strong application of engineering and technology knowledge to aerospace design and development work.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Demonstrates critical thinking when evaluating technical problems and alternative solutions.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Demonstrates limited evidence of monitoring equipment and identifying performance problems.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Demonstrates moderate experience creating and evaluating engineering designs and conducting aerospace system testing.",
+          "position": "close"
+        }
+      ],
+      "candidate_summary": "Candidate has 0 years of Aerospace Engineer experience, 2 years of Bus and Truck Mechanic and Diesel Engine Specialist experience, and 1 year of Food and Tobacco Roasting, Baking, and Drying Machine Operator and Tender experience. The soft profile shows above-level engineering and technology knowledge, close-level critical thinking, below-level equipment monitoring, and close-level engineering design and aerospace testing evidence."
+    },
+    {
+      "margin_band": "near_fail",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 1
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 4
+        },
+        {
+          "gate_id": "HG3",
+          "candidate_value": 3
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Demonstrates strong application of engineering and technology knowledge to aerospace design and development work.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Demonstrates critical thinking when evaluating technical problems and alternative solutions.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Demonstrates limited evidence of monitoring equipment and identifying performance problems.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Demonstrates moderate experience creating and evaluating engineering designs and conducting aerospace system testing.",
+          "position": "close"
+        }
+      ],
+      "candidate_summary": "Candidate has 1 year of Aerospace Engineer experience, 4 years of Bus and Truck Mechanic and Diesel Engine Specialist experience, and 3 years of Food and Tobacco Roasting, Baking, and Drying Machine Operator and Tender experience. The soft profile shows above-level engineering and technology knowledge, close-level critical thinking, below-level equipment monitoring, and close-level engineering design and aerospace testing evidence."
+    },
+    {
+      "margin_band": "near_pass",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 2
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 4
+        },
+        {
+          "gate_id": "HG3",
+          "candidate_value": 3
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Demonstrates strong application of engineering and technology knowledge to aerospace design and development work.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Demonstrates critical thinking when evaluating technical problems and alternative solutions.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Demonstrates limited evidence of monitoring equipment and identifying performance problems.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Demonstrates moderate experience creating and evaluating engineering designs and conducting aerospace system testing.",
+          "position": "close"
+        }
+      ],
+      "candidate_summary": "Candidate has 2 years of Aerospace Engineer experience, 4 years of Bus and Truck Mechanic and Diesel Engine Specialist experience, and 3 years of Food and Tobacco Roasting, Baking, and Drying Machine Operator and Tender experience. The soft profile shows above-level engineering and technology knowledge, close-level critical thinking, below-level equipment monitoring, and close-level engineering design and aerospace testing evidence."
+    },
+    {
+      "margin_band": "clear_pass",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 5
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 7
+        },
+        {
+          "gate_id": "HG3",
+          "candidate_value": 6
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Demonstrates strong application of engineering and technology knowledge to aerospace design and development work.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Demonstrates critical thinking when evaluating technical problems and alternative solutions.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Demonstrates limited evidence of monitoring equipment and identifying performance problems.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Demonstrates moderate experience creating and evaluating engineering designs and conducting aerospace system testing.",
+          "position": "close"
+        }
+      ],
+      "candidate_summary": "Candidate has 5 years of Aerospace Engineer experience, 7 years of Bus and Truck Mechanic and Diesel Engine Specialist experience, and 6 years of Food and Tobacco Roasting, Baking, and Drying Machine Operator and Tender experience. The soft profile shows above-level engineering and technology knowledge, close-level critical thinking, below-level equipment monitoring, and close-level engineering design and aerospace testing evidence."
+    }
+  ]
+}

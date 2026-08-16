@@ -1,0 +1,12 @@
+Your previous response did not match the required JSON format. Reformat the same substantive reconsideration without reconsidering or changing it again.
+
+Return exactly one valid JSON object with only these fields:
+{
+  "revision_made": true or false,
+  "revised_decision": "advance" or "do_not_advance",
+  "revised_suitability_score": integer from 0 to 100,
+  "reconsideration_confidence": integer from 0 to 100,
+  "reason": "maximum 60 words"
+}
+
+Do not add Markdown or commentary. If your previous response omitted a required value, use the value most directly stated or implied by that response; do not perform a new reconsideration.

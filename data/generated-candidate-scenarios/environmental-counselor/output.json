@@ -1,0 +1,221 @@
+{
+  "occupation": "Environmental Counselor",
+  "job_summary": "An experienced Environmental Counselor who leads environmental-impact work using Plant Biology, Environmental Science, Soil Chemistry, Soil Physics, Critical Thinking, Problem Solving, and Technical Writing to draft solutions, communicate environmental information, assess risks, and prepare environmental documentation.",
+  "hard_gates": [
+    {
+      "gate_id": "HG1",
+      "requirement": "Experience working as an Environmental Counselor",
+      "operator": ">=",
+      "required_value": 2,
+      "unit": "years",
+      "minimum_margin_unit": 1,
+      "source_support": "The source job description explicitly requires at least 2 years of experience working as an Environmental Counselor."
+    },
+    {
+      "gate_id": "HG2",
+      "requirement": "Experience working as a Soil and Plant Scientist",
+      "operator": ">=",
+      "required_value": 2,
+      "unit": "years",
+      "minimum_margin_unit": 1,
+      "source_support": "The source job description explicitly requires at least 2 years of experience working as a Soil and Plant Scientist."
+    },
+    {
+      "gate_id": "HG3",
+      "requirement": "Knowledge of Soil Chemistry",
+      "operator": "==",
+      "required_value": "yes",
+      "unit": null,
+      "minimum_margin_unit": "one requirement unit",
+      "source_support": "The source job description explicitly lists a grasp of Soil Chemistry as a required skill, and the supplied skills list explicitly includes Knowledge of Soil Chemistry."
+    }
+  ],
+  "soft_criteria": [
+    {
+      "criterion_id": "SC1",
+      "criterion": "Strength of Plant Biology knowledge and its application to environmental work",
+      "onet_dimension_family": "Knowledge",
+      "why_relevant": "The job requires Plant Biology knowledge, and the O*NET material identifies Biology knowledge and environmental interactions as relevant to environmental-science work."
+    },
+    {
+      "criterion_id": "SC2",
+      "criterion": "Quality and effectiveness of Technical Writing",
+      "onet_dimension_family": "Skill",
+      "why_relevant": "The job requires Technical Writing, while the O*NET material identifies Writing and communicating scientific or technical information through written documents as relevant work requirements."
+    },
+    {
+      "criterion_id": "SC3",
+      "criterion": "Critical Thinking and Problem Solving in environmental decisions",
+      "onet_dimension_family": "Skill",
+      "why_relevant": "The job explicitly requires Critical Thinking and Problem Solving, and the O*NET material identifies Critical Thinking and Complex Problem Solving as relevant skills."
+    },
+    {
+      "criterion_id": "SC4",
+      "criterion": "Ability to analyze environmental data and use it to address environmental impacts",
+      "onet_dimension_family": "Work Activity",
+      "why_relevant": "The O*NET material identifies Analyzing Data or Information, Monitoring Processes, Materials, or Surroundings, and analyzing environmental data and impacts as relevant activities."
+    }
+  ],
+  "candidate_scenarios": [
+    {
+      "margin_band": "clear_fail",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 0
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 1
+        },
+        {
+          "gate_id": "HG3",
+          "candidate_value": "no"
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Has substantial demonstrated ability to apply Plant Biology knowledge to environmental work.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Technical writing experience is limited compared with the role's communication needs.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Shows some relevant critical-thinking and problem-solving experience in environmental situations.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Has strong experience analyzing environmental data and assessing environmental impacts.",
+          "position": "above"
+        }
+      ],
+      "candidate_summary": "Environmental Counselor experience: 0 years. Soil and Plant Scientist experience: 1 year. Knowledge of Soil Chemistry: no. Plant Biology evidence: has substantial demonstrated ability to apply Plant Biology knowledge to environmental work. Technical Writing evidence: Technical writing experience is limited compared with the role's communication needs. Critical Thinking and Problem Solving evidence: shows some relevant critical-thinking and problem-solving experience in environmental situations. Environmental data analysis evidence: has strong experience analyzing environmental data and assessing environmental impacts."
+    },
+    {
+      "margin_band": "near_fail",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 2
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 2
+        },
+        {
+          "gate_id": "HG3",
+          "candidate_value": "no"
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Has substantial demonstrated ability to apply Plant Biology knowledge to environmental work.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Technical writing experience is limited compared with the role's communication needs.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Shows some relevant critical-thinking and problem-solving experience in environmental situations.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Has strong experience analyzing environmental data and assessing environmental impacts.",
+          "position": "above"
+        }
+      ],
+      "candidate_summary": "Environmental Counselor experience: 2 years. Soil and Plant Scientist experience: 2 years. Knowledge of Soil Chemistry: no. Plant Biology evidence: has substantial demonstrated ability to apply Plant Biology knowledge to environmental work. Technical Writing evidence: Technical writing experience is limited compared with the role's communication needs. Critical Thinking and Problem Solving evidence: shows some relevant critical-thinking and problem-solving experience in environmental situations. Environmental data analysis evidence: has strong experience analyzing environmental data and assessing environmental impacts."
+    },
+    {
+      "margin_band": "near_pass",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 2
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 2
+        },
+        {
+          "gate_id": "HG3",
+          "candidate_value": "yes"
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Has substantial demonstrated ability to apply Plant Biology knowledge to environmental work.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Technical writing experience is limited compared with the role's communication needs.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Shows some relevant critical-thinking and problem-solving experience in environmental situations.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Has strong experience analyzing environmental data and assessing environmental impacts.",
+          "position": "above"
+        }
+      ],
+      "candidate_summary": "Environmental Counselor experience: 2 years. Soil and Plant Scientist experience: 2 years. Knowledge of Soil Chemistry: yes. Plant Biology evidence: has substantial demonstrated ability to apply Plant Biology knowledge to environmental work. Technical Writing evidence: Technical writing experience is limited compared with the role's communication needs. Critical Thinking and Problem Solving evidence: shows some relevant critical-thinking and problem-solving experience in environmental situations. Environmental data analysis evidence: has strong experience analyzing environmental data and assessing environmental impacts."
+    },
+    {
+      "margin_band": "clear_pass",
+      "candidate_gate_values": [
+        {
+          "gate_id": "HG1",
+          "candidate_value": 5
+        },
+        {
+          "gate_id": "HG2",
+          "candidate_value": 5
+        },
+        {
+          "gate_id": "HG3",
+          "candidate_value": "yes"
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "SC1",
+          "candidate_evidence": "Has substantial demonstrated ability to apply Plant Biology knowledge to environmental work.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC2",
+          "candidate_evidence": "Technical writing experience is limited compared with the role's communication needs.",
+          "position": "below"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "Shows some relevant critical-thinking and problem-solving experience in environmental situations.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "Has strong experience analyzing environmental data and assessing environmental impacts.",
+          "position": "above"
+        }
+      ],
+      "candidate_summary": "Environmental Counselor experience: 5 years. Soil and Plant Scientist experience: 5 years. Knowledge of Soil Chemistry: yes. Plant Biology evidence: has substantial demonstrated ability to apply Plant Biology knowledge to environmental work. Technical Writing evidence: Technical writing experience is limited compared with the role's communication needs. Critical Thinking and Problem Solving evidence: shows some relevant critical-thinking and problem-solving experience in environmental situations. Environmental data analysis evidence: has strong experience analyzing environmental data and assessing environmental impacts."
+    }
+  ]
+}

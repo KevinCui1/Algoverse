@@ -1,0 +1,126 @@
+https://www.onetonline.org/link/summary/53-2011.00
+Airline Pilots, Copilots, and Flight Engineers
+
+Tasks
+Use instrumentation to guide flights when visibility is poor.
+Start engines, operate controls, and pilot airplanes to transport passengers, mail, or freight, adhering to flight plans, regulations, and procedures.
+Work as part of a flight team with other crew members, especially during takeoffs and landings.
+Respond to and report in-flight emergencies and malfunctions.
+Inspect aircraft for defects and malfunctions, according to pre-flight checklists.
+Contact control towers for takeoff clearances, arrival instructions, and other information, using radio equipment.
+Monitor engine operation, fuel consumption, and functioning of aircraft systems during flights.
+Monitor gauges, warning devices, and control panels to verify aircraft performance and to regulate engine speed.
+Steer aircraft along planned routes, using autopilot and flight management computers.
+Check passenger and cargo distributions and fuel amounts to ensure that weight and balance specifications are met.
+Confer with flight dispatchers and weather forecasters to keep abreast of flight conditions.
+Order changes in fuel supplies, loads, routes, or schedules to ensure safety of flights.
+Brief crews about flight details, such as destinations, duties, and responsibilities.
+Choose routes, altitudes, and speeds that will provide the fastest, safest, and smoothest flights.
+Direct activities of aircraft crews during flights.
+Record in log books information, such as flight times, distances flown, and fuel consumption.
+Instruct other pilots and student pilots in aircraft operations and the principles of flight.
+Make announcements regarding flights, using public address systems.
+Coordinate flight activities with ground crews and air traffic control and inform crew members of flight and test procedures.
+Conduct in-flight tests and evaluations at specified altitudes and in all types of weather to determine the receptivity and other characteristics of equipment and systems.
+File instrument flight plans with air traffic control to ensure that flights are coordinated with other air traffic.
+Perform minor maintenance work, or arrange for major maintenance.
+Evaluate other pilots or pilot-license applicants for proficiency.
+Plan and formulate flight activities and test schedules and prepare flight evaluation reports.
+
+Knowledge
+Transportation — Knowledge of principles and methods for moving people or goods by air, rail, sea, or road, including the relative costs and benefits.
+English Language — Knowledge of the structure and content of the English language including the meaning and spelling of words, and rules of composition and grammar.
+Geography — Knowledge of principles and methods for describing the features of land, sea, and air masses, including their physical characteristics, locations, interrelationships, and distribution of plant, animal, and human life.
+Mechanical — Knowledge of machines and tools, including their designs, uses, repair, and maintenance.
+Public Safety and Security — Knowledge of relevant equipment, policies, procedures, and strategies to promote effective local, state, or national security operations for the protection of people, data, property, and institutions.
+Mathematics — Knowledge of arithmetic, algebra, geometry, calculus, statistics, and their applications.
+Computers and Electronics — Knowledge of circuit boards, processors, chips, electronic equipment, and computer hardware and software, including applications and programming.
+Physics — Knowledge and prediction of physical principles, laws, their interrelationships, and applications to understanding fluid, material, and atmospheric dynamics, and mechanical, electrical, atomic and sub-atomic structures and processes.
+Law and Government — Knowledge of laws, legal codes, court procedures, precedents, government regulations, executive orders, agency rules, and the democratic political process.
+Administration and Management — Knowledge of business and management principles involved in strategic planning, resource allocation, human resources modeling, leadership technique, production methods, and coordination of people and resources.
+Customer and Personal Service — Knowledge of principles and processes for providing customer and personal services. This includes customer needs assessment, meeting quality standards for services, and evaluation of customer satisfaction.
+
+Software Skills
+Analytical or scientific software — Pilot Navigator Software Load Balance
+Calendar and scheduling software — SBS International Maestro Suite
+Data base user interface and query software — Airline Pilots Daily Aviation Log PPC; AirSmith FlightPrompt; CoPilot Flight Planning & E6B; Skylog Services Skylog Pro; 7 more
+Electronic mail software — Microsoft Outlook
+Information retrieval or search software — AeroPlanner; Notam Development Group Airport Insight
+Object or component oriented development software — Document Object Model DOM Scripting; R
+Office suite software — Microsoft Office software
+Presentation software — Microsoft PowerPoint
+Process mapping and design software — Microsoft Visio
+Route navigation software — IFT-Pro; Navzilla
+Spreadsheet software — Microsoft Excel
+Word processing software — Microsoft Word 
+
+Essential Skills
+Active Listening — Giving full attention to what other people are saying, taking time to understand the points being made, asking questions as appropriate, and not interrupting at inappropriate times.
+Critical Thinking — Using logic and reasoning to identify the strengths and weaknesses of alternative solutions, conclusions, or approaches to problems.
+Monitoring — Monitoring/Assessing performance of yourself, other individuals, or organizations to make improvements or take corrective action.
+Reading Comprehension — Understanding written sentences and paragraphs in work-related documents.
+Active Learning — Understanding the implications of new information for both current and future problem-solving and decision-making.
+Speaking — Talking to others to convey information effectively.
+Mathematics — Using mathematics to solve problems.
+Writing — Communicating effectively in writing as appropriate for the needs of the audience.
+Learning Strategies — Selecting and using training/instructional methods and procedures appropriate for the situation when learning or teaching new things.
+
+Transferable Skills
+Operation and Control — Controlling operations of equipment or systems.
+Operations Monitoring — Watching gauges, dials, or other indicators to make sure a machine is working properly.
+Judgment and Decision Making — Considering the relative costs and benefits of potential actions to choose the most appropriate one.
+Time Management — Managing one's own time and the time of others.
+Complex Problem Solving — Identifying complex problems and reviewing related information to develop and evaluate options and implement solutions.
+Coordination — Adjusting actions in relation to others' actions.
+Social Perceptiveness — Being aware of others' reactions and understanding why they react as they do.
+Systems Analysis — Determining how a system should work and how changes in conditions, operations, and the environment will affect outcomes.
+Systems Evaluation — Identifying measures or indicators of system performance and the actions needed to improve or correct performance, relative to the goals of the system.
+Quality Control Analysis — Conducting tests and inspections of products, services, or processes to evaluate quality or performance.
+Troubleshooting — Determining causes of operating errors and deciding what to do about it.
+Instructing — Teaching others how to do something.
+
+Work Activities
+Identifying Objects, Actions, and Events — Identifying information by categorizing, estimating, recognizing differences or similarities, and detecting changes in circumstances or events.
+Inspecting Equipment, Structures, or Materials — Inspecting equipment, structures, or materials to identify the cause of errors or other problems or defects.
+Making Decisions and Solving Problems — Analyzing information and evaluating results to choose the best solution and solve problems.
+Monitoring Processes, Materials, or Surroundings — Monitoring and reviewing information from materials, events, or the environment, to detect or assess problems.
+Evaluating Information to Determine Compliance with Standards — Using relevant information and individual judgment to determine whether events or processes comply with laws, regulations, or standards.
+Getting Information — Observing, receiving, and otherwise obtaining information from all relevant sources.
+Operating Vehicles, Mechanized Devices, or Equipment — Running, maneuvering, navigating, or driving vehicles or mechanized equipment, such as forklifts, passenger vehicles, aircraft, or watercraft.
+Processing Information — Compiling, coding, categorizing, calculating, tabulating, auditing, or verifying information or data.
+Updating and Using Relevant Knowledge — Keeping up-to-date technically and applying new knowledge to your job.
+Controlling Machines and Processes — Using either control mechanisms or direct physical activity to operate machines or processes (not including computers or vehicles).
+Communicating with Supervisors, Peers, or Subordinates — Providing information to supervisors, co-workers, and subordinates by telephone, in written form, e-mail, or in person.
+Analyzing Data or Information — Identifying the underlying principles, reasons, or facts of information by breaking down information or data into separate parts.
+Interpreting the Meaning of Information for Others — Translating or explaining what information means and how it can be used.
+Working with Computers — Using computers and computer systems (including hardware and software) to program, write software, set up functions, enter data, or process information.
+Documenting/Recording Information — Entering, transcribing, recording, storing, or maintaining information in written or electronic/magnetic form.
+Estimating the Quantifiable Characteristics of Products, Events, or Information — Estimating sizes, distances, and quantities; or determining time, costs, resources, or materials needed to perform a work activity.
+Organizing, Planning, and Prioritizing Work — Developing specific goals and plans to prioritize, organize, and accomplish your work.
+Judging the Qualities of Objects, Services, or People — Assessing the value, importance, or quality of things or people.
+Coaching and Developing Others — Identifying the developmental needs of others and coaching, mentoring, or otherwise helping others to improve their knowledge or skills.
+Resolving Conflicts and Negotiating with Others — Handling complaints, settling disputes, and resolving grievances and conflicts, or otherwise negotiating with others.
+Developing and Building Teams — Encouraging and building mutual trust, respect, and cooperation among team members.
+
+Detailed Work Activities
+Pilot aircraft.
+Notify others of emergencies, problems, or hazards.
+Report vehicle or equipment malfunctions.
+Respond to transportation emergencies.
+Inspect aircraft or aircraft components.
+Communicate with others to coordinate vehicle movement.
+Monitor engine operation or functioning.
+Monitor equipment gauges or displays to ensure proper operation.
+Monitor work environment to ensure safety or adherence to specifications.
+Coordinate flight control or management activities.
+Meet with coworkers to communicate work orders or plans.
+Resolve issues affecting transportation operations.
+Test performance of aircraft equipment.
+Arrange maintenance activities.
+Maintain locomotives or other rail equipment in good working condition.
+Choose optimal transportation routes or speeds.
+Evaluate performance of applicants, trainees, or employees.
+Record operational details of travel.
+Train transportation or material moving personnel.
+Provide transportation information to passengers or customers.
+Plan flight operations.

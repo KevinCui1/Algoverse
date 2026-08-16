@@ -1,0 +1,16 @@
+{
+  "Job-Description": "\n\n## Job Title\nSoftware Engineer\n\n## Job Summary\nWe are seeking an experienced and driven Software Engineer with strong Scala and SAAS skills to our dedicated technology team. As a Software Engineer, you will be responsible for constructing quality, reliable, and efficient technologies and services. \n\n## Required Skills\n1. Proven ability in Scala programming language for at least three years in software engineering position.\n2. Demonstrated knowledge in Software as a Service (SAAS) technologies with the ability to manipulate services to desired states and functions.\n\n## Required Experience\n1. Minimum three-year experience working as a Software Engineer.\n\n## Responsibilities\n1. Analyze, design and develop tests and tools for software enhancements and new products.\n2. Contribute to the design, development, validation, and delivery of the software technologies and best practices.\n3. Collaborate cross-functionally with business users, project managers, and other engineers to achieve elegant solutions.\n\n\n",
+  "Resume-matched": "\n\n## Personal Information\nName: Youssef Abbas\nEmail: YoussefAbbas@example.email.com\n\n## Education\nB.Sc in Computer Science \n\n## Skills\n1. Expertise in Scala programming.\n2. Proficient in using and manipulating SAAS technologies according to project needs.\n\n## Experience\nSoftware Engineer at XYZ Tech company (2018 -2021)\nDeveloping and designing scalable software solutions using Scala and SAAS technologies, significantly improving the efficiency of the projects.\n\n\n",
+  "Resume-unmatched": "\n\n## Personal Information\nName: Youssef Abbas\nEmail: YoussefAbbas@example.email.com\n\n## Education\nB.Sc in Computer Science \n\n## Skills\n1. Expertise in Scala programming.\n\n## Experience\nSoftware Engineer at XYZ Tech company (2018 - 2019)\nImplemented and designed software solutions based on Scala to fit the varying demands of the projects. The expertise mainly falls on improving code functionality and efficiency using Scala.",
+  "Skills": ["Scala", "SAAS"],
+  "Experiences": ["Software Engineer"],
+  "Experiences-years": [
+    [["3 years as a Software Engineer"], ["Software Engineer (2018 - 2021)"]],
+    2021,
+    [3]
+  ],
+  "Filtered-information": {
+    "Skills": ["SAAS"],
+    "Experience": "instead of \"Software Engineer (2018 - 2021)\" use \"Software Engineer (2018 - 2019)\""
+  }
+}

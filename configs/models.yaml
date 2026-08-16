@@ -1,0 +1,64 @@
+# Evaluated models and sampling settings.
+#
+# Two contrasting model families are enough for the pilot, whose job is to
+# estimate variance components rather than to compare models. Both are
+# open-weight instruction-tuned models in the 27-32B range, chosen so that each
+# fits one 80GB accelerator in bfloat16 with an 8k context. This avoids waiting
+# for a co-located accelerator pair on the shared cluster.
+
+defaults:
+  dtype: bfloat16
+  max_model_len: 8192
+  gpu_memory_utilization: 0.90
+  # Identical prompts recur across repeated runs and the second turn reuses the
+  # whole first-turn conversation, so prefix reuse removes most prefill work.
+  enable_prefix_caching: true
+  # Schema conformance is enforced during decoding rather than repaired
+  # afterwards. This removes parse failures as a source of missing cells, which
+  # would otherwise be non-random with respect to condition.
+  structured_output: true
+
+sampling:
+  # Non-zero temperature is required for the run-to-run diagnostic to be
+  # informative; at temperature zero it measures nothing and the free-parameter
+  # control has to carry the determinacy check alone.
+  temperature: 0.7
+  top_p: 0.95
+  max_tokens: 300
+  seed_base: 20260816
+
+models:
+  - key: qwen3-32b
+    model_id: Qwen/Qwen3-32B
+    revision: 9216db5781bf21249d130ec9da846c4624c16137
+    family: qwen
+    developer: Alibaba
+    tensor_parallel_size: 1
+    gpu_resource_key: nvidia.com/a100
+    gpu_count: 1
+    gpu_memory_gib: 80
+    cpu_request: 8
+    memory_request: 64Gi
+    # Qwen3 emits a reasoning block by default; the study scores structured
+    # fields only, and an unconstrained preamble would break schema decoding.
+    chat_template_kwargs:
+      enable_thinking: false
+
+  - key: gemma3-27b
+    model_id: google/gemma-3-27b-it
+    revision: 005ad3404e59d6023443cb575daa05336842228a
+    family: gemma
+    developer: Google
+    tensor_parallel_size: 1
+    gpu_resource_key: nvidia.com/a100
+    gpu_count: 1
+    gpu_memory_gib: 80
+    cpu_request: 8
+    memory_request: 64Gi
+
+# Additional models are added only after the pilot shows the scenario set
+# avoids floor and ceiling effects on both families above and that within-cell
+# variance is manageable.
+deferred:
+  - model_id: meta-llama/Llama-3.3-70B-Instruct
+    note: FP8 weights on four 48GB accelerators, or two 80GB. Confirmatory only.

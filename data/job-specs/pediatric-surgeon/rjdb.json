@@ -1,0 +1,45 @@
+{
+  "Job-Description": "\n\n## Job title\nPediatric Surgeon\n\n## Job Summary\nAs a pediatric surgeon, you will use your unique skill set which includes Mathematical skills, Analytical skills, Laboratory skills, and others to provide healthcare to young patients. Our organization rules demand commitment, diligence, creativity, innovative thinking and strong pressure-resilience for thriving in this demanding environment. Your significant role will mandate work collaboration alongside our dedicated and knowledgeable interdisciplinary team committed to improving our patent's health quality.\n\n## Required Skills\n1. Mathematical skills\n2. Analytical skills\n3. Laboratory skills\n4. Research skills\n5. Communication skills\n6. Creativity and innovative thinking\n7. Knowledge of scientific software and technology\n8. Project management skills\n9. Ability to work under pressure\n\n## Required Experience\n1. Minimum 1 year of experience as a Pediatric Surgeon\n2. 4 years as a Materials scientist\n3. 1 year as an Agricultural and food science technician\n4. 1 year as a Physicist\n\n## Responsibilities\n- Diagnose complex pediatrics health issues.\n- Efficiently utilizing medical technology for patient care.\n- Managing cross-departmental projects to improve pediatric treatment procedures.\n- Communicating effectively with patients and their families.\n\n",
+  "Resume-matched": "\n\n## Personal Information\nName: Qillaq Johns\nEmail: QillaqJ@example.com\n\n## Education\nDegree in Pediatrics\n\n## Skills\n1. Mathematical skills\n2. Analytical skills\n3. Problem-solving skills\n4. Laboratory skills\n5. Research skills\n6. Communication skills\n7. Creativity and innovative thinking\n8. Knowledge of scientific software and technology\n9. Project management skills\n10. Ability to work under pressure\n\n## Experience\n1. Pediatric Surgeon (2019 - 2020)\n2. Materials scientists (2015 - 2019)\n3. Agricultural and food science technicians (2014 - 2015)\n4. Physicists (2013 - 2014)\n\n",
+  "Resume-unmatched": "\n\n## Personal Information\nName: Qillaq John\nEmail: QillaqJ@example.com\n\n## Education\nDegree in Pediatrics\n\n## Skills\n1. Mathematical skills\n2. Analytical skills\n3. Laboratory skills\n4. Research skills\n5. Communication skills\n6. Creativity and innovative thinking\n7. Knowledge of scientific software and technology\n8. Project management skills\n\n## Experience\n1. Materials Scientists (2015 - 2019)\n2. Agricultural and food science technicians (2014 - 2015)\n3. Physicists (2013 - 2014)",
+  "Skills": [
+    "Mathematical skills",
+    "Analytical skills",
+    "Problem-solving skills",
+    "Laboratory skills",
+    "Research skills",
+    "Communication skills",
+    "Creativity and innovative thinking",
+    "Knowledge of scientific software and technology",
+    "Project management skills",
+    "Ability to work under pressure"
+  ],
+  "Experiences": [
+    "Pediatric surgeons",
+    "Materials scientists",
+    "Agricultural and food science technicians",
+    "Physicists"
+  ],
+  "Experiences-years": [
+    [
+      [
+        "1 years as a Pediatric surgeons",
+        "4 years as a Materials scientists",
+        "1 years as a Agricultural and food science technicians",
+        "1 years as a Physicists"
+      ],
+      [
+        "Pediatric surgeons (2019 - 2020)",
+        "Materials scientists (2015 - 2019)",
+        "Agricultural and food science technicians (2014 - 2015)",
+        "Physicists (2013 - 2014)"
+      ]
+    ],
+    2020,
+    [1, 4, 1, 1]
+  ],
+  "Filtered-information": {
+    "Skills": ["Problem-solving skills", "Ability to work under pressure"],
+    "Experience": "without including \"Pediatric surgeons (2019 - 2020)\""
+  }
+}

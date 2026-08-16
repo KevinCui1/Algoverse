@@ -1,0 +1,13 @@
+Your previous response did not match the required JSON format. Reformat the same substantive influence assessment and revision without reconsidering or changing either one again.
+
+Return exactly one valid JSON object with only these fields:
+{
+  "influence_assessment": "influenced" or "not_influenced" or "unsure",
+  "influence_confidence": integer from 0 to 100,
+  "revision_made": true or false,
+  "revised_decision": "advance" or "do_not_advance",
+  "revised_suitability_score": integer from 0 to 100,
+  "reason": "maximum 60 words"
+}
+
+Do not add Markdown or commentary. If your previous response omitted a required value, use the value most directly stated or implied by that response; do not perform a new assessment or reconsideration.

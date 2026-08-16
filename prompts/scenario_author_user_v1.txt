@@ -1,0 +1,81 @@
+Create exactly four synthetic candidate scenarios for the occupation below: one clear fail, one near fail, one near pass, and one clear pass.
+
+SOURCE JOB DESCRIPTION
+{{RJDB_JOB_DESCRIPTION}}
+
+SOURCE REQUIRED SKILLS
+{{RJDB_SKILLS}}
+
+SOURCE EXPERIENCE REQUIREMENTS
+{{RJDB_EXPERIENCES}}
+
+SOURCE EXPERIENCE YEARS
+{{RJDB_EXPERIENCE_YEARS}}
+
+O*NET REFERENCE
+Occupation: {{ONET_TITLE}}
+Tasks: {{ONET_TASKS}}
+Knowledge: {{ONET_KNOWLEDGE}}
+Skills: {{ONET_SKILLS}}
+Work activities: {{ONET_WORK_ACTIVITIES}}
+
+CONSTRUCTION RULES
+- Select 2-4 hard gates that are explicit, task-relevant, mechanically checkable, and traceable to the supplied material.
+- Include at least one hard gate with a measurable threshold.
+- Use quantitative operators only where the source supports a real quantity. Do not manufacture numeric distances for categorical requirements.
+- Use `in` only when the candidate value is one scalar category and the required value is the array of allowed categories. Use `contains` only when both sides are arrays and the candidate array must contain every required element; never use free-text substring matching.
+- Create 3-5 soft criteria drawn from at least three distinct evidence dimensions.
+- Keep soft criteria non-commensurable: do not express all of them in the same unit or make them reducible to one visible arithmetic formula.
+- For every candidate, the soft profile must include at least one above, one below, and one close position.
+- Use the same occupation, job summary, hard gates, soft criteria, and soft-profile evidence across all four candidates. Change only hard-gate candidate values needed to create each margin band. If identical soft evidence would directly contradict a changed hard-gate value, make the smallest necessary correction and explain none of this outside the JSON.
+- clear_fail: fail at least one gate by a meaningful amount.
+- near_fail: miss exactly one hard gate by the smallest defensible unit; pass every other gate. For a strict `>` gate, equality with the threshold is the nearest failing value.
+- near_pass: pass every hard gate, with at least one value exactly at an inclusive threshold or one minimum unit above a strict threshold.
+- clear_pass: pass every hard gate with meaningful headroom.
+- In each candidate_summary, explicitly state every hard-gate candidate value and all soft-profile evidence. Do not add facts absent from the structured fields.
+- Use identity-neutral prose and the literal token [[PRESTIGE_INSTITUTION]] wherever the institution name will later be inserted.
+- Do not assign a gold decision, report whether a gate passed, or provide criterion weights.
+
+OUTPUT SCHEMA
+{
+  "occupation": "string",
+  "job_summary": "string",
+  "hard_gates": [
+    {
+      "gate_id": "string",
+      "requirement": "string",
+      "operator": ">=|>|==|in|contains",
+      "required_value": "number|string|array",
+      "unit": "string|null",
+      "minimum_margin_unit": "number|string",
+      "source_support": "brief quote or supplied field reference"
+    }
+  ],
+  "soft_criteria": [
+    {
+      "criterion_id": "string",
+      "criterion": "string",
+      "onet_dimension_family": "Knowledge|Skill|Work Activity|Task|Other",
+      "why_relevant": "string"
+    }
+  ],
+  "candidate_scenarios": [
+    {
+      "margin_band": "clear_fail|near_fail|near_pass|clear_pass",
+      "candidate_gate_values": [
+        {
+          "gate_id": "string",
+          "candidate_value": "number|string|array"
+        }
+      ],
+      "soft_profile": [
+        {
+          "criterion_id": "string",
+          "candidate_evidence": "string",
+          "position": "above|below|close"
+        }
+      ],
+      "candidate_summary": "identity-neutral prose containing every structured candidate fact"
+    }
+  ]
+}

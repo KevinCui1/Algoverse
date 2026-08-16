@@ -1,0 +1,15 @@
+.DS_Store
+.env
+.env.*
+*.pyc
+__pycache__/
+.pytest_cache/
+.venv/
+*.egg-info/
+
+# Run outputs. Analysis summaries are committed explicitly; raw responses are not.
+output/
+tmp/
+
+# Local working notes, not part of the project record.
+progress/

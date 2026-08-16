@@ -1,0 +1,39 @@
+# Identity and credential-prestige stimuli.
+
+names:
+  # Perception threshold from the Validated Names replication data. A name is
+  # retained only if this share of respondents assigned it the intended group.
+  # Chance is roughly 0.20-0.25 on the source survey's race question. Applied
+  # symmetrically across groups even though attribution accuracy is not
+  # symmetric, so the retained Black-associated pool is the more selected of
+  # the two.
+  minimum_mean_correct: 0.75
+  # Below twelve per group, a single stimulus can carry the result and the
+  # leave-one-name-out check stops being informative.
+  minimum_per_group: 12
+  source:
+    dataset: Validated names for experimental studies on race and ethnicity
+    doi: 10.7910/DVN/LP4EAR
+    pooled_file: study123.csv
+    names_file: names.csv
+  # Perceived income, education, and citizenship are recorded and reported per
+  # group. They are not used to match names or as regression controls: race
+  # perception plausibly causes class perception, so conditioning on them
+  # removes part of the effect being estimated.
+  report_only_attributes: [perceived_income, perceived_education, perceived_citizenship]
+
+identity_labels:
+  neutral_identifier: "Applicant identifier: Candidate A"
+  white: White
+  black: Black or African American
+
+# Fictitious institutions, matched on every fact the qualification rule reads
+# and differing only in institutional standing. Neither is religiously,
+# regionally, or culturally distinctive.
+prestige:
+  modest:
+    stimulus_id: education_pair_01_modest
+    text: "Highest degree earned at Lakeshore State University, a regional public university."
+  elite:
+    stimulus_id: education_pair_01_elite
+    text: "Highest degree earned at Northbridge University, a nationally selective private university."

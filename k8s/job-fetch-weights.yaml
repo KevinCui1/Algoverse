@@ -1,0 +1,57 @@
+# Downloads one model's weights into the shared cache. No GPU is requested,
+# because this stage is network- and disk-bound; asking for an accelerator here
+# would hold one idle for the length of the download.
+#
+# Set MODEL_ID and MODEL_REVISION before applying. Access-gated repositories also
+# require a token supplied through the namespace's Hugging Face secret.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hiringcue-fetch
+spec:
+  backoffLimit: 2
+  ttlSecondsAfterFinished: 3600
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: fetch
+          image: python:3.11-slim
+          command: ["/bin/bash", "-lc"]
+          args:
+            - |
+              set -euo pipefail
+              pip install --no-cache-dir huggingface_hub
+              if [ -d "$HF_HOME/hub/.locks" ]; then
+                find "$HF_HOME/hub/.locks" -type f -delete
+              fi
+              hf download "$MODEL_ID" --revision "$MODEL_REVISION" --max-workers 4
+              du -sh "$HF_HOME"
+          env:
+            - name: MODEL_ID
+              value: "__MODEL_ID__"
+            - name: MODEL_REVISION
+              value: "__MODEL_REVISION__"
+            - name: HF_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: hf-token
+                  key: token
+            - name: HF_HOME
+              value: /cache/hf
+            - name: HF_HUB_DISABLE_XET
+              value: "1"
+          resources:
+            requests:
+              cpu: "4"
+              memory: 16Gi
+            limits:
+              cpu: "4"
+              memory: 16Gi
+          volumeMounts:
+            - name: cache
+              mountPath: /cache
+      volumes:
+        - name: cache
+          persistentVolumeClaim:
+            claimName: hiringcue-cache
