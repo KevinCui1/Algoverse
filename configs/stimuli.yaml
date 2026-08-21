@@ -1,25 +1,40 @@
 # Identity and credential-prestige stimuli.
 
 names:
-  # Perception threshold from the Validated Names replication data. A name is
-  # retained only if this share of respondents assigned it the intended group.
-  # Chance is roughly 0.20-0.25 on the source survey's race question. Applied
-  # symmetrically across groups even though attribution accuracy is not
-  # symmetric, so the retained Black-associated pool is the more selected of
-  # the two.
-  minimum_mean_correct: 0.75
-  # Below twelve per group, a single stimulus can carry the result and the
-  # leave-one-name-out check stops being informative.
-  minimum_per_group: 12
   source:
     dataset: Validated names for experimental studies on race and ethnicity
     doi: 10.7910/DVN/LP4EAR
     pooled_file: study123.csv
     names_file: names.csv
+  # Attribution accuracy is the share of respondents who assigned a name its
+  # intended group. Chance is roughly 0.20-0.25 on the source survey's race
+  # question. The two arms do not share its distribution, so the pool is built
+  # by matching them on it rather than by thresholding each independently: one
+  # threshold applied to both arms selects one near its centre and the other
+  # from its upper tail, which makes cue strength differ across the arms being
+  # contrasted.
+  matching:
+    # Walked from tightest to loosest; the first caliper supplying the required
+    # pairs within the balance bound is the one used. Every step beyond that
+    # buys pairs with imbalance, which is the defect being removed.
+    caliper_ladder: [0.005, 0.0075, 0.01, 0.015, 0.02, 0.03]
+    # Eight pairs are reserved permanently for development and the rest are
+    # available for confirmation, so the pool must exceed the development
+    # reservation by the confirmatory name count the sizing rule selects.
+    minimum_pairs: 32
+    development_pairs: 8
+    # Conventional bound on covariate balance after matching. Standardised so
+    # the criterion does not depend on the scale of the accuracy measure.
+    maximum_standardised_mean_difference: 0.10
+    # Reserves the development pairs at random rather than by accuracy rank, so
+    # they are not systematically the strongest or weakest cues in the pool.
+    split_seed: 20260819
   # Perceived income, education, and citizenship are recorded and reported per
   # group. They are not used to match names or as regression controls: race
   # perception plausibly causes class perception, so conditioning on them
-  # removes part of the effect being estimated.
+  # removes part of the effect being estimated. Attribution accuracy is
+  # different in kind - it is how strongly the stimulus delivers the cue at all,
+  # not a consequence of the cue - which is why it is the one quantity matched.
   report_only_attributes: [perceived_income, perceived_education, perceived_citizenship]
 
 identity_labels:

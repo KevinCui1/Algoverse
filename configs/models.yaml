@@ -1,64 +1,161 @@
-# Evaluated models and sampling settings.
+# Evaluated checkpoints and the fixed forward-pass readout settings.
 #
-# Two contrasting model families are enough for the pilot, whose job is to
-# estimate variance components rather than to compare models. Both are
-# open-weight instruction-tuned models in the 27-32B range, chosen so that each
-# fits one 80GB accelerator in bfloat16 with an 8k context. This avoids waiting
-# for a co-located accelerator pair on the shared cluster.
+# The set is chosen to contain both signs of published race-via-name hiring
+# effect and a documented low-bias case, rather than to maximise the expected
+# effect. A set selected only for large published effects invites the objection
+# that the result is selection rather than measurement; a set containing a
+# negative control and an oppositely-signed case makes the direction an
+# empirical question the design answers.
+#
+# Revisions are pinned by commit digest rather than by tag. The Gemma
+# repositories are access-gated and have been revised in place, so a tag is not
+# a pin. The Mistral-Small checkpoint is the revision the published prior was
+# measured on and is not upgraded to a later release of the same family.
+
+readout:
+  # Model logits are produced in bfloat16 and cast to float32 before the
+  # contrast is taken. No float32-throughout guarantee is claimed for a 24B
+  # checkpoint on one 80GB accelerator, and none is relied on.
+  dtype: bfloat16
+  # Padding is applied on the right and the answer boundary is located per
+  # sequence from its unpadded length. A raw forward pass numbers positions from
+  # the start of the tensor, so left padding would place every sequence at an
+  # offset its chat template never produced.
+  padding_side: right
+  # A prompt that reaches this limit has had its answer boundary truncated away,
+  # which is a hard stop rather than a shortened measurement.
+  maximum_length: 4096
+  # Every sequence is padded to exactly this length and every batch carries
+  # exactly `batch_size` sequences, so the tensor entering the forward pass has
+  # one shape for the whole study. This is not a performance setting. A matrix
+  # multiply's reduction order follows the shape of the tensor it runs over, and
+  # in bounded precision a different reduction order changes the low bits of the
+  # result; padding to the longest sequence in each batch makes that shape a
+  # function of which prompts happen to be co-resident, which is how a property
+  # of the batch reaches the number being read. Holding the shape constant
+  # removes the mechanism rather than bounding its size.
+  #
+  # The value must exceed the longest templated prompt in the plan; a prompt
+  # that would not fit is a hard stop, not a truncation. The longest observed in
+  # the development plan is 770 tokens.
+  padded_length: 1024
+  batch_size: 16
+  # Appended after the model's own generation prompt. Empty, so the boundary is
+  # the last token the chat template itself emits and no bytes this study wrote
+  # sit between the template and the answer position.
+  answer_prefix: ""
+  # Candidate surface forms. Only those that re-tokenise to exactly one further
+  # token at the measured boundary are admitted, per tokenizer. `Yes` and `No`
+  # are used rather than `Accept` and `Reject` because the latter splits under
+  # the Mistral tokenizers.
+  yes_surfaces: ["Yes", " Yes", "yes", " yes", "YES", " YES"]
+  no_surfaces: ["No", " No", "no", " no", "NO", " NO"]
+  # Randomises which arm of a counterfactual pair is placed first within its
+  # batch, so any residual ordering asymmetry is orthogonal to the identity
+  # condition rather than aligned with it.
+  arm_order_seed: 20260819
+  # Complete counterfactual pairs drawn from each stratum of the stability
+  # sample, where a stratum is one scenario family at one context level, one
+  # prestige level and one cue mode. The sample is a stratified census rather
+  # than a prompt budget: the gate statistic averages over qualified cells, so
+  # every qualified cell has to be present, and a cell estimated from one pair
+  # inherits that pair's noise. Two pairs per stratum gives each qualified cell
+  # four readings per identity arm and yields 576 prompts over the development
+  # plan.
+  pairs_per_stratum: 2
+  # `shuffled` previously reordered the whole sample before batching, which
+  # changes which prompts are co-resident and therefore, under longest-in-batch
+  # padding, the padded length as well. It was labelled an order-only
+  # perturbation and was not one: every prompt that moved under it moved at a
+  # changed padded length and none moved at an unchanged one. The two mechanisms
+  # are separated here so that a future failure names itself.
+  #
+  # `reordered` permutes position within each batch and leaves membership and
+  # shape alone. `regrouped` changes membership. Every gate layout uses the
+  # frozen instrument batch size: the gate tests properties that can vary within
+  # a collection, and batch size cannot. It is pinned here and the final partial
+  # batch is padded to it.
+  stability_layouts:
+    - {label: reference, batch_size: 16, shuffle_seed: null, within_batch_seed: null, fresh_process: true}
+    - {label: reordered, batch_size: 16, shuffle_seed: null, within_batch_seed: 20260822, fresh_process: true}
+    - {label: regrouped, batch_size: 16, shuffle_seed: 20260820, within_batch_seed: null, fresh_process: true}
+    - {label: warm_reference, batch_size: 16, shuffle_seed: null, within_batch_seed: null, fresh_process: false}
+
+  # Batch-size sensitivity is a permanent disclosure alongside every Stage 0
+  # result, not an admissibility criterion. These layouts deliberately depart
+  # from the frozen parameter to measure that property. Their estimand range is
+  # reported without applying the stability threshold or issuing a verdict.
+  batch_size_sensitivity_layouts:
+    - {label: small_batch, batch_size: 4, shuffle_seed: null, within_batch_seed: null, fresh_process: true}
+    - {label: warm_large, batch_size: 32, shuffle_seed: 20260821, within_batch_seed: null, fresh_process: false}
 
 defaults:
-  dtype: bfloat16
-  max_model_len: 8192
-  gpu_memory_utilization: 0.90
-  # Identical prompts recur across repeated runs and the second turn reuses the
-  # whole first-turn conversation, so prefix reuse removes most prefill work.
-  enable_prefix_caching: true
-  # Schema conformance is enforced during decoding rather than repaired
-  # afterwards. This removes parse failures as a source of missing cells, which
-  # would otherwise be non-random with respect to condition.
-  structured_output: true
-
-sampling:
-  # Non-zero temperature is required for the run-to-run diagnostic to be
-  # informative; at temperature zero it measures nothing and the free-parameter
-  # control has to carry the determinacy check alone.
-  temperature: 0.7
-  top_p: 0.95
-  max_tokens: 300
-  seed_base: 20260816
+  tensor_parallel_size: 1
+  gpu_resource_key: nvidia.com/a100
+  gpu_count: 1
+  gpu_memory_gib: 80
+  # The typed accelerator resource carries no memory capacity: the same key is
+  # satisfied by 40GB and 80GB devices. Constraining the device product is a
+  # capacity requirement, not an attempt to pin numerical behaviour, and it is
+  # stated per checkpoint because the checkpoints differ by a factor of four in
+  # what they need. Weights are the smaller half of the requirement: the forward
+  # pass materialises a full [batch, sequence, vocabulary] logit tensor, which at
+  # batch 32 and 1024 positions is 2GB on a 32k vocabulary and 17GB on a 256k
+  # one. A checkpoint constrained to 80GB devices when it would fit a 40GB one is
+  # a run waiting behind a queue it did not need to join.
+  gpu_products:
+    - NVIDIA-A100-SXM4-80GB
+    - NVIDIA-A100-80GB-PCIe
+  cpu_request: 8
+  memory_request: 64Gi
 
 models:
-  - key: qwen3-32b
-    model_id: Qwen/Qwen3-32B
-    revision: 9216db5781bf21249d130ec9da846c4624c16137
-    family: qwen
-    developer: Alibaba
-    tensor_parallel_size: 1
-    gpu_resource_key: nvidia.com/a100
-    gpu_count: 1
-    gpu_memory_gib: 80
-    cpu_request: 8
-    memory_request: 64Gi
-    # Qwen3 emits a reasoning block by default; the study scores structured
-    # fields only, and an unconstrained preamble would break schema decoding.
-    chat_template_kwargs:
-      enable_thinking: false
+  - key: mistral-small-24b
+    model_id: mistralai/Mistral-Small-24B-Instruct-2501
+    revision: 9527884be6e5616bdd54de542f9ae13384489724
+    family: mistral
+    developer: Mistral AI
+    role: primary contrast; largest published race-via-name hiring gap
+
+  - key: gemma3-12b
+    model_id: google/gemma-3-12b-it
+    revision: 96b6f1eccf38110c56df3a15bffe176da04bfd80
+    family: gemma3
+    developer: Google
+    role: second-largest published gap
+    # Multimodal checkpoint. The readout is text-only and loads the text path.
+    text_only: true
 
   - key: gemma3-27b
     model_id: google/gemma-3-27b-it
     revision: 005ad3404e59d6023443cb575daa05336842228a
-    family: gemma
+    family: gemma3
     developer: Google
-    tensor_parallel_size: 1
-    gpu_resource_key: nvidia.com/a100
-    gpu_count: 1
-    gpu_memory_gib: 80
-    cpu_request: 8
-    memory_request: 64Gi
+    role: size contrast within family
+    text_only: true
 
-# Additional models are added only after the pilot shows the scenario set
-# avoids floor and ceiling effects on both families above and that within-cell
-# variance is manageable.
-deferred:
-  - model_id: meta-llama/Llama-3.3-70B-Instruct
-    note: FP8 weights on four 48GB accelerators, or two 80GB. Confirmatory only.
+  - key: gemma2-27b
+    model_id: google/gemma-2-27b-it
+    revision: aaf20e6b9f4c0fcf043f6fb2a2068419086d77b0
+    family: gemma2
+    developer: Google
+    role: published low-bias case; negative control
+    # Logit soft-capping is part of this checkpoint's definition and is only
+    # applied under the eager attention path. Running it without soft-capping
+    # would change the logit vector the contrast is read from.
+    attn_implementation: eager
+
+  - key: mistral-7b-v03
+    model_id: mistralai/Mistral-7B-Instruct-v0.3
+    revision: c170c708c41dac9275d15a8fff4eca08d52bab71
+    family: mistral
+    developer: Mistral AI
+    role: published opposite sign
+    # 13.5GB of weights and a 32k vocabulary, so the largest layout's logit
+    # tensor is about 2GB and the whole run fits a 40GB device with room to
+    # spare. Admitting those devices is what lets this checkpoint run while the
+    # 80GB pool is saturated.
+    gpu_products:
+      - NVIDIA-A100-SXM4-80GB
+      - NVIDIA-A100-80GB-PCIe
+      - NVIDIA-A100-PCIE-40GB

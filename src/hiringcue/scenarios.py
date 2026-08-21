@@ -15,6 +15,8 @@ that violates them produces measurements that cannot be interpreted:
     S4  every hard gate has a declared minimum margin unit
     S5  near-threshold candidates sit exactly one minimum unit from the bar
     S6  no soft criterion appears in the gate set
+    S8  soft profiles vary across an occupation's bands and are spread across the set
+        (binds from scenario set 2.0.0, which is the first set authored to satisfy it)
 
 S1 and S6 protect the gold label. S2 and S3 are what leave the suitability
 score room to move for reasons the qualification rule does not already fix: a
@@ -24,6 +26,9 @@ cue could plausibly flip a decision.
 """
 
 from __future__ import annotations
+
+import math
+from collections import Counter
 
 import json
 from dataclasses import dataclass, field
@@ -233,6 +238,7 @@ def validated_families(source_dir=None, apply_exclusions: bool = True) -> list[S
     for family in families:
         validate_family(family)
     _validate_ambiguity_floor(families)
+    _validate_profile_balance(families)
     return families
 
 
@@ -254,6 +260,76 @@ def _validate_ambiguity_floor(families: list[ScenarioFamily]) -> None:
         raise ScenarioError(
             "near-threshold families below the set median ambiguity score "
             f"({median}): {thin}"
+        )
+
+
+def profile_shape(family: ScenarioFamily) -> tuple[tuple[str, str], ...]:
+    """Which criteria the applicant is strong and weak on, ignoring wording."""
+    return tuple(
+        (entry["criterion_id"], entry["position"]) for entry in family.soft_profile
+    )
+
+
+def profile_balance_required(version: str | None = None) -> bool:
+    """Whether S8 binds for the scenario set currently configured.
+
+    S8 is a property of the stimuli, not of the pipeline, and the set frozen for
+    the first pilot does not satisfy it. Enforcing it against that set would
+    stop the pipeline from running at all, which would prevent the instrument
+    changes from being evaluated separately from the stimulus changes. It binds
+    from the re-authored set onward, so the requirement is recorded and tested
+    now and cannot be quietly skipped when that set is built.
+    """
+    version = version or config.study()["sources"]["scenario_set_version"]
+    return int(str(version).split(".")[0]) >= 2
+
+
+def _validate_profile_balance(families: list[ScenarioFamily]) -> None:
+    """S8: soft profiles are crossed with margin band, not nested in occupation.
+
+    A profile held constant across an occupation's bands gives the set as many
+    distinct evidence profiles as it has occupations rather than families, and
+    makes the soft layer perfectly collinear with occupation. Nothing then
+    distinguishes a score that weighs the criteria from one that carries a fixed
+    prior per job, and the between-scenario variance the design relies on for
+    the score's room to move is not in the stimuli at all.
+
+    Balance is required as well as variation: a shape that recurs across the set
+    reintroduces the same collinearity one level up.
+    """
+    if not profile_balance_required():
+        return
+
+    degenerate = [
+        slug
+        for slug, group in iter_by_occupation(families)
+        if len(group) > 1 and len({profile_shape(family) for family in group}) == 1
+    ]
+    if degenerate:
+        raise ScenarioError(
+            "soft profile does not vary across the margin bands of "
+            f"{degenerate}, so the soft layer is collinear with occupation"
+        )
+
+    counts = Counter(profile_shape(family) for family in families)
+    if len(counts) < len(MARGIN_BANDS):
+        raise ScenarioError(
+            f"{len(counts)} distinct soft-profile shapes across {len(families)} "
+            f"families, need at least {len(MARGIN_BANDS)} so that shape is not "
+            "determined by margin band"
+        )
+
+    # Twice an even share. Exact balance is not achievable when the family count
+    # is not a multiple of the shape count, and forcing it would constrain the
+    # authored set for no measurable gain; the bound is there to catch a shape
+    # that dominates, which is the collinearity S8 exists to prevent.
+    limit = 2 * math.ceil(len(families) / len(counts))
+    overused = sorted(count for count in counts.values() if count > limit)
+    if overused:
+        raise ScenarioError(
+            f"soft-profile shapes recur more than {limit} times across "
+            f"{len(families)} families (highest {overused[-1]}); shapes must be "
+            "spread across occupations and bands"
         )
 
 

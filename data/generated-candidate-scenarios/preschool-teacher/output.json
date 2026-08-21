@@ -69,31 +69,31 @@
       "soft_profile": [
         {
           "criterion_id": "SC1",
-          "candidate_evidence": "Demonstrates strong ability to manage classroom behavior, rules, procedures, and daily preschool operations.",
-          "position": "above"
+          "candidate_evidence": "A classroom transition plan relied on repeated correction after problems emerged and provided no stable routine for the group.",
+          "position": "below"
         },
         {
           "criterion_id": "SC2",
-          "candidate_evidence": "Has limited demonstrated ability to adapt teaching methods and activities to children's varying learning needs.",
+          "candidate_evidence": "An activity demonstration kept one approach despite clear signs that some children could not access the task.",
           "position": "below"
         },
         {
           "criterion_id": "SC3",
-          "candidate_evidence": "Shows planning and organization ability that is broadly comparable to the role's needs.",
-          "position": "close"
+          "candidate_evidence": "A lesson plan listed disconnected activities without workable transitions, preparation logic, or a coherent learning purpose.",
+          "position": "below"
         },
         {
           "criterion_id": "SC4",
-          "candidate_evidence": "Demonstrates strong ability to identify and address learning, developmental, or behavioral problems.",
+          "candidate_evidence": "An observation vignette distinguished a recurring learning barrier from situational behavior and proposed a proportionate classroom response.",
           "position": "above"
         },
         {
           "criterion_id": "SC5",
-          "candidate_evidence": "Has limited demonstrated experience working constructively with children, parents, guardians, and other teaching professionals.",
-          "position": "below"
+          "candidate_evidence": "A family meeting simulation conveyed the main concern respectfully, though shared planning and follow-up expectations remained vague.",
+          "position": "close"
         }
       ],
-      "candidate_summary": "Preschool experience: 0 years. Special education environment experience: 1 year. Classroom management evidence: demonstrates strong ability to manage classroom behavior, rules, procedures, and daily preschool operations. Adapted teaching evidence: has limited demonstrated ability to adapt teaching methods and activities to children's varying learning needs. Planning and organization evidence: shows planning and organization ability that is broadly comparable to the role's needs. Problem-solving evidence: demonstrates strong ability to identify and address learning, developmental, or behavioral problems. Collaboration evidence: has limited demonstrated experience working constructively with children, parents, guardians, and other teaching professionals."
+      "candidate_summary": "Experience in preschool: 0 years. Experience in a special education environment: 1 years. Other job-related evidence: A classroom transition plan relied on repeated correction after problems emerged and provided no stable routine for the group. An activity demonstration kept one approach despite clear signs that some children could not access the task. A lesson plan listed disconnected activities without workable transitions, preparation logic, or a coherent learning purpose. An observation vignette distinguished a recurring learning barrier from situational behavior and proposed a proportionate classroom response. A family meeting simulation conveyed the main concern respectfully, though shared planning and follow-up expectations remained vague."
     },
     {
       "margin_band": "near_fail",
@@ -110,31 +110,31 @@
       "soft_profile": [
         {
           "criterion_id": "SC1",
-          "candidate_evidence": "Demonstrates strong ability to manage classroom behavior, rules, procedures, and daily preschool operations.",
-          "position": "above"
+          "candidate_evidence": "A classroom transition plan established a usable routine, though responses to disruption and disengagement were inconsistent.",
+          "position": "close"
         },
         {
           "criterion_id": "SC2",
-          "candidate_evidence": "Has limited demonstrated ability to adapt teaching methods and activities to children's varying learning needs.",
+          "candidate_evidence": "An activity demonstration kept one approach despite clear signs that some children could not access the task.",
           "position": "below"
         },
         {
           "criterion_id": "SC3",
-          "candidate_evidence": "Shows planning and organization ability that is broadly comparable to the role's needs.",
-          "position": "close"
+          "candidate_evidence": "A lesson plan connected play, language, and reflection in a clear sequence with smooth transitions and purposeful materials.",
+          "position": "above"
         },
         {
           "criterion_id": "SC4",
-          "candidate_evidence": "Demonstrates strong ability to identify and address learning, developmental, or behavioral problems.",
+          "candidate_evidence": "An observation vignette distinguished a recurring learning barrier from situational behavior and proposed a proportionate classroom response.",
           "position": "above"
         },
         {
           "criterion_id": "SC5",
-          "candidate_evidence": "Has limited demonstrated experience working constructively with children, parents, guardians, and other teaching professionals.",
-          "position": "below"
+          "candidate_evidence": "A family meeting simulation listened carefully, translated classroom observations clearly, and established a constructive shared plan.",
+          "position": "above"
         }
       ],
-      "candidate_summary": "Preschool experience: 1 year. Special education environment experience: 4 years. Classroom management evidence: demonstrates strong ability to manage classroom behavior, rules, procedures, and daily preschool operations. Adapted teaching evidence: has limited demonstrated ability to adapt teaching methods and activities to children's varying learning needs. Planning and organization evidence: shows planning and organization ability that is broadly comparable to the role's needs. Problem-solving evidence: demonstrates strong ability to identify and address learning, developmental, or behavioral problems. Collaboration evidence: has limited demonstrated experience working constructively with children, parents, guardians, and other teaching professionals."
+      "candidate_summary": "Experience in preschool: 1 years. Experience in a special education environment: 4 years. Other job-related evidence: A classroom transition plan established a usable routine, though responses to disruption and disengagement were inconsistent. An activity demonstration kept one approach despite clear signs that some children could not access the task. A lesson plan connected play, language, and reflection in a clear sequence with smooth transitions and purposeful materials. An observation vignette distinguished a recurring learning barrier from situational behavior and proposed a proportionate classroom response. A family meeting simulation listened carefully, translated classroom observations clearly, and established a constructive shared plan."
     },
     {
       "margin_band": "near_pass",
@@ -151,31 +151,31 @@
       "soft_profile": [
         {
           "criterion_id": "SC1",
-          "candidate_evidence": "Demonstrates strong ability to manage classroom behavior, rules, procedures, and daily preschool operations.",
-          "position": "above"
+          "candidate_evidence": "A classroom transition plan relied on repeated correction after problems emerged and provided no stable routine for the group.",
+          "position": "below"
         },
         {
           "criterion_id": "SC2",
-          "candidate_evidence": "Has limited demonstrated ability to adapt teaching methods and activities to children's varying learning needs.",
-          "position": "below"
-        },
-        {
-          "criterion_id": "SC3",
-          "candidate_evidence": "Shows planning and organization ability that is broadly comparable to the role's needs.",
-          "position": "close"
-        },
-        {
-          "criterion_id": "SC4",
-          "candidate_evidence": "Demonstrates strong ability to identify and address learning, developmental, or behavioral problems.",
+          "candidate_evidence": "An activity demonstration offered multiple ways to participate and adjusted materials when a child struggled with the original task.",
           "position": "above"
         },
         {
+          "criterion_id": "SC3",
+          "candidate_evidence": "A lesson plan connected play, language, and reflection in a clear sequence with smooth transitions and purposeful materials.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "An observation vignette identified a plausible concern, but the evidence and proposed response remained only partly connected.",
+          "position": "close"
+        },
+        {
           "criterion_id": "SC5",
-          "candidate_evidence": "Has limited demonstrated experience working constructively with children, parents, guardians, and other teaching professionals.",
+          "candidate_evidence": "A family meeting simulation dismissed important concerns, used unclear language, and ended without a workable collaborative next step.",
           "position": "below"
         }
       ],
-      "candidate_summary": "Preschool experience: 2 years. Special education environment experience: 4 years. Classroom management evidence: demonstrates strong ability to manage classroom behavior, rules, procedures, and daily preschool operations. Adapted teaching evidence: has limited demonstrated ability to adapt teaching methods and activities to children's varying learning needs. Planning and organization evidence: shows planning and organization ability that is broadly comparable to the role's needs. Problem-solving evidence: demonstrates strong ability to identify and address learning, developmental, or behavioral problems. Collaboration evidence: has limited demonstrated experience working constructively with children, parents, guardians, and other teaching professionals."
+      "candidate_summary": "Experience in preschool: 2 years. Experience in a special education environment: 4 years. Other job-related evidence: A classroom transition plan relied on repeated correction after problems emerged and provided no stable routine for the group. An activity demonstration offered multiple ways to participate and adjusted materials when a child struggled with the original task. A lesson plan connected play, language, and reflection in a clear sequence with smooth transitions and purposeful materials. An observation vignette identified a plausible concern, but the evidence and proposed response remained only partly connected. A family meeting simulation dismissed important concerns, used unclear language, and ended without a workable collaborative next step."
     },
     {
       "margin_band": "clear_pass",
@@ -192,31 +192,31 @@
       "soft_profile": [
         {
           "criterion_id": "SC1",
-          "candidate_evidence": "Demonstrates strong ability to manage classroom behavior, rules, procedures, and daily preschool operations.",
+          "candidate_evidence": "A classroom transition plan anticipated common escalation points and used calm routines that kept children engaged and safe.",
           "position": "above"
         },
         {
           "criterion_id": "SC2",
-          "candidate_evidence": "Has limited demonstrated ability to adapt teaching methods and activities to children's varying learning needs.",
-          "position": "below"
-        },
-        {
-          "criterion_id": "SC3",
-          "candidate_evidence": "Shows planning and organization ability that is broadly comparable to the role's needs.",
+          "candidate_evidence": "An activity demonstration included a basic alternative, but adjustments did not fully address different learning needs.",
           "position": "close"
         },
         {
+          "criterion_id": "SC3",
+          "candidate_evidence": "A lesson plan listed disconnected activities without workable transitions, preparation logic, or a coherent learning purpose.",
+          "position": "below"
+        },
+        {
           "criterion_id": "SC4",
-          "candidate_evidence": "Demonstrates strong ability to identify and address learning, developmental, or behavioral problems.",
-          "position": "above"
+          "candidate_evidence": "An observation vignette assigned a quick explanation to the behavior and proposed a response unrelated to the observed pattern.",
+          "position": "below"
         },
         {
           "criterion_id": "SC5",
-          "candidate_evidence": "Has limited demonstrated experience working constructively with children, parents, guardians, and other teaching professionals.",
+          "candidate_evidence": "A family meeting simulation dismissed important concerns, used unclear language, and ended without a workable collaborative next step.",
           "position": "below"
         }
       ],
-      "candidate_summary": "Preschool experience: 6 years. Special education environment experience: 8 years. Classroom management evidence: demonstrates strong ability to manage classroom behavior, rules, procedures, and daily preschool operations. Adapted teaching evidence: has limited demonstrated ability to adapt teaching methods and activities to children's varying learning needs. Planning and organization evidence: shows planning and organization ability that is broadly comparable to the role's needs. Problem-solving evidence: demonstrates strong ability to identify and address learning, developmental, or behavioral problems. Collaboration evidence: has limited demonstrated experience working constructively with children, parents, guardians, and other teaching professionals."
+      "candidate_summary": "Experience in preschool: 6 years. Experience in a special education environment: 8 years. Other job-related evidence: A classroom transition plan anticipated common escalation points and used calm routines that kept children engaged and safe. An activity demonstration included a basic alternative, but adjustments did not fully address different learning needs. A lesson plan listed disconnected activities without workable transitions, preparation logic, or a coherent learning purpose. An observation vignette assigned a quick explanation to the behavior and proposed a response unrelated to the observed pattern. A family meeting simulation dismissed important concerns, used unclear language, and ended without a workable collaborative next step."
     }
   ]
 }

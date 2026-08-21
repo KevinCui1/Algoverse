@@ -1,0 +1,842 @@
+{
+  "source": {
+    "dataset": "Validated names for experimental studies on race and ethnicity",
+    "doi": "10.7910/DVN/LP4EAR",
+    "pooled_file": "study123.csv",
+    "names_file": "names.csv"
+  },
+  "roster": {
+    "white": {
+      "n": 100,
+      "min": 0.6125,
+      "median": 0.823,
+      "max": 0.9307,
+      "mean": 0.8162
+    },
+    "black": {
+      "n": 100,
+      "min": 0.2292,
+      "median": 0.68,
+      "max": 0.8913,
+      "mean": 0.6495
+    }
+  },
+  "caliper": 0.005,
+  "balance": {
+    "pairs": 32,
+    "white_mean": 0.764146875,
+    "black_mean": 0.7646124999999999,
+    "standardised_mean_difference": -0.007519048611467564,
+    "maximum_within_pair_difference": 0.0043999999999999595,
+    "mean_within_pair_difference": 0.0016093749999999928,
+    "kolmogorov_smirnov_p": 0.9999999976563841,
+    "floor": 0.6125
+  },
+  "counts": {
+    "pairs": 32,
+    "development": 8,
+    "confirmatory": 24
+  },
+  "pairs": [
+    {
+      "pair_id": "pair_000",
+      "role": "confirmatory",
+      "accuracy_difference": 0.0,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_172",
+          "full_name": "Robert Johnston",
+          "attribution_accuracy": 0.68,
+          "n_judgements": 100,
+          "perceived_income": 2.0,
+          "perceived_education": 2.09,
+          "perceived_citizenship": 0.94
+        },
+        "black": {
+          "stimulus_id": "vn_black_067",
+          "full_name": "Latoya Weaver",
+          "attribution_accuracy": 0.68,
+          "n_judgements": 50,
+          "perceived_income": 1.86,
+          "perceived_education": 1.98,
+          "perceived_citizenship": 0.94
+        }
+      }
+    },
+    {
+      "pair_id": "pair_001",
+      "role": "confirmatory",
+      "accuracy_difference": 0.0,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_110",
+          "full_name": "James Hansen",
+          "attribution_accuracy": 0.7241,
+          "n_judgements": 87,
+          "perceived_income": 1.8837209302325582,
+          "perceived_education": 1.9770114942528736,
+          "perceived_citizenship": 0.9655172413793104
+        },
+        "black": {
+          "stimulus_id": "vn_black_012",
+          "full_name": "Ebony Fox",
+          "attribution_accuracy": 0.7241,
+          "n_judgements": 58,
+          "perceived_income": 1.7586206896551724,
+          "perceived_education": 1.896551724137931,
+          "perceived_citizenship": 0.9482758620689655
+        }
+      }
+    },
+    {
+      "pair_id": "pair_002",
+      "role": "confirmatory",
+      "accuracy_difference": 0.0,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_194",
+          "full_name": "William Meyer",
+          "attribution_accuracy": 0.8,
+          "n_judgements": 110,
+          "perceived_income": 2.0272727272727273,
+          "perceived_education": 2.172727272727273,
+          "perceived_citizenship": 0.9454545454545454
+        },
+        "black": {
+          "stimulus_id": "vn_black_096",
+          "full_name": "Tanisha Washington",
+          "attribution_accuracy": 0.8,
+          "n_judgements": 55,
+          "perceived_income": 1.8363636363636364,
+          "perceived_education": 1.7454545454545454,
+          "perceived_citizenship": 0.9636363636363636
+        }
+      }
+    },
+    {
+      "pair_id": "pair_003",
+      "role": "development",
+      "accuracy_difference": 0.0001,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_154",
+          "full_name": "Michael Meyer",
+          "attribution_accuracy": 0.8155,
+          "n_judgements": 103,
+          "perceived_income": 1.912621359223301,
+          "perceived_education": 1.9509803921568627,
+          "perceived_citizenship": 0.9611650485436893
+        },
+        "black": {
+          "stimulus_id": "vn_black_088",
+          "full_name": "Tamika Williams",
+          "attribution_accuracy": 0.8154,
+          "n_judgements": 65,
+          "perceived_income": 1.8307692307692307,
+          "perceived_education": 2.0,
+          "perceived_citizenship": 0.9384615384615385
+        }
+      }
+    },
+    {
+      "pair_id": "pair_004",
+      "role": "development",
+      "accuracy_difference": -0.0002,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_155",
+          "full_name": "Michael Olson",
+          "attribution_accuracy": 0.7295,
+          "n_judgements": 122,
+          "perceived_income": 2.040983606557377,
+          "perceived_education": 2.139344262295082,
+          "perceived_citizenship": 0.9262295081967213
+        },
+        "black": {
+          "stimulus_id": "vn_black_056",
+          "full_name": "Latonya Washington",
+          "attribution_accuracy": 0.7297,
+          "n_judgements": 74,
+          "perceived_income": 1.7297297297297298,
+          "perceived_education": 1.9054054054054055,
+          "perceived_citizenship": 0.9324324324324325
+        }
+      }
+    },
+    {
+      "pair_id": "pair_005",
+      "role": "confirmatory",
+      "accuracy_difference": 0.0002,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_164",
+          "full_name": "Richard Meyer",
+          "attribution_accuracy": 0.8646,
+          "n_judgements": 96,
+          "perceived_income": 2.0833333333333335,
+          "perceived_education": 2.1157894736842104,
+          "perceived_citizenship": 0.9583333333333334
+        },
+        "black": {
+          "stimulus_id": "vn_black_083",
+          "full_name": "Tamika Jackson",
+          "attribution_accuracy": 0.8644,
+          "n_judgements": 59,
+          "perceived_income": 1.88135593220339,
+          "perceived_education": 2.0508474576271185,
+          "perceived_citizenship": 0.9661016949152542
+        }
+      }
+    },
+    {
+      "pair_id": "pair_006",
+      "role": "development",
+      "accuracy_difference": 0.0003,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_168",
+          "full_name": "Richard Snyder",
+          "attribution_accuracy": 0.7564,
+          "n_judgements": 78,
+          "perceived_income": 2.0256410256410255,
+          "perceived_education": 2.141025641025641,
+          "perceived_citizenship": 0.9487179487179487
+        },
+        "black": {
+          "stimulus_id": "vn_black_092",
+          "full_name": "Tanisha Fox",
+          "attribution_accuracy": 0.7561,
+          "n_judgements": 82,
+          "perceived_income": 1.7804878048780488,
+          "perceived_education": 1.8048780487804879,
+          "perceived_citizenship": 0.9512195121951219
+        }
+      }
+    },
+    {
+      "pair_id": "pair_007",
+      "role": "confirmatory",
+      "accuracy_difference": -0.0003,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_116",
+          "full_name": "James Ryan",
+          "attribution_accuracy": 0.8488,
+          "n_judgements": 86,
+          "perceived_income": 1.930232558139535,
+          "perceived_education": 2.0232558139534884,
+          "perceived_citizenship": 0.9534883720930233
+        },
+        "black": {
+          "stimulus_id": "vn_black_039",
+          "full_name": "Lakisha Wood",
+          "attribution_accuracy": 0.8491,
+          "n_judgements": 53,
+          "perceived_income": 1.8867924528301887,
+          "perceived_education": 2.076923076923077,
+          "perceived_citizenship": 0.9056603773584906
+        }
+      }
+    },
+    {
+      "pair_id": "pair_008",
+      "role": "confirmatory",
+      "accuracy_difference": 0.0005,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_182",
+          "full_name": "Thomas Johnston",
+          "attribution_accuracy": 0.6979,
+          "n_judgements": 96,
+          "perceived_income": 1.9052631578947368,
+          "perceived_education": 1.84375,
+          "perceived_citizenship": 0.9375
+        },
+        "black": {
+          "stimulus_id": "vn_black_016",
+          "full_name": "Ebony Washington",
+          "attribution_accuracy": 0.6974,
+          "n_judgements": 76,
+          "perceived_income": 1.8289473684210527,
+          "perceived_education": 1.9605263157894737,
+          "perceived_citizenship": 0.9342105263157895
+        }
+      }
+    },
+    {
+      "pair_id": "pair_009",
+      "role": "confirmatory",
+      "accuracy_difference": -0.0005,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_135",
+          "full_name": "Mark Olson",
+          "attribution_accuracy": 0.789,
+          "n_judgements": 109,
+          "perceived_income": 2.0091743119266057,
+          "perceived_education": 2.018348623853211,
+          "perceived_citizenship": 0.8807339449541285
+        },
+        "black": {
+          "stimulus_id": "vn_black_034",
+          "full_name": "Lakisha Stone",
+          "attribution_accuracy": 0.7895,
+          "n_judgements": 57,
+          "perceived_income": 1.7142857142857142,
+          "perceived_education": 1.8928571428571428,
+          "perceived_citizenship": 0.8421052631578947
+        }
+      }
+    },
+    {
+      "pair_id": "pair_010",
+      "role": "confirmatory",
+      "accuracy_difference": -0.0007,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_160",
+          "full_name": "Richard Hansen",
+          "attribution_accuracy": 0.7629,
+          "n_judgements": 97,
+          "perceived_income": 2.134020618556701,
+          "perceived_education": 2.247422680412371,
+          "perceived_citizenship": 0.9587628865979382
+        },
+        "black": {
+          "stimulus_id": "vn_black_066",
+          "full_name": "Latoya Washington",
+          "attribution_accuracy": 0.7636,
+          "n_judgements": 55,
+          "perceived_income": 1.7272727272727273,
+          "perceived_education": 1.9636363636363636,
+          "perceived_citizenship": 0.9272727272727272
+        }
+      }
+    },
+    {
+      "pair_id": "pair_011",
+      "role": "confirmatory",
+      "accuracy_difference": -0.0008,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_119",
+          "full_name": "James Wagner",
+          "attribution_accuracy": 0.7416,
+          "n_judgements": 89,
+          "perceived_income": 1.9438202247191012,
+          "perceived_education": 2.134831460674157,
+          "perceived_citizenship": 0.9775280898876404
+        },
+        "black": {
+          "stimulus_id": "vn_black_023",
+          "full_name": "Jermaine Jackson",
+          "attribution_accuracy": 0.7424,
+          "n_judgements": 66,
+          "perceived_income": 1.878787878787879,
+          "perceived_education": 1.9545454545454546,
+          "perceived_citizenship": 0.9545454545454546
+        }
+      }
+    },
+    {
+      "pair_id": "pair_012",
+      "role": "confirmatory",
+      "accuracy_difference": -0.0009,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_124",
+          "full_name": "John Meyer",
+          "attribution_accuracy": 0.8516,
+          "n_judgements": 128,
+          "perceived_income": 2.141732283464567,
+          "perceived_education": 2.15748031496063,
+          "perceived_citizenship": 0.96875
+        },
+        "black": {
+          "stimulus_id": "vn_black_043",
+          "full_name": "Latasha Jackson",
+          "attribution_accuracy": 0.8525,
+          "n_judgements": 61,
+          "perceived_income": 1.7540983606557377,
+          "perceived_education": 1.8852459016393444,
+          "perceived_citizenship": 0.9836065573770492
+        }
+      }
+    },
+    {
+      "pair_id": "pair_013",
+      "role": "development",
+      "accuracy_difference": 0.0011,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_143",
+          "full_name": "Mary Larson",
+          "attribution_accuracy": 0.7471,
+          "n_judgements": 87,
+          "perceived_income": 1.9770114942528736,
+          "perceived_education": 2.116279069767442,
+          "perceived_citizenship": 0.9770114942528736
+        },
+        "black": {
+          "stimulus_id": "vn_black_029",
+          "full_name": "Jermaine Wood",
+          "attribution_accuracy": 0.746,
+          "n_judgements": 63,
+          "perceived_income": 1.7777777777777777,
+          "perceived_education": 1.7619047619047619,
+          "perceived_citizenship": 0.9841269841269841
+        }
+      }
+    },
+    {
+      "pair_id": "pair_014",
+      "role": "confirmatory",
+      "accuracy_difference": -0.0012,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_192",
+          "full_name": "William Johnston",
+          "attribution_accuracy": 0.6897,
+          "n_judgements": 116,
+          "perceived_income": 2.0,
+          "perceived_education": 2.1551724137931036,
+          "perceived_citizenship": 0.9655172413793104
+        },
+        "black": {
+          "stimulus_id": "vn_black_037",
+          "full_name": "Lakisha Weaver",
+          "attribution_accuracy": 0.6909,
+          "n_judgements": 55,
+          "perceived_income": 1.7272727272727273,
+          "perceived_education": 1.8,
+          "perceived_citizenship": 0.9090909090909091
+        }
+      }
+    },
+    {
+      "pair_id": "pair_015",
+      "role": "confirmatory",
+      "accuracy_difference": -0.0014,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_195",
+          "full_name": "William Olson",
+          "attribution_accuracy": 0.7174,
+          "n_judgements": 92,
+          "perceived_income": 1.934782608695652,
+          "perceived_education": 2.0434782608695654,
+          "perceived_citizenship": 0.9347826086956522
+        },
+        "black": {
+          "stimulus_id": "vn_black_028",
+          "full_name": "Jermaine Williams",
+          "attribution_accuracy": 0.7188,
+          "n_judgements": 64,
+          "perceived_income": 1.8125,
+          "perceived_education": 1.953125,
+          "perceived_citizenship": 0.890625
+        }
+      }
+    },
+    {
+      "pair_id": "pair_016",
+      "role": "development",
+      "accuracy_difference": -0.0014,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_115",
+          "full_name": "James Olson",
+          "attribution_accuracy": 0.7812,
+          "n_judgements": 96,
+          "perceived_income": 1.9791666666666667,
+          "perceived_education": 1.9583333333333333,
+          "perceived_citizenship": 0.9583333333333334
+        },
+        "black": {
+          "stimulus_id": "vn_black_048",
+          "full_name": "Latasha Williams",
+          "attribution_accuracy": 0.7826,
+          "n_judgements": 69,
+          "perceived_income": 1.6470588235294117,
+          "perceived_education": 1.7794117647058822,
+          "perceived_citizenship": 0.8985507246376812
+        }
+      }
+    },
+    {
+      "pair_id": "pair_017",
+      "role": "confirmatory",
+      "accuracy_difference": -0.0014,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_178",
+          "full_name": "Robert Snyder",
+          "attribution_accuracy": 0.8899,
+          "n_judgements": 109,
+          "perceived_income": 2.073394495412844,
+          "perceived_education": 2.1296296296296298,
+          "perceived_citizenship": 0.9541284403669725
+        },
+        "black": {
+          "stimulus_id": "vn_black_033",
+          "full_name": "Lakisha Jackson",
+          "attribution_accuracy": 0.8913,
+          "n_judgements": 46,
+          "perceived_income": 1.7391304347826086,
+          "perceived_education": 1.5869565217391304,
+          "perceived_citizenship": 0.9565217391304348
+        }
+      }
+    },
+    {
+      "pair_id": "pair_018",
+      "role": "confirmatory",
+      "accuracy_difference": 0.0018,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_122",
+          "full_name": "John Johnston",
+          "attribution_accuracy": 0.7476,
+          "n_judgements": 103,
+          "perceived_income": 1.8529411764705883,
+          "perceived_education": 1.9223300970873787,
+          "perceived_citizenship": 0.941747572815534
+        },
+        "black": {
+          "stimulus_id": "vn_black_057",
+          "full_name": "Latonya Weaver",
+          "attribution_accuracy": 0.7458,
+          "n_judgements": 59,
+          "perceived_income": 1.7118644067796611,
+          "perceived_education": 1.847457627118644,
+          "perceived_citizenship": 0.8813559322033898
+        }
+      }
+    },
+    {
+      "pair_id": "pair_019",
+      "role": "confirmatory",
+      "accuracy_difference": -0.0018,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_100",
+          "full_name": "David Hansen",
+          "attribution_accuracy": 0.7885,
+          "n_judgements": 104,
+          "perceived_income": 2.0096153846153846,
+          "perceived_education": 2.0865384615384617,
+          "perceived_citizenship": 0.9423076923076923
+        },
+        "black": {
+          "stimulus_id": "vn_black_060",
+          "full_name": "Latoya Burke",
+          "attribution_accuracy": 0.7903,
+          "n_judgements": 62,
+          "perceived_income": 1.8548387096774193,
+          "perceived_education": 1.967741935483871,
+          "perceived_citizenship": 0.9516129032258065
+        }
+      }
+    },
+    {
+      "pair_id": "pair_020",
+      "role": "confirmatory",
+      "accuracy_difference": -0.0022,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_120",
+          "full_name": "John Hansen",
+          "attribution_accuracy": 0.8043,
+          "n_judgements": 92,
+          "perceived_income": 1.9782608695652173,
+          "perceived_education": 2.065934065934066,
+          "perceived_citizenship": 0.9565217391304348
+        },
+        "black": {
+          "stimulus_id": "vn_black_040",
+          "full_name": "Latasha Burke",
+          "attribution_accuracy": 0.8065,
+          "n_judgements": 62,
+          "perceived_income": 1.8064516129032258,
+          "perceived_education": 1.901639344262295,
+          "perceived_citizenship": 0.9193548387096774
+        }
+      }
+    },
+    {
+      "pair_id": "pair_021",
+      "role": "confirmatory",
+      "accuracy_difference": 0.0023,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_165",
+          "full_name": "Richard Olson",
+          "attribution_accuracy": 0.8333,
+          "n_judgements": 90,
+          "perceived_income": 2.111111111111111,
+          "perceived_education": 2.1777777777777776,
+          "perceived_citizenship": 0.9333333333333333
+        },
+        "black": {
+          "stimulus_id": "vn_black_063",
+          "full_name": "Latoya Jackson",
+          "attribution_accuracy": 0.831,
+          "n_judgements": 71,
+          "perceived_income": 1.9428571428571428,
+          "perceived_education": 1.9295774647887325,
+          "perceived_citizenship": 0.971830985915493
+        }
+      }
+    },
+    {
+      "pair_id": "pair_022",
+      "role": "development",
+      "accuracy_difference": 0.0024,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_177",
+          "full_name": "Robert Schmidt",
+          "attribution_accuracy": 0.7961,
+          "n_judgements": 103,
+          "perceived_income": 2.0,
+          "perceived_education": 2.2427184466019416,
+          "perceived_citizenship": 0.9223300970873787
+        },
+        "black": {
+          "stimulus_id": "vn_black_082",
+          "full_name": "Tamika Fox",
+          "attribution_accuracy": 0.7937,
+          "n_judgements": 63,
+          "perceived_income": 1.8412698412698412,
+          "perceived_education": 2.0,
+          "perceived_citizenship": 0.9523809523809523
+        }
+      }
+    },
+    {
+      "pair_id": "pair_023",
+      "role": "confirmatory",
+      "accuracy_difference": -0.0027,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_162",
+          "full_name": "Richard Johnston",
+          "attribution_accuracy": 0.7609,
+          "n_judgements": 92,
+          "perceived_income": 2.0,
+          "perceived_education": 2.1333333333333333,
+          "perceived_citizenship": 0.9782608695652174
+        },
+        "black": {
+          "stimulus_id": "vn_black_013",
+          "full_name": "Ebony Jackson",
+          "attribution_accuracy": 0.7636,
+          "n_judgements": 55,
+          "perceived_income": 1.9090909090909092,
+          "perceived_education": 2.111111111111111,
+          "perceived_citizenship": 0.9454545454545454
+        }
+      }
+    },
+    {
+      "pair_id": "pair_024",
+      "role": "confirmatory",
+      "accuracy_difference": 0.0027,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_113",
+          "full_name": "James Larson",
+          "attribution_accuracy": 0.7527,
+          "n_judgements": 93,
+          "perceived_income": 2.010989010989011,
+          "perceived_education": 2.0549450549450547,
+          "perceived_citizenship": 0.9032258064516129
+        },
+        "black": {
+          "stimulus_id": "vn_black_036",
+          "full_name": "Lakisha Washington",
+          "attribution_accuracy": 0.75,
+          "n_judgements": 56,
+          "perceived_income": 1.6607142857142858,
+          "perceived_education": 1.8928571428571428,
+          "perceived_citizenship": 0.9107142857142857
+        }
+      }
+    },
+    {
+      "pair_id": "pair_025",
+      "role": "confirmatory",
+      "accuracy_difference": -0.0027,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_142",
+          "full_name": "Mary Johnston",
+          "attribution_accuracy": 0.7579,
+          "n_judgements": 95,
+          "perceived_income": 1.9052631578947368,
+          "perceived_education": 2.0210526315789474,
+          "perceived_citizenship": 0.968421052631579
+        },
+        "black": {
+          "stimulus_id": "vn_black_052",
+          "full_name": "Latonya Fox",
+          "attribution_accuracy": 0.7606,
+          "n_judgements": 71,
+          "perceived_income": 1.676056338028169,
+          "perceived_education": 1.619718309859155,
+          "perceived_citizenship": 0.9014084507042254
+        }
+      }
+    },
+    {
+      "pair_id": "pair_026",
+      "role": "confirmatory",
+      "accuracy_difference": -0.0029,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_112",
+          "full_name": "James Johnston",
+          "attribution_accuracy": 0.6125,
+          "n_judgements": 80,
+          "perceived_income": 1.875,
+          "perceived_education": 2.15,
+          "perceived_citizenship": 0.95
+        },
+        "black": {
+          "stimulus_id": "vn_black_002",
+          "full_name": "Darnell Fox",
+          "attribution_accuracy": 0.6154,
+          "n_judgements": 65,
+          "perceived_income": 1.90625,
+          "perceived_education": 2.0307692307692307,
+          "perceived_citizenship": 0.9538461538461539
+        }
+      }
+    },
+    {
+      "pair_id": "pair_027",
+      "role": "confirmatory",
+      "accuracy_difference": 0.0032,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_152",
+          "full_name": "Michael Johnston",
+          "attribution_accuracy": 0.6235,
+          "n_judgements": 85,
+          "perceived_income": 1.8941176470588235,
+          "perceived_education": 2.0352941176470587,
+          "perceived_citizenship": 0.9764705882352941
+        },
+        "black": {
+          "stimulus_id": "vn_black_009",
+          "full_name": "Darnell Wood",
+          "attribution_accuracy": 0.6203,
+          "n_judgements": 79,
+          "perceived_income": 1.7848101265822784,
+          "perceived_education": 1.8846153846153846,
+          "perceived_citizenship": 0.9873417721518988
+        }
+      }
+    },
+    {
+      "pair_id": "pair_028",
+      "role": "confirmatory",
+      "accuracy_difference": -0.0036,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_190",
+          "full_name": "William Hansen",
+          "attribution_accuracy": 0.7742,
+          "n_judgements": 93,
+          "perceived_income": 2.086021505376344,
+          "perceived_education": 2.3118279569892475,
+          "perceived_citizenship": 0.946236559139785
+        },
+        "black": {
+          "stimulus_id": "vn_black_098",
+          "full_name": "Tanisha Williams",
+          "attribution_accuracy": 0.7778,
+          "n_judgements": 54,
+          "perceived_income": 1.8148148148148149,
+          "perceived_education": 1.8703703703703705,
+          "perceived_citizenship": 0.9074074074074074
+        }
+      }
+    },
+    {
+      "pair_id": "pair_029",
+      "role": "development",
+      "accuracy_difference": 0.0037,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_103",
+          "full_name": "David Larson",
+          "attribution_accuracy": 0.8125,
+          "n_judgements": 128,
+          "perceived_income": 2.0,
+          "perceived_education": 2.09375,
+          "perceived_citizenship": 0.9609375
+        },
+        "black": {
+          "stimulus_id": "vn_black_058",
+          "full_name": "Latonya Williams",
+          "attribution_accuracy": 0.8088,
+          "n_judgements": 68,
+          "perceived_income": 1.838235294117647,
+          "perceived_education": 1.8823529411764706,
+          "perceived_citizenship": 0.9411764705882353
+        }
+      }
+    },
+    {
+      "pair_id": "pair_030",
+      "role": "confirmatory",
+      "accuracy_difference": -0.0041,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_156",
+          "full_name": "Michael Ryan",
+          "attribution_accuracy": 0.764,
+          "n_judgements": 89,
+          "perceived_income": 1.9325842696629214,
+          "perceived_education": 2.0224719101123596,
+          "perceived_citizenship": 0.9662921348314607
+        },
+        "black": {
+          "stimulus_id": "vn_black_038",
+          "full_name": "Lakisha Williams",
+          "attribution_accuracy": 0.7681,
+          "n_judgements": 69,
+          "perceived_income": 1.7246376811594204,
+          "perceived_education": 1.9420289855072463,
+          "perceived_citizenship": 0.9855072463768116
+        }
+      }
+    },
+    {
+      "pair_id": "pair_031",
+      "role": "development",
+      "accuracy_difference": -0.0044,
+      "names": {
+        "white": {
+          "stimulus_id": "vn_white_153",
+          "full_name": "Michael Larson",
+          "attribution_accuracy": 0.7375,
+          "n_judgements": 80,
+          "perceived_income": 1.9125,
+          "perceived_education": 2.0875,
+          "perceived_citizenship": 0.9375
+        },
+        "black": {
+          "stimulus_id": "vn_black_018",
+          "full_name": "Ebony Williams",
+          "attribution_accuracy": 0.7419,
+          "n_judgements": 62,
+          "perceived_income": 1.8387096774193548,
+          "perceived_education": 2.064516129032258,
+          "perceived_citizenship": 0.967741935483871
+        }
+      }
+    }
+  ]
+}

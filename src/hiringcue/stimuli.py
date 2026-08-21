@@ -3,13 +3,17 @@
 Two manipulations are crossed with every scenario family.
 
 *Name cues.* First-and-last-name stimuli drawn from the Validated Names
-replication data, retained only above a perception threshold recorded in
-`configs/stimuli.yaml`. A name is a bundled treatment: it carries perceived
-race together with perceived class, citizenship, and name-specific
-associations, and the published perception ratings for those attributes are
-mediators of race rather than rival causes. They are therefore reported
-descriptively and never used to match or adjust. The measured quantity is the
-effect of a name cue as it would arrive in a deployed system.
+replication data and organised as matched pairs, one name from each arm, whose
+attribution accuracies differ by no more than a recorded caliper. Matching
+rather than thresholding is what makes the arms comparable: the two rosters do
+not share an attribution-accuracy distribution, so a single threshold applied to
+both selects one near its centre and the other from its upper tail, which
+confounds cue strength with the group signalled. A name remains a bundled
+treatment - it carries perceived class, citizenship and name-specific
+associations alongside perceived race - and those perceptions are mediators of
+race rather than rival causes, so they are reported descriptively and never used
+to match or adjust. The measured quantity is the effect of a name cue as it
+would arrive in a deployed system.
 
 *Credential prestige.* Two institution stimuli, identical in every fact that
 bears on the qualification rule and differing only in institutional standing.
@@ -17,7 +21,12 @@ This manipulates perceived class directly instead of adjusting for it, and
 supplies a within-study reference effect against which the name effect can be
 sized.
 
-The name file is not vendored. `data/stimuli/names.json` is produced by
+The name pair is a random factor in the analysis, so pairs are crossed with
+every scenario family rather than assigned one per family. A fixed set of pairs
+reused across families would put every family mean on the same draw of the name
+effect, where a family-clustered interval cannot see it.
+
+The pair file is not vendored. `data/stimuli/name_pairs.json` is produced by
 `scripts/build_name_stimuli.py` from the published replication data and is
 required before any prompt can be rendered.
 """
@@ -25,7 +34,6 @@ required before any prompt can be rendered.
 from __future__ import annotations
 
 import json
-import random
 from dataclasses import dataclass
 from typing import Any
 
@@ -61,15 +69,36 @@ class StimulusError(ValueError):
     """Raised when the stimulus pool does not meet its declared requirements."""
 
 
+DEVELOPMENT = "development"
+CONFIRMATORY = "confirmatory"
+
+
 @dataclass(frozen=True)
 class Name:
     stimulus_id: str
     full_name: str
     group: str
-    mean_correct: float
+    attribution_accuracy: float
     perceived_income: float | None
     perceived_education: float | None
     perceived_citizenship: float | None
+
+
+@dataclass(frozen=True)
+class NamePair:
+    """One matched White-associated and Black-associated stimulus."""
+
+    pair_id: str
+    role: str
+    white: Name
+    black: Name
+
+    def arm(self, group: str) -> Name:
+        if group == "white":
+            return self.white
+        if group == "black":
+            return self.black
+        raise StimulusError(f"unknown identity arm {group!r}")
 
 
 @dataclass(frozen=True)
@@ -79,60 +108,79 @@ class Prestige:
     text: str
 
 
-def name_pool_path(allow_provisional: bool = False):
-    """Locate the name pool, preferring the validated file over the provisional one."""
-    validated = paths.STIMULI / "names.json"
-    if validated.exists():
-        return validated
-    provisional = paths.STIMULI / "names.provisional.json"
-    if allow_provisional and provisional.exists():
-        return provisional
-    raise StimulusError(
-        f"{validated} is missing. Build it with scripts/build_name_stimuli.py, or pass "
-        "--allow-provisional to run a dry run against the provisional pool."
+def name_pair_path():
+    path = paths.STIMULI / "name_pairs.json"
+    if not path.exists():
+        raise StimulusError(
+            f"{path} is missing. Build it with scripts/build_name_stimuli.py from the "
+            "published replication data; there is no substitute pool, because an "
+            "unmatched pool reintroduces the arm asymmetry the matching removes."
+        )
+    return path
+
+
+def _name(record: dict[str, Any], group: str) -> Name:
+    return Name(
+        stimulus_id=record["stimulus_id"],
+        full_name=record["full_name"],
+        group=group,
+        attribution_accuracy=float(record["attribution_accuracy"]),
+        perceived_income=record.get("perceived_income"),
+        perceived_education=record.get("perceived_education"),
+        perceived_citizenship=record.get("perceived_citizenship"),
     )
 
 
-def is_provisional(path) -> bool:
-    return json.loads(path.read_text()).get("provisional", False)
+def load_pairs(role: str | None = None, path=None) -> list[NamePair]:
+    """Load the matched pairs, optionally restricted to one role.
 
-
-def load_names(path=None, allow_provisional: bool = False) -> dict[str, list[Name]]:
-    """Load the name pool and enforce the declared threshold and pool size."""
-    path = path or name_pool_path(allow_provisional=allow_provisional)
-    settings = config.stimuli()["names"]
-    threshold = float(settings["minimum_mean_correct"])
-    minimum_per_group = int(settings["minimum_per_group"])
-
+    Development and confirmatory pools are disjoint by construction and the
+    restriction is applied here rather than by the caller, so a round cannot
+    silently draw from the other pool. A deterministic readout returns the same
+    value for the same prompt, so a development prompt recollected for
+    confirmation reproduces the development measurement rather than producing an
+    independent observation.
+    """
+    path = path or name_pair_path()
     record = json.loads(path.read_text())
-    pool: dict[str, list[Name]] = {"white": [], "black": []}
-    for entry in record["names"]:
-        group = entry["group"]
-        if group not in pool:
-            raise StimulusError(f"unexpected name group {group!r}")
-        if float(entry["mean_correct"]) < threshold:
-            continue
-        pool[group].append(
-            Name(
-                stimulus_id=entry["stimulus_id"],
-                full_name=entry["full_name"],
-                group=group,
-                mean_correct=float(entry["mean_correct"]),
-                perceived_income=entry.get("perceived_income"),
-                perceived_education=entry.get("perceived_education"),
-                perceived_citizenship=entry.get("perceived_citizenship"),
-            )
-        )
+    settings = config.stimuli()["names"]["matching"]
 
-    for group, names in pool.items():
-        if len(names) < minimum_per_group:
-            raise StimulusError(
-                f"{group}: {len(names)} names clear mean_correct >= {threshold}, "
-                f"need {minimum_per_group}. A pool this small lets one stimulus carry the result."
-            )
-        if len({name.full_name for name in names}) != len(names):
-            raise StimulusError(f"{group}: duplicate names in the pool")
-    return pool
+    pairs = [
+        NamePair(
+            pair_id=entry["pair_id"],
+            role=entry["role"],
+            white=_name(entry["names"]["white"], "white"),
+            black=_name(entry["names"]["black"], "black"),
+        )
+        for entry in record["pairs"]
+        if role is None or entry["role"] == role
+    ]
+    if role is None and len(pairs) < int(settings["minimum_pairs"]):
+        raise StimulusError(
+            f"{len(pairs)} matched pairs available, need {settings['minimum_pairs']}. "
+            "Report the shortfall and re-run the sizing rule against the achievable "
+            "pair count rather than relaxing the matching."
+        )
+    if not pairs:
+        raise StimulusError(f"no name pairs with role {role!r} in {path}")
+
+    identifiers = [name.stimulus_id for pair in pairs for name in (pair.white, pair.black)]
+    if len(set(identifiers)) != len(identifiers):
+        raise StimulusError(f"{path}: a name stimulus appears in more than one pair")
+    return pairs
+
+
+def disjoint(left: list[NamePair], right: list[NamePair]) -> None:
+    """Hard stop on any overlap between two pools."""
+    shared = {pair.pair_id for pair in left} & {pair.pair_id for pair in right}
+    names = {name.full_name for pair in left for name in (pair.white, pair.black)} & {
+        name.full_name for pair in right for name in (pair.white, pair.black)
+    }
+    if shared or names:
+        raise StimulusError(
+            f"development and confirmatory name pools overlap: pairs {sorted(shared)}, "
+            f"names {sorted(names)}"
+        )
 
 
 def load_prestige() -> dict[str, Prestige]:
@@ -144,31 +192,6 @@ def load_prestige() -> dict[str, Prestige]:
             level=level, stimulus_id=entry["stimulus_id"], text=entry["text"]
         )
     return levels
-
-
-def assign_names(
-    family_ids: list[str], pool: dict[str, list[Name]], seed: int
-) -> dict[str, dict[str, Name]]:
-    """Assign one White-associated and one Black-associated name per family.
-
-    Names are drawn round-robin from a shuffled pool so each stimulus appears a
-    near-equal number of times across occupations and margin bands. Balance is
-    what makes the leave-one-name-out check meaningful: if one name carried the
-    effect and appeared only once, dropping it would look like noise.
-    """
-    rng = random.Random(seed)
-    assignment: dict[str, dict[str, Name]] = {}
-    cycles: dict[str, list[Name]] = {}
-    for group, names in pool.items():
-        shuffled = list(names)
-        rng.shuffle(shuffled)
-        cycles[group] = shuffled
-
-    for index, family_id in enumerate(sorted(family_ids)):
-        assignment[family_id] = {
-            group: cycles[group][index % len(cycles[group])] for group in cycles
-        }
-    return assignment
 
 
 def identity_block(condition: str, name: Name | None) -> str:
@@ -193,19 +216,20 @@ def reflection_label(condition: str) -> str | None:
     return labels[group] if group else None
 
 
-def pool_summary(pool: dict[str, list[Name]]) -> dict[str, Any]:
-    """Descriptive report of what each name group's bundle contains.
+def pool_summary(pairs: list[NamePair]) -> dict[str, Any]:
+    """Descriptive report of what each arm's bundle contains.
 
     Reported, never adjusted for: perceived income and education are downstream
     of perceived race, so conditioning on them would remove part of the effect
-    being estimated.
+    being estimated. Attribution accuracy is different in kind - it is how
+    strongly the stimulus delivers the cue at all - which is why it is the one
+    quantity the arms are matched on.
     """
 
     def stats(values: list[float]) -> dict[str, float] | None:
-        clean = [value for value in values if value is not None]
+        clean = sorted(value for value in values if value is not None)
         if not clean:
             return None
-        clean.sort()
         return {
             "n": len(clean),
             "min": clean[0],
@@ -214,13 +238,22 @@ def pool_summary(pool: dict[str, list[Name]]) -> dict[str, Any]:
             "mean": sum(clean) / len(clean),
         }
 
+    arms = {
+        "white": [pair.white for pair in pairs],
+        "black": [pair.black for pair in pairs],
+    }
     return {
-        group: {
-            "n": len(names),
-            "mean_correct": stats([name.mean_correct for name in names]),
-            "perceived_income": stats([name.perceived_income for name in names]),
-            "perceived_education": stats([name.perceived_education for name in names]),
-            "perceived_citizenship": stats([name.perceived_citizenship for name in names]),
-        }
-        for group, names in pool.items()
+        "pairs": len(pairs),
+        "arms": {
+            group: {
+                "n": len(names),
+                "attribution_accuracy": stats([name.attribution_accuracy for name in names]),
+                "perceived_income": stats([name.perceived_income for name in names]),
+                "perceived_education": stats([name.perceived_education for name in names]),
+                "perceived_citizenship": stats(
+                    [name.perceived_citizenship for name in names]
+                ),
+            }
+            for group, names in arms.items()
+        },
     }

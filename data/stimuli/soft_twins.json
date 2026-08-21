@@ -1,150 +1,591 @@
 {
   "twins": {
-    "ceo": [
+    "ceo__clear_fail": [
       {
         "criterion_id": "SC1",
-        "candidate_evidence": "Shows limited capacity to develop organizational objectives, strategies, and business plans.",
+        "candidate_evidence": "A strategy case failed to connect market changes to priorities and overlooked downstream risks in its recommendations.",
         "position": "below"
       },
       {
         "criterion_id": "SC2",
-        "candidate_evidence": "Demonstrates a reasonable ability to make decisions and address organizational problems.",
-        "position": "close"
+        "candidate_evidence": "An organizational case confused root causes with symptoms and proposed an unclear path forward amid uncertainty.",
+        "position": "below"
       },
       {
         "criterion_id": "SC3",
-        "candidate_evidence": "Demonstrates strong ability to direct and motivate personnel and coordinate organizational activities.",
-        "position": "above"
+        "candidate_evidence": "A leadership exercise struggled to align teams, created unclear priorities, and left roles and responsibilities ambiguous.",
+        "position": "below"
       },
       {
         "criterion_id": "SC4",
-        "candidate_evidence": "Shows limited evidence of managing and monitoring financial resources and organizational budgets.",
+        "candidate_evidence": "A budget review highlighted key pressures but proposed limited monitoring mechanisms and minimal contingency measures.",
+        "position": "close"
+      },
+      {
+        "criterion_id": "SC5",
+        "candidate_evidence": "A stakeholder simulation addressed key concerns, tailored assurances to specific audiences, and clarified commitments to external partners.",
+        "position": "above"
+      }
+    ],
+    "ceo__clear_pass": [
+      {
+        "criterion_id": "SC1",
+        "candidate_evidence": "A strategy case outlined achievable goals and priorities but did not fully address accountability or critical trade-offs.",
+        "position": "close"
+      },
+      {
+        "criterion_id": "SC2",
+        "candidate_evidence": "An organizational case identified root causes and evaluated multiple options before selecting a course of action.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC3",
+        "candidate_evidence": "A leadership exercise struggled to align teams and failed to clarify roles, leading to confusion and conflict.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC4",
+        "candidate_evidence": "A budget review overlooked key cost drivers and proposed controls that compromised essential operations.",
         "position": "below"
       },
       {
         "criterion_id": "SC5",
-        "candidate_evidence": "Demonstrates a reasonable ability to communicate and maintain relationships with organizational members and external stakeholders.",
-        "position": "close"
+        "candidate_evidence": "A stakeholder simulation failed to address conflicting perspectives and eroded trust during a critical update.",
+        "position": "below"
       }
     ],
-    "chefs-and-head-cooks": [
+    "ceo__near_pass": [
       {
         "criterion_id": "SC1",
-        "candidate_evidence": "Demonstrates limited ability to plan menus and develop menu options.",
-        "position": "below"
+        "candidate_evidence": "A strategy case connected goals to measurable outcomes, considered constraints, and outlined steps for implementation.",
+        "position": "above"
       },
       {
         "criterion_id": "SC2",
-        "candidate_evidence": "Demonstrates adequate ability to monitor food quality, sanitation, and compliance with established standards.",
-        "position": "close"
+        "candidate_evidence": "An organizational case identified root causes and evaluated multiple options before selecting a course of action.",
+        "position": "above"
       },
       {
         "criterion_id": "SC3",
-        "candidate_evidence": "Demonstrates strong ability to manage food supplies and inventory-related resources.",
+        "candidate_evidence": "A leadership exercise aligned teams, clarified responsibilities, and established a process for resolving conflicts.",
         "position": "above"
       },
       {
         "criterion_id": "SC4",
-        "candidate_evidence": "Demonstrates limited ability to communicate and coordinate with kitchen staff and others.",
+        "candidate_evidence": "A budget review failed to connect spending patterns to operational needs and overlooked key cost-saving opportunities.",
         "position": "below"
       },
       {
         "criterion_id": "SC5",
-        "candidate_evidence": "Demonstrates reasonable ability to organize and prioritize food preparation and kitchen activities.",
+        "candidate_evidence": "A stakeholder simulation conveyed the central decision effectively, though some details and next steps lacked clarity.",
         "position": "close"
       }
     ],
-    "environmental-counselor": [
+    "chefs-and-head-cooks__clear_fail": [
       {
         "criterion_id": "SC1",
-        "candidate_evidence": "Demonstrated understanding of Plant Biology is limited and not consistently applied to environmental work.",
+        "candidate_evidence": "A menu exercise resulted in disjointed pairings, overlooked dietary needs, and repeated components without thoughtful reuse.",
         "position": "below"
       },
       {
         "criterion_id": "SC2",
-        "candidate_evidence": "Technical writing samples show clarity and precision suited to the role's communication needs.",
-        "position": "above"
-      },
-      {
-        "criterion_id": "SC3",
-        "candidate_evidence": "Shows adequate critical-thinking and problem-solving ability in environmental situations.",
+        "candidate_evidence": "During a kitchen simulation, the primary sanitation issue was identified, though consistency in monitoring and quality checks varied.",
         "position": "close"
       },
       {
+        "criterion_id": "SC3",
+        "candidate_evidence": "A supply scenario accounted for perishability and demand patterns, ensuring steady availability and minimizing waste.",
+        "position": "above"
+      },
+      {
         "criterion_id": "SC4",
-        "candidate_evidence": "Has limited experience analyzing environmental data and assessing environmental impacts.",
+        "candidate_evidence": "A service exercise demonstrated clear communication, smooth transitions, and minimized confusion among kitchen teams.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC5",
+        "candidate_evidence": "A disruption exercise delayed adjustments, leading to compromised timing, quality, and workflow inefficiencies.",
         "position": "below"
       }
     ],
-    "preschool-teacher": [
+    "chefs-and-head-cooks__clear_pass": [
       {
         "criterion_id": "SC1",
-        "candidate_evidence": "Demonstrates limited ability to manage classroom behavior, rules, procedures, and daily preschool operations.",
-        "position": "below"
+        "candidate_evidence": "A menu exercise integrated diverse dishes, considered dietary needs, and avoided ingredient conflicts effectively.",
+        "position": "above"
       },
       {
         "criterion_id": "SC2",
-        "candidate_evidence": "Demonstrates strong ability to adapt teaching methods and activities to children's varying learning needs.",
+        "candidate_evidence": "During a kitchen simulation, unsafe handling was not recognized promptly, and food quality was compromised during service.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC3",
+        "candidate_evidence": "A supply scenario failed to balance perishability, demand, and substitute availability, resulting in waste and shortages.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC4",
+        "candidate_evidence": "A service exercise communicated basic assignments, but handoffs and responses to emerging bottlenecks remained uneven.",
+        "position": "close"
+      },
+      {
+        "criterion_id": "SC5",
+        "candidate_evidence": "A disruption exercise established clear priorities, allowing efficient task execution and minimizing service delays.",
+        "position": "above"
+      }
+    ],
+    "chefs-and-head-cooks__near_fail": [
+      {
+        "criterion_id": "SC1",
+        "candidate_evidence": "A menu exercise balanced diverse preferences, integrated dietary needs, and minimized ingredient overlap.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC2",
+        "candidate_evidence": "In a kitchen simulation, hygiene risks were addressed promptly, and food quality remained consistently stable.",
         "position": "above"
       },
       {
         "criterion_id": "SC3",
-        "candidate_evidence": "Exhibits planning and organization skills that are generally aligned with the expectations for the role.",
-        "position": "close"
+        "candidate_evidence": "A supply scenario accounted for perishability and demand, ensuring steady availability and minimal excess.",
+        "position": "above"
       },
       {
         "criterion_id": "SC4",
-        "candidate_evidence": "Demonstrates limited ability to identify and address learning, developmental, or behavioral problems.",
+        "candidate_evidence": "A service exercise led to unclear handoffs, delayed issue resolution, and some line disruptions during adjustments.",
         "position": "below"
       },
       {
         "criterion_id": "SC5",
-        "candidate_evidence": "Demonstrates strong ability to work constructively with children, parents, guardians, and other teaching professionals.",
+        "candidate_evidence": "A disruption exercise restored a reasonable sequence, though timing gaps and contingency plans remained partial.",
+        "position": "close"
+      }
+    ],
+    "chefs-and-head-cooks__near_pass": [
+      {
+        "criterion_id": "SC1",
+        "candidate_evidence": "A menu exercise showed thoughtful options, though flavor balance, dietary needs, and ingredient reuse were uneven.",
+        "position": "close"
+      },
+      {
+        "criterion_id": "SC2",
+        "candidate_evidence": "In a kitchen simulation, food safety signals and quality issues were addressed with clear, corrective actions.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC3",
+        "candidate_evidence": "A supply scenario failed to account for perishability and demand, leading to excess waste and shortages.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC4",
+        "candidate_evidence": "A service exercise showed poor handoffs, missed bottlenecks, and uncoordinated changes that disrupted the line.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC5",
+        "candidate_evidence": "A disruption exercise led to missed timing, compromised quality, and unsafe workflow during resequencing.",
+        "position": "below"
+      }
+    ],
+    "environmental-counselor__clear_pass": [
+      {
+        "criterion_id": "SC1",
+        "candidate_evidence": "A habitat case demonstrated a clear grasp of plant responses and linked findings directly to soil and vegetation conditions.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC2",
+        "candidate_evidence": "A technical memo presented information in a disorganized way, left uncertainty undefined, and failed to translate findings clearly for a nontechnical audience.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC3",
+        "candidate_evidence": "An environmental decision case proposed a plausible cause, but alternatives, assumptions, and trade-offs were only partially addressed.",
+        "position": "close"
+      },
+      {
+        "criterion_id": "SC4",
+        "candidate_evidence": "A monitoring dataset was analyzed with attention to anomalies, contextual differences, and alternative interpretations to inform environmental impacts.",
         "position": "above"
       }
     ],
-    "software-engineer": [
+    "environmental-counselor__near_pass": [
       {
         "criterion_id": "SC1",
-        "candidate_evidence": "Has limited ability to interpret software requirements and determine suitable design approaches.",
+        "candidate_evidence": "A habitat case acknowledged key plant processes, though the connections between soil conditions, symptoms, and ecological effects were not fully developed.",
+        "position": "close"
+      },
+      {
+        "criterion_id": "SC2",
+        "candidate_evidence": "A technical memo clearly presented the main finding, organized supporting evidence, and defined key technical terms for clarity.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC3",
+        "candidate_evidence": "An environmental decision case listed possible causes but did not thoroughly test assumptions or address the trade-offs in the recommendation.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC4",
+        "candidate_evidence": "A monitoring dataset was reviewed, but the interpretation lacked site context and the impact assessment was not fully supported by the data.",
+        "position": "below"
+      }
+    ],
+    "preschool-teacher__clear_pass": [
+      {
+        "criterion_id": "SC1",
+        "candidate_evidence": "A classroom transition plan lacked anticipation of escalation points and used inconsistent routines that sometimes disengaged children.",
         "position": "below"
       },
       {
         "criterion_id": "SC2",
-        "candidate_evidence": "Has moderate familiarity with software testing procedures in practice.",
+        "candidate_evidence": "An activity demonstration included a basic alternative, but adjustments did not fully address different learning needs.",
         "position": "close"
       },
       {
         "criterion_id": "SC3",
-        "candidate_evidence": "Effectively collaborates with others to define software design specifications and resolve technical challenges.",
+        "candidate_evidence": "A lesson plan connected activities with clear transitions, preparation steps, and a focused learning goal.",
         "position": "above"
       },
       {
         "criterion_id": "SC4",
-        "candidate_evidence": "Sometimes requires support to apply critical thinking and solve complex software-related issues independently.",
+        "candidate_evidence": "An observation vignette identified the behavior pattern and proposed a response aligned with the observed issue.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC5",
+        "candidate_evidence": "A family meeting simulation acknowledged concerns clearly, used accessible language, and ended with a collaborative next step.",
+        "position": "above"
+      }
+    ],
+    "preschool-teacher__near_fail": [
+      {
+        "criterion_id": "SC1",
+        "candidate_evidence": "A structured routine supported transitions, but handling disruptions and re-engagement required more consistency.",
+        "position": "close"
+      },
+      {
+        "criterion_id": "SC2",
+        "candidate_evidence": "An activity adjusted to include varied entry points, ensuring all children could meaningfully engage with the task.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC3",
+        "candidate_evidence": "A lesson plan lacked clear connections between activities, with transitions feeling rushed and materials underused.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC4",
+        "candidate_evidence": "An observation scenario misread a persistent issue as a temporary behavior, suggesting an overreaching and unclear response.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC5",
+        "candidate_evidence": "A family meeting simulation struggled to translate classroom details clearly, leaving the plan unclear and uncoordinated.",
         "position": "below"
       }
     ],
-    "veterinarian": [
+    "preschool-teacher__near_pass": [
       {
         "criterion_id": "SC1",
-        "candidate_evidence": "Struggles to identify treatment-related problems and develop effective solutions.",
+        "candidate_evidence": "A classroom transition plan established a predictable routine and minimized disruptions through consistent, proactive strategies.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC2",
+        "candidate_evidence": "An activity demonstration followed a single method and did not modify materials when a child needed alternative support.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC3",
+        "candidate_evidence": "A lesson plan lacked a clear sequence, with unclear transitions and materials that did not support the intended learning goals.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC4",
+        "candidate_evidence": "An observation vignette noted a potential issue but offered limited reasoning and a tentative approach for addressing it.",
+        "position": "close"
+      },
+      {
+        "criterion_id": "SC5",
+        "candidate_evidence": "A family meeting simulation acknowledged concerns, used accessible language, and concluded with a shared plan for follow-up.",
+        "position": "above"
+      }
+    ],
+    "software-engineer__clear_fail": [
+      {
+        "criterion_id": "SC1",
+        "candidate_evidence": "A design review outlined the main requirements and suggested a viable approach, though some constraints and trade-offs were not clearly addressed.",
+        "position": "close"
+      },
+      {
+        "criterion_id": "SC2",
+        "candidate_evidence": "A test plan covered multiple scenarios, including edge cases, and clearly defined expected outcomes for each condition.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC3",
+        "candidate_evidence": "A design discussion explored multiple viewpoints, resolved conflicting assumptions, and established shared expectations for interfaces.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC4",
+        "candidate_evidence": "An incident case described symptoms but did not fully explore underlying causes or consider long-term solutions for recurrence.",
+        "position": "below"
+      }
+    ],
+    "software-engineer__clear_pass": [
+      {
+        "criterion_id": "SC1",
+        "candidate_evidence": "A design review overlooked key constraints and did not clearly justify the chosen approach against trade-offs.",
         "position": "below"
       },
       {
         "criterion_id": "SC2",
-        "candidate_evidence": "Maintains a reasonable focus on medical details and records, though occasional errors may occur.",
-        "position": "close"
+        "candidate_evidence": "A test plan missed boundary conditions and left expected outcomes ambiguous or difficult to maintain.",
+        "position": "below"
       },
       {
         "criterion_id": "SC3",
-        "candidate_evidence": "Demonstrates consistent care and kindness toward animals, prioritizing animal comfort and well-being.",
+        "candidate_evidence": "An architecture discussion shared necessary details, but some assumptions and interface roles were left unclear.",
+        "position": "close"
+      },
+      {
+        "criterion_id": "SC4",
+        "candidate_evidence": "An incident case explored multiple potential causes, evaluated side effects, and considered long-term solutions.",
+        "position": "above"
+      }
+    ],
+    "software-engineer__near_fail": [
+      {
+        "criterion_id": "SC1",
+        "candidate_evidence": "A design review outlined the main requirements and suggested a viable approach, though some constraints and trade-offs were not clearly addressed.",
+        "position": "close"
+      },
+      {
+        "criterion_id": "SC2",
+        "candidate_evidence": "A test plan covered multiple scenarios, identified key failure points, and defined clear boundaries and expected outcomes.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC3",
+        "candidate_evidence": "An architecture discussion centered on individual perspectives, limited feedback integration, and resulted in a specification with unclear interfaces.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC4",
+        "candidate_evidence": "An incident case described symptoms without clear cause analysis, failed to test alternatives, and proposed a solution with unresolved risks.",
+        "position": "below"
+      }
+    ],
+    "software-engineer__near_pass": [
+      {
+        "criterion_id": "SC1",
+        "candidate_evidence": "A design review explored multiple options after clarifying unclear requirements and addressed key constraints in the expected functionality.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC2",
+        "candidate_evidence": "A test plan focused on primary use cases but missed edge scenarios and failed to document expected results clearly.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC3",
+        "candidate_evidence": "A design discussion shared key ideas, though some dependencies and decision points were not fully aligned.",
+        "position": "close"
+      },
+      {
+        "criterion_id": "SC4",
+        "candidate_evidence": "An incident case evaluated possible causes, tested the most likely solution, and considered how to avoid similar issues.",
+        "position": "above"
+      }
+    ],
+    "veterinarian__clear_fail": [
+      {
+        "criterion_id": "SC1",
+        "candidate_evidence": "A treatment plan showed a reasonable approach, though responsiveness to emerging data and resource limitations varied.",
+        "position": "close"
+      },
+      {
+        "criterion_id": "SC2",
+        "candidate_evidence": "A record review accurately captured consistent history and examination details and avoided errors in the diagnostic summary.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC3",
+        "candidate_evidence": "An animal-handling simulation used standard restraint methods without adjusting for signs of distress, resulting in visible discomfort.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC4",
+        "candidate_evidence": "A diagnostic case relied on initial impressions rather than integrating findings, test results, or scientific reasoning in decision-making.",
+        "position": "below"
+      }
+    ],
+    "veterinarian__clear_pass": [
+      {
+        "criterion_id": "SC1",
+        "candidate_evidence": "A treatment case showed a reasonable approach, though adjustments to emerging data and resource limits were inconsistent.",
+        "position": "close"
+      },
+      {
+        "criterion_id": "SC2",
+        "candidate_evidence": "A record review captured relevant history and examination details and maintained accuracy in the diagnostic summary.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC3",
+        "candidate_evidence": "An animal-handling simulation recognized distress signals and applied a method that prioritized comfort and engagement.",
         "position": "above"
       },
       {
         "criterion_id": "SC4",
-        "candidate_evidence": "Rarely uses diagnostic data or scientific insights to guide treatment decisions effectively.",
+        "candidate_evidence": "A diagnostic case prioritized initial impressions over test results and scientific context, limiting the depth of the explanation.",
         "position": "below"
+      }
+    ],
+    "veterinarian__near_fail": [
+      {
+        "criterion_id": "SC1",
+        "candidate_evidence": "A treatment case adapted quickly to new evidence and resolved the central issue effectively.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC2",
+        "candidate_evidence": "A record review overlooked discrepancies in history and examination details, leading to an unclear diagnostic narrative.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC3",
+        "candidate_evidence": "An animal-handling simulation showed limited responsiveness to distress signals and prioritized efficiency over calm care.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC4",
+        "candidate_evidence": "A diagnostic case applied the main findings correctly, though alternative interpretations and uncertainty were only partially considered.",
+        "position": "close"
+      }
+    ],
+    "veterinarian__near_pass": [
+      {
+        "criterion_id": "SC1",
+        "candidate_evidence": "A treatment case overlooked the central clinical problem and failed to adjust when new evidence contradicted the initial plan, leading to prolonged patient discomfort.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC2",
+        "candidate_evidence": "A record review noted the key history and examination findings, but a minor inconsistency was not fully clarified.",
+        "position": "close"
+      },
+      {
+        "criterion_id": "SC3",
+        "candidate_evidence": "An animal-handling simulation recognized early distress cues and applied a gentle, reassuring method that promoted cooperation and comfort.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC4",
+        "candidate_evidence": "A diagnostic case considered multiple findings and integrated relevant scientific data to form a well-supported treatment plan.",
+        "position": "above"
+      }
+    ],
+    "ceo__near_fail": [
+      {
+        "criterion_id": "SC1",
+        "candidate_evidence": "A strategy review failed to align goals with external conditions, leading to fragmented priorities and unaddressed risks.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC2",
+        "candidate_evidence": "A problem-solving scenario identified key issues but offered limited analysis of possible solutions or outcomes.",
+        "position": "close"
+      },
+      {
+        "criterion_id": "SC3",
+        "candidate_evidence": "A team engagement exercise clarified roles, streamlined processes, and fostered collaboration among cross-functional units.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC4",
+        "candidate_evidence": "A financial oversight task evaluated variances, proposed targeted adjustments, and included risk buffers for unforeseen costs.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC5",
+        "candidate_evidence": "A stakeholder engagement activity overlooked critical perspectives, created confusion, and eroded confidence during a key update.",
+        "position": "below"
+      }
+    ],
+    "environmental-counselor__near_fail": [
+      {
+        "criterion_id": "SC1",
+        "candidate_evidence": "A habitat case showed familiarity with plant processes, yet connections between soil conditions, symptoms, and broader ecological effects were not fully developed.",
+        "position": "close"
+      },
+      {
+        "criterion_id": "SC2",
+        "candidate_evidence": "A technical report presented findings clearly, structured evidence logically, and clarified key terms to support understanding.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC3",
+        "candidate_evidence": "An environmental decision case explored multiple causes, weighed alternative solutions, and considered relevant trade-offs before reaching a conclusion.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC4",
+        "candidate_evidence": "A monitoring dataset was reviewed, but the analysis lacked sufficient attention to anomalies and did not clearly connect findings to environmental impacts.",
+        "position": "below"
+      }
+    ],
+    "preschool-teacher__clear_fail": [
+      {
+        "criterion_id": "SC1",
+        "candidate_evidence": "A classroom transition plan established clear expectations and guided the group smoothly between activities with minimal disruption.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC2",
+        "candidate_evidence": "An activity demonstration adjusted approaches in response to children's engagement and offered alternate ways to participate.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC3",
+        "candidate_evidence": "A lesson plan connected activities with purposeful transitions and reflected preparation that supported clear learning goals.",
+        "position": "above"
+      },
+      {
+        "criterion_id": "SC4",
+        "candidate_evidence": "An observation vignette described a challenge as a temporary situation without distinguishing patterns or suggesting suitable next steps.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC5",
+        "candidate_evidence": "A family meeting simulation explained the main concern clearly but left some details about next steps unclarified.",
+        "position": "close"
+      }
+    ],
+    "environmental-counselor__clear_fail": [
+      {
+        "criterion_id": "SC1",
+        "candidate_evidence": "An ecological assessment described observations broadly without tying plant responses to specific environmental factors.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC2",
+        "candidate_evidence": "A technical summary overwhelmed the reader with jargon, failed to highlight key points, and omitted a clear executive summary.",
+        "position": "below"
+      },
+      {
+        "criterion_id": "SC3",
+        "candidate_evidence": "An environmental resolution proposed a probable solution, with limited discussion of alternative approaches or risks associated with the choice.",
+        "position": "close"
+      },
+      {
+        "criterion_id": "SC4",
+        "candidate_evidence": "A dataset was used to construct a focused argument about environmental changes, supported by comparisons and methodological checks.",
+        "position": "above"
       }
     ]
   }

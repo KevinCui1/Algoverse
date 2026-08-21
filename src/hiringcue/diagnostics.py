@@ -1,36 +1,53 @@
-"""Pilot diagnostics on the suitability score.
+"""Blocking diagnostics on the Yes/No token log-odds readout.
 
-The score carries the study's statistical power, because a binary decision flip
-discards every movement that does not cross the threshold and published
-demographic flip rates are small enough that a binary-only design would need far
-more observations than is available here.
+Two kinds of criterion are evaluated here and they answer different questions.
 
-That only holds if the score has room to move that the qualification rule does
-not already fix. A score that is a deterministic restatement of the gate
-arithmetic still produces a wide, many-valued histogram, because the arithmetic
-itself varies across scenarios - so no distributional statistic can detect the
-failure. Determinacy is a property of the score's variance *conditional on* the
-rule, and it takes a positive control to see it:
+The *instrument* criteria decide whether a model's readout may be read at all.
+Cross-batch-composition stability asks whether the same prompt returns the same
+number when nothing relevant to it changes. Logit-versus-greedy agreement asks
+whether the contrast points at the answer the model would actually emit.
+Saturation asks whether the decision has collapsed to the point where the
+representable spacing of a bounded-precision log-odds is a material fraction of
+the effect being estimated. Differential off-target mass asks whether the two
+identity arms are answering the same question at all: the contrast conditions on
+the answer being Yes or No, and a systematic arm difference in that conditioning
+is an effect the contrast cannot see.
+
+The *determinacy* criteria decide whether the readout has movement the
+qualification rule does not already fix. A readout that is a deterministic
+restatement of the gate arithmetic still produces a wide distribution, because
+the arithmetic itself varies across scenarios, so no distributional statistic
+can detect the failure. It takes a positive control:
 
     D1  variance explained by gate status and margin
     D2  response to a soft-criteria change that touches no gate  <- the control
     D3  dispersion within the gate-passing class, within band
-    D4  variation across identical repeated prompts
 
-D2 is the one that cannot be faked. A model that will not move its score for a
-substantive change to the criteria the score is supposed to reflect will not
-move it for a name either, and no sample size repairs that, because the problem
-is in the numerator.
+D2 is the one that cannot be faked. A model that will not move its contrast for
+a substantive change to the criteria the contrast is supposed to reflect will
+not move it for a name either, and no sample size repairs that, because the
+problem is in the numerator.
+
+The repeat-noise statistic that stood alongside these is retired rather than
+ported. Under a deterministic single forward pass a byte-identical repeat is a
+duplicate, and the property that statistic was reaching for - stability under an
+irrelevant perturbation - is what the cross-batch gate measures directly.
+
+Input is one measurement record per prompt, carrying the planned fields and the
+readout. Output is a per-model verdict. A failed gate is recorded, not retried
+until it passes: a checkpoint that cannot be measured stably is a finding about
+that checkpoint.
 """
 
 from __future__ import annotations
 
-import math
 import statistics
-from collections import Counter, defaultdict
-from typing import Any
+from collections import defaultdict
+from typing import Any, Iterable, Sequence
 
-from . import config
+import numpy as np
+
+from . import config, gates, plan, readout
 
 PASS = "PASS"
 WARN = "WARN"
@@ -38,277 +55,480 @@ FAIL = "FAIL"
 SKIP = "SKIP"
 
 
-def _ols_r2(response: list[float], design: list[list[float]]) -> float:
-    """R-squared from a small ordinary least-squares fit by normal equations."""
-    n = len(response)
-    if n < 3:
-        return float("nan")
-    columns = len(design[0])
-    xtx = [[sum(design[i][a] * design[i][b] for i in range(n)) for b in range(columns)]
-           for a in range(columns)]
-    xty = [sum(design[i][a] * response[i] for i in range(n)) for a in range(columns)]
-
-    # Gaussian elimination with partial pivoting and a ridge floor for stability.
-    for index in range(columns):
-        xtx[index][index] += 1e-8
-    matrix = [row[:] + [xty[i]] for i, row in enumerate(xtx)]
-    for col in range(columns):
-        pivot = max(range(col, columns), key=lambda r: abs(matrix[r][col]))
-        if abs(matrix[pivot][col]) < 1e-12:
-            return float("nan")
-        matrix[col], matrix[pivot] = matrix[pivot], matrix[col]
-        for row in range(columns):
-            if row == col:
-                continue
-            factor = matrix[row][col] / matrix[col][col]
-            for k in range(col, columns + 1):
-                matrix[row][k] -= factor * matrix[col][k]
-    beta = [matrix[i][columns] / matrix[i][i] for i in range(columns)]
-
-    mean = statistics.fmean(response)
-    total = sum((value - mean) ** 2 for value in response)
-    residual = sum(
-        (response[i] - sum(beta[a] * design[i][a] for a in range(columns))) ** 2
-        for i in range(n)
-    )
-    return 1.0 - residual / total if total > 0 else float("nan")
-
-
-def _quantile(values: list[float], q: float) -> float:
-    ordered = sorted(values)
-    if not ordered:
-        return float("nan")
-    position = q * (len(ordered) - 1)
-    low = math.floor(position)
-    high = math.ceil(position)
-    if low == high:
-        return ordered[low]
-    return ordered[low] + (ordered[high] - ordered[low]) * (position - low)
-
-
-def _band(value: float, spec: dict[str, Any]) -> str:
-    if "fail_above" in spec:
-        if value > spec["fail_above"]:
-            return FAIL
-        return PASS if value <= spec["pass_at_most"] else WARN
-    if "fail_below" in spec:
-        if value < spec["fail_below"]:
-            return FAIL
-        return PASS if value >= spec["pass_at_least"] else WARN
-    low, high = spec["pass_range"]
-    if low <= value <= high:
+def _band_verdict(value: float | None, rule: dict[str, Any], higher_is_better: bool) -> str:
+    if value is None:
+        return SKIP
+    if higher_is_better:
+        if value >= float(rule["pass_at_least"]):
+            return PASS
+        return WARN if value >= float(rule["fail_below"]) else FAIL
+    if value <= float(rule["pass_at_most"]):
         return PASS
-    warn_low, warn_high = spec["warn_range"]
-    if warn_low <= value <= warn_high:
-        return WARN
-    return FAIL
+    return WARN if value <= float(rule["fail_above"]) else FAIL
 
 
-def d1_rule_determinacy(rows: list[dict[str, Any]]) -> dict[str, float]:
-    """Score regressed on gate status, minimum gate margin, and their interaction."""
-    grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
-    for row in rows:
-        if (
-            row.get("initial_valid")
-            and row.get("soft_variant") != "twin"
-            and row.get("minimum_gate_margin") is not None
-        ):
-            grouped[row["model_key"]].append(row)
-
-    results = {}
-    for model, model_rows in grouped.items():
-        response = [float(row["suitability_score"]) for row in model_rows]
-        design = []
-        for row in model_rows:
-            passed = 1.0 if row["gold_decision"] == "advance" else 0.0
-            margin = float(row["minimum_gate_margin"])
-            design.append([1.0, passed, margin, passed * margin])
-        results[model] = _ols_r2(response, design)
-    return results
+def _primary(rows: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Rows that enter the primary estimand, excluding development-only probes."""
+    confirmatory_contexts = set(config.study()["context"]["levels"])
+    return [
+        row
+        for row in rows
+        if row.get("role") == plan.PRIMARY
+        and row.get("context_level") in confirmatory_contexts
+    ]
 
 
-def d2_free_parameter(rows: list[dict[str, Any]], detail: bool = False):
-    """Score response to a soft-criteria change, net of the model's own noise.
+def saturation(rows: Sequence[dict[str, Any]]) -> dict[str, Any]:
+    """Share of cells whose implied Yes probability leaves the readable interval."""
+    settings = config.gate_thresholds()["instrument"]["saturation"]
+    low, high = (float(value) for value in settings["probability_interval"])
+    limit = float(settings["maximum_outside_share"])
 
-    A twin comparison is between two cell means, so some of the observed
-    difference is sampling variation rather than response to the changed
-    criteria. A model that moves its score at random by a few points on repeated
-    identical prompts would otherwise register a free-parameter response it does
-    not have. The expected absolute difference of two means of `n` draws from a
-    distribution with the model's own within-variant standard deviation is
-    subtracted before the gate is applied.
+    probabilities = [float(row["implied_yes_probability"]) for row in rows]
+    if not probabilities:
+        return {"verdict": SKIP, "cells": 0}
+    outside = sum(1 for value in probabilities if value < low or value > high)
+    share = outside / len(probabilities)
+    ordered = sorted(probabilities)
+    return {
+        "cells": len(probabilities),
+        "outside_share": share,
+        "maximum_outside_share": limit,
+        "probability_interval": [low, high],
+        "quantiles": {
+            "p05": ordered[int(0.05 * (len(ordered) - 1))],
+            "median": statistics.median(ordered),
+            "p95": ordered[int(0.95 * (len(ordered) - 1))],
+        },
+        "verdict": PASS if share < limit else FAIL,
+    }
+
+
+def differential_off_target_mass(rows: Sequence[dict[str, Any]]) -> dict[str, Any]:
+    """Arm difference in off-target mass, paired within counterfactual sets.
+
+    Paired rather than marginal because off-target mass varies strongly across
+    scenario families, and a marginal comparison of the two arms would be
+    dominated by which families happen to sit in each rather than by the arm
+    itself. Within a counterfactual set the two arms share every fact but the
+    identity block, so the difference is attributable.
     """
-    base: dict[tuple, list[float]] = defaultdict(list)
-    twin: dict[tuple, list[float]] = defaultdict(list)
+    settings = config.gate_thresholds()["instrument"]["differential_off_target_mass"]
+    limit = float(settings["maximum_paired_arm_difference"])
+    arm_limit = float(settings["maximum_arm_mean"])
+
+    paired: dict[str, dict[str, float]] = defaultdict(dict)
+    arms: dict[str, list[float]] = defaultdict(list)
     for row in rows:
-        if not row.get("initial_valid"):
+        arm = row.get("identity_group")
+        if arm is None:
             continue
-        key = (row["model_key"], row["family_id"], row["prestige_level"], row["condition"])
-        target = twin if row["soft_variant"] == "twin" else base
-        target[key].append(float(row["suitability_score"]))
+        arms[arm].append(float(row["off_target_mass"]))
+        pair_id = row.get("counterfactual_pair_id")
+        if pair_id and pair_id != "unpaired":
+            paired[pair_id][arm] = float(row["off_target_mass"])
 
-    noise = d4_run_to_run_sd(rows)
-    observed: dict[str, list[float]] = defaultdict(list)
-    runs: dict[str, list[int]] = defaultdict(list)
-    for key, twin_scores in twin.items():
-        base_scores = base.get(key)
-        if not base_scores:
-            continue
-        observed[key[0]].append(
-            abs(statistics.fmean(twin_scores) - statistics.fmean(base_scores))
+    complete = [
+        entry["white"] - entry["black"]
+        for entry in paired.values()
+        if "white" in entry and "black" in entry
+    ]
+    if not complete:
+        return {"verdict": SKIP, "pairs": 0}
+
+    difference = statistics.fmean(complete)
+    arm_means = {arm: statistics.fmean(values) for arm, values in sorted(arms.items())}
+    excessive = [arm for arm, value in arm_means.items() if value > arm_limit]
+    return {
+        "pairs": len(complete),
+        "paired_arm_difference": difference,
+        "maximum_paired_arm_difference": limit,
+        "arm_means": arm_means,
+        "maximum_arm_mean": arm_limit,
+        "verdict": PASS if abs(difference) <= limit and not excessive else FAIL,
+    }
+
+
+def stability(
+    readings_by_layout: dict[str, Sequence[readout.Reading]],
+    prompts: Sequence[Any] | None = None,
+) -> dict[str, Any]:
+    """Movement of the estimand across fixed batch layouts, plus per-prompt diagnostics.
+
+    The gate is on the quantity the design actually depends on. That quantity is
+    not one prompt's contrast; it is a mean over cells of an identity contrast,
+    and a gate on the largest movement of any single prompt answers a stricter
+    question than the study asks. The previous form did exactly that and reported
+    a failure that did not follow from its own numbers: per-prompt maxima of 0.25
+    to 0.75 alongside a movement of the cell-mean estimate of 0.031 to 0.078.
+
+    The statistic is therefore built to mirror the confirmatory estimator. Within
+    each cell - one scenario family at one context level - the two identity arms
+    are averaged separately and subtracted, so it needs no matched pairing and is
+    unaffected by an arm missing a partner. Those cell contrasts are averaged, and
+    the gate is the range of that average across layouts. It is restricted to the
+    qualified bands and the concealed cue mode because that is the population the
+    confirmatory estimand is defined on.
+
+    The range is used rather than a signed difference against a nominated
+    reference layout: no layout is privileged, and a difference against one of
+    them would report a smaller number simply by choosing a reference near the
+    middle.
+
+    Per-prompt movement is still computed and reported. It is a diagnostic that
+    localises a mechanism, not a criterion; a checkpoint is not dropped for it.
+    """
+    settings = config.gate_thresholds()["instrument"]["cross_batch_stability"]
+    limit = float(settings["maximum_estimand_range"])
+    qualified = set(config.study()["margin_bands"]) - set(
+        config.study()["qualification"]["control_bands"]
+    )
+
+    if len(readings_by_layout) < 2:
+        return {"verdict": SKIP, "layouts": len(readings_by_layout)}
+
+    values: dict[str, dict[str, float]] = defaultdict(dict)
+    for layout, readings in readings_by_layout.items():
+        for reading in readings:
+            values[reading.prompt_id][layout] = reading.token_log_odds
+    shared = {
+        prompt_id: measurements
+        for prompt_id, measurements in values.items()
+        if len(measurements) == len(readings_by_layout)
+    }
+    if not shared:
+        raise ValueError(
+            "no prompt was measured under every layout; the stability gate compares "
+            "one prompt across compositions and cannot be evaluated on disjoint sets"
         )
-        runs[key[0]].append(min(len(base_scores), len(twin_scores)))
 
-    report: dict[str, dict[str, float]] = {}
-    for model, values in observed.items():
-        if not values:
-            continue
-        n = statistics.median(runs[model]) or 1
-        sigma = noise.get(model)
-        # Half-normal mean: expected |difference of two independent cell means|.
-        expected = (
-            sigma * math.sqrt(2.0 / n) * math.sqrt(2.0 / math.pi)
-            if sigma and sigma == sigma
-            else 0.0
-        )
-        raw = statistics.median(values)
-        report[model] = {
-            "raw": raw,
-            "noise_reference": expected,
-            "adjusted": max(0.0, raw - expected),
-        }
+    deltas = {
+        prompt_id: max(measurements.values()) - min(measurements.values())
+        for prompt_id, measurements in shared.items()
+    }
+    worst_prompt = max(deltas, key=deltas.get)
+    report: dict[str, Any] = {
+        "prompts": len(shared),
+        "layouts": sorted(readings_by_layout),
+        "per_prompt_maximum_absolute_delta": deltas[worst_prompt],
+        "per_prompt_median_absolute_delta": statistics.median(deltas.values()),
+        "per_prompt_worst_id": worst_prompt,
+        "limit": limit,
+    }
 
-    if detail:
+    if prompts is None:
+        report["verdict"] = SKIP
+        report["estimand_range"] = None
         return report
-    return {model: entry["adjusted"] for model, entry in report.items()}
 
-
-def d3_conditional_dispersion(rows: list[dict[str, Any]]) -> dict[str, float]:
-    """Median across margin bands of the score IQR within the gate-passing class."""
-    grouped: dict[tuple, list[float]] = defaultdict(list)
-    for row in rows:
-        if (
-            row.get("initial_valid")
-            and row.get("soft_variant") != "twin"
-            and row["gold_decision"] == "advance"
-        ):
-            grouped[(row["model_key"], row["margin_band"])].append(
-                float(row["suitability_score"])
-            )
-
-    by_model: dict[str, list[float]] = defaultdict(list)
-    for (model, _band_name), values in grouped.items():
-        if len(values) >= 4:
-            by_model[model].append(_quantile(values, 0.75) - _quantile(values, 0.25))
-    return {
-        model: statistics.median(values) if values else float("nan")
-        for model, values in by_model.items()
-    }
-
-
-def d4_run_to_run_sd(rows: list[dict[str, Any]]) -> dict[str, float]:
-    """Median score SD across independent runs of a byte-identical prompt."""
-    grouped: dict[tuple, list[float]] = defaultdict(list)
-    for row in rows:
-        if row.get("initial_valid"):
-            grouped[(row["model_key"], row["variant_id"])].append(
-                float(row["suitability_score"])
-            )
-
-    by_model: dict[str, list[float]] = defaultdict(list)
-    for (model, _variant), values in grouped.items():
-        if len(values) > 1:
-            by_model[model].append(statistics.stdev(values))
-    return {
-        model: statistics.median(values) if values else float("nan")
-        for model, values in by_model.items()
-    }
-
-
-def granularity(rows: list[dict[str, Any]]) -> dict[str, dict[str, float]]:
-    """Effective distinct score values and reliance on multiples of five."""
-    grouped: dict[str, list[int]] = defaultdict(list)
-    for row in rows:
-        if row.get("initial_valid") and row.get("soft_variant") != "twin":
-            grouped[row["model_key"]].append(int(row["suitability_score"]))
-
-    results = {}
-    for model, values in grouped.items():
-        counts = Counter(values)
-        total = sum(counts.values())
-        entropy = -sum(
-            (count / total) * math.log(count / total) for count in counts.values()
+    index = {prompt.prompt_id: prompt for prompt in prompts}
+    per_layout: dict[str, float] = {}
+    cell_counts: set[int] = set()
+    for layout in readings_by_layout:
+        cells: dict[tuple[str, str], dict[str, list[float]]] = defaultdict(
+            lambda: {"black": [], "white": []}
         )
-        results[model] = {
-            "effective_distinct_values": math.exp(entropy),
-            "distinct_values": len(counts),
-            "multiple_of_five_share": sum(1 for v in values if v % 5 == 0) / total,
+        for prompt_id, measurements in shared.items():
+            prompt = index.get(prompt_id)
+            if prompt is None or prompt.margin_band not in qualified:
+                continue
+            if prompt.cue_mode != "concealed":
+                continue
+            if prompt.identity_group not in ("black", "white"):
+                continue
+            cells[(prompt.family_id, prompt.context_level)][prompt.identity_group].append(
+                measurements[layout]
+            )
+        contrasts = [
+            statistics.mean(arms["black"]) - statistics.mean(arms["white"])
+            for arms in cells.values()
+            if arms["black"] and arms["white"]
+        ]
+        if not contrasts:
+            raise ValueError(
+                "no qualified concealed cell carries both identity arms; the gate "
+                "statistic is a mean over such cells and cannot be formed"
+            )
+        cell_counts.add(len(contrasts))
+        per_layout[layout] = statistics.mean(contrasts)
+
+    spread = max(per_layout.values()) - min(per_layout.values())
+    report.update(
+        {
+            "cells": sorted(cell_counts)[0],
+            "estimand_by_layout": {k: v for k, v in sorted(per_layout.items())},
+            "estimand_range": spread,
+            "verdict": PASS if spread < limit else FAIL,
         }
-    return results
+    )
+    return report
 
 
-def evaluate(rows: list[dict[str, Any]], temperature: float) -> dict[str, Any]:
-    """Run every gate and return a per-model verdict."""
-    thresholds = config.gate_thresholds()
-    determinacy = thresholds["determinacy"]
-    gran_spec = thresholds["granularity"]
-    escalation = thresholds["escalation"]
+def batch_size_sensitivity(
+    readings_by_layout: dict[str, Sequence[readout.Reading]],
+    prompts: Sequence[Any] | None = None,
+) -> dict[str, Any]:
+    """Estimand movement across batch sizes, disclosed without gating.
 
-    measured = {
-        "D1_rule_determinacy_r2": d1_rule_determinacy(rows),
-        "D2_free_parameter_response": d2_free_parameter(rows),
-        "D3_conditional_dispersion": d3_conditional_dispersion(rows),
-        "D4_run_to_run_sd": d4_run_to_run_sd(rows),
+    Batch size is frozen within every collection, so changing it is not an
+    irrelevant perturbation the stability gate should require invariance to.
+    The same statistic remains scientifically useful as a property of the
+    instrument. It is therefore computed permanently and reported without a
+    threshold or verdict; this disclosure replaces the former gate dimension.
+    """
+    report = stability(readings_by_layout, prompts)
+    report.pop("limit", None)
+    report.pop("verdict", None)
+    report["disclosure_only"] = True
+    return report
+
+
+def d1_rule_determinacy(rows: Sequence[dict[str, Any]]) -> dict[str, Any]:
+    """R-squared of the contrast on gate status, margin, and their interaction.
+
+    Fitted on every family rather than on the qualified subset, because the
+    quantity is how much of the readout the objective rule already explains, and
+    the rule's explanatory power lives mostly in the difference between passing
+    and failing.
+    """
+    rule = config.gate_thresholds()["determinacy"]["D1_rule_determinacy_r2"]
+    usable = [
+        row
+        for row in rows
+        if row.get("soft_variant") == "base" and row.get("minimum_gate_margin") is not None
+    ]
+    if len(usable) < 8:
+        return {"verdict": SKIP, "observations": len(usable)}
+
+    passed = np.array(
+        [1.0 if row["gold_decision"] == gates.ADVANCE else 0.0 for row in usable]
+    )
+    margin = np.array([float(row["minimum_gate_margin"]) for row in usable])
+    outcome = np.array([float(row["token_log_odds"]) for row in usable])
+    design = np.column_stack(
+        [np.ones_like(passed), passed, margin, passed * margin]
+    )
+
+    coefficients, *_ = np.linalg.lstsq(design, outcome, rcond=None)
+    residual = outcome - design @ coefficients
+    total = float(((outcome - outcome.mean()) ** 2).sum())
+    r_squared = 1.0 - float((residual**2).sum()) / total if total > 0 else 1.0
+    return {
+        "observations": len(usable),
+        "r_squared": r_squared,
+        "excluded_categorical_only": len(rows) - len(usable),
+        "verdict": _band_verdict(r_squared, rule, higher_is_better=False),
     }
-    gran = granularity(rows)
-    models = sorted({row["model_key"] for row in rows})
 
-    d2_detail = d2_free_parameter(rows, detail=True)
-    report: dict[str, Any] = {"temperature": temperature, "models": {}}
-    for model in models:
-        outcomes: dict[str, dict[str, Any]] = {}
-        for gate_name, values in measured.items():
-            spec = determinacy[gate_name]
-            value = values.get(model, float("nan"))
-            if (
-                gate_name == "D4_run_to_run_sd"
-                and temperature == 0
-                and spec.get("skip_if_temperature_zero")
-            ):
-                outcomes[gate_name] = {"value": value, "verdict": SKIP}
-                continue
-            if value != value:
-                outcomes[gate_name] = {"value": None, "verdict": SKIP}
-                continue
-            entry = {"value": value, "verdict": _band(value, spec)}
-            if gate_name == "D2_free_parameter_response" and model in d2_detail:
-                entry |= {
-                    "raw": d2_detail[model]["raw"],
-                    "noise_reference": d2_detail[model]["noise_reference"],
-                }
-            outcomes[gate_name] = entry
 
-        stats = gran.get(model, {})
-        granularity_verdict = PASS
-        if stats:
-            if stats["effective_distinct_values"] < gran_spec["minimum_effective_distinct_values"]:
-                granularity_verdict = FAIL
-            elif stats["multiple_of_five_share"] > gran_spec["maximum_multiple_of_five_share"]:
-                granularity_verdict = WARN
+def d2_free_parameter(rows: Sequence[dict[str, Any]]) -> dict[str, Any]:
+    """Median absolute movement between a scenario and its perturbed twin."""
+    rule = config.gate_thresholds()["determinacy"]["D2_free_parameter_response"]
+    settings = config.study()["soft_twin"]
 
-        warns = sum(1 for entry in outcomes.values() if entry["verdict"] == WARN)
-        fails = sum(1 for entry in outcomes.values() if entry["verdict"] == FAIL)
-        if fails or warns >= escalation["warns_equal_fail"]:
-            verdict = FAIL
-        elif warns:
-            verdict = WARN
-        else:
-            verdict = PASS
+    twins = {
+        row["family_id"]: float(row["token_log_odds"])
+        for row in rows
+        if row.get("soft_variant") == "twin"
+    }
+    base = {
+        row["family_id"]: float(row["token_log_odds"])
+        for row in rows
+        if row.get("soft_variant") == "base"
+        and row.get("condition") == settings["condition"]
+        and row.get("prestige_level") == settings["prestige_level"]
+        and row.get("context_level") == settings["context_level"]
+    }
+    shared = sorted(set(twins) & set(base))
+    if not shared:
+        return {"verdict": SKIP, "families": 0}
 
+    movements = [abs(twins[family] - base[family]) for family in shared]
+    median = statistics.median(movements)
+    return {
+        "families": len(shared),
+        "median_absolute_movement": median,
+        "verdict": _band_verdict(median, rule, higher_is_better=True),
+    }
+
+
+def d3_conditional_dispersion(rows: Sequence[dict[str, Any]]) -> dict[str, Any]:
+    """Dispersion of the contrast among qualified candidates, within margin band.
+
+    Conditioning on band is what makes this a conditional statistic. A marginal
+    spread over the whole set is wide whenever the gate arithmetic varies, which
+    it always does, so it cannot tell a responsive readout from a determined one.
+    """
+    rule = config.gate_thresholds()["determinacy"]["D3_conditional_dispersion"]
+    grouped: dict[str, list[float]] = defaultdict(list)
+    for row in _primary(rows):
+        if row.get("soft_variant") != "base":
+            continue
+        grouped[row["margin_band"]].append(float(row["token_log_odds"]))
+
+    per_band = {
+        band: statistics.stdev(values)
+        for band, values in sorted(grouped.items())
+        if len(values) > 1
+    }
+    if not per_band:
+        return {"verdict": SKIP, "bands": 0}
+
+    pooled = statistics.fmean(per_band.values())
+    return {
+        "bands": len(per_band),
+        "standard_deviation_by_band": per_band,
+        "pooled_standard_deviation": pooled,
+        "verdict": _band_verdict(pooled, rule, higher_is_better=True),
+    }
+
+
+def evaluate(
+    rows: Sequence[dict[str, Any]],
+    agreement: dict[str, dict[str, Any]] | None = None,
+    stability_readings: dict[str, dict[str, Sequence[readout.Reading]]] | None = None,
+) -> dict[str, Any]:
+    """Per-model verdicts across every criterion, and the authorisation decision."""
+    thresholds = config.gate_thresholds()
+    agreement_rule = thresholds["instrument"]["logit_greedy_agreement"]
+    escalation = int(thresholds["escalation"]["warns_equal_fail"])
+
+    report: dict[str, Any] = {"models": {}}
+    for model in sorted({row["model_key"] for row in rows}):
+        model_rows = [row for row in rows if row["model_key"] == model]
+        primary_rows = _primary(model_rows)
+
+        criteria = {
+            "saturation": saturation(primary_rows),
+            "differential_off_target_mass": differential_off_target_mass(primary_rows),
+            "D1_rule_determinacy_r2": d1_rule_determinacy(model_rows),
+            "D2_free_parameter_response": d2_free_parameter(model_rows),
+            "D3_conditional_dispersion": d3_conditional_dispersion(model_rows),
+        }
+        if stability_readings and model in stability_readings:
+            criteria["cross_batch_stability"] = stability(stability_readings[model])
+        if agreement and model in agreement:
+            measured = agreement[model]
+            criteria["logit_greedy_agreement"] = {
+                **measured,
+                "minimum_observed": float(agreement_rule["minimum_observed"]),
+                "minimum_wilson_lower_bound": float(
+                    agreement_rule["minimum_wilson_lower_bound"]
+                ),
+                "verdict": PASS
+                if measured["agreement"] >= float(agreement_rule["minimum_observed"])
+                and measured["wilson_lower_bound"]
+                >= float(agreement_rule["minimum_wilson_lower_bound"])
+                else FAIL,
+            }
+
+        failed = [name for name, entry in criteria.items() if entry["verdict"] == FAIL]
+        warned = [name for name, entry in criteria.items() if entry["verdict"] == WARN]
         report["models"][model] = {
-            "gates": outcomes,
-            "granularity": stats | {"verdict": granularity_verdict},
-            "verdict": verdict,
-            "confirmatory_run_authorised": verdict != FAIL,
+            "criteria": criteria,
+            "failed": failed,
+            "warned": warned,
+            "skipped": [name for name, entry in criteria.items() if entry["verdict"] == SKIP],
+            "authorised": not failed and len(warned) < escalation,
         }
     return report
+
+
+def development_estimates(rows: Sequence[dict[str, Any]]) -> dict[str, Any]:
+    """Crossed interaction, variance components, and recognisability probe.
+
+    The main interaction uses an 80 percent interval because it selects a
+    predeclared context variant rather than supporting a confirmatory claim.
+    The recognisability quantity is a paired difference between the named and
+    invented matched-employer interactions, so shared family and name effects
+    cancel before the crossed interval is formed.
+    """
+    from . import estimate
+
+    interval_level = float(
+        config.study()["inference"]["context_selection_interval_level"]
+    )
+
+    def record(cells: Sequence[tuple[str, str, float]]) -> dict[str, Any]:
+        result = estimate.estimate(cells, interval_level=interval_level)
+        measured = result.as_dict()
+        measured["estimate"] = measured.pop("mean")
+        return measured
+
+    main_cells = estimate.interaction_cells(rows)
+    report = {"context_identity_interaction": record(main_cells)}
+
+    probe_levels = config.study()["context"].get("development_only_levels", [])
+    if len(probe_levels) == 2:
+        matched = estimate.interaction_cells(rows, realistic_level=probe_levels[0])
+        named = estimate.interaction_cells(rows, realistic_level=probe_levels[1])
+        matched_map = {(family, pair): value for family, pair, value in matched}
+        named_map = {(family, pair): value for family, pair, value in named}
+        if set(matched_map) != set(named_map):
+            raise estimate.EstimationError(
+                "recognisability interactions do not share the same family-by-name cells"
+            )
+        difference = [
+            (family, pair, named_map[(family, pair)] - matched_map[(family, pair)])
+            for family, pair in sorted(named_map)
+        ]
+        report["recognisability"] = {
+            "named": record(named),
+            "matched_invented": record(matched),
+            "named_minus_matched": record(difference),
+        }
+    return report
+
+
+def context_selection(
+    interaction_by_variant: dict[str, dict[str, float]],
+    saturation_by_variant: dict[str, float],
+) -> dict[str, Any]:
+    """Apply the predeclared order over the two realistic context variants.
+
+    Employer context alone is evaluated first. The selectivity fallback is
+    considered only if the first fails its criterion, and is accepted only if it
+    passes the same criterion without increasing saturation. Evaluating them in
+    a fixed order, rather than taking whichever performs better, is what keeps
+    the selected template a stimulus rather than a fitted parameter.
+    """
+    from . import context as context_factor
+
+    settings = config.study()["inference"]
+    threshold = float(settings["minimum_meaningful_effect"])
+    order = context_factor.realistic_variants()
+
+    evaluated = []
+    for index, variant in enumerate(order):
+        measured = interaction_by_variant.get(variant)
+        if measured is None:
+            evaluated.append({"variant": variant, "status": "not measured"})
+            continue
+        meets = abs(measured["estimate"]) >= threshold and (
+            measured["interval_lower"] > 0 or measured["interval_upper"] < 0
+        )
+        entry = {
+            "variant": variant,
+            "estimate": measured["estimate"],
+            "interval": [measured["interval_lower"], measured["interval_upper"]],
+            "meets_criterion": meets,
+            "saturation": saturation_by_variant.get(variant),
+        }
+        if index > 0 and meets:
+            first = saturation_by_variant.get(order[0])
+            current = saturation_by_variant.get(variant)
+            if first is not None and current is not None and current > first:
+                entry["meets_criterion"] = False
+                entry["rejected_because"] = "increases saturation over the first variant"
+                meets = False
+        evaluated.append(entry)
+        if meets:
+            return {"selected": variant, "evaluated": evaluated, "decision": "proceed"}
+
+    if any(entry.get("status") == "not measured" for entry in evaluated):
+        return {
+            "selected": None,
+            "evaluated": evaluated,
+            "decision": "fallback_required",
+        }
+    return {"selected": None, "evaluated": evaluated, "decision": "kill"}

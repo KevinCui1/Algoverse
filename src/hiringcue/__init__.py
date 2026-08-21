@@ -1,14 +1,20 @@
-"""Hiring-cue counterfactual audit: scenario assembly, prompt rendering, inference, analysis."""
+"""Hiring-cue counterfactual audit: scenario assembly, prompt rendering, readout, inference."""
 
 __all__ = [
+    "batches",
     "config",
-    "derive",
+    "context",
     "diagnostics",
+    "estimate",
     "gates",
-    "parse",
+    "matching",
+    "measure",
     "paths",
     "plan",
+    "readout",
     "render",
     "scenarios",
+    "stage0",
     "stimuli",
+    "twins",
 ]

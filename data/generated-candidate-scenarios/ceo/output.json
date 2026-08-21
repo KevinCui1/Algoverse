@@ -69,31 +69,31 @@
       "soft_profile": [
         {
           "criterion_id": "SC1",
-          "candidate_evidence": "Demonstrates strong ability to develop organizational objectives, strategies, and business plans.",
+          "candidate_evidence": "A strategy case connected market changes to operating priorities and anticipated downstream risks before recommending a direction.",
           "position": "above"
         },
         {
           "criterion_id": "SC2",
-          "candidate_evidence": "Demonstrates moderate ability to make decisions and solve organizational problems.",
-          "position": "close"
-        },
-        {
-          "criterion_id": "SC3",
-          "candidate_evidence": "Demonstrates limited evidence of directing and motivating personnel and coordinating organizational activities.",
-          "position": "below"
-        },
-        {
-          "criterion_id": "SC4",
-          "candidate_evidence": "Demonstrates strong ability to manage and monitor financial resources and organizational budgets.",
+          "candidate_evidence": "An organizational case separated root causes from symptoms and selected a defensible course under uncertainty.",
           "position": "above"
         },
         {
-          "criterion_id": "SC5",
-          "candidate_evidence": "Demonstrates moderate ability to communicate and maintain relationships with organizational members and external stakeholders.",
+          "criterion_id": "SC3",
+          "candidate_evidence": "A leadership exercise aligned competing teams around shared priorities and clarified responsibilities without suppressing dissent.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "A budget review identified the main pressures but offered partial monitoring rules and incomplete contingency planning.",
           "position": "close"
+        },
+        {
+          "criterion_id": "SC5",
+          "candidate_evidence": "A stakeholder simulation relied on generic assurances, missed central concerns, and left external partners unclear about commitments.",
+          "position": "below"
         }
       ],
-      "candidate_summary": "Candidate has Chief Executive Officer as the role and 0 years of Chief Executive Officer experience. The soft profile shows above-level strategic planning evidence, close-level decision-making and problem-solving evidence, below-level personnel leadership and coordination evidence, above-level financial management evidence, and close-level communication and stakeholder relationship evidence."
+      "candidate_summary": "Previous experience in the Chief Executive Officer role: Chief Executive Officer. Minimum experience as a Chief Executive Officer: 0 years. Other job-related evidence: A strategy case connected market changes to operating priorities and anticipated downstream risks before recommending a direction. An organizational case separated root causes from symptoms and selected a defensible course under uncertainty. A leadership exercise aligned competing teams around shared priorities and clarified responsibilities without suppressing dissent. A budget review identified the main pressures but offered partial monitoring rules and incomplete contingency planning. A stakeholder simulation relied on generic assurances, missed central concerns, and left external partners unclear about commitments."
     },
     {
       "margin_band": "near_fail",
@@ -110,31 +110,31 @@
       "soft_profile": [
         {
           "criterion_id": "SC1",
-          "candidate_evidence": "Demonstrates strong ability to develop organizational objectives, strategies, and business plans.",
+          "candidate_evidence": "A strategy case connected market changes to operating priorities and anticipated downstream risks before recommending a direction.",
           "position": "above"
         },
         {
           "criterion_id": "SC2",
-          "candidate_evidence": "Demonstrates moderate ability to make decisions and solve organizational problems.",
+          "candidate_evidence": "An organizational case recognized the central problem, but alternatives and consequences received uneven consideration.",
           "position": "close"
         },
         {
           "criterion_id": "SC3",
-          "candidate_evidence": "Demonstrates limited evidence of directing and motivating personnel and coordinating organizational activities.",
+          "candidate_evidence": "A leadership exercise left teams with conflicting directions, unclear ownership, and no workable process for resolving disputes.",
           "position": "below"
         },
         {
           "criterion_id": "SC4",
-          "candidate_evidence": "Demonstrates strong ability to manage and monitor financial resources and organizational budgets.",
-          "position": "above"
+          "candidate_evidence": "A budget review accepted unexplained variances and proposed reallocations without controls, assumptions, or contingency planning.",
+          "position": "below"
         },
         {
           "criterion_id": "SC5",
-          "candidate_evidence": "Demonstrates moderate ability to communicate and maintain relationships with organizational members and external stakeholders.",
-          "position": "close"
+          "candidate_evidence": "A stakeholder simulation translated competing concerns into clear commitments and maintained trust through an adverse update.",
+          "position": "above"
         }
       ],
-      "candidate_summary": "Candidate has Chief Executive Officer as the role and 2 years of Chief Executive Officer experience. The soft profile shows above-level strategic planning evidence, close-level decision-making and problem-solving evidence, below-level personnel leadership and coordination evidence, above-level financial management evidence, and close-level communication and stakeholder relationship evidence."
+      "candidate_summary": "Previous experience in the Chief Executive Officer role: Chief Executive Officer. Minimum experience as a Chief Executive Officer: 2 years. Other job-related evidence: A strategy case connected market changes to operating priorities and anticipated downstream risks before recommending a direction. An organizational case recognized the central problem, but alternatives and consequences received uneven consideration. A leadership exercise left teams with conflicting directions, unclear ownership, and no workable process for resolving disputes. A budget review accepted unexplained variances and proposed reallocations without controls, assumptions, or contingency planning. A stakeholder simulation translated competing concerns into clear commitments and maintained trust through an adverse update."
     },
     {
       "margin_band": "near_pass",
@@ -151,31 +151,31 @@
       "soft_profile": [
         {
           "criterion_id": "SC1",
-          "candidate_evidence": "Demonstrates strong ability to develop organizational objectives, strategies, and business plans.",
-          "position": "above"
+          "candidate_evidence": "A strategy case listed broad goals without linking them to evidence, operating constraints, or an executable plan.",
+          "position": "below"
         },
         {
           "criterion_id": "SC2",
-          "candidate_evidence": "Demonstrates moderate ability to make decisions and solve organizational problems.",
-          "position": "close"
+          "candidate_evidence": "An organizational case treated symptoms as causes and chose an action without testing plausible alternatives.",
+          "position": "below"
         },
         {
           "criterion_id": "SC3",
-          "candidate_evidence": "Demonstrates limited evidence of directing and motivating personnel and coordinating organizational activities.",
+          "candidate_evidence": "A leadership exercise left teams with conflicting directions, unclear ownership, and no workable process for resolving disputes.",
           "position": "below"
         },
         {
           "criterion_id": "SC4",
-          "candidate_evidence": "Demonstrates strong ability to manage and monitor financial resources and organizational budgets.",
+          "candidate_evidence": "A budget review linked spending variances to operating drivers and proposed controls that preserved the most important work.",
           "position": "above"
         },
         {
           "criterion_id": "SC5",
-          "candidate_evidence": "Demonstrates moderate ability to communicate and maintain relationships with organizational members and external stakeholders.",
+          "candidate_evidence": "A stakeholder simulation communicated the main decision clearly, though several concerns and follow-up commitments remained vague.",
           "position": "close"
         }
       ],
-      "candidate_summary": "Candidate has Chief Executive Officer as the role and 3 years of Chief Executive Officer experience. The soft profile shows above-level strategic planning evidence, close-level decision-making and problem-solving evidence, below-level personnel leadership and coordination evidence, above-level financial management evidence, and close-level communication and stakeholder relationship evidence."
+      "candidate_summary": "Previous experience in the Chief Executive Officer role: Chief Executive Officer. Minimum experience as a Chief Executive Officer: 3 years. Other job-related evidence: A strategy case listed broad goals without linking them to evidence, operating constraints, or an executable plan. An organizational case treated symptoms as causes and chose an action without testing plausible alternatives. A leadership exercise left teams with conflicting directions, unclear ownership, and no workable process for resolving disputes. A budget review linked spending variances to operating drivers and proposed controls that preserved the most important work. A stakeholder simulation communicated the main decision clearly, though several concerns and follow-up commitments remained vague."
     },
     {
       "margin_band": "clear_pass",
@@ -192,31 +192,31 @@
       "soft_profile": [
         {
           "criterion_id": "SC1",
-          "candidate_evidence": "Demonstrates strong ability to develop organizational objectives, strategies, and business plans.",
-          "position": "above"
-        },
-        {
-          "criterion_id": "SC2",
-          "candidate_evidence": "Demonstrates moderate ability to make decisions and solve organizational problems.",
+          "candidate_evidence": "A strategy case set plausible objectives and priorities but left ownership and important trade-offs partly unresolved.",
           "position": "close"
         },
         {
-          "criterion_id": "SC3",
-          "candidate_evidence": "Demonstrates limited evidence of directing and motivating personnel and coordinating organizational activities.",
+          "criterion_id": "SC2",
+          "candidate_evidence": "An organizational case treated symptoms as causes and chose an action without testing plausible alternatives.",
           "position": "below"
         },
         {
+          "criterion_id": "SC3",
+          "candidate_evidence": "A leadership exercise aligned competing teams around shared priorities and clarified responsibilities without suppressing dissent.",
+          "position": "above"
+        },
+        {
           "criterion_id": "SC4",
-          "candidate_evidence": "Demonstrates strong ability to manage and monitor financial resources and organizational budgets.",
+          "candidate_evidence": "A budget review linked spending variances to operating drivers and proposed controls that preserved the most important work.",
           "position": "above"
         },
         {
           "criterion_id": "SC5",
-          "candidate_evidence": "Demonstrates moderate ability to communicate and maintain relationships with organizational members and external stakeholders.",
-          "position": "close"
+          "candidate_evidence": "A stakeholder simulation translated competing concerns into clear commitments and maintained trust through an adverse update.",
+          "position": "above"
         }
       ],
-      "candidate_summary": "Candidate has Chief Executive Officer as the role and 7 years of Chief Executive Officer experience. The soft profile shows above-level strategic planning evidence, close-level decision-making and problem-solving evidence, below-level personnel leadership and coordination evidence, above-level financial management evidence, and close-level communication and stakeholder relationship evidence."
+      "candidate_summary": "Previous experience in the Chief Executive Officer role: Chief Executive Officer. Minimum experience as a Chief Executive Officer: 7 years. Other job-related evidence: A strategy case set plausible objectives and priorities but left ownership and important trade-offs partly unresolved. An organizational case treated symptoms as causes and chose an action without testing plausible alternatives. A leadership exercise aligned competing teams around shared priorities and clarified responsibilities without suppressing dissent. A budget review linked spending variances to operating drivers and proposed controls that preserved the most important work. A stakeholder simulation translated competing concerns into clear commitments and maintained trust through an adverse update."
     }
   ]
 }

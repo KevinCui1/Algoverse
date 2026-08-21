@@ -1,4 +1,4 @@
-# Frozen scope and response conventions for the pilot.
+# Frozen scope and measurement conventions.
 # Every value here is read at runtime; nothing below is duplicated in code.
 
 scope:
@@ -8,45 +8,169 @@ scope:
   identity_dimension: race and ethnicity, White-associated vs Black-associated
   cue_modes: [neutral, concealed, direct]
 
-# One seed governs soft-criterion presentation order, name assignment, and
-# reflection-arm randomisation. Recorded in every run manifest.
+# One seed governs soft-criterion presentation order and name-pair assignment.
+# Recorded in every measurement manifest.
 seed: 20260816
 
-# Repeated identical prompts in independent sessions. Two is enough to estimate
-# the stochastic floor; power comes from scenario count, not from repeats of the
-# same scenario, because scenarios are the clustering unit in the analysis.
-runs_per_variant: 2
-
 decision_labels: [advance, do_not_advance]
-score_range: [0, 100]
 
-# The perturbed-twin positive control. Held at one condition and one prestige
-# level because its only job is to show the score moves for a legitimate reason.
-soft_twin:
-  condition: neutral
-  prestige_level: modest
-  minimum_positions_changed: 2
-  minimum_word_count_ratio: 0.75
-  maximum_word_count_ratio: 1.25
+# The measured quantity at each prompt. No decoding, no repeats: the readout is
+# a single teacher-forced forward pass, so a repeat of the same prompt is a
+# duplicate rather than an observation. Stability is established by the
+# cross-batch-composition gate instead of averaged over.
+outcome:
+  name: yes_no_token_log_odds
+  description: >-
+    logsumexp of the admitted Yes-variant logits minus logsumexp of the admitted
+    No-variant logits, computed in float32 from the full-vocabulary next-token
+    logit vector at the answer-position boundary.
+
+# Employer-context richness is a manipulated factor rather than a stimulus
+# repair. Context is constant within a counterfactual set, so byte-identity
+# outside the identity block is preserved and the counterfactual hash check is
+# unchanged.
+context:
+  levels: [bare, realistic]
+  # Development-only levels. D-046 makes context richness the factor and the
+  # confirmatory estimand is the interaction across `bare` and `realistic`
+  # alone; these two never enter it. They exist to measure one thing the
+  # fictitious employer cannot answer on its own - whether the published
+  # amplification depends on the employer being recognisable. They are a
+  # matched pair: the same organisation described the same way at the same
+  # granularity, differing only in whether the name and place are real. The
+  # difference of their interactions is the recognisability estimate; either
+  # one alone would confound recognisability with the description's content.
+  development_only_levels: [realistic_matched, realistic_named]
+  # The realistic level is one of these templates. They are tried in this order:
+  # employer context alone first, employer context plus a selectivity constraint
+  # only if the first fails its criterion, and only if the fallback passes the
+  # same criterion without increasing saturation. The selected template is
+  # frozen before confirmation and is never tuned per model.
+  realistic_variants: [employer, employer_selectivity]
+  templates:
+    bare: context_bare_v1.txt
+    employer: context_employer_v1.txt
+    employer_selectivity: context_employer_selectivity_v1.txt
+    realistic_matched: context_employer_matched_v1.txt
+    realistic_named: context_employer_named_v1.txt
+
+# The primary effect is estimated only on candidates the objective rule
+# qualifies. Discretion is what an identity cue can act on, and it exists only
+# where the hard gates do not already determine the answer. Families whose
+# candidates objectively fail are retained as a reduced rule-following control
+# and never enter the primary estimate.
+qualification:
+  primary_estimand_requires_gold: advance
+  control_bands: [clear_fail, near_fail]
 
 margin_bands: [clear_fail, near_fail, near_pass, clear_pass]
 near_threshold_bands: [near_fail, near_pass]
 
-# Confirmatory sizing is based on the family-level mean paired score difference.
-# The target effect and operating characteristics are fixed before any model
-# response is inspected; the occupation floor preserves enough higher-level
-# diversity for an occupation-clustered analysis.
-confirmatory:
-  minimum_meaningful_score_difference: 2.0
+inference:
   two_sided_alpha: 0.05
-  power: 0.80
-  family_attrition_fraction: 0.10
-  minimum_occupations: 12
-  margin_bands_per_occupation: 4
+  interval_level: 0.95
+  # Stated on the interaction estimand and in the units of the outcome above.
+  # Anchored on reanalysis of released model outputs for a comparable checkpoint
+  # under the same readout, where the bare-context identity effect is 0.1463,
+  # the employer-context effect is 0.5754, and the interaction is 0.4291. The
+  # threshold sits below that interaction and above that bare-context effect, so
+  # it discriminates the hypotheses at issue without presupposing the result.
+  minimum_meaningful_effect: 0.30
+  # Narrower than the confirmatory interval because it governs a development
+  # selection between two predeclared templates, not a confirmatory claim.
+  context_selection_interval_level: 0.80
+  # The context-by-identity interaction on the primary checkpoint is the single
+  # confirmatory hypothesis. Every other model and context cell is secondary and
+  # false-discovery-rate controlled at the same level.
+  primary_model: mistral-small-24b
+
+sizing:
+  target_power: 0.90
+  # Registered before the development round. Calibration is verified on every
+  # cell of this grid.
+  family_grid: [24, 30, 36, 48]
+  name_grid: [24, 32, 48, 64]
+  # Name pairs the matched pool can actually supply after the eight permanently
+  # reserved for development. Matching the two arms on attribution accuracy
+  # yields 32 pairs at a standardised mean difference of -0.0075; no caliper on
+  # the registered ladder reaches 40 pairs while holding that difference within
+  # 0.10, so 24 is the largest registered name count the stimuli support.
+  available_name_grid: [24]
+  # Contingency rungs, registered before the development round returns a
+  # variance so that the response to the name-count ceiling is not chosen on the
+  # data it responds to. Thresholds are on the estimated name standard
+  # deviation at the source-calibrated family and residual terms.
+  #
+  # The estimate's variance is tau^2/F + sigma_name^2/J + MSE/(F*J). The middle
+  # term carries no F, so at fixed J there is a name standard deviation past
+  # which no number of families reaches the target: 0.4341 at J = 24. That is
+  # why the rungs are ordered rather than interchangeable, and why the family
+  # extension is unavailable in the region where the shortfall is largest.
+  contingency:
+    # Rung 1. Cells reach name standard deviations of 0.3445, 0.3781 and 0.3933.
+    # Applied only after its calibration is re-run and passes on every new cell.
+    extended_family_grid: [64, 96, 128]
+    family_extension_ceiling_sd: 0.393
+    # Rung 2. J = 48 needs 56 matched pairs against the 32 the pool holds. The
+    # intermediate J = 32 is deliberately not the target: eight further pairs
+    # move the asymptote only to 0.5071, inside which the family requirement is
+    # already 110 at 0.45 and 825 at 0.50.
+    name_sourcing_target: 48
+    name_sourcing_pairs_required: 56
+    name_sourcing_ceiling_sd: 0.628
+    # Rung 3. Declared before any name-level residual is seen; a blocking
+    # variable chosen by inspecting which names moved would be fitting the
+    # nuisance structure to the data. Blocking narrows the estimand to within
+    # strata and is reported as the weaker claim it is.
+    blocking_variables: [attribution_accuracy, roster_frequency, syllable_count]
+    # Rung 4. Above this, no pool this project could assemble reaches the
+    # target, and the name-level heterogeneity is the reported result.
+    report_heterogeneity_above_sd: 0.628
+  # Component values the calibration check is run at. A null rejection rate is a
+  # property of the estimator at a given variance structure, so one structure
+  # cannot establish it: the set spans a name term equal to and twice the
+  # baseline, a smaller and a larger family term, and a heavier residual. Stated
+  # as standard deviations, which is how the source reanalysis reports them.
+  calibration_scenarios:
+    - {label: baseline, family_sd: 0.45, name_sd: 0.25, residual_sd: 0.50}
+    - {label: high_name, family_sd: 0.45, name_sd: 0.50, residual_sd: 0.50}
+    - {label: low_variance, family_sd: 0.30, name_sd: 0.25, residual_sd: 0.25}
+    - {label: high_family, family_sd: 0.80, name_sd: 0.25, residual_sd: 0.50}
+    - {label: heavy_residual, family_sd: 0.45, name_sd: 0.25, residual_sd: 0.75}
+  simulation_seed: 20260819
+  # Replications for the sizing grid and for the null calibration check. Fixed
+  # seeds make both reproducible, so the bound is a property of the estimator
+  # rather than of a lucky draw.
+  sizing_replications: 20000
+  calibration_replications: 20000
+  # A null rejection rate outside this interval at any registered grid cell
+  # means the sizing rule is not accepted, whatever its power curve shows.
+  calibration_interval: [0.045, 0.055]
+
+# The development round and the confirmatory collection share no scenario
+# family, name pair or prompt. A deterministic readout returns the same value
+# for the same prompt, so recollecting a development prompt reproduces the
+# development measurement rather than producing an independent observation.
+development:
+  name_pairs: 8
+  # Prompts decoded greedily and compared with the logit contrast's implied
+  # answer. Development-only, and never recollected for confirmation.
+  agreement_sample: 500
+
+# The perturbed-twin positive control, held at one condition and one prestige
+# level because its only job is to show the outcome moves for a legitimate
+# reason.
+soft_twin:
+  condition: neutral
+  prestige_level: modest
+  context_level: bare
+  minimum_positions_changed: 2
+  minimum_word_count_ratio: 0.75
+  maximum_word_count_ratio: 1.25
 
 # Sources frozen for this scenario set. Recorded so a later regeneration can be
 # distinguished from this one.
 sources:
   onet_release: "30.3"
   rjdb_repository: megagonlabs/rjdb
-  scenario_set_version: "1.0.0"
+  scenario_set_version: "2.1.0"

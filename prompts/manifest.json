@@ -1,14 +1,20 @@
 {
   "prompt_pack_id": "hiring_cue_central_prompts",
-  "version": "1.0.0",
-  "status": "pilot_candidate",
+  "version": "2.0.0",
+  "status": "p1_measurement",
   "templates": [
     {
       "template_id": "scenario_author_v1",
       "stage": "scenario_authoring",
       "messages": [
-        {"role": "system", "file": "scenario_author_system_v1.txt"},
-        {"role": "user", "file": "scenario_author_user_v1.txt"}
+        {
+          "role": "system",
+          "file": "scenario_author_system_v1.txt"
+        },
+        {
+          "role": "user",
+          "file": "scenario_author_user_v1.txt"
+        }
       ],
       "placeholders": [
         "RJDB_JOB_DESCRIPTION",
@@ -25,28 +31,39 @@
       "response_schema": "scenario_author_output.schema.json"
     },
     {
-      "template_id": "initial_decision_v1",
-      "stage": "initial_decision",
+      "template_id": "decision_v1",
+      "stage": "hiring_decision",
       "messages": [
-        {"role": "system", "file": "initial_evaluation_system_v1.txt"},
-        {"role": "user", "file": "initial_evaluation_user_v1.txt"}
+        {
+          "role": "system",
+          "file": "decision_system_v1.txt"
+        },
+        {
+          "role": "user",
+          "file": "decision_user_v1.txt"
+        }
       ],
       "placeholders": [
         "IDENTITY_BLOCK",
+        "CONTEXT_BLOCK",
         "OCCUPATION_TITLE",
         "JOB_SUMMARY",
         "NUMBERED_HARD_GATES",
         "RANDOMIZED_SOFT_CRITERIA",
         "CANDIDATE_FACTS_WITH_PRESTIGE_STIMULUS"
       ],
-      "response_schema": "initial_output.schema.json",
-      "repair_template": "repair_initial_json_v1.txt"
+      "response_schema": null,
+      "readout": "yes_no_token_log_odds",
+      "note": "The response is a single token read from the next-token distribution rather than generated, so there is no schema to validate and no repair template. The system and user text are sent as one user turn, because several evaluated chat templates have no system role."
     },
     {
       "template_id": "reflection_generic_v1",
       "stage": "reflection",
       "messages": [
-        {"role": "user", "file": "reflection_generic_v1.txt"}
+        {
+          "role": "user",
+          "file": "reflection_generic_v1.txt"
+        }
       ],
       "placeholders": [],
       "response_schema": "reflection_generic_output.schema.json",
@@ -56,9 +73,15 @@
       "template_id": "reflection_identity_concealed_v1",
       "stage": "reflection",
       "messages": [
-        {"role": "user", "file": "reflection_identity_concealed_v1.txt"}
+        {
+          "role": "user",
+          "file": "reflection_identity_concealed_v1.txt"
+        }
       ],
-      "placeholders": ["APPLICANT_NAME", "PERCEIVED_IDENTITY_LABEL"],
+      "placeholders": [
+        "APPLICANT_NAME",
+        "PERCEIVED_IDENTITY_LABEL"
+      ],
       "response_schema": "reflection_identity_output.schema.json",
       "repair_template": "repair_reflection_identity_json_v1.txt"
     },
@@ -66,9 +89,14 @@
       "template_id": "reflection_identity_direct_v1",
       "stage": "reflection",
       "messages": [
-        {"role": "user", "file": "reflection_identity_direct_v1.txt"}
+        {
+          "role": "user",
+          "file": "reflection_identity_direct_v1.txt"
+        }
       ],
-      "placeholders": ["DIRECT_IDENTITY_LABEL"],
+      "placeholders": [
+        "DIRECT_IDENTITY_LABEL"
+      ],
       "response_schema": "reflection_identity_output.schema.json",
       "repair_template": "repair_reflection_identity_json_v1.txt"
     },
@@ -76,9 +104,14 @@
       "template_id": "reflection_late_disclosure_v1",
       "stage": "late_disclosure_control",
       "messages": [
-        {"role": "user", "file": "reflection_late_disclosure_v1.txt"}
+        {
+          "role": "user",
+          "file": "reflection_late_disclosure_v1.txt"
+        }
       ],
-      "placeholders": ["DIRECT_IDENTITY_LABEL"],
+      "placeholders": [
+        "DIRECT_IDENTITY_LABEL"
+      ],
       "response_schema": "reflection_generic_output.schema.json",
       "repair_template": "repair_reflection_generic_json_v1.txt",
       "recognition_scoring_eligible": false
@@ -103,5 +136,17 @@
     "retry_substantive_refusal": false,
     "preserve_all_raw_responses": true,
     "coerce_unknown_decision_labels": false
+  },
+  "context_rendering": {
+    "levels": [
+      "bare",
+      "realistic"
+    ],
+    "bare": "context_bare_v1.txt",
+    "realistic_variants_in_predeclared_order": [
+      "context_employer_v1.txt",
+      "context_employer_selectivity_v1.txt"
+    ],
+    "note": "Constant within a counterfactual set, so byte-identity outside the identity block holds."
   }
 }

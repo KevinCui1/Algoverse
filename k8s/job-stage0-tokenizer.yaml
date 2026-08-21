@@ -1,0 +1,95 @@
+# Stage 0, tokenizer half: answer boundary and admitted variant sets.
+#
+# No accelerator is requested. This half loads tokenizer and template files only,
+# which are a few hundred kilobytes, and holding an 80GB device idle while it
+# runs is the waste the separate weight-download job exists to avoid.
+#
+# It is run as its own job because it is the part that cannot be executed
+# outside the cluster: the Gemma repositories are access-gated and the namespace
+# secret is where the token lives. Which surface forms of Yes and No occupy one
+# token at the boundary is a property of the pinned tokenizer and the pinned
+# template together and is never inferred from tokenizer family - on the two
+# Mistral checkpoints alone the admitted sets already differ.
+#
+# Stage the source first, then apply:
+#   git ls-files --cached --others --exclude-standard \
+#     | while read -r f; do [ -f "$f" ] && printf '%s\n' "$f"; done \
+#     > /tmp/hiringcue-stage.txt
+#   tar czf /tmp/hiringcue-p1.tar.gz -T /tmp/hiringcue-stage.txt
+#   kubectl cp /tmp/hiringcue-p1.tar.gz <staging-pod>:/cache/hiringcue-p1.tar.gz
+#   kubectl apply -f k8s/job-stage0-tokenizer.yaml
+#
+# The archive carries exactly the files version control would carry, at their
+# working-tree contents. The volume is shared with other people and the archive
+# is unpacked there in full, so anything the ignore list excludes - local
+# working notes, run outputs, environments - must not reach it, and deriving
+# the file list from the ignore rules is what guarantees that without a
+# hand-maintained exclusion list that silently falls out of date. The existence
+# filter drops paths deleted in the working tree but not yet committed, which
+# would otherwise abort the archive.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hiringcue-stage0-tokenizer
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 86400
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: stage0
+          image: python:3.12-slim
+          command: ["/bin/bash", "-lc"]
+          args:
+            - |
+              set -euo pipefail
+              rm -rf /cache/hiringcue-source-p1
+              mkdir -p /cache/hiringcue-source-p1
+              tar xzf /cache/hiringcue-p1.tar.gz -C /cache/hiringcue-source-p1
+              cd /cache/hiringcue-source-p1
+              pip install --no-cache-dir -e .
+
+              # The scenario set and the counterfactual sets are checked before
+              # anything is downloaded, so a stimulus fault stops the job in
+              # seconds rather than after five tokenizers are resident.
+              python3 -m hiringcue.cli validate
+              python3 -m hiringcue.cli plan --plan-dir /cache/plan/stage0
+
+              status=0
+              for MODEL in mistral-small-24b gemma3-12b gemma3-27b gemma2-27b mistral-7b-v03; do
+                echo "=== $MODEL ==="
+                python3 -m hiringcue.cli stage0 \
+                  --model "$MODEL" \
+                  --tokenizer-only \
+                  --plan-dir /cache/plan/stage0 \
+                  --out /cache/stage0 || status=1
+              done
+              # A checkpoint that cannot be measured is a finding about that
+              # checkpoint, so every one is attempted and the failures are
+              # reported together rather than stopping at the first.
+              exit "$status"
+          env:
+            - name: HF_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: hf-token
+                  key: token
+            - name: HF_HOME
+              value: /cache/hf
+            - name: HF_HUB_DISABLE_XET
+              value: "1"
+          resources:
+            requests:
+              cpu: "2"
+              memory: 8Gi
+            limits:
+              cpu: "2"
+              memory: 8Gi
+          volumeMounts:
+            - name: cache
+              mountPath: /cache
+      volumes:
+        - name: cache
+          persistentVolumeClaim:
+            claimName: hiringcue-cache

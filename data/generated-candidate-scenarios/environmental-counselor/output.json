@@ -76,26 +76,26 @@
       "soft_profile": [
         {
           "criterion_id": "SC1",
-          "candidate_evidence": "Has substantial demonstrated ability to apply Plant Biology knowledge to environmental work.",
+          "candidate_evidence": "A habitat case connected plant physiology, soil conditions, and visible stress patterns to a coherent ecological explanation.",
           "position": "above"
         },
         {
           "criterion_id": "SC2",
-          "candidate_evidence": "Technical writing experience is limited compared with the role's communication needs.",
-          "position": "below"
+          "candidate_evidence": "A technical memo organized evidence around the decision, defined uncertainty plainly, and translated findings for a nontechnical reader.",
+          "position": "above"
         },
         {
           "criterion_id": "SC3",
-          "candidate_evidence": "Shows some relevant critical-thinking and problem-solving experience in environmental situations.",
+          "candidate_evidence": "An environmental decision case identified a plausible cause, but alternatives, assumptions, and trade-offs received partial treatment.",
           "position": "close"
         },
         {
           "criterion_id": "SC4",
-          "candidate_evidence": "Has strong experience analyzing environmental data and assessing environmental impacts.",
-          "position": "above"
+          "candidate_evidence": "A monitoring dataset was summarized at face value without checking anomalies, contextual differences, or competing interpretations.",
+          "position": "below"
         }
       ],
-      "candidate_summary": "Environmental Counselor experience: 0 years. Soil and Plant Scientist experience: 1 year. Knowledge of Soil Chemistry: no. Plant Biology evidence: has substantial demonstrated ability to apply Plant Biology knowledge to environmental work. Technical Writing evidence: Technical writing experience is limited compared with the role's communication needs. Critical Thinking and Problem Solving evidence: shows some relevant critical-thinking and problem-solving experience in environmental situations. Environmental data analysis evidence: has strong experience analyzing environmental data and assessing environmental impacts."
+      "candidate_summary": "Experience working as an Environmental Counselor: 0 years. Experience working as a Soil and Plant Scientist: 1 years. Knowledge of Soil Chemistry: no. Other job-related evidence: A habitat case connected plant physiology, soil conditions, and visible stress patterns to a coherent ecological explanation. A technical memo organized evidence around the decision, defined uncertainty plainly, and translated findings for a nontechnical reader. An environmental decision case identified a plausible cause, but alternatives, assumptions, and trade-offs received partial treatment. A monitoring dataset was summarized at face value without checking anomalies, contextual differences, or competing interpretations."
     },
     {
       "margin_band": "near_fail",
@@ -116,26 +116,26 @@
       "soft_profile": [
         {
           "criterion_id": "SC1",
-          "candidate_evidence": "Has substantial demonstrated ability to apply Plant Biology knowledge to environmental work.",
-          "position": "above"
+          "candidate_evidence": "A habitat case recognized relevant plant processes, but links among soil conditions, symptoms, and ecological consequences were incomplete.",
+          "position": "close"
         },
         {
           "criterion_id": "SC2",
-          "candidate_evidence": "Technical writing experience is limited compared with the role's communication needs.",
+          "candidate_evidence": "A technical memo buried the main finding, mixed evidence with assertion, and left central technical terms unexplained.",
           "position": "below"
         },
         {
           "criterion_id": "SC3",
-          "candidate_evidence": "Shows some relevant critical-thinking and problem-solving experience in environmental situations.",
-          "position": "close"
+          "candidate_evidence": "An environmental decision case selected a cause immediately and ignored conflicting evidence, alternatives, and material trade-offs.",
+          "position": "below"
         },
         {
           "criterion_id": "SC4",
-          "candidate_evidence": "Has strong experience analyzing environmental data and assessing environmental impacts.",
+          "candidate_evidence": "A monitoring dataset was checked for anomalies, interpreted against site context, and converted into a defensible impact assessment.",
           "position": "above"
         }
       ],
-      "candidate_summary": "Environmental Counselor experience: 2 years. Soil and Plant Scientist experience: 2 years. Knowledge of Soil Chemistry: no. Plant Biology evidence: has substantial demonstrated ability to apply Plant Biology knowledge to environmental work. Technical Writing evidence: Technical writing experience is limited compared with the role's communication needs. Critical Thinking and Problem Solving evidence: shows some relevant critical-thinking and problem-solving experience in environmental situations. Environmental data analysis evidence: has strong experience analyzing environmental data and assessing environmental impacts."
+      "candidate_summary": "Experience working as an Environmental Counselor: 2 years. Experience working as a Soil and Plant Scientist: 2 years. Knowledge of Soil Chemistry: no. Other job-related evidence: A habitat case recognized relevant plant processes, but links among soil conditions, symptoms, and ecological consequences were incomplete. A technical memo buried the main finding, mixed evidence with assertion, and left central technical terms unexplained. An environmental decision case selected a cause immediately and ignored conflicting evidence, alternatives, and material trade-offs. A monitoring dataset was checked for anomalies, interpreted against site context, and converted into a defensible impact assessment."
     },
     {
       "margin_band": "near_pass",
@@ -156,26 +156,26 @@
       "soft_profile": [
         {
           "criterion_id": "SC1",
-          "candidate_evidence": "Has substantial demonstrated ability to apply Plant Biology knowledge to environmental work.",
-          "position": "above"
+          "candidate_evidence": "A habitat case recognized relevant plant processes, but links among soil conditions, symptoms, and ecological consequences were incomplete.",
+          "position": "close"
         },
         {
           "criterion_id": "SC2",
-          "candidate_evidence": "Technical writing experience is limited compared with the role's communication needs.",
+          "candidate_evidence": "A technical memo buried the main finding, mixed evidence with assertion, and left central technical terms unexplained.",
           "position": "below"
         },
         {
           "criterion_id": "SC3",
-          "candidate_evidence": "Shows some relevant critical-thinking and problem-solving experience in environmental situations.",
-          "position": "close"
+          "candidate_evidence": "An environmental decision case compared plausible causes, tested assumptions against the record, and explained the trade-offs behind the recommendation.",
+          "position": "above"
         },
         {
           "criterion_id": "SC4",
-          "candidate_evidence": "Has strong experience analyzing environmental data and assessing environmental impacts.",
+          "candidate_evidence": "A monitoring dataset was checked for anomalies, interpreted against site context, and converted into a defensible impact assessment.",
           "position": "above"
         }
       ],
-      "candidate_summary": "Environmental Counselor experience: 2 years. Soil and Plant Scientist experience: 2 years. Knowledge of Soil Chemistry: yes. Plant Biology evidence: has substantial demonstrated ability to apply Plant Biology knowledge to environmental work. Technical Writing evidence: Technical writing experience is limited compared with the role's communication needs. Critical Thinking and Problem Solving evidence: shows some relevant critical-thinking and problem-solving experience in environmental situations. Environmental data analysis evidence: has strong experience analyzing environmental data and assessing environmental impacts."
+      "candidate_summary": "Experience working as an Environmental Counselor: 2 years. Experience working as a Soil and Plant Scientist: 2 years. Knowledge of Soil Chemistry: yes. Other job-related evidence: A habitat case recognized relevant plant processes, but links among soil conditions, symptoms, and ecological consequences were incomplete. A technical memo buried the main finding, mixed evidence with assertion, and left central technical terms unexplained. An environmental decision case compared plausible causes, tested assumptions against the record, and explained the trade-offs behind the recommendation. A monitoring dataset was checked for anomalies, interpreted against site context, and converted into a defensible impact assessment."
     },
     {
       "margin_band": "clear_pass",
@@ -196,26 +196,26 @@
       "soft_profile": [
         {
           "criterion_id": "SC1",
-          "candidate_evidence": "Has substantial demonstrated ability to apply Plant Biology knowledge to environmental work.",
-          "position": "above"
-        },
-        {
-          "criterion_id": "SC2",
-          "candidate_evidence": "Technical writing experience is limited compared with the role's communication needs.",
+          "candidate_evidence": "A habitat case confused basic plant responses and offered an explanation disconnected from the observed soil and vegetation conditions.",
           "position": "below"
         },
         {
+          "criterion_id": "SC2",
+          "candidate_evidence": "A technical memo organized evidence around the decision, defined uncertainty plainly, and translated findings for a nontechnical reader.",
+          "position": "above"
+        },
+        {
           "criterion_id": "SC3",
-          "candidate_evidence": "Shows some relevant critical-thinking and problem-solving experience in environmental situations.",
+          "candidate_evidence": "An environmental decision case identified a plausible cause, but alternatives, assumptions, and trade-offs received partial treatment.",
           "position": "close"
         },
         {
           "criterion_id": "SC4",
-          "candidate_evidence": "Has strong experience analyzing environmental data and assessing environmental impacts.",
-          "position": "above"
+          "candidate_evidence": "A monitoring dataset was summarized at face value without checking anomalies, contextual differences, or competing interpretations.",
+          "position": "below"
         }
       ],
-      "candidate_summary": "Environmental Counselor experience: 5 years. Soil and Plant Scientist experience: 5 years. Knowledge of Soil Chemistry: yes. Plant Biology evidence: has substantial demonstrated ability to apply Plant Biology knowledge to environmental work. Technical Writing evidence: Technical writing experience is limited compared with the role's communication needs. Critical Thinking and Problem Solving evidence: shows some relevant critical-thinking and problem-solving experience in environmental situations. Environmental data analysis evidence: has strong experience analyzing environmental data and assessing environmental impacts."
+      "candidate_summary": "Experience working as an Environmental Counselor: 5 years. Experience working as a Soil and Plant Scientist: 5 years. Knowledge of Soil Chemistry: yes. Other job-related evidence: A habitat case confused basic plant responses and offered an explanation disconnected from the observed soil and vegetation conditions. A technical memo organized evidence around the decision, defined uncertainty plainly, and translated findings for a nontechnical reader. An environmental decision case identified a plausible cause, but alternatives, assumptions, and trade-offs received partial treatment. A monitoring dataset was summarized at face value without checking anomalies, contextual differences, or competing interpretations."
     }
   ]
 }

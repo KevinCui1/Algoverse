@@ -76,26 +76,26 @@
       "soft_profile": [
         {
           "criterion_id": "SC1",
-          "candidate_evidence": "Frequently identifies treatment-related problems and develops practical solutions.",
-          "position": "above"
-        },
-        {
-          "criterion_id": "SC2",
-          "candidate_evidence": "Pays careful attention to medical histories and diagnostic information, with generally accurate documentation.",
+          "candidate_evidence": "A treatment case reached a plausible approach, though adaptation to new evidence and practical constraints was uneven.",
           "position": "close"
         },
         {
-          "criterion_id": "SC3",
-          "candidate_evidence": "Shows limited evidence of providing patient-focused care and attention to animal comfort.",
+          "criterion_id": "SC2",
+          "candidate_evidence": "A record review overlooked conflicting history and examination details and carried an avoidable error into the diagnostic narrative.",
           "position": "below"
         },
         {
+          "criterion_id": "SC3",
+          "candidate_evidence": "An animal-handling simulation adjusted pace and restraint to distress signals while maintaining safe, calm, patient-focused care.",
+          "position": "above"
+        },
+        {
           "criterion_id": "SC4",
-          "candidate_evidence": "Regularly analyzes diagnostic information when considering animal conditions and treatment options.",
+          "candidate_evidence": "A diagnostic case integrated examination findings, test patterns, and scientific plausibility before selecting among competing explanations.",
           "position": "above"
         }
       ],
-      "candidate_summary": "The candidate has 2 years of Veterinarian experience, demonstrated ability in diagnosis and treatment planning, and demonstrated communication skills for clearly communicating medical information to animal owners. The candidate frequently identifies treatment-related problems and develops practical solutions, pays careful attention to medical histories and diagnostic information with generally accurate documentation, shows limited evidence of providing patient-focused care and attention to animal comfort, and regularly analyzes diagnostic information when considering animal conditions and treatment options."
+      "candidate_summary": "At least 5 years of experience as a Veterinarian: 2 years. Demonstrated ability in diagnosis and treatment planning: demonstrated. Demonstrated communication skills for clearly communicating medical information to animal owners: demonstrated. Other job-related evidence: A treatment case reached a plausible approach, though adaptation to new evidence and practical constraints was uneven. A record review overlooked conflicting history and examination details and carried an avoidable error into the diagnostic narrative. An animal-handling simulation adjusted pace and restraint to distress signals while maintaining safe, calm, patient-focused care. A diagnostic case integrated examination findings, test patterns, and scientific plausibility before selecting among competing explanations."
     },
     {
       "margin_band": "near_fail",
@@ -116,26 +116,26 @@
       "soft_profile": [
         {
           "criterion_id": "SC1",
-          "candidate_evidence": "Frequently identifies treatment-related problems and develops practical solutions.",
-          "position": "above"
-        },
-        {
-          "criterion_id": "SC2",
-          "candidate_evidence": "Pays careful attention to medical histories and diagnostic information, with generally accurate documentation.",
-          "position": "close"
-        },
-        {
-          "criterion_id": "SC3",
-          "candidate_evidence": "Shows limited evidence of providing patient-focused care and attention to animal comfort.",
+          "candidate_evidence": "A treatment case persisted with an unsuitable approach after conflicting evidence appeared and left the central problem unresolved.",
           "position": "below"
         },
         {
-          "criterion_id": "SC4",
-          "candidate_evidence": "Regularly analyzes diagnostic information when considering animal conditions and treatment options.",
+          "criterion_id": "SC2",
+          "candidate_evidence": "A record review reconciled conflicting history and examination details, corrected an inconsistency, and kept the diagnostic narrative precise.",
           "position": "above"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "An animal-handling simulation adjusted pace and restraint to distress signals while maintaining safe, calm, patient-focused care.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "A diagnostic case used the main findings appropriately, though competing explanations and scientific uncertainty were only partly examined.",
+          "position": "close"
         }
       ],
-      "candidate_summary": "The candidate has 4 years of Veterinarian experience, demonstrated ability in diagnosis and treatment planning, and demonstrated communication skills for clearly communicating medical information to animal owners. The candidate frequently identifies treatment-related problems and develops practical solutions, pays careful attention to medical histories and diagnostic information with generally accurate documentation, shows limited evidence of providing patient-focused care and attention to animal comfort, and regularly analyzes diagnostic information when considering animal conditions and treatment options."
+      "candidate_summary": "At least 5 years of experience as a Veterinarian: 4 years. Demonstrated ability in diagnosis and treatment planning: demonstrated. Demonstrated communication skills for clearly communicating medical information to animal owners: demonstrated. Other job-related evidence: A treatment case persisted with an unsuitable approach after conflicting evidence appeared and left the central problem unresolved. A record review reconciled conflicting history and examination details, corrected an inconsistency, and kept the diagnostic narrative precise. An animal-handling simulation adjusted pace and restraint to distress signals while maintaining safe, calm, patient-focused care. A diagnostic case used the main findings appropriately, though competing explanations and scientific uncertainty were only partly examined."
     },
     {
       "margin_band": "near_pass",
@@ -156,26 +156,26 @@
       "soft_profile": [
         {
           "criterion_id": "SC1",
-          "candidate_evidence": "Frequently identifies treatment-related problems and develops practical solutions.",
+          "candidate_evidence": "A treatment case identified the central clinical problem, adapted when the initial approach conflicted with new evidence, and preserved patient safety.",
           "position": "above"
         },
         {
           "criterion_id": "SC2",
-          "candidate_evidence": "Pays careful attention to medical histories and diagnostic information, with generally accurate documentation.",
+          "candidate_evidence": "A record review captured the main history and examination details, but a relevant inconsistency remained insufficiently resolved.",
           "position": "close"
         },
         {
           "criterion_id": "SC3",
-          "candidate_evidence": "Shows limited evidence of providing patient-focused care and attention to animal comfort.",
+          "candidate_evidence": "An animal-handling simulation ignored escalating distress cues and used an approach that unnecessarily compromised comfort and cooperation.",
           "position": "below"
         },
         {
           "criterion_id": "SC4",
-          "candidate_evidence": "Regularly analyzes diagnostic information when considering animal conditions and treatment options.",
-          "position": "above"
+          "candidate_evidence": "A diagnostic case selected an explanation from one salient finding and disregarded conflicting tests and scientific plausibility.",
+          "position": "below"
         }
       ],
-      "candidate_summary": "The candidate has 5 years of Veterinarian experience, demonstrated ability in diagnosis and treatment planning, and demonstrated communication skills for clearly communicating medical information to animal owners. The candidate frequently identifies treatment-related problems and develops practical solutions, pays careful attention to medical histories and diagnostic information with generally accurate documentation, shows limited evidence of providing patient-focused care and attention to animal comfort, and regularly analyzes diagnostic information when considering animal conditions and treatment options."
+      "candidate_summary": "At least 5 years of experience as a Veterinarian: 5 years. Demonstrated ability in diagnosis and treatment planning: demonstrated. Demonstrated communication skills for clearly communicating medical information to animal owners: demonstrated. Other job-related evidence: A treatment case identified the central clinical problem, adapted when the initial approach conflicted with new evidence, and preserved patient safety. A record review captured the main history and examination details, but a relevant inconsistency remained insufficiently resolved. An animal-handling simulation ignored escalating distress cues and used an approach that unnecessarily compromised comfort and cooperation. A diagnostic case selected an explanation from one salient finding and disregarded conflicting tests and scientific plausibility."
     },
     {
       "margin_band": "clear_pass",
@@ -196,26 +196,26 @@
       "soft_profile": [
         {
           "criterion_id": "SC1",
-          "candidate_evidence": "Frequently identifies treatment-related problems and develops practical solutions.",
-          "position": "above"
-        },
-        {
-          "criterion_id": "SC2",
-          "candidate_evidence": "Pays careful attention to medical histories and diagnostic information, with generally accurate documentation.",
+          "candidate_evidence": "A treatment case reached a plausible approach, though adaptation to new evidence and practical constraints was uneven.",
           "position": "close"
         },
         {
+          "criterion_id": "SC2",
+          "candidate_evidence": "A record review overlooked conflicting history and examination details and carried an avoidable error into the diagnostic narrative.",
+          "position": "below"
+        },
+        {
           "criterion_id": "SC3",
-          "candidate_evidence": "Shows limited evidence of providing patient-focused care and attention to animal comfort.",
+          "candidate_evidence": "An animal-handling simulation ignored escalating distress cues and used an approach that unnecessarily compromised comfort and cooperation.",
           "position": "below"
         },
         {
           "criterion_id": "SC4",
-          "candidate_evidence": "Regularly analyzes diagnostic information when considering animal conditions and treatment options.",
+          "candidate_evidence": "A diagnostic case integrated examination findings, test patterns, and scientific plausibility before selecting among competing explanations.",
           "position": "above"
         }
       ],
-      "candidate_summary": "The candidate has 8 years of Veterinarian experience, demonstrated ability in diagnosis and treatment planning, and demonstrated communication skills for clearly communicating medical information to animal owners. The candidate frequently identifies treatment-related problems and develops practical solutions, pays careful attention to medical histories and diagnostic information with generally accurate documentation, shows limited evidence of providing patient-focused care and attention to animal comfort, and regularly analyzes diagnostic information when considering animal conditions and treatment options."
+      "candidate_summary": "At least 5 years of experience as a Veterinarian: 8 years. Demonstrated ability in diagnosis and treatment planning: demonstrated. Demonstrated communication skills for clearly communicating medical information to animal owners: demonstrated. Other job-related evidence: A treatment case reached a plausible approach, though adaptation to new evidence and practical constraints was uneven. A record review overlooked conflicting history and examination details and carried an avoidable error into the diagnostic narrative. An animal-handling simulation ignored escalating distress cues and used an approach that unnecessarily compromised comfort and cooperation. A diagnostic case integrated examination findings, test patterns, and scientific plausibility before selecting among competing explanations."
     }
   ]
 }

@@ -76,26 +76,26 @@
       "soft_profile": [
         {
           "criterion_id": "SC1",
-          "candidate_evidence": "Frequently analyzes software requirements and project information to determine design approaches.",
-          "position": "above"
-        },
-        {
-          "criterion_id": "SC2",
-          "candidate_evidence": "Has some experience developing and using software testing procedures.",
+          "candidate_evidence": "A design review captured the main requirements and proposed a workable approach, but several constraints and trade-offs remained implicit.",
           "position": "close"
         },
         {
+          "criterion_id": "SC2",
+          "candidate_evidence": "A test plan focused on the happy path and left important failures, boundaries, and expected outcomes unspecified.",
+          "position": "below"
+        },
+        {
           "criterion_id": "SC3",
-          "candidate_evidence": "Has limited experience collaborating with other engineers and project participants on design specifications.",
+          "candidate_evidence": "An architecture discussion defended an initial proposal, missed conflicting assumptions, and ended without shared interface expectations.",
           "position": "below"
         },
         {
           "criterion_id": "SC4",
-          "candidate_evidence": "Regularly applies critical thinking and complex problem solving to software-related issues.",
+          "candidate_evidence": "An incident case separated symptoms from causes, tested competing hypotheses, and chose a repair that addressed recurrence risk.",
           "position": "above"
         }
       ],
-      "candidate_summary": "The candidate has 1 year of Scala programming experience in a software engineering position, demonstrated SAAS knowledge, and 3 years of Software Engineer experience. The candidate frequently analyzes software requirements and project information to determine design approaches, has some experience developing and using software testing procedures, has limited experience collaborating with other engineers and project participants on design specifications, and regularly applies critical thinking and complex problem solving to software-related issues."
+      "candidate_summary": "At least 3 years of experience using Scala programming in a software engineering position: 1 years. Demonstrated knowledge of Software as a Service (SAAS) technologies and ability to manipulate services to desired states and functions: demonstrated. At least 3 years of experience working as a Software Engineer: 3 years. Other job-related evidence: A design review captured the main requirements and proposed a workable approach, but several constraints and trade-offs remained implicit. A test plan focused on the happy path and left important failures, boundaries, and expected outcomes unspecified. An architecture discussion defended an initial proposal, missed conflicting assumptions, and ended without shared interface expectations. An incident case separated symptoms from causes, tested competing hypotheses, and chose a repair that addressed recurrence risk."
     },
     {
       "margin_band": "near_fail",
@@ -116,26 +116,26 @@
       "soft_profile": [
         {
           "criterion_id": "SC1",
-          "candidate_evidence": "Frequently analyzes software requirements and project information to determine design approaches.",
-          "position": "above"
-        },
-        {
-          "criterion_id": "SC2",
-          "candidate_evidence": "Has some experience developing and using software testing procedures.",
+          "candidate_evidence": "A design review captured the main requirements and proposed a workable approach, but several constraints and trade-offs remained implicit.",
           "position": "close"
         },
         {
-          "criterion_id": "SC3",
-          "candidate_evidence": "Has limited experience collaborating with other engineers and project participants on design specifications.",
+          "criterion_id": "SC2",
+          "candidate_evidence": "A test plan focused on the happy path and left important failures, boundaries, and expected outcomes unspecified.",
           "position": "below"
         },
         {
+          "criterion_id": "SC3",
+          "candidate_evidence": "An architecture discussion surfaced conflicting assumptions, incorporated useful feedback, and produced a shared specification with clear interfaces.",
+          "position": "above"
+        },
+        {
           "criterion_id": "SC4",
-          "candidate_evidence": "Regularly applies critical thinking and complex problem solving to software-related issues.",
+          "candidate_evidence": "An incident case separated symptoms from causes, tested competing hypotheses, and chose a repair that addressed recurrence risk.",
           "position": "above"
         }
       ],
-      "candidate_summary": "The candidate has 2 years of Scala programming experience in a software engineering position, demonstrated SAAS knowledge, and 3 years of Software Engineer experience. The candidate frequently analyzes software requirements and project information to determine design approaches, has some experience developing and using software testing procedures, has limited experience collaborating with other engineers and project participants on design specifications, and regularly applies critical thinking and complex problem solving to software-related issues."
+      "candidate_summary": "At least 3 years of experience using Scala programming in a software engineering position: 2 years. Demonstrated knowledge of Software as a Service (SAAS) technologies and ability to manipulate services to desired states and functions: demonstrated. At least 3 years of experience working as a Software Engineer: 3 years. Other job-related evidence: A design review captured the main requirements and proposed a workable approach, but several constraints and trade-offs remained implicit. A test plan focused on the happy path and left important failures, boundaries, and expected outcomes unspecified. An architecture discussion surfaced conflicting assumptions, incorporated useful feedback, and produced a shared specification with clear interfaces. An incident case separated symptoms from causes, tested competing hypotheses, and chose a repair that addressed recurrence risk."
     },
     {
       "margin_band": "near_pass",
@@ -156,26 +156,26 @@
       "soft_profile": [
         {
           "criterion_id": "SC1",
-          "candidate_evidence": "Frequently analyzes software requirements and project information to determine design approaches.",
-          "position": "above"
-        },
-        {
-          "criterion_id": "SC2",
-          "candidate_evidence": "Has some experience developing and using software testing procedures.",
-          "position": "close"
-        },
-        {
-          "criterion_id": "SC3",
-          "candidate_evidence": "Has limited experience collaborating with other engineers and project participants on design specifications.",
+          "candidate_evidence": "A design review committed to an approach before resolving ambiguous requirements and overlooked constraints central to the requested behavior.",
           "position": "below"
         },
         {
-          "criterion_id": "SC4",
-          "candidate_evidence": "Regularly applies critical thinking and complex problem solving to software-related issues.",
+          "criterion_id": "SC2",
+          "candidate_evidence": "A test plan covered normal behavior, failure paths, and boundary conditions while keeping expected outcomes clear and maintainable.",
           "position": "above"
+        },
+        {
+          "criterion_id": "SC3",
+          "candidate_evidence": "An architecture discussion exchanged relevant information, though unresolved assumptions and interface responsibilities remained.",
+          "position": "close"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "An incident case applied the first plausible fix without testing the cause or considering side effects and recurrence.",
+          "position": "below"
         }
       ],
-      "candidate_summary": "The candidate has 3 years of Scala programming experience in a software engineering position, demonstrated SAAS knowledge, and 3 years of Software Engineer experience. The candidate frequently analyzes software requirements and project information to determine design approaches, has some experience developing and using software testing procedures, has limited experience collaborating with other engineers and project participants on design specifications, and regularly applies critical thinking and complex problem solving to software-related issues."
+      "candidate_summary": "At least 3 years of experience using Scala programming in a software engineering position: 3 years. Demonstrated knowledge of Software as a Service (SAAS) technologies and ability to manipulate services to desired states and functions: demonstrated. At least 3 years of experience working as a Software Engineer: 3 years. Other job-related evidence: A design review committed to an approach before resolving ambiguous requirements and overlooked constraints central to the requested behavior. A test plan covered normal behavior, failure paths, and boundary conditions while keeping expected outcomes clear and maintainable. An architecture discussion exchanged relevant information, though unresolved assumptions and interface responsibilities remained. An incident case applied the first plausible fix without testing the cause or considering side effects and recurrence."
     },
     {
       "margin_band": "clear_pass",
@@ -196,26 +196,26 @@
       "soft_profile": [
         {
           "criterion_id": "SC1",
-          "candidate_evidence": "Frequently analyzes software requirements and project information to determine design approaches.",
+          "candidate_evidence": "A design review linked ambiguous requirements to user and system constraints, then justified an approach against the important trade-offs.",
           "position": "above"
         },
         {
           "criterion_id": "SC2",
-          "candidate_evidence": "Has some experience developing and using software testing procedures.",
-          "position": "close"
+          "candidate_evidence": "A test plan covered normal behavior, failure paths, and boundary conditions while keeping expected outcomes clear and maintainable.",
+          "position": "above"
         },
         {
           "criterion_id": "SC3",
-          "candidate_evidence": "Has limited experience collaborating with other engineers and project participants on design specifications.",
-          "position": "below"
+          "candidate_evidence": "An architecture discussion exchanged relevant information, though unresolved assumptions and interface responsibilities remained.",
+          "position": "close"
         },
         {
           "criterion_id": "SC4",
-          "candidate_evidence": "Regularly applies critical thinking and complex problem solving to software-related issues.",
-          "position": "above"
+          "candidate_evidence": "An incident case applied the first plausible fix without testing the cause or considering side effects and recurrence.",
+          "position": "below"
         }
       ],
-      "candidate_summary": "The candidate has 5 years of Scala programming experience in a software engineering position, demonstrated SAAS knowledge, and 5 years of Software Engineer experience. The candidate frequently analyzes software requirements and project information to determine design approaches, has some experience developing and using software testing procedures, has limited experience collaborating with other engineers and project participants on design specifications, and regularly applies critical thinking and complex problem solving to software-related issues."
+      "candidate_summary": "At least 3 years of experience using Scala programming in a software engineering position: 5 years. Demonstrated knowledge of Software as a Service (SAAS) technologies and ability to manipulate services to desired states and functions: demonstrated. At least 3 years of experience working as a Software Engineer: 5 years. Other job-related evidence: A design review linked ambiguous requirements to user and system constraints, then justified an approach against the important trade-offs. A test plan covered normal behavior, failure paths, and boundary conditions while keeping expected outcomes clear and maintainable. An architecture discussion exchanged relevant information, though unresolved assumptions and interface responsibilities remained. An incident case applied the first plausible fix without testing the cause or considering side effects and recurrence."
     }
   ]
 }

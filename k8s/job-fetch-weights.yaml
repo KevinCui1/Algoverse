@@ -25,7 +25,31 @@ spec:
               if [ -d "$HF_HOME/hub/.locks" ]; then
                 find "$HF_HOME/hub/.locks" -type f -delete
               fi
-              hf download "$MODEL_ID" --revision "$MODEL_REVISION" --max-workers 4
+              # Sharded safetensors and the tokenizer only. Several of these
+              # repositories also ship a consolidated single-file copy of the
+              # same weights, which the readout never loads; pulling it doubles
+              # the download and the space it occupies on a shared volume.
+              #
+              # Each pattern carries its own `--include`. The downloader's
+              # positional argument is a file list, so patterns written as bare
+              # words after the repository id are parsed as filenames, and the
+              # filter is then discarded with a warning rather than an error:
+              # the job succeeds in seconds having fetched the configuration
+              # files and none of the weights.
+              hf download "$MODEL_ID" --revision "$MODEL_REVISION" --max-workers 4 \
+                --include "*.safetensors" \
+                --include "*.json" \
+                --include "*.model" \
+                --include "*.txt" \
+                --exclude "consolidated*"
+
+              # A fetch that filtered everything away exits zero, so the weights
+              # are counted rather than assumed present.
+              SNAPSHOT=$(ls -d "$HF_HOME"/hub/models--${MODEL_ID//\//--}/snapshots/"$MODEL_REVISION")
+              shards=$(find -L "$SNAPSHOT" -name "*.safetensors" | wc -l)
+              test "$shards" -gt 0 || { echo "no safetensors fetched"; exit 1; }
+              echo "safetensors shards: $shards"
+              du -sh "$SNAPSHOT"
               du -sh "$HF_HOME"
           env:
             - name: MODEL_ID

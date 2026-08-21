@@ -1,0 +1,107 @@
+# Stage 0, stability and batch-size sensitivity for one checkpoint.
+#
+# The gate varies ordering and co-resident prompts at the frozen batch size.
+# Departures from that size are also measured, but only as a permanent
+# sensitivity disclosure: batch size is pinned within a collection and the
+# final partial batch is padded to full size, so it is not a gate dimension.
+#
+# The weights must already be in the cache. Run k8s/job-fetch-weights.yaml first
+# with no accelerator attached; downloading inside this job would hold an 80GB
+# device idle for the length of the pull.
+#
+# Requests equal limits. A request larger than the container writes is not
+# conservative: every accelerator node that cannot satisfy it is a node silently
+# removed from consideration, and the symptom is an indefinite Pending with no
+# usable reason. The checkpoint is read from the cache volume in place, so no
+# large ephemeral-storage reservation is needed.
+#
+# Substitute the placeholders before applying:
+#   python -m hiringcue.cli submit --stage stage0 --model mistral-small-24b \
+#     | kubectl apply -f -
+#
+# The accelerator products come from that checkpoint's `gpu_products`, so a
+# checkpoint that fits a 40GB device is not queued behind the 80GB pool.
+#
+# Never wait on this with `kubectl wait`: its completion condition cannot
+# distinguish a running pod from one the scheduler has never placed. Use
+# scripts/await_job.py, which guards scheduling separately from execution.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hiringcue-stage0-__MODEL_KEY__
+spec:
+  # No retries. A checkpoint that misses the stability tolerance is a finding
+  # about that checkpoint, and the command reports it by exiting non-zero, which
+  # a retrying job controller cannot distinguish from a crash. With a retry
+  # budget the job re-measures a recorded failure on a fresh accelerator until
+  # the budget is spent - which is both the thing this study forbids and, on a
+  # namespace whose accelerator quota is shared, a reservation taken from
+  # someone else to recompute a number already written to the volume.
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 86400
+  template:
+    spec:
+      restartPolicy: Never
+      # The typed accelerator resource does not carry a memory capacity: the same
+      # key is satisfied by 40GB and 80GB devices, and a 24B checkpoint in
+      # bfloat16 does not fit the smaller one. Constraining the product is a
+      # capacity requirement here, not an attempt to pin numerical behaviour.
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: nvidia.com/gpu.product
+                    operator: In
+                    values: __GPU_PRODUCTS__
+      containers:
+        - name: stage0
+          image: pytorch/pytorch:2.5.1-cuda12.1-cudnn9-runtime
+          command: ["/bin/bash", "-lc"]
+          args:
+            - |
+              set -euo pipefail
+              cd /cache/hiringcue-source-p1-d065
+              pip install --no-cache-dir -e .
+
+              SNAPSHOT=/cache/hf/hub/models--${MODEL_ID//\//--}/snapshots/"$MODEL_REVISION"
+              test -d "$SNAPSHOT"
+
+              python3 -m hiringcue.cli validate
+              python3 -m hiringcue.cli plan --plan-dir /cache/plan/stage0
+
+              python3 -m hiringcue.cli stage0 \
+                --model "$MODEL_KEY" \
+                --model-path "$SNAPSHOT" \
+                --plan-dir /cache/plan/stage0 \
+                --out /cache/stage0
+          env:
+            - name: MODEL_KEY
+              value: "__MODEL_KEY__"
+            - name: MODEL_ID
+              value: "__MODEL_ID__"
+            - name: MODEL_REVISION
+              value: "__MODEL_REVISION__"
+            - name: HF_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: hf-token
+                  key: token
+            - name: HF_HOME
+              value: /cache/hf
+          resources:
+            requests:
+              nvidia.com/a100: 1
+              cpu: "8"
+              memory: 64Gi
+            limits:
+              nvidia.com/a100: 1
+              cpu: "8"
+              memory: 64Gi
+          volumeMounts:
+            - name: cache
+              mountPath: /cache
+      volumes:
+        - name: cache
+          persistentVolumeClaim:
+            claimName: hiringcue-cache

@@ -2,8 +2,8 @@
 
 Every prompt is rendered from structured fields, never edited by hand. Within a
 counterfactual set - the five identity conditions of one scenario family at one
-prestige level - the rendered text must differ in the identity block and
-nowhere else. That is enforced two ways:
+prestige level and one context level - the rendered text must differ in the
+identity block and nowhere else. That is enforced two ways:
 
     exact hash        SHA-256 of the rendered prompt, expected to differ
     normalised hash   identity block replaced by a fixed token, expected to
@@ -28,6 +28,7 @@ import re
 from dataclasses import dataclass
 from typing import Any
 
+from . import context as context_factor
 from . import paths, scenarios, stimuli
 
 IDENTITY_TOKEN = "{{IDENTITY}}"
@@ -48,6 +49,8 @@ class RenderedPrompt:
     cue_mode: str
     identity_group: str | None
     prestige_level: str
+    context_level: str
+    context_variant: str
     name_stimulus_id: str | None
     applicant_name: str | None
     system_prompt: str
@@ -162,10 +165,11 @@ def render_variant(
     prestige: stimuli.Prestige,
     name: stimuli.Name | None,
     order_seed: int,
+    context: context_factor.Context,
     soft_profile: list[dict[str, Any]] | None = None,
     soft_variant: str = "base",
 ) -> RenderedPrompt:
-    """Render one identity condition at one prestige level."""
+    """Render one identity condition at one prestige level and context level."""
     profile = soft_profile if soft_profile is not None else family.soft_profile
     order = soft_order(family, order_seed)
     if {entry["criterion_id"] for entry in profile} != set(order):
@@ -174,11 +178,12 @@ def render_variant(
         )
 
     block = stimuli.identity_block(condition, name)
-    system_prompt = _template("initial_evaluation_system_v1.txt").strip()
-    user_template = _template("initial_evaluation_user_v1.txt")
+    system_prompt = _template("decision_system_v1.txt").strip()
+    user_template = _template("decision_user_v1.txt")
 
     fields = {
         "IDENTITY_BLOCK": block,
+        "CONTEXT_BLOCK": context.text,
         "OCCUPATION_TITLE": family.occupation,
         "JOB_SUMMARY": family.job_summary,
         "NUMBERED_HARD_GATES": _numbered_gates(family),
@@ -203,8 +208,12 @@ def render_variant(
         )
     normalised = user_prompt.replace(block, IDENTITY_TOKEN, 1)
 
+    stimulus = f"__{name.stimulus_id}" if name else ""
     suffix = "" if soft_variant == "base" else f"__{soft_variant}"
-    variant_id = f"{family.family_id}__{prestige.level}__{condition}{suffix}"
+    variant_id = (
+        f"{family.family_id}__{context.level}__{prestige.level}__"
+        f"{condition}{stimulus}{suffix}"
+    )
 
     return RenderedPrompt(
         variant_id=variant_id,
@@ -215,6 +224,8 @@ def render_variant(
         cue_mode=stimuli.CUE_MODE_OF_CONDITION[condition],
         identity_group=stimuli.GROUP_OF_CONDITION.get(condition),
         prestige_level=prestige.level,
+        context_level=context.level,
+        context_variant=context.variant,
         name_stimulus_id=name.stimulus_id if name else None,
         applicant_name=name.full_name if name else None,
         system_prompt=system_prompt,
@@ -237,9 +248,14 @@ def check_counterfactual_integrity(variants: list[RenderedPrompt]) -> None:
     name or race term there would contaminate the baseline that every cue
     effect is measured against.
     """
-    grouped: dict[tuple[str, str, str], list[RenderedPrompt]] = {}
+    grouped: dict[tuple[str, str, str, str], list[RenderedPrompt]] = {}
     for variant in variants:
-        key = (variant.family_id, variant.prestige_level, variant.soft_variant)
+        key = (
+            variant.family_id,
+            variant.context_level,
+            variant.prestige_level,
+            variant.soft_variant,
+        )
         grouped.setdefault(key, []).append(variant)
 
     for key, group in grouped.items():

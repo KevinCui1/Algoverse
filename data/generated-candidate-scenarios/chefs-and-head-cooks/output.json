@@ -69,31 +69,31 @@
       "soft_profile": [
         {
           "criterion_id": "SC1",
-          "candidate_evidence": "Demonstrates strong ability to plan menus and develop menu options.",
+          "candidate_evidence": "A menu exercise paired seasonal ingredients with coherent dishes, accommodated dietary constraints, and reused components without repetition.",
           "position": "above"
         },
         {
           "criterion_id": "SC2",
-          "candidate_evidence": "Demonstrates moderate ability to monitor food quality, sanitation, and compliance with established standards.",
+          "candidate_evidence": "During a kitchen simulation, the main sanitation concern was noticed, but follow-through and quality monitoring were uneven.",
           "position": "close"
         },
         {
           "criterion_id": "SC3",
-          "candidate_evidence": "Demonstrates limited ability to manage food supplies and inventory-related resources.",
+          "candidate_evidence": "A supply scenario ignored perishability and demand signals, leaving essential items exposed to shortage and avoidable waste.",
           "position": "below"
         },
         {
           "criterion_id": "SC4",
-          "candidate_evidence": "Demonstrates strong ability to communicate and coordinate with kitchen staff and others.",
-          "position": "above"
+          "candidate_evidence": "A service exercise produced conflicting instructions, missed handoffs, and allowed preventable confusion across the kitchen.",
+          "position": "below"
         },
         {
           "criterion_id": "SC5",
-          "candidate_evidence": "Demonstrates moderate ability to organize and prioritize food preparation and kitchen activities.",
-          "position": "close"
+          "candidate_evidence": "A disruption exercise resequenced preparation around constrained equipment while protecting timing, quality, and safe workflow.",
+          "position": "above"
         }
       ],
-      "candidate_summary": "Candidate has 0 years of Chef or Head Cook experience and 0 years of Cook experience preparing a wide variety of meals. The soft profile shows above-level menu planning evidence, close-level food quality and sanitation monitoring evidence, below-level food supply and inventory management evidence, above-level communication and coordination evidence, and close-level organization and prioritization evidence."
+      "candidate_summary": "Experience as a Chef or Head Cook: 0 years. Experience as a Cook preparing a wide variety of meals: 0 years. Other job-related evidence: A menu exercise paired seasonal ingredients with coherent dishes, accommodated dietary constraints, and reused components without repetition. During a kitchen simulation, the main sanitation concern was noticed, but follow-through and quality monitoring were uneven. A supply scenario ignored perishability and demand signals, leaving essential items exposed to shortage and avoidable waste. A service exercise produced conflicting instructions, missed handoffs, and allowed preventable confusion across the kitchen. A disruption exercise resequenced preparation around constrained equipment while protecting timing, quality, and safe workflow."
     },
     {
       "margin_band": "near_fail",
@@ -110,31 +110,31 @@
       "soft_profile": [
         {
           "criterion_id": "SC1",
-          "candidate_evidence": "Demonstrates strong ability to plan menus and develop menu options.",
-          "position": "above"
+          "candidate_evidence": "A menu exercise assembled unrelated dishes, overlooked dietary constraints, and created avoidable ingredient conflicts.",
+          "position": "below"
         },
         {
           "criterion_id": "SC2",
-          "candidate_evidence": "Demonstrates moderate ability to monitor food quality, sanitation, and compliance with established standards.",
-          "position": "close"
+          "candidate_evidence": "During a kitchen simulation, cross-contamination cues and deteriorating food quality passed without an effective response.",
+          "position": "below"
         },
         {
           "criterion_id": "SC3",
-          "candidate_evidence": "Demonstrates limited ability to manage food supplies and inventory-related resources.",
+          "candidate_evidence": "A supply scenario ignored perishability and demand signals, leaving essential items exposed to shortage and avoidable waste.",
           "position": "below"
         },
         {
           "criterion_id": "SC4",
-          "candidate_evidence": "Demonstrates strong ability to communicate and coordinate with kitchen staff and others.",
+          "candidate_evidence": "A service exercise gave the kitchen clear handoffs, surfaced bottlenecks early, and coordinated changes without disrupting the line.",
           "position": "above"
         },
         {
           "criterion_id": "SC5",
-          "candidate_evidence": "Demonstrates moderate ability to organize and prioritize food preparation and kitchen activities.",
+          "candidate_evidence": "A disruption exercise restored a workable sequence, though timing dependencies and backup tasks were only partly addressed.",
           "position": "close"
         }
       ],
-      "candidate_summary": "Candidate has 0 years of Chef or Head Cook experience and 2 years of Cook experience preparing a wide variety of meals. The soft profile shows above-level menu planning evidence, close-level food quality and sanitation monitoring evidence, below-level food supply and inventory management evidence, above-level communication and coordination evidence, and close-level organization and prioritization evidence."
+      "candidate_summary": "Experience as a Chef or Head Cook: 0 years. Experience as a Cook preparing a wide variety of meals: 2 years. Other job-related evidence: A menu exercise assembled unrelated dishes, overlooked dietary constraints, and created avoidable ingredient conflicts. During a kitchen simulation, cross-contamination cues and deteriorating food quality passed without an effective response. A supply scenario ignored perishability and demand signals, leaving essential items exposed to shortage and avoidable waste. A service exercise gave the kitchen clear handoffs, surfaced bottlenecks early, and coordinated changes without disrupting the line. A disruption exercise restored a workable sequence, though timing dependencies and backup tasks were only partly addressed."
     },
     {
       "margin_band": "near_pass",
@@ -151,31 +151,31 @@
       "soft_profile": [
         {
           "criterion_id": "SC1",
-          "candidate_evidence": "Demonstrates strong ability to plan menus and develop menu options.",
-          "position": "above"
-        },
-        {
-          "criterion_id": "SC2",
-          "candidate_evidence": "Demonstrates moderate ability to monitor food quality, sanitation, and compliance with established standards.",
+          "candidate_evidence": "A menu exercise produced workable options, but flavor balance, dietary coverage, and ingredient reuse were inconsistent.",
           "position": "close"
         },
         {
-          "criterion_id": "SC3",
-          "candidate_evidence": "Demonstrates limited ability to manage food supplies and inventory-related resources.",
+          "criterion_id": "SC2",
+          "candidate_evidence": "During a kitchen simulation, cross-contamination cues and deteriorating food quality passed without an effective response.",
           "position": "below"
         },
         {
+          "criterion_id": "SC3",
+          "candidate_evidence": "A supply scenario balanced perishability, demand, and substitute availability to prevent waste while keeping essential items ready.",
+          "position": "above"
+        },
+        {
           "criterion_id": "SC4",
-          "candidate_evidence": "Demonstrates strong ability to communicate and coordinate with kitchen staff and others.",
+          "candidate_evidence": "A service exercise gave the kitchen clear handoffs, surfaced bottlenecks early, and coordinated changes without disrupting the line.",
           "position": "above"
         },
         {
           "criterion_id": "SC5",
-          "candidate_evidence": "Demonstrates moderate ability to organize and prioritize food preparation and kitchen activities.",
-          "position": "close"
+          "candidate_evidence": "A disruption exercise resequenced preparation around constrained equipment while protecting timing, quality, and safe workflow.",
+          "position": "above"
         }
       ],
-      "candidate_summary": "Candidate has 1 year of Chef or Head Cook experience and 2 years of Cook experience preparing a wide variety of meals. The soft profile shows above-level menu planning evidence, close-level food quality and sanitation monitoring evidence, below-level food supply and inventory management evidence, above-level communication and coordination evidence, and close-level organization and prioritization evidence."
+      "candidate_summary": "Experience as a Chef or Head Cook: 1 years. Experience as a Cook preparing a wide variety of meals: 2 years. Other job-related evidence: A menu exercise produced workable options, but flavor balance, dietary coverage, and ingredient reuse were inconsistent. During a kitchen simulation, cross-contamination cues and deteriorating food quality passed without an effective response. A supply scenario balanced perishability, demand, and substitute availability to prevent waste while keeping essential items ready. A service exercise gave the kitchen clear handoffs, surfaced bottlenecks early, and coordinated changes without disrupting the line. A disruption exercise resequenced preparation around constrained equipment while protecting timing, quality, and safe workflow."
     },
     {
       "margin_band": "clear_pass",
@@ -192,31 +192,31 @@
       "soft_profile": [
         {
           "criterion_id": "SC1",
-          "candidate_evidence": "Demonstrates strong ability to plan menus and develop menu options.",
-          "position": "above"
-        },
-        {
-          "criterion_id": "SC2",
-          "candidate_evidence": "Demonstrates moderate ability to monitor food quality, sanitation, and compliance with established standards.",
-          "position": "close"
-        },
-        {
-          "criterion_id": "SC3",
-          "candidate_evidence": "Demonstrates limited ability to manage food supplies and inventory-related resources.",
+          "candidate_evidence": "A menu exercise assembled unrelated dishes, overlooked dietary constraints, and created avoidable ingredient conflicts.",
           "position": "below"
         },
         {
-          "criterion_id": "SC4",
-          "candidate_evidence": "Demonstrates strong ability to communicate and coordinate with kitchen staff and others.",
+          "criterion_id": "SC2",
+          "candidate_evidence": "During a kitchen simulation, unsafe handling was identified immediately and corrective steps protected food quality throughout service.",
           "position": "above"
         },
         {
-          "criterion_id": "SC5",
-          "candidate_evidence": "Demonstrates moderate ability to organize and prioritize food preparation and kitchen activities.",
+          "criterion_id": "SC3",
+          "candidate_evidence": "A supply scenario balanced perishability, demand, and substitute availability to prevent waste while keeping essential items ready.",
+          "position": "above"
+        },
+        {
+          "criterion_id": "SC4",
+          "candidate_evidence": "A service exercise communicated basic assignments, but handoffs and responses to emerging bottlenecks remained uneven.",
           "position": "close"
+        },
+        {
+          "criterion_id": "SC5",
+          "candidate_evidence": "A disruption exercise reacted task by task without priorities, causing blocked work and avoidable delays across service.",
+          "position": "below"
         }
       ],
-      "candidate_summary": "Candidate has 4 years of Chef or Head Cook experience and 5 years of Cook experience preparing a wide variety of meals. The soft profile shows above-level menu planning evidence, close-level food quality and sanitation monitoring evidence, below-level food supply and inventory management evidence, above-level communication and coordination evidence, and close-level organization and prioritization evidence."
+      "candidate_summary": "Experience as a Chef or Head Cook: 4 years. Experience as a Cook preparing a wide variety of meals: 5 years. Other job-related evidence: A menu exercise assembled unrelated dishes, overlooked dietary constraints, and created avoidable ingredient conflicts. During a kitchen simulation, unsafe handling was identified immediately and corrective steps protected food quality throughout service. A supply scenario balanced perishability, demand, and substitute availability to prevent waste while keeping essential items ready. A service exercise communicated basic assignments, but handoffs and responses to emerging bottlenecks remained uneven. A disruption exercise reacted task by task without priorities, causing blocked work and avoidable delays across service."
     }
   ]
 }

@@ -7,7 +7,17 @@ name = "hiringcue"
 version = "0.1.0"
 description = "Counterfactual audit of concealed and direct identity cues in LLM hiring decisions"
 requires-python = ">=3.10"
-dependencies = ["pyyaml>=6.0", "jsonschema>=4.20"]
+# Torch is deliberately absent: it is supplied by the accelerator image, and
+# declaring it here would reinstall a build that does not match that image's
+# CUDA runtime. Everything the readout imports from it is imported lazily, so
+# the analysis and planning stages run without it.
+dependencies = [
+  "pyyaml>=6.0",
+  "numpy>=1.26",
+  "scipy>=1.11",
+  "transformers>=4.45",
+  "jinja2>=3.1",
+]
 
 [project.scripts]
 hiringcue = "hiringcue.cli:main"
