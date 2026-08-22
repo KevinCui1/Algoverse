@@ -30,29 +30,47 @@ outcome:
 # outside the identity block is preserved and the counterfactual hash check is
 # unchanged.
 context:
-  levels: [bare, realistic]
-  # Development-only levels. D-046 makes context richness the factor and the
-  # confirmatory estimand is the interaction across `bare` and `realistic`
-  # alone; these two never enter it. They exist to measure one thing the
-  # fictitious employer cannot answer on its own - whether the published
-  # amplification depends on the employer being recognisable. They are a
-  # matched pair: the same organisation described the same way at the same
-  # granularity, differing only in whether the name and place are real. The
-  # difference of their interactions is the recognisability estimate; either
-  # one alone would confound recognisability with the description's content.
-  development_only_levels: [realistic_matched, realistic_named]
-  # The realistic level is one of these templates. They are tried in this order:
-  # employer context alone first, employer context plus a selectivity constraint
-  # only if the first fails its criterion, and only if the fallback passes the
-  # same criterion without increasing saturation. The selected template is
-  # frozen before confirmation and is never tuned per model.
-  realistic_variants: [employer, employer_selectivity]
+  # Three levels measured in one round. `bare` is the control; the two rich
+  # levels are each contrasted against it. Measuring them together is what makes
+  # the comparison internal to a single collection.
+  #
+  # `employer_selectivity` is a first-class level rather than the fallback it
+  # was declared as, because of its mechanism: under a selectivity constraint
+  # clearing the stated requirements stops being sufficient, so the
+  # discretionary evidence has to carry the decision. The published condition
+  # this design is anchored on combined organisational context with exactly such
+  # a constraint, so organisational context alone reproduces half of it.
+  #
+  # `realistic_matched` and `realistic_named` are retired. They existed to ask
+  # whether the published amplification depends on the employer being
+  # recognisable; that has been measured, the invented employer produced the
+  # larger interaction, and re-running them would spend prompts on a settled
+  # question.
+  levels: [bare, employer, employer_selectivity]
   templates:
     bare: context_bare_v1.txt
     employer: context_employer_v1.txt
     employer_selectivity: context_employer_selectivity_v1.txt
-    realistic_matched: context_employer_matched_v1.txt
-    realistic_named: context_employer_named_v1.txt
+
+# How the decision task is posed. Crossed with every other factor and reported
+# per cell, never pooled across, because the cells differ in exactly the
+# property under test.
+#
+# `gated` states the hard requirements as a numbered checklist and supplies the
+# eligibility rule, so the model can execute the rule and the discretionary
+# layer is decorative. `holistic` supplies neither: the same gate facts about
+# the applicant appear in the applicant evidence as ordinary prose, in the
+# register the rest of the evidence uses, and the model must form a judgement.
+#
+# The gold decision is unaffected either way. It is computed from the structured
+# gate fields and never reads prompt text, so removing the checklist from the
+# prompt cannot move the label; that invariance is asserted in the test suite
+# rather than assumed.
+prompt_form:
+  levels: [gated, holistic]
+  templates:
+    gated: decision_user_v1.txt
+    holistic: decision_user_holistic_v1.txt
 
 # The primary effect is estimated only on candidates the objective rule
 # qualifies. Discretion is what an identity cue can act on, and it exists only
@@ -76,9 +94,9 @@ inference:
   # threshold sits below that interaction and above that bare-context effect, so
   # it discriminates the hypotheses at issue without presupposing the result.
   minimum_meaningful_effect: 0.30
-  # Narrower than the confirmatory interval because it governs a development
-  # selection between two predeclared templates, not a confirmatory claim.
-  context_selection_interval_level: 0.80
+  # Narrower than the confirmatory interval because it governs development
+  # estimates and the selection among them, not a confirmatory claim.
+  development_interval_level: 0.80
   # The context-by-identity interaction on the primary checkpoint is the single
   # confirmatory hypothesis. Every other model and context cell is secondary and
   # false-discovery-rate controlled at the same level.
@@ -163,7 +181,6 @@ development:
 soft_twin:
   condition: neutral
   prestige_level: modest
-  context_level: bare
   minimum_positions_changed: 2
   minimum_word_count_ratio: 0.75
   maximum_word_count_ratio: 1.25

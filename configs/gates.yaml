@@ -25,7 +25,7 @@ instrument:
       Range, across the fixed batch layouts, of the quantity the design
       estimates: the mean over qualified concealed cells of
       mean(Black) - mean(White), where a cell is one scenario family at one
-      context level. It is a cell-mean rather than a paired statistic so that it
+      prompt form and one context level. It is a cell-mean rather than a paired statistic so that it
       needs no matched partner for every arm, and a range rather than a signed
       difference against a nominated reference so that no layout is privileged.
       The predecessor gated on the largest movement of any single prompt, which

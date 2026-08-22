@@ -89,6 +89,8 @@ spec:
                   key: token
             - name: HF_HOME
               value: /cache/hf
+            - name: PYTORCH_CUDA_ALLOC_CONF
+              value: expandable_segments:True
           resources:
             requests:
               nvidia.com/a100: 1

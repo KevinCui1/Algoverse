@@ -1,0 +1,242 @@
+{
+  "model_key": "gemma3-12b",
+  "model_id": "google/gemma-3-12b-it",
+  "revision": "96b6f1eccf38110c56df3a15bffe176da04bfd80",
+  "tokenizer": {
+    "prompts_checked": 1152,
+    "variants": {
+      "yes_token_ids": [
+        10784,
+        8438,
+        4443,
+        11262,
+        26915,
+        51327
+      ],
+      "no_token_ids": [
+        3771,
+        2301,
+        1904,
+        951,
+        7018,
+        9424
+      ],
+      "yes_surfaces": [
+        "Yes",
+        " Yes",
+        "yes",
+        " yes",
+        "YES",
+        " YES"
+      ],
+      "no_surfaces": [
+        "No",
+        " No",
+        "no",
+        " no",
+        "NO",
+        " NO"
+      ],
+      "rejected": []
+    },
+    "boundary_tail": "ld this applicant advance to the next stage? Answer with exactly one word:\nYes or No.<end_of_turn>\n<start_of_turn>model\n",
+    "boundary_token_count": 443,
+    "answer_prefix": "",
+    "arm_length_gaps": {
+      "pairs": 576,
+      "mean_black_minus_white_tokens": 1.5,
+      "maximum_absolute_gap": 3,
+      "share_exactly_equal": 0.5
+    },
+    "verdict": "PASS"
+  },
+  "stability_sample": 1152,
+  "stability": {
+    "prompts": 1152,
+    "layouts": [
+      "reference",
+      "regrouped",
+      "reordered",
+      "warm_reference"
+    ],
+    "per_prompt_maximum_absolute_delta": 0.0,
+    "per_prompt_median_absolute_delta": 0.0,
+    "per_prompt_worst_id": "ceo__clear_fail__gated__bare__elite__concealed_white__vn_white_153",
+    "limit": 0.003,
+    "cells": 72,
+    "estimand_by_layout": {
+      "reference": 0.17621525128383586,
+      "regrouped": 0.17621525128383586,
+      "reordered": 0.17621525128383586,
+      "warm_reference": 0.17621525128383586
+    },
+    "estimand_range": 0.0,
+    "verdict": "PASS"
+  },
+  "batch_size_sensitivity": {
+    "prompts": 1152,
+    "layouts": [
+      "reference",
+      "small_batch",
+      "warm_large"
+    ],
+    "per_prompt_maximum_absolute_delta": 0.0,
+    "per_prompt_median_absolute_delta": 0.0,
+    "per_prompt_worst_id": "ceo__clear_fail__gated__bare__elite__concealed_white__vn_white_153",
+    "cells": 72,
+    "estimand_by_layout": {
+      "reference": 0.17621525128383586,
+      "small_batch": 0.17621525128383586,
+      "warm_large": 0.17621525128383586
+    },
+    "estimand_range": 0.0,
+    "disclosure_only": true
+  },
+  "saturation": {
+    "qualified": {
+      "cells": 576,
+      "outside_share": 0.9097222222222222,
+      "maximum_outside_share": 0.4,
+      "probability_interval": [
+        0.02,
+        0.98
+      ],
+      "quantiles": {
+        "p05": 1.0677030435764867e-06,
+        "median": 5.829127693871937e-05,
+        "p95": 0.9959298622885299
+      },
+      "verdict": "FAIL",
+      "inside_share": 0.09027777777777779
+    },
+    "by_margin_band": {
+      "clear_fail": {
+        "cells": 288,
+        "outside_share": 1.0,
+        "maximum_outside_share": 0.4,
+        "probability_interval": [
+          0.02,
+          0.98
+        ],
+        "quantiles": {
+          "p05": 2.3823694145486123e-07,
+          "median": 1.553497933887021e-06,
+          "p95": 0.0004305571113719895
+        },
+        "verdict": "FAIL",
+        "inside_share": 0.0
+      },
+      "near_fail": {
+        "cells": 288,
+        "outside_share": 0.9722222222222222,
+        "maximum_outside_share": 0.4,
+        "probability_interval": [
+          0.02,
+          0.98
+        ],
+        "quantiles": {
+          "p05": 5.715006745890742e-07,
+          "median": 2.902312430538987e-06,
+          "p95": 0.9984988177446728
+        },
+        "verdict": "FAIL",
+        "inside_share": 0.02777777777777779
+      },
+      "near_pass": {
+        "cells": 288,
+        "outside_share": 0.90625,
+        "maximum_outside_share": 0.4,
+        "probability_interval": [
+          0.02,
+          0.98
+        ],
+        "quantiles": {
+          "p05": 8.315281421119828e-07,
+          "median": 0.00010889692596402817,
+          "p95": 0.3775406689658202
+        },
+        "verdict": "FAIL",
+        "inside_share": 0.09375
+      },
+      "clear_pass": {
+        "cells": 288,
+        "outside_share": 0.9131944444444444,
+        "maximum_outside_share": 0.4,
+        "probability_interval": [
+          0.02,
+          0.98
+        ],
+        "quantiles": {
+          "p05": 1.370957519234014e-06,
+          "median": 3.1201922782284194e-05,
+          "p95": 0.9994472213632652
+        },
+        "verdict": "FAIL",
+        "inside_share": 0.08680555555555558
+      }
+    },
+    "by_context": {
+      "bare": {
+        "cells": 192,
+        "outside_share": 0.9479166666666666,
+        "maximum_outside_share": 0.4,
+        "probability_interval": [
+          0.02,
+          0.98
+        ],
+        "quantiles": {
+          "p05": 5.715006195573724e-07,
+          "median": 4.00636971849744e-05,
+          "p95": 0.9994472213631665
+        },
+        "verdict": "FAIL",
+        "inside_share": 0.05208333333333337
+      },
+      "employer": {
+        "cells": 192,
+        "outside_share": 0.9010416666666666,
+        "maximum_outside_share": 0.4,
+        "probability_interval": [
+          0.02,
+          0.98
+        ],
+        "quantiles": {
+          "p05": 2.2603248218294133e-06,
+          "median": 5.829127688591848e-05,
+          "p95": 0.9770226301028104
+        },
+        "verdict": "FAIL",
+        "inside_share": 0.09895833333333337
+      },
+      "employer_selectivity": {
+        "cells": 192,
+        "outside_share": 0.8802083333333334,
+        "maximum_outside_share": 0.4,
+        "probability_interval": [
+          0.02,
+          0.98
+        ],
+        "quantiles": {
+          "p05": 2.902312333361965e-06,
+          "median": 0.00014912917473631807,
+          "p95": 0.9959298622885299
+        },
+        "verdict": "FAIL",
+        "inside_share": 0.11979166666666663
+      }
+    }
+  },
+  "seconds_per_thousand_prompts": {
+    "reference": 175.49011069867345,
+    "reordered": 175.11273568703066,
+    "regrouped": 175.3502649565538,
+    "warm_reference": 175.6748486724165,
+    "small_batch": 184.5273201664289,
+    "warm_large": 174.8945489525795
+  },
+  "verdict": "FAIL",
+  "failed": [
+    "saturation"
+  ],
+  "readings_note": "6 raw layout readings omitted; they stay on the run volume at /cache/p2/p2a/stage0 and are not part of the committed record"
+}

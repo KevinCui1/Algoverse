@@ -154,12 +154,14 @@ def stability_sample(
     most discretion - the band where an identity cue has the most room to act,
     and so the band whose stability matters most.
 
-    The sample is now a stratified census: every scenario family, both context
-    levels, both prestige levels and both cue modes, with a fixed number of
-    complete counterfactual pairs drawn from each stratum in recorded plan
-    order. Which prompts the gate is read on stays independent of what they
-    return, and the qualified cells the gate statistic averages over are all
-    present rather than incidental.
+    The sample is now a stratified census: every scenario family, both prompt
+    forms, every context level, both prestige levels and both cue modes, with a
+    fixed number of complete counterfactual pairs drawn from each stratum in
+    recorded plan order. The prompt form is part of the stratum because the gate
+    statistic is formed per cell and a key that omitted it would let one form
+    supply both draws and leave the other unmeasured. Which prompts the gate is
+    read on stays independent of what they return, and the qualified cells the
+    gate statistic averages over are all present rather than incidental.
 
     `size` is accepted and ignored; the sample size is now determined by the
     design rather than by a budget.
@@ -175,6 +177,7 @@ def stability_sample(
             continue
         key = (
             prompt.family_id,
+            prompt.prompt_form,
             prompt.context_level,
             prompt.prestige_level,
             prompt.cue_mode,
@@ -204,7 +207,7 @@ def stability_sample(
 
 
 def _assert_sample_covers(selected: Sequence[plan.PlannedPrompt]) -> None:
-    """Refuse a sample that omits a band, a context, an occupation or a cue mode.
+    """Refuse a sample that omits a band, a form, a context, an occupation or a cue mode.
 
     A gate measured on part of the design reports on part of the design. The
     previous sample silently omitted a margin band and five of six occupations,
@@ -228,6 +231,13 @@ def _assert_sample_covers(selected: Sequence[plan.PlannedPrompt]) -> None:
         )
     if len(required_contexts) < 2:
         raise Stage0Error("stability sample carries a single context level")
+    declared_forms = set(config.study()["prompt_form"]["levels"])
+    missing_forms = declared_forms - {prompt.prompt_form for prompt in selected}
+    if missing_forms:
+        raise Stage0Error(
+            f"stability sample omits prompt form(s) {sorted(missing_forms)}; the gate "
+            "statistic is formed per cell and an unmeasured form has no gate at all"
+        )
     for prompt in selected:
         if prompt.identity_group not in ("black", "white"):
             raise Stage0Error(

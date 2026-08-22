@@ -10,8 +10,8 @@ repeat of a byte-identical prompt is a duplicate rather than an observation;
 stability is established by the cross-batch-composition gate instead of averaged
 over.
 
-The factors crossed here are scenario family, employer-context richness,
-credential prestige, and identity condition. Identity condition expands over the
+The factors crossed here are scenario family, prompt form, employer-context
+richness, credential prestige, and identity condition. Identity condition expands over the
 name pool rather than over one assigned pair per family: name pair is a random
 factor in the analysis, and a fixed set of pairs reused across families would
 put every family mean on the same draw of the name effect, where a
@@ -22,6 +22,13 @@ passes the hard gates. Families that objectively fail are planned as well and
 labelled as the reduced rule-following control: on a candidate who plainly
 fails, a correct model answers no with high confidence, the outcome saturates,
 and the cell contributes resolution rather than signal.
+
+Perturbed soft-criteria twins are rendered at every prompt form and every
+context level rather than at one nominated cell. The twin is the positive
+control on the readout's free parameter, and the estimand it bounds is defined
+in the rich contexts, so a control measured only in the bare condition answers a
+question the design does not ask. Rendering it everywhere is what lets the
+control be reported in the same cell as the effect it bounds.
 
 Output is the rendered prompts, the batch manifest that fixes which of them
 share a tensor and in what order, and a summary of what was planned.
@@ -50,8 +57,8 @@ class PlannedPrompt:
     condition: str
     cue_mode: str
     identity_group: str | None
+    prompt_form: str
     context_level: str
-    context_variant: str
     prestige_level: str
     name_pair_id: str | None
     name_stimulus_id: str | None
@@ -92,8 +99,8 @@ def _counterfactual_pair_id(
     if variant.condition == stimuli.NEUTRAL or variant.soft_variant != "base":
         return batches.UNPAIRED
     stem = (
-        f"{variant.family_id}__{variant.context_level}__{variant.prestige_level}__"
-        f"{variant.cue_mode}"
+        f"{variant.family_id}__{variant.prompt_form}__{variant.context_level}__"
+        f"{variant.prestige_level}__{variant.cue_mode}"
     )
     return f"{stem}__{name_pair_id}" if name_pair_id else stem
 
@@ -102,9 +109,7 @@ def build(
     families: list[scenarios.ScenarioFamily] | None = None,
     pairs: list[stimuli.NamePair] | None = None,
     twins: dict[str, list[dict]] | None = None,
-    realistic_variant: str | None = None,
     role: str | None = None,
-    development_contexts: bool = False,
 ) -> list[PlannedPrompt]:
     """Render every planned prompt and check counterfactual integrity."""
     settings = config.study()
@@ -113,73 +118,83 @@ def build(
     families = families if families is not None else scenarios.validated_families()
     pairs = pairs if pairs is not None else stimuli.load_pairs(role)
     prestige_levels = stimuli.load_prestige()
-    contexts = context_factor.load(realistic_variant, development_contexts)
+    contexts = context_factor.load()
+    forms = render.forms()
 
     variants: list[tuple[render.RenderedPrompt, stimuli.NamePair | None]] = []
     for family in families:
-        for context in contexts.values():
-            for prestige in prestige_levels.values():
-                for condition in stimuli.CONDITIONS:
-                    if condition in stimuli.CONCEALED_CONDITIONS:
-                        group = stimuli.GROUP_OF_CONDITION[condition]
-                        for pair in pairs:
-                            variants.append(
-                                (
-                                    render.render_variant(
-                                        family=family,
-                                        condition=condition,
-                                        prestige=prestige,
-                                        name=pair.arm(group),
-                                        order_seed=seed,
-                                        context=context,
-                                    ),
-                                    pair,
+        for form in forms:
+            for context in contexts.values():
+                for prestige in prestige_levels.values():
+                    for condition in stimuli.CONDITIONS:
+                        if condition in stimuli.CONCEALED_CONDITIONS:
+                            group = stimuli.GROUP_OF_CONDITION[condition]
+                            for pair in pairs:
+                                variants.append(
+                                    (
+                                        render.render_variant(
+                                            family=family,
+                                            condition=condition,
+                                            prestige=prestige,
+                                            name=pair.arm(group),
+                                            order_seed=seed,
+                                            context=context,
+                                            prompt_form=form,
+                                        ),
+                                        pair,
+                                    )
                                 )
+                            continue
+                        variants.append(
+                            (
+                                render.render_variant(
+                                    family=family,
+                                    condition=condition,
+                                    prestige=prestige,
+                                    name=None,
+                                    order_seed=seed,
+                                    context=context,
+                                    prompt_form=form,
+                                ),
+                                None,
                             )
-                        continue
-                    variants.append(
-                        (
-                            render.render_variant(
-                                family=family,
-                                condition=condition,
-                                prestige=prestige,
-                                name=None,
-                                order_seed=seed,
-                                context=context,
-                            ),
-                            None,
                         )
-                    )
 
     render.check_counterfactual_integrity([variant for variant, _ in variants])
 
     # The perturbed twin is the positive control for the readout's free
     # parameter: a substantive change to the soft criteria that touches no gate,
     # no gate margin, and no identity field. A model that will not move its
-    # contrast for this will not move it for a name either. It is held at the
-    # bare context because it measures the instrument, not the manipulation.
+    # contrast for this will not move it for a name either.
+    #
+    # It is rendered at every prompt form and every context level. The control
+    # bounds any cue effect in the cell it is measured in, and the estimand lives
+    # in the rich contexts, so a twin held at one nominated cell would bound a
+    # quantity the design does not estimate.
     if twins:
         twin_settings = settings["soft_twin"]
-        twin_context = contexts[twin_settings["context_level"]]
         for family in families:
             profile = twins.get(family.family_id)
             if profile is None:
                 continue
-            variants.append(
-                (
-                    render.render_variant(
-                        family=family,
-                        condition=twin_settings["condition"],
-                        prestige=prestige_levels[twin_settings["prestige_level"]],
-                        name=None,
-                        order_seed=seed,
-                        context=twin_context,
-                        soft_profile=profile,
-                        soft_variant="twin",
-                    ),
-                    None,
-                )
-            )
+            for form in forms:
+                for context in contexts.values():
+                    variants.append(
+                        (
+                            render.render_variant(
+                                family=family,
+                                condition=twin_settings["condition"],
+                                prestige=prestige_levels[twin_settings["prestige_level"]],
+                                name=None,
+                                order_seed=seed,
+                                context=context,
+                                prompt_form=form,
+                                soft_profile=profile,
+                                soft_variant="twin",
+                            ),
+                            None,
+                        )
+                    )
 
     lookup = {family.family_id: family for family in families}
     planned = [
@@ -192,8 +207,8 @@ def build(
             condition=variant.condition,
             cue_mode=variant.cue_mode,
             identity_group=variant.identity_group,
+            prompt_form=variant.prompt_form,
             context_level=variant.context_level,
-            context_variant=variant.context_variant,
             prestige_level=variant.prestige_level,
             name_pair_id=pair.pair_id if pair else None,
             name_stimulus_id=variant.name_stimulus_id,
@@ -265,8 +280,13 @@ def summarise(prompts: list[PlannedPrompt], slots: list[batches.Slot]) -> dict:
         "name_pairs": len(
             {prompt.name_pair_id for prompt in prompts if prompt.name_pair_id}
         ),
+        "prompt_forms": sorted({prompt.prompt_form for prompt in prompts}),
         "context_levels": sorted({prompt.context_level for prompt in prompts}),
-        "context_variant": sorted({prompt.context_variant for prompt in prompts}),
+        "cells": sorted(
+            f"{form}/{level}"
+            for form in {prompt.prompt_form for prompt in prompts}
+            for level in {prompt.context_level for prompt in prompts}
+        ),
         "batches": len({slot.batch_index for slot in slots}),
         "seed": config.study()["seed"],
     }

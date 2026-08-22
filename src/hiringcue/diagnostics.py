@@ -33,10 +33,20 @@ ported. Under a deterministic single forward pass a byte-identical repeat is a
 duplicate, and the property that statistic was reaching for - stability under an
 irrelevant perturbation - is what the cross-batch gate measures directly.
 
+Every criterion is evaluated per design cell - one prompt form at one context
+level - and never pooled across cells. The cells differ in exactly the property
+under test, so a pooled figure would average over the manipulation and describe
+no condition the study ran.
+
+The confirmatory candidate among the admissible cells is chosen by the highest
+free-parameter response, ties broken by whichever readout sits closest to the
+middle of its range. Neither quantity is the identity effect: the cell is
+selected for how much room the readout has, not for what it returned.
+
 Input is one measurement record per prompt, carrying the planned fields and the
-readout. Output is a per-model verdict. A failed gate is recorded, not retried
-until it passes: a checkpoint that cannot be measured stably is a finding about
-that checkpoint.
+readout. Output is a per-model, per-cell verdict. A failed gate is recorded, not
+retried until it passes: a checkpoint that cannot be measured stably is a
+finding about that checkpoint.
 """
 
 from __future__ import annotations
@@ -68,14 +78,8 @@ def _band_verdict(value: float | None, rule: dict[str, Any], higher_is_better: b
 
 
 def _primary(rows: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
-    """Rows that enter the primary estimand, excluding development-only probes."""
-    confirmatory_contexts = set(config.study()["context"]["levels"])
-    return [
-        row
-        for row in rows
-        if row.get("role") == plan.PRIMARY
-        and row.get("context_level") in confirmatory_contexts
-    ]
+    """Rows that enter the primary estimand."""
+    return [row for row in rows if row.get("role") == plan.PRIMARY]
 
 
 def saturation(rows: Sequence[dict[str, Any]]) -> dict[str, Any]:
@@ -149,7 +153,7 @@ def differential_off_target_mass(rows: Sequence[dict[str, Any]]) -> dict[str, An
     }
 
 
-def stability(
+def cross_batch_stability(
     readings_by_layout: dict[str, Sequence[readout.Reading]],
     prompts: Sequence[Any] | None = None,
 ) -> dict[str, Any]:
@@ -163,9 +167,13 @@ def stability(
     to 0.75 alongside a movement of the cell-mean estimate of 0.031 to 0.078.
 
     The statistic is therefore built to mirror the confirmatory estimator. Within
-    each cell - one scenario family at one context level - the two identity arms
-    are averaged separately and subtracted, so it needs no matched pairing and is
-    unaffected by an arm missing a partner. Those cell contrasts are averaged, and
+    each cell - one scenario family at one prompt form and one context level -
+    the two identity arms are averaged separately and subtracted, so it needs no
+    matched pairing and is unaffected by an arm missing a partner. The prompt
+    form is part of the cell key for the same reason the context level is: the
+    two forms are the manipulation under test, and merging them would average the
+    gate statistic across it and halve the number of cells the mean is formed
+    over. Those cell contrasts are averaged, and
     the gate is the range of that average across layouts. It is restricted to the
     qualified bands and the concealed cue mode because that is the population the
     confirmatory estimand is defined on.
@@ -225,7 +233,7 @@ def stability(
     per_layout: dict[str, float] = {}
     cell_counts: set[int] = set()
     for layout in readings_by_layout:
-        cells: dict[tuple[str, str], dict[str, list[float]]] = defaultdict(
+        cells: dict[tuple[str, str, str], dict[str, list[float]]] = defaultdict(
             lambda: {"black": [], "white": []}
         )
         for prompt_id, measurements in shared.items():
@@ -236,9 +244,9 @@ def stability(
                 continue
             if prompt.identity_group not in ("black", "white"):
                 continue
-            cells[(prompt.family_id, prompt.context_level)][prompt.identity_group].append(
-                measurements[layout]
-            )
+            cells[
+                (prompt.family_id, prompt.prompt_form, prompt.context_level)
+            ][prompt.identity_group].append(measurements[layout])
         contrasts = [
             statistics.mean(arms["black"]) - statistics.mean(arms["white"])
             for arms in cells.values()
@@ -264,6 +272,12 @@ def stability(
     return report
 
 
+# The measuring form keeps its original name. Stage 0 runs the layouts and calls
+# it there; `evaluate` accepts the verdict it produced rather than re-reading the
+# layouts, which are not carried alongside the collection.
+stability = cross_batch_stability
+
+
 def batch_size_sensitivity(
     readings_by_layout: dict[str, Sequence[readout.Reading]],
     prompts: Sequence[Any] | None = None,
@@ -276,7 +290,7 @@ def batch_size_sensitivity(
     instrument. It is therefore computed permanently and reported without a
     threshold or verdict; this disclosure replaces the former gate dimension.
     """
-    report = stability(readings_by_layout, prompts)
+    report = cross_batch_stability(readings_by_layout, prompts)
     report.pop("limit", None)
     report.pop("verdict", None)
     report["disclosure_only"] = True
@@ -322,28 +336,37 @@ def d1_rule_determinacy(rows: Sequence[dict[str, Any]]) -> dict[str, Any]:
 
 
 def d2_free_parameter(rows: Sequence[dict[str, Any]]) -> dict[str, Any]:
-    """Median absolute movement between a scenario and its perturbed twin."""
+    """Median absolute movement between a scenario and its perturbed twin.
+
+    Keyed on the design cell as well as the family. Twins now exist at every
+    prompt form and every context level, and a key that carried only the family
+    would collapse several twins onto one entry and silently report whichever
+    the iteration order happened to leave last - a number attributed to a cell
+    it was not measured in.
+    """
     rule = config.gate_thresholds()["determinacy"]["D2_free_parameter_response"]
     settings = config.study()["soft_twin"]
 
+    def cell(row: dict[str, Any]) -> tuple[str, str, str]:
+        return (row["family_id"], row["prompt_form"], row["context_level"])
+
     twins = {
-        row["family_id"]: float(row["token_log_odds"])
+        cell(row): float(row["token_log_odds"])
         for row in rows
         if row.get("soft_variant") == "twin"
     }
     base = {
-        row["family_id"]: float(row["token_log_odds"])
+        cell(row): float(row["token_log_odds"])
         for row in rows
         if row.get("soft_variant") == "base"
         and row.get("condition") == settings["condition"]
         and row.get("prestige_level") == settings["prestige_level"]
-        and row.get("context_level") == settings["context_level"]
     }
     shared = sorted(set(twins) & set(base))
     if not shared:
         return {"verdict": SKIP, "families": 0}
 
-    movements = [abs(twins[family] - base[family]) for family in shared]
+    movements = [abs(twins[key] - base[key]) for key in shared]
     median = statistics.median(movements)
     return {
         "families": len(shared),
@@ -383,33 +406,265 @@ def d3_conditional_dispersion(rows: Sequence[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
+def arm_length_gap(rows: Sequence[dict[str, Any]]) -> dict[str, Any]:
+    """Templated token-length difference between the identity arms.
+
+    Reported, not gated. The two arms differ only inside the identity block, so
+    any length difference is the length of the names themselves. It is disclosed
+    because a systematic gap places the answer boundary at a different absolute
+    position in one arm than the other, which is a property of the surface the
+    contrast is read on rather than of the judgement being read.
+    """
+    paired: dict[str, dict[str, int]] = defaultdict(dict)
+    for row in rows:
+        arm = row.get("identity_group")
+        pair_id = row.get("counterfactual_pair_id")
+        length = row.get("boundary_index")
+        if arm is None or not pair_id or pair_id == "unpaired" or length is None:
+            continue
+        paired[pair_id][arm] = int(length)
+
+    gaps = [
+        entry["black"] - entry["white"]
+        for entry in paired.values()
+        if "black" in entry and "white" in entry
+    ]
+    if not gaps:
+        return {"pairs": 0}
+    return {
+        "pairs": len(gaps),
+        "mean_black_minus_white_tokens": statistics.fmean(gaps),
+        "maximum_absolute_gap": max(abs(gap) for gap in gaps),
+        "share_exactly_equal": sum(1 for gap in gaps if gap == 0) / len(gaps),
+    }
+
+
+def _cell_key(prompt_form: str, context_level: str) -> str:
+    return f"{prompt_form}/{context_level}"
+
+
+def cells(rows: Sequence[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+    """Every diagnostic, evaluated separately in each design cell.
+
+    A cell is one prompt form at one context level. Nothing here is pooled
+    across cells: the cells differ in exactly the property under test - whether
+    the decision rule is supplied, and how much organisational context surrounds
+    it - so a pooled figure would average over the manipulation and report a
+    number belonging to no condition the study ran.
+    """
+    from . import estimate as estimator
+
+    interval_level = float(
+        config.study()["inference"]["development_interval_level"]
+    )
+
+    grouped: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
+    for row in rows:
+        grouped[(row["prompt_form"], row["context_level"])].append(row)
+
+    def measured(build, crossed: bool) -> dict[str, Any]:
+        """Report an estimate, or why the cell could not supply one.
+
+        Both the contrast construction and the fit are guarded. An incomplete
+        cell is a fact about that cell and must not abort the diagnosis of every
+        other one.
+        """
+        try:
+            contrasts = build()
+            result = (
+                estimator.estimate(contrasts, interval_level=interval_level)
+                if crossed
+                else estimator.clustered(contrasts, interval_level=interval_level)
+            )
+        except estimator.EstimationError as exc:
+            return {"unavailable": str(exc)}
+        record = result.as_dict()
+        record["estimate"] = record.pop("mean")
+        return record
+
+    report: dict[str, dict[str, Any]] = {}
+    for (form, level), cell_rows in sorted(grouped.items()):
+        primary_rows = _primary(cell_rows)
+        criteria = {
+            "saturation": saturation(primary_rows),
+            "differential_off_target_mass": differential_off_target_mass(primary_rows),
+            "D1_rule_determinacy_r2": d1_rule_determinacy(cell_rows),
+            "D2_free_parameter_response": d2_free_parameter(cell_rows),
+            "D3_conditional_dispersion": d3_conditional_dispersion(cell_rows),
+        }
+        entry: dict[str, Any] = {
+            "prompt_form": form,
+            "context_level": level,
+            "criteria": criteria,
+            "arm_length_gap": arm_length_gap(primary_rows),
+            "identity_effect": {
+                "concealed": measured(
+                    lambda: estimator.identity_cells(rows, level, "concealed", form),
+                    True,
+                ),
+                "direct": measured(
+                    lambda: estimator.identity_cells(rows, level, "direct", form),
+                    False,
+                ),
+            },
+            "failed": [
+                name for name, value in criteria.items() if value["verdict"] == FAIL
+            ],
+            "warned": [
+                name for name, value in criteria.items() if value["verdict"] == WARN
+            ],
+        }
+        if level != "bare":
+            entry["interaction_vs_bare"] = {
+                "concealed": measured(
+                    lambda: estimator.interaction_cells(rows, "concealed", level, form),
+                    True,
+                ),
+                "direct": measured(
+                    lambda: estimator.interaction_cells(rows, "direct", level, form),
+                    False,
+                ),
+            }
+        report[_cell_key(form, level)] = entry
+    return report
+
+
+def select_cell(
+    cell_report: dict[str, dict[str, Any]], instrument_passes: bool
+) -> dict[str, Any]:
+    """Choose the confirmatory candidate cell, blind to the identity effect.
+
+    Admissibility is every instrument criterion and every determinacy criterion
+    at the thresholds already registered; no threshold moves for this selection.
+    Among admissible cells the candidate is the one with the highest D2, ties
+    broken by whichever median implied Yes probability sits closest to 0.5.
+
+    Neither input mentions the identity effect, its sign or its interval. The
+    rule is stated this way so that the cell is chosen for how much room the
+    readout has, which is a property of the instrument in that condition, rather
+    than for how large an effect it happened to return - which would make the
+    reported effect a selection.
+    """
+    admissible = []
+    for key, entry in sorted(cell_report.items()):
+        ok = instrument_passes and not entry["failed"] and not entry["warned"]
+        entry["admissible"] = ok
+        if ok:
+            admissible.append((key, entry))
+
+    if not admissible:
+        return {
+            "selected": None,
+            "admissible": [],
+            "decision": "no_admissible_cell",
+        }
+
+    def rank(item: tuple[str, dict[str, Any]]) -> tuple[float, float]:
+        _, entry = item
+        d2 = float(entry["criteria"]["D2_free_parameter_response"]["median_absolute_movement"])
+        median = float(entry["criteria"]["saturation"]["quantiles"]["median"])
+        return (-d2, abs(median - 0.5))
+
+    selected, entry = min(admissible, key=rank)
+    return {
+        "selected": selected,
+        "admissible": [key for key, _ in admissible],
+        "inputs": {
+            key: {
+                "D2": value["criteria"]["D2_free_parameter_response"][
+                    "median_absolute_movement"
+                ],
+                "median_implied_yes_probability": value["criteria"]["saturation"][
+                    "quantiles"
+                ]["median"],
+            }
+            for key, value in admissible
+        },
+        "decision": "proceed",
+    }
+
+
+def kill_criterion(
+    cell_report: dict[str, dict[str, Any]], selected: str | None
+) -> dict[str, Any]:
+    """Whether any rich context in the selected cell reaches the registered effect.
+
+    The criterion is a magnitude and an interval, not a sign: the published
+    interaction this design is anchored on favours the Black-associated arm, so
+    a test written on the sign alone would score a same-sized opposite effect as
+    a failure to replicate rather than as the different finding it is. The sign
+    is reported beside the magnitude instead.
+    """
+    settings = config.study()["inference"]
+    threshold = float(settings["minimum_meaningful_effect"])
+    if selected is None:
+        # Same shape as the evaluated branch. A report whose keys depend on the
+        # outcome forces the reader of the result to special-case the failure.
+        return {
+            "minimum_meaningful_effect": threshold,
+            "selected_cell": None,
+            "evaluated": [],
+            "verdict": SKIP,
+            "reason": "no admissible cell was selected",
+        }
+
+    form = cell_report[selected]["prompt_form"]
+    evaluated = []
+    for key, entry in sorted(cell_report.items()):
+        measured = entry.get("interaction_vs_bare", {}).get("concealed")
+        if entry["prompt_form"] != form or measured is None or "estimate" not in measured:
+            continue
+        excludes_zero = (
+            measured["interval_lower"] > 0.0 or measured["interval_upper"] < 0.0
+        )
+        evaluated.append(
+            {
+                "cell": key,
+                "estimate": measured["estimate"],
+                "interval": [measured["interval_lower"], measured["interval_upper"]],
+                "reaches_threshold": abs(measured["estimate"]) >= threshold
+                and excludes_zero,
+            }
+        )
+    survives = [entry for entry in evaluated if entry["reaches_threshold"]]
+    return {
+        "minimum_meaningful_effect": threshold,
+        "selected_cell": selected,
+        "evaluated": evaluated,
+        "verdict": "replicates" if survives else "kill",
+    }
+
+
 def evaluate(
     rows: Sequence[dict[str, Any]],
     agreement: dict[str, dict[str, Any]] | None = None,
     stability_readings: dict[str, dict[str, Sequence[readout.Reading]]] | None = None,
+    stability: dict[str, dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
-    """Per-model verdicts across every criterion, and the authorisation decision."""
+    """Per-model, per-cell verdicts and the blind confirmatory-cell selection.
+
+    The instrument criteria that are properties of the checkpoint rather than of
+    a cell - cross-batch stability and logit-versus-greedy agreement - are
+    evaluated once per model and gate every cell of it equally.
+    """
     thresholds = config.gate_thresholds()
     agreement_rule = thresholds["instrument"]["logit_greedy_agreement"]
-    escalation = int(thresholds["escalation"]["warns_equal_fail"])
 
     report: dict[str, Any] = {"models": {}}
     for model in sorted({row["model_key"] for row in rows}):
         model_rows = [row for row in rows if row["model_key"] == model]
-        primary_rows = _primary(model_rows)
-
-        criteria = {
-            "saturation": saturation(primary_rows),
-            "differential_off_target_mass": differential_off_target_mass(primary_rows),
-            "D1_rule_determinacy_r2": d1_rule_determinacy(model_rows),
-            "D2_free_parameter_response": d2_free_parameter(model_rows),
-            "D3_conditional_dispersion": d3_conditional_dispersion(model_rows),
-        }
+        instrument: dict[str, Any] = {}
+        # Either measured here from layout readings, or carried in already
+        # evaluated from the Stage 0 report, which is where the layouts are run.
         if stability_readings and model in stability_readings:
-            criteria["cross_batch_stability"] = stability(stability_readings[model])
+            instrument["cross_batch_stability"] = cross_batch_stability(
+                stability_readings[model]
+            )
+        elif stability and model in stability:
+            instrument["cross_batch_stability"] = stability[model]
         if agreement and model in agreement:
             measured = agreement[model]
-            criteria["logit_greedy_agreement"] = {
+            instrument["logit_greedy_agreement"] = {
                 **measured,
                 "minimum_observed": float(agreement_rule["minimum_observed"]),
                 "minimum_wilson_lower_bound": float(
@@ -421,114 +676,58 @@ def evaluate(
                 >= float(agreement_rule["minimum_wilson_lower_bound"])
                 else FAIL,
             }
-
-        failed = [name for name, entry in criteria.items() if entry["verdict"] == FAIL]
-        warned = [name for name, entry in criteria.items() if entry["verdict"] == WARN]
-        report["models"][model] = {
-            "criteria": criteria,
-            "failed": failed,
-            "warned": warned,
-            "skipped": [name for name, entry in criteria.items() if entry["verdict"] == SKIP],
-            "authorised": not failed and len(warned) < escalation,
-        }
-    return report
-
-
-def development_estimates(rows: Sequence[dict[str, Any]]) -> dict[str, Any]:
-    """Crossed interaction, variance components, and recognisability probe.
-
-    The main interaction uses an 80 percent interval because it selects a
-    predeclared context variant rather than supporting a confirmatory claim.
-    The recognisability quantity is a paired difference between the named and
-    invented matched-employer interactions, so shared family and name effects
-    cancel before the crossed interval is formed.
-    """
-    from . import estimate
-
-    interval_level = float(
-        config.study()["inference"]["context_selection_interval_level"]
-    )
-
-    def record(cells: Sequence[tuple[str, str, float]]) -> dict[str, Any]:
-        result = estimate.estimate(cells, interval_level=interval_level)
-        measured = result.as_dict()
-        measured["estimate"] = measured.pop("mean")
-        return measured
-
-    main_cells = estimate.interaction_cells(rows)
-    report = {"context_identity_interaction": record(main_cells)}
-
-    probe_levels = config.study()["context"].get("development_only_levels", [])
-    if len(probe_levels) == 2:
-        matched = estimate.interaction_cells(rows, realistic_level=probe_levels[0])
-        named = estimate.interaction_cells(rows, realistic_level=probe_levels[1])
-        matched_map = {(family, pair): value for family, pair, value in matched}
-        named_map = {(family, pair): value for family, pair, value in named}
-        if set(matched_map) != set(named_map):
-            raise estimate.EstimationError(
-                "recognisability interactions do not share the same family-by-name cells"
-            )
-        difference = [
-            (family, pair, named_map[(family, pair)] - matched_map[(family, pair)])
-            for family, pair in sorted(named_map)
-        ]
-        report["recognisability"] = {
-            "named": record(named),
-            "matched_invented": record(matched),
-            "named_minus_matched": record(difference),
-        }
-    return report
-
-
-def context_selection(
-    interaction_by_variant: dict[str, dict[str, float]],
-    saturation_by_variant: dict[str, float],
-) -> dict[str, Any]:
-    """Apply the predeclared order over the two realistic context variants.
-
-    Employer context alone is evaluated first. The selectivity fallback is
-    considered only if the first fails its criterion, and is accepted only if it
-    passes the same criterion without increasing saturation. Evaluating them in
-    a fixed order, rather than taking whichever performs better, is what keeps
-    the selected template a stimulus rather than a fitted parameter.
-    """
-    from . import context as context_factor
-
-    settings = config.study()["inference"]
-    threshold = float(settings["minimum_meaningful_effect"])
-    order = context_factor.realistic_variants()
-
-    evaluated = []
-    for index, variant in enumerate(order):
-        measured = interaction_by_variant.get(variant)
-        if measured is None:
-            evaluated.append({"variant": variant, "status": "not measured"})
-            continue
-        meets = abs(measured["estimate"]) >= threshold and (
-            measured["interval_lower"] > 0 or measured["interval_upper"] < 0
+        instrument_passes = all(
+            entry.get("verdict") == PASS for entry in instrument.values()
         )
-        entry = {
-            "variant": variant,
-            "estimate": measured["estimate"],
-            "interval": [measured["interval_lower"], measured["interval_upper"]],
-            "meets_criterion": meets,
-            "saturation": saturation_by_variant.get(variant),
-        }
-        if index > 0 and meets:
-            first = saturation_by_variant.get(order[0])
-            current = saturation_by_variant.get(variant)
-            if first is not None and current is not None and current > first:
-                entry["meets_criterion"] = False
-                entry["rejected_because"] = "increases saturation over the first variant"
-                meets = False
-        evaluated.append(entry)
-        if meets:
-            return {"selected": variant, "evaluated": evaluated, "decision": "proceed"}
 
-    if any(entry.get("status") == "not measured" for entry in evaluated):
-        return {
-            "selected": None,
-            "evaluated": evaluated,
-            "decision": "fallback_required",
+        cell_report = cells(model_rows)
+        selection = select_cell(cell_report, instrument_passes)
+        report["models"][model] = {
+            "instrument": instrument,
+            "instrument_passes": instrument_passes,
+            "cells": cell_report,
+            "selection": selection,
+            "kill_criterion": kill_criterion(cell_report, selection["selected"]),
+            "authorised": selection["selected"] is not None,
         }
-    return {"selected": None, "evaluated": evaluated, "decision": "kill"}
+    return report
+
+
+def variance_components(rows: Sequence[dict[str, Any]]) -> dict[str, Any]:
+    """Blinded variance components per cell, for the variance-only sizing rule.
+
+    Only the components are returned. The observed interaction is deliberately
+    absent: sizing a confirmatory design against the effect the development
+    round happened to return would carry that round's noise into the sample size
+    and inflate the apparent precision of the collection it justifies.
+    """
+    from . import estimate as estimator
+
+    report: dict[str, Any] = {}
+    for level in config.study()["context"]["levels"]:
+        if level == "bare":
+            continue
+        for form in config.study()["prompt_form"]["levels"]:
+            try:
+                contrasts = estimator.interaction_cells(rows, "concealed", level, form)
+                values, _, _ = estimator.cell_matrix(contrasts)
+                parts = estimator.components(values)
+            except estimator.EstimationError as exc:
+                report[_cell_key(form, level)] = {"unavailable": str(exc)}
+                continue
+            report[_cell_key(form, level)] = {
+                "components": parts.as_dict(),
+                "standard_deviations": {
+                    "family": parts.family**0.5,
+                    "name": parts.name**0.5,
+                    "residual": parts.residual**0.5,
+                },
+                "sizing": estimator.select_design(
+                    parts,
+                    name_grid=[
+                        int(value)
+                        for value in config.study()["sizing"]["available_name_grid"]
+                    ],
+                ),
+            }
+    return report

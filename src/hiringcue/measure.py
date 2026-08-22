@@ -50,7 +50,7 @@ class Manifest:
     arm_order_seed: int
     scenario_set_version: str
     pool_role: str
-    context_variant: str
+    context_levels: list[str]
     host: str
     seconds_elapsed: float
     seconds_per_thousand_prompts: float
@@ -145,7 +145,7 @@ def run(
         arm_order_seed=int(settings["arm_order_seed"]),
         scenario_set_version=config.study()["sources"]["scenario_set_version"],
         pool_role=pool_role,
-        context_variant=sorted({prompt.context_variant for prompt in prompts})[-1],
+        context_levels=sorted({prompt.context_level for prompt in prompts}),
         host=platform.node(),
         seconds_elapsed=elapsed,
         seconds_per_thousand_prompts=elapsed / len(prompts) * 1000.0,

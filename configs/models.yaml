@@ -36,8 +36,10 @@ readout:
   # removes the mechanism rather than bounding its size.
   #
   # The value must exceed the longest templated prompt in the plan; a prompt
-  # that would not fit is a hard stop, not a truncation. The longest observed in
-  # the development plan is 770 tokens.
+  # that would not fit is a hard stop, not a truncation. The longest observed
+  # over the development plan is 897 tokens, in the gated form under the
+  # selectivity context; the holistic form is uniformly shorter because the
+  # requirement block is absent.
   padded_length: 1024
   batch_size: 16
   # Appended after the model's own generation prompt. Empty, so the boundary is
@@ -55,14 +57,20 @@ readout:
   # condition rather than aligned with it.
   arm_order_seed: 20260819
   # Complete counterfactual pairs drawn from each stratum of the stability
-  # sample, where a stratum is one scenario family at one context level, one
-  # prestige level and one cue mode. The sample is a stratified census rather
-  # than a prompt budget: the gate statistic averages over qualified cells, so
-  # every qualified cell has to be present, and a cell estimated from one pair
-  # inherits that pair's noise. Two pairs per stratum gives each qualified cell
-  # four readings per identity arm and yields 576 prompts over the development
-  # plan.
-  pairs_per_stratum: 2
+  # sample, where a stratum is one scenario family at one prompt form, one
+  # context level, one prestige level and one cue mode. The sample is a
+  # stratified census rather than a prompt budget: the gate statistic averages
+  # over qualified cells, so every qualified cell has to be present.
+  #
+  # One pair per stratum, not two. The gate is the range of the estimand across
+  # batch layouts, and every layout reads the same prompts, so per-cell sampling
+  # noise cancels exactly in that range rather than being averaged down by extra
+  # pairs. What the pair count controls is which prompts are read, not how
+  # precisely the range is determined. Crossing the prompt form triples the
+  # number of qualified cells the statistic is a mean over, from 24 to 72, so
+  # coverage of the design improved while the sample stayed proportionate:
+  # 1,152 prompts over the development plan.
+  pairs_per_stratum: 1
   # `shuffled` previously reordered the whole sample before batching, which
   # changes which prompts are co-resident and therefore, under longest-in-batch
   # padding, the padded length as well. It was labelled an order-only

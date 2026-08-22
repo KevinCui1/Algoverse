@@ -14,6 +14,8 @@ estimator rather than draws that might happen to fall inside the window.
 """
 
 import numpy as np
+import json
+
 import pytest
 
 from hiringcue import config, estimate
@@ -161,8 +163,8 @@ def test_the_interaction_cell_is_the_declared_contrast():
     values = {
         ("bare", "white"): 0.1,
         ("bare", "black"): 0.3,
-        ("realistic", "white"): 0.5,
-        ("realistic", "black"): 1.4,
+        ("employer", "white"): 0.5,
+        ("employer", "black"): 1.4,
     }
     for (level, arm), value in values.items():
         rows.append(
@@ -193,7 +195,7 @@ def test_rule_control_rows_never_enter_the_estimand():
             "context_level": level,
             "token_log_odds": 1.0,
         }
-        for level in ("bare", "realistic")
+        for level in ("bare", "employer")
         for arm in ("white", "black")
     ]
     assert estimate.interaction_cells(rows) == []
@@ -210,39 +212,124 @@ def test_a_cell_missing_an_arm_stops_the_estimate():
             "context_level": level,
             "token_log_odds": 1.0,
         }
-        for level in ("bare", "realistic")
+        for level in ("bare", "employer")
     ]
     with pytest.raises(estimate.EstimationError, match="both identity arms"):
         estimate.interaction_cells(rows)
 
 
-def test_development_estimates_report_variance_and_paired_recognisability():
-    from hiringcue import diagnostics
-
+def _cell_rows(multipliers, cue_mode="concealed", prompt_form="gated"):
     rows = []
-    for family_index in range(2):
+    for family_index in range(3):
         for pair_index in range(2):
-            for level in ("bare", "realistic", "realistic_matched", "realistic_named"):
+            for level, multiplier in multipliers.items():
                 for arm in ("white", "black"):
-                    arm_effect = 1.0 if arm == "black" else 0.0
-                    multiplier = {
-                        "bare": 0.0,
-                        "realistic": 0.4,
-                        "realistic_matched": 0.2,
-                        "realistic_named": 0.5,
-                    }[level]
                     rows.append(
                         {
                             "role": "primary",
-                            "cue_mode": "concealed",
+                            "cue_mode": cue_mode,
+                            "prompt_form": prompt_form,
                             "identity_group": arm,
-                            "name_pair_id": f"pair_{pair_index}",
+                            "name_pair_id": None
+                            if cue_mode == "direct"
+                            else f"pair_{pair_index}",
                             "family_id": f"family_{family_index}",
                             "context_level": level,
-                            "token_log_odds": arm_effect * multiplier,
+                            "token_log_odds": (1.0 if arm == "black" else 0.0)
+                            * multiplier,
                         }
                     )
-    report = diagnostics.development_estimates(rows)
-    assert report["context_identity_interaction"]["estimate"] == pytest.approx(0.4)
-    assert "components" in report["context_identity_interaction"]
-    assert report["recognisability"]["named_minus_matched"]["estimate"] == pytest.approx(0.3)
+    return rows
+
+
+def test_each_rich_context_level_is_contrasted_against_the_shared_baseline():
+    """The levels differ in the property under test, so neither is pooled away."""
+    rows = _cell_rows({"bare": 0.0, "employer": 0.4, "employer_selectivity": 0.9})
+
+    employer = estimate.estimate(
+        estimate.interaction_cells(rows, "concealed", "employer", "gated")
+    )
+    selective = estimate.estimate(
+        estimate.interaction_cells(rows, "concealed", "employer_selectivity", "gated")
+    )
+    assert employer.mean == pytest.approx(0.4)
+    assert selective.mean == pytest.approx(0.9)
+
+
+def test_the_form_filter_separates_cells_that_share_a_context_level():
+    rows = _cell_rows({"bare": 0.0, "employer": 0.4}, prompt_form="gated")
+    rows += _cell_rows({"bare": 0.0, "employer": 1.2}, prompt_form="holistic")
+
+    gated = estimate.estimate(
+        estimate.interaction_cells(rows, "concealed", "employer", "gated")
+    )
+    holistic = estimate.estimate(
+        estimate.interaction_cells(rows, "concealed", "employer", "holistic")
+    )
+    assert gated.mean == pytest.approx(0.4)
+    assert holistic.mean == pytest.approx(1.2)
+    # Pooling the two would report a value belonging to neither condition.
+    pooled = estimate.estimate(estimate.interaction_cells(rows, "concealed", "employer"))
+    assert pooled.mean == pytest.approx(0.8)
+
+
+def test_the_identity_effect_is_read_within_one_context_level():
+    rows = _cell_rows({"bare": 0.0, "employer": 0.4})
+    bare = estimate.estimate(estimate.identity_cells(rows, "bare", "concealed", "gated"))
+    rich = estimate.estimate(
+        estimate.identity_cells(rows, "employer", "concealed", "gated")
+    )
+    assert bare.mean == pytest.approx(0.0)
+    assert rich.mean == pytest.approx(0.4)
+
+
+def test_the_direct_condition_is_family_clustered_and_declares_no_name_factor():
+    """The direct cue is a stated sentence, not a draw from the name pool.
+
+    Reporting it through the crossed estimator would print a name variance of
+    zero as though it had been estimated over names, which is a stronger claim
+    than the design supports.
+    """
+    rows = _cell_rows({"bare": 0.0, "employer": 0.6}, cue_mode="direct")
+    cells = estimate.interaction_cells(rows, "direct", "employer", "gated")
+    assert {pair for _, pair, _ in cells} == {estimate.DIRECT_PSEUDO_PAIR}
+
+    result = estimate.clustered(cells)
+    assert result.mean == pytest.approx(0.6)
+    assert result.names == 0
+    assert result.components.name == 0.0
+    assert result.degrees_freedom == pytest.approx(2.0)
+
+    with pytest.raises(estimate.EstimationError, match="at least two levels"):
+        estimate.estimate(cells)
+
+
+def test_a_concealed_row_without_a_name_pair_is_not_read_as_a_direct_one():
+    """It is a defective record, and bucketing it would mix a name draw in."""
+    rows = _cell_rows({"bare": 0.0, "employer": 0.4})
+    for row in rows:
+        row["name_pair_id"] = None
+    assert estimate.interaction_cells(rows, "concealed", "employer") == []
+
+
+def test_variance_components_are_reported_per_cell_and_exclude_the_interaction():
+    from hiringcue import diagnostics
+
+    rows = _cell_rows({"bare": 0.0, "employer": 0.4, "employer_selectivity": 0.9})
+    report = diagnostics.variance_components(rows)
+
+    assert set(report) == {
+        "gated/employer",
+        "gated/employer_selectivity",
+        "holistic/employer",
+        "holistic/employer_selectivity",
+    }
+    assert "unavailable" in report["holistic/employer"]
+    report = {
+        key: value for key, value in report.items() if "unavailable" not in value
+    }
+    assert set(report) == {"gated/employer", "gated/employer_selectivity"}
+    for entry in report.values():
+        assert set(entry["standard_deviations"]) == {"family", "name", "residual"}
+        assert "estimate" not in entry
+        assert "interaction" not in json.dumps(entry)

@@ -172,7 +172,10 @@ def test_the_stability_sample_is_a_stratified_census():
     sample = stage0.stability_sample(prompts)
 
     assert {p.margin_band for p in sample} == set(config.study()["margin_bands"])
-    assert {p.context_level for p in sample} == {"bare", "realistic"}
+    assert {p.context_level for p in sample} == set(config.study()["context"]["levels"])
+    assert {p.prompt_form for p in sample} == set(
+        config.study()["prompt_form"]["levels"]
+    )
     assert {p.prestige_level for p in sample} == {
         p.prestige_level for p in prompts if p.soft_variant == "base"
     }
@@ -185,13 +188,14 @@ def test_the_stability_sample_is_a_stratified_census():
         config.study()["qualification"]["control_bands"]
     )
     cells = {
-        (p.family_id, p.context_level)
+        (p.family_id, p.prompt_form, p.context_level)
         for p in sample
         if p.margin_band in qualified and p.cue_mode == "concealed"
     }
-    # Twelve qualified families at two context levels. The gate statistic is a
-    # mean over these, so a missing cell is a silently narrowed gate.
-    assert len(cells) == 24
+    # Twelve qualified families at three context levels in each of two prompt
+    # forms. The gate statistic is a mean over these, so a missing cell is a
+    # silently narrowed gate.
+    assert len(cells) == 72
 
 
 def test_stage0_requires_both_stability_and_saturation():

@@ -1,0 +1,9 @@
+{
+  "torch": "2.5.1+cu121",
+  "cuda": "12.1",
+  "device": "NVIDIA A100-SXM4-80GB",
+  "capability": [
+    8,
+    0
+  ]
+}

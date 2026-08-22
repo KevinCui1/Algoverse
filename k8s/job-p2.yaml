@@ -1,0 +1,190 @@
+# The decisive round: every checkpoint, every prompt form, every context level,
+# in one accelerator job.
+#
+# One job rather than several. The computation is small - the readout runs at
+# a few hundred seconds per thousand prompts - and the queue for an 80GB device
+# is the dominant cost. Splitting this work across per-checkpoint jobs pays that
+# queue once per job for a few minutes of arithmetic each, which is what turned
+# the previous round into twelve hours of wall-clock for under an hour of
+# compute. Everything therefore runs sequentially inside one pod.
+#
+# `mistral-small-24b` runs first and unconditionally. It is the checkpoint the
+# published prior was measured on and the only one the corrected Stage 0
+# admitted, so it is the one result that must survive a preemption, a timeout or
+# a failure in any later checkpoint.
+#
+# Each checkpoint writes to the volume as it finishes and any checkpoint whose
+# output is already present is skipped, so a re-submission resumes rather than
+# restarts and no interruption costs more than one checkpoint. The loop holds an
+# internal wall-clock budget and exits zero when it expires, so a partial result
+# is delivered as a result rather than lost with the pod.
+#
+# A failing diagnostic is a finding, not an error: `diagnose` exits non-zero to
+# report a blocked checkpoint, and the loop records that and continues to the
+# next one rather than aborting the round.
+#
+# The weights must already be in the cache. Run k8s/job-fetch-weights.yaml first
+# with no accelerator attached; downloading inside this job would hold the
+# device idle for the length of the pull.
+#
+# Requests equal limits. A request larger than the container writes is not
+# conservative: every accelerator node that cannot satisfy it is a node silently
+# removed from consideration, and the symptom is an indefinite Pending with no
+# usable reason.
+#
+# Substitute the placeholders before applying:
+#   python -m hiringcue.cli submit --stage p2 --model mistral-small-24b \
+#     --label p2a | kubectl apply -f -
+#
+# Never wait on this with `kubectl wait`: its completion condition cannot
+# distinguish a running pod from one the scheduler has never placed. Use
+# scripts/await_job.py, which guards scheduling separately from execution.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hiringcue-p2-__LABEL__
+spec:
+  # No retries. The loop already tolerates a per-checkpoint failure and records
+  # it; a retrying controller would instead re-run the whole round on a fresh
+  # accelerator drawn from a shared quota, to recompute results already written
+  # to the volume.
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 86400
+  template:
+    spec:
+      restartPolicy: Never
+      # The typed accelerator resource carries no memory capacity: the same key
+      # is satisfied by 40GB and 80GB devices, and a 24B checkpoint in bfloat16
+      # needs roughly 47GB of weights before logits and activations. Constraining
+      # the product is a capacity requirement, not an attempt to pin numerical
+      # behaviour - the numerical claim is established by measuring the stability
+      # layouts on whatever device the job lands on and recording that device
+      # beside the result.
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: nvidia.com/gpu.product
+                    operator: In
+                    values: __GPU_PRODUCTS__
+      containers:
+        - name: p2
+          image: pytorch/pytorch:2.5.1-cuda12.1-cudnn9-runtime
+          command: ["/bin/bash", "-lc"]
+          args:
+            - |
+              set -uo pipefail
+              cd /cache/hiringcue-source-p2-__LABEL__
+              pip install --no-cache-dir -e . || exit 1
+
+              BUDGET_SECONDS=18000
+              STARTED=$(date +%s)
+              ROOT=/cache/p2/"$LABEL"
+              mkdir -p "$ROOT"
+
+              # The device and driver the round actually ran on. The design
+              # requires the numerical claim to hold for the hardware used, which
+              # is established by measuring it there rather than by constraining
+              # which part is acceptable.
+              nvidia-smi --query-gpu=name,driver_version,memory.total \
+                --format=csv > "$ROOT"/device.csv
+              python3 -c "import torch,json,sys; json.dump({'torch':torch.__version__,'cuda':torch.version.cuda,'device':torch.cuda.get_device_name(0),'capability':list(torch.cuda.get_device_capability(0))}, sys.stdout, indent=2)" \
+                > "$ROOT"/runtime.json
+              cat "$ROOT"/device.csv "$ROOT"/runtime.json
+
+              python3 -m hiringcue.cli validate || exit 1
+              python3 -m hiringcue.cli plan \
+                --pool development \
+                --plan-dir "$ROOT"/plan || exit 1
+
+              for MODEL in $MODEL_ORDER; do
+                DONE="$ROOT"/done/"$MODEL"
+                if [ -f "$DONE" ]; then
+                  echo "== $MODEL already complete, skipping"
+                  continue
+                fi
+                ELAPSED=$(( $(date +%s) - STARTED ))
+                if [ "$ELAPSED" -ge "$BUDGET_SECONDS" ]; then
+                  echo "== budget of ${BUDGET_SECONDS}s reached after ${ELAPSED}s;"
+                  echo "== stopping with the checkpoints completed so far"
+                  break
+                fi
+                echo "== $MODEL starting at ${ELAPSED}s"
+
+                REVISION=$(python3 -c "from hiringcue import stage0; print(stage0.model_entry('$MODEL')['revision'])")
+                MODEL_ID=$(python3 -c "from hiringcue import stage0; print(stage0.model_entry('$MODEL')['model_id'])")
+                SNAPSHOT=/cache/hf/hub/models--${MODEL_ID//\//--}/snapshots/"$REVISION"
+                if [ ! -d "$SNAPSHOT" ]; then
+                  echo "!! $MODEL: no cached snapshot at $SNAPSHOT; skipping"
+                  continue
+                fi
+
+                # The stability layouts are re-measured here rather than carried
+                # forward: the stimuli changed this round, so a gate measured on
+                # the previous ones would not be a statement about what was read.
+                python3 -m hiringcue.cli stage0 \
+                  --model "$MODEL" \
+                  --model-path "$SNAPSHOT" \
+                  --plan-dir "$ROOT"/plan \
+                  --out "$ROOT"/stage0
+                echo "== $MODEL stage0 exit $?"
+
+                python3 -m hiringcue.cli measure \
+                  --model "$MODEL" \
+                  --label "$LABEL" \
+                  --pool development \
+                  --model-path "$SNAPSHOT" \
+                  --plan-dir "$ROOT"/plan \
+                  --out "$ROOT"/readings/"$MODEL" || { echo "!! $MODEL measure failed"; continue; }
+
+                # Exits non-zero when a criterion blocks the checkpoint. That is
+                # this stage's result rather than an error, so it is recorded and
+                # the round continues to the next checkpoint.
+                python3 -m hiringcue.cli diagnose \
+                  --readings "$ROOT"/readings/"$MODEL" \
+                  --stage0 "$ROOT"/stage0/stage0__"$MODEL".json \
+                  --out "$ROOT"/analysis/"$MODEL"
+                echo "== $MODEL diagnose exit $?"
+
+                mkdir -p "$ROOT"/done && date -u +%FT%TZ > "$DONE"
+                echo "== $MODEL complete at $(( $(date +%s) - STARTED ))s"
+              done
+
+              echo "== round finished after $(( $(date +%s) - STARTED ))s"
+              ls -R "$ROOT"/analysis 2>/dev/null || true
+              exit 0
+          env:
+            - name: LABEL
+              value: "__LABEL__"
+            # The decisive checkpoint is first. The four that follow are included
+            # because removing the decision rule may change their saturation
+            # verdicts, and a second admitted checkpoint is worth having - but
+            # strictly after the one the round is about.
+            - name: MODEL_ORDER
+              value: "mistral-small-24b gemma2-27b gemma3-27b gemma3-12b mistral-7b-v03"
+            - name: HF_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: hf-token
+                  key: token
+            - name: HF_HOME
+              value: /cache/hf
+            - name: PYTORCH_CUDA_ALLOC_CONF
+              value: expandable_segments:True
+          resources:
+            requests:
+              nvidia.com/a100: 1
+              cpu: "8"
+              memory: 64Gi
+            limits:
+              nvidia.com/a100: 1
+              cpu: "8"
+              memory: 64Gi
+          volumeMounts:
+            - name: cache
+              mountPath: /cache
+      volumes:
+        - name: cache
+          persistentVolumeClaim:
+            claimName: hiringcue-cache

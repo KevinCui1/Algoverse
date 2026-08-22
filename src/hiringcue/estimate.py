@@ -426,24 +426,23 @@ def select_design(
     }
 
 
-def interaction_cells(
-    rows: Iterable[dict],
-    cue_mode: str = "concealed",
-    realistic_level: str = "realistic",
-) -> list[tuple[str, str, float]]:
-    """Form one interaction contrast per scenario family and name pair.
+DIRECT_PSEUDO_PAIR = "direct"
 
-        [(Black - White)_realistic - (Black - White)_bare]
 
-    `realistic_level` selects which rich level plays the realistic role against
-    the shared bare baseline. It is `realistic` for the confirmatory estimand
-    and is redirected only to read a development-only level, whose interaction
-    is compared against another development-only level rather than reported on
-    its own.
+def _arm_buckets(
+    rows: Iterable[dict], cue_mode: str, prompt_form: str | None
+) -> dict[tuple[str, str, str, str], list[float]]:
+    """Readings grouped by family, name pair, context level and identity arm.
 
-    Prestige is averaged over rather than entering the cell key. It is a crossed
-    nuisance factor here: the estimand generalises over credential presentation,
-    and splitting cells by it would halve the observations behind each without
+    The direct conditions carry no name pair: the cue is a stated sentence
+    rather than a name draw, so there is no name factor to generalise over and
+    the rows are collected under a single pseudo-pair. That is why a direct
+    estimate is family-clustered rather than crossed, and it is reported as the
+    weaker design it is.
+
+    Prestige is averaged over rather than entering the key. It is a crossed
+    nuisance factor: the estimand generalises over credential presentation, and
+    splitting cells by it would halve the observations behind each without
     changing what is being estimated.
 
     Only prompts in the primary role contribute. Families whose candidate
@@ -457,16 +456,67 @@ def interaction_cells(
     for row in rows:
         if row.get("role") != plan.PRIMARY or row.get("cue_mode") != cue_mode:
             continue
+        if prompt_form is not None and row.get("prompt_form") != prompt_form:
+            continue
         arm = row.get("identity_group")
         pair = row.get("name_pair_id")
-        if arm is None or pair is None:
+        if arm is None:
             continue
+        if pair is None:
+            # Only the direct conditions legitimately carry no name pair. A
+            # concealed row without one is a defective record, and bucketing it
+            # under the pseudo-pair would mix a name draw into an estimate that
+            # reports itself as generalising over no names at all.
+            if cue_mode not in ("direct",):
+                continue
+            pair = DIRECT_PSEUDO_PAIR
         key = (row["family_id"], pair, row["context_level"], arm)
         buckets.setdefault(key, []).append(float(row["token_log_odds"]))
+    return buckets
 
+
+def identity_cells(
+    rows: Iterable[dict],
+    context_level: str,
+    cue_mode: str = "concealed",
+    prompt_form: str | None = None,
+) -> list[tuple[str, str, float]]:
+    """One Black-minus-White contrast per family and name pair, at one context."""
+    buckets = _arm_buckets(rows, cue_mode, prompt_form)
     cells: list[tuple[str, str, float]] = []
-    keys = {(family, pair) for family, pair, _, _ in buckets}
-    for family, pair in sorted(keys):
+    for family, pair in sorted({(family, pair) for family, pair, _, _ in buckets}):
+        try:
+            arms = {
+                arm: float(np.mean(buckets[(family, pair, context_level, arm)]))
+                for arm in ("black", "white")
+            }
+        except KeyError as exc:
+            raise EstimationError(
+                f"cell ({family}, {pair}) is missing {exc.args[0][3]!r} at context "
+                f"{context_level!r}; the identity effect needs both arms"
+            ) from exc
+        cells.append((family, pair, arms["black"] - arms["white"]))
+    return cells
+
+
+def interaction_cells(
+    rows: Iterable[dict],
+    cue_mode: str = "concealed",
+    realistic_level: str = "employer",
+    prompt_form: str | None = None,
+) -> list[tuple[str, str, float]]:
+    """Form one interaction contrast per scenario family and name pair.
+
+        [(Black - White)_realistic - (Black - White)_bare]
+
+    `realistic_level` selects which rich level is contrasted against the shared
+    bare baseline. Every rich level declared by the context factor is a valid
+    argument and each is reported separately, because the levels differ in the
+    property under test and a pooled figure would average across it.
+    """
+    buckets = _arm_buckets(rows, cue_mode, prompt_form)
+    cells: list[tuple[str, str, float]] = []
+    for family, pair in sorted({(family, pair) for family, pair, _, _ in buckets}):
         try:
             parts = {
                 (level, arm): float(np.mean(buckets[(family, pair, level, arm)]))
@@ -487,3 +537,57 @@ def interaction_cells(
             )
         )
     return cells
+
+
+def clustered(
+    contrasts: Iterable[tuple[str, str, float]],
+    alpha: float | None = None,
+    interval_level: float | None = None,
+) -> Estimate:
+    """Family-clustered mean of a contrast that has no name factor to cross over.
+
+    Used for the direct-identity conditions, where the cue is a stated sentence
+    rather than a draw from the name pool. The crossed estimator's name term is
+    undefined there, and supplying a single pseudo-level to it would report a
+    name variance of zero as though it had been estimated. Collapsing to family
+    means and clustering on family states the design honestly instead: the
+    estimate generalises over scenario families and over nothing else.
+    """
+    settings = config.study()["inference"]
+    alpha = float(settings["two_sided_alpha"]) if alpha is None else alpha
+    interval_level = (
+        float(settings["interval_level"]) if interval_level is None else interval_level
+    )
+
+    grouped: dict[str, list[float]] = {}
+    for family, _, value in contrasts:
+        grouped.setdefault(family, []).append(float(value))
+    if len(grouped) < 2:
+        raise EstimationError(
+            f"family-clustered inference needs at least two families; got {len(grouped)}"
+        )
+
+    means = np.array([float(np.mean(values)) for _, values in sorted(grouped.items())])
+    family_count = len(means)
+    degrees_freedom = float(family_count - 1)
+    mean = float(means.mean())
+    standard_error = float(means.std(ddof=1) / np.sqrt(family_count))
+    statistic = mean / standard_error if standard_error > 0 else float("inf")
+    half_width = (
+        float(t.ppf(1.0 - (1.0 - interval_level) / 2.0, degrees_freedom)) * standard_error
+    )
+    return Estimate(
+        mean=mean,
+        standard_error=standard_error,
+        degrees_freedom=degrees_freedom,
+        statistic=float(statistic),
+        p_value=float(2.0 * t.sf(abs(statistic), degrees_freedom)),
+        interval_lower=mean - half_width,
+        interval_upper=mean + half_width,
+        interval_level=interval_level,
+        families=family_count,
+        names=0,
+        components=VarianceComponents(
+            family=float(means.var(ddof=1)), name=0.0, residual=0.0
+        ),
+    )

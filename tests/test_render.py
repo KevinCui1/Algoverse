@@ -2,9 +2,9 @@
 
 The design's whole claim rests on one property: within a counterfactual set the
 rendered text differs in the identity block and nowhere else. Adding employer
-context is the change most likely to break it, so the checks below are run over
-a plan that carries both context levels rather than over the bare stimuli the
-earlier rounds used.
+context and a second prompt form are the changes most likely to break it, so the
+checks below run over a plan carrying every context level and both forms rather
+than over the bare stimuli the earlier rounds used.
 """
 
 import pytest
@@ -23,6 +23,7 @@ def _sets(prompts):
         grouped.setdefault(
             (
                 prompt.family_id,
+                prompt.prompt_form,
                 prompt.context_level,
                 prompt.prestige_level,
                 prompt.soft_variant,
@@ -42,21 +43,25 @@ def test_conditions_differ_from_each_other_in_exact_text(prompts):
         assert len({prompt.exact_hash for prompt in group}) == len(group)
 
 
-def test_context_is_constant_within_a_counterfactual_set(prompts):
-    """Context enters as a factor rather than as a repair, so it must not vary
-    inside the comparison the identity effect is measured on."""
+def test_context_and_form_are_constant_within_a_counterfactual_set(prompts):
+    """Both enter as factors rather than as repairs, so neither may vary inside
+    the comparison the identity effect is measured on."""
     for group in _sets(prompts).values():
-        assert len({prompt.context_variant for prompt in group}) == 1
+        assert len({prompt.context_level for prompt in group}) == 1
+        assert len({prompt.prompt_form for prompt in group}) == 1
 
 
-def test_the_two_context_levels_produce_different_prompts(prompts):
+def test_every_context_level_produces_a_distinct_prompt(prompts):
     by_level: dict[str, set[str]] = {}
     for prompt in prompts:
         if prompt.soft_variant != "base":
             continue
         by_level.setdefault(prompt.context_level, set()).add(prompt.normalised_hash)
     assert set(by_level) == set(context.levels())
-    assert not by_level["bare"] & by_level["realistic"]
+    for left in context.levels():
+        for right in context.levels():
+            if left < right:
+                assert not by_level[left] & by_level[right], (left, right)
 
 
 def test_the_realistic_context_mentions_no_identity_or_fairness_term():
@@ -65,19 +70,27 @@ def test_the_realistic_context_mentions_no_identity_or_fairness_term():
     primed = ("race", "ethnic", "bias", "fair", "diverse", "inclusi", "equity")
     for level in context.load().values():
         lowered = level.text.casefold()
-        assert not any(term in lowered for term in primed), level.variant
+        assert not any(term in lowered for term in primed), level.level
 
 
-def test_both_realistic_variants_are_renderable_in_the_predeclared_order():
-    for variant in context.realistic_variants():
-        loaded = context.load(variant)
-        assert loaded[context.REALISTIC].variant == variant
-        assert loaded[context.REALISTIC].text.strip()
+def test_every_rich_context_level_is_renderable():
+    loaded = context.load()
+    for level in context.realistic_levels():
+        assert loaded[level].text.strip()
 
 
-def test_an_undeclared_context_variant_is_refused():
-    with pytest.raises(context.ContextError, match="predeclared"):
-        context.load("employer_with_a_quota")
+def test_an_undeclared_prompt_form_is_refused():
+    family = scenarios.validated_families()[0]
+    with pytest.raises(render.RenderError, match="unknown prompt form"):
+        render.render_variant(
+            family=family,
+            condition=stimuli.NEUTRAL,
+            prestige=stimuli.load_prestige()["modest"],
+            name=None,
+            order_seed=1,
+            context=context.load()["bare"],
+            prompt_form="checklist_with_weights",
+        )
 
 
 def test_prestige_changes_the_prompt_and_never_the_gold_decision(prompts):
@@ -135,24 +148,48 @@ def test_numeric_gate_text_always_states_its_threshold():
                 assert str(gate["required_value"]) in text, (family.family_id, text)
 
 
-def test_soft_criterion_order_is_stable_across_conditions(prompts):
-    orders: dict[str, set[str]] = {}
+def test_soft_criterion_order_is_stable_across_conditions_and_forms(prompts):
+    """The order is randomised once per family and then held.
+
+    Compared on the criterion lines alone: the two forms introduce the block
+    with different wording by design, and it is the order that has to be
+    invariant so that evaluative ambiguity cancels inside a counterfactual pair.
+    """
+    orders: dict[str, set[tuple[str, ...]]] = {}
     for prompt in prompts:
-        block = prompt.user_prompt.split("ADDITIONAL JOB-RELATED CRITERIA")[1].split(
+        block = prompt.user_prompt.split("JOB-RELATED CRITERIA")[1].split(
             "APPLICANT EVIDENCE"
         )[0]
-        orders.setdefault(prompt.family_id, set()).add(block)
+        criteria = tuple(
+            line for line in block.splitlines() if line.startswith("- ")
+        )
+        orders.setdefault(prompt.family_id, set()).add(criteria)
     for family_id, blocks in orders.items():
         assert len(blocks) == 1, family_id
 
 
-def test_every_gate_value_appears_in_the_prompt(prompts):
+def test_every_gate_fact_reaches_the_prompt_in_the_form_s_own_register(prompts):
+    """Both forms describe the same applicant; only the wording differs.
+
+    `gated` prints the reported value as a figure beside the requirement it
+    answers. `holistic` states the same fact as prose, so the assertion is on
+    the sentence the transformation produces rather than on the digit, which a
+    value of zero deliberately does not print.
+    """
     families = {family.family_id: family for family in scenarios.validated_families()}
     for prompt in prompts:
         if prompt.soft_variant != "base":
             continue
-        for entry in families[prompt.family_id].candidate_gate_values:
-            assert str(entry["candidate_value"]) in prompt.user_prompt
+        family = families[prompt.family_id]
+        gate_lookup = {gate["gate_id"]: gate for gate in family.hard_gates}
+        for entry in family.candidate_gate_values:
+            if prompt.prompt_form == render.HOLISTIC:
+                expected = render.gate_evidence_text(
+                    gate_lookup[entry["gate_id"]], entry["candidate_value"]
+                )
+            else:
+                expected = str(entry["candidate_value"])
+            assert expected in prompt.user_prompt, (prompt.prompt_id, expected)
 
 
 def test_the_prompt_asks_for_one_word_and_nothing_else(prompts):

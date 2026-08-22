@@ -10,9 +10,8 @@ anti-bias instructions present in both conditions. A measured null on bare
 stimuli is therefore consistent with a property of the stimuli rather than with
 an absence of identity sensitivity.
 
-Context richness is consequently a factor with two levels, `bare` and
-`realistic`, crossed with every other factor, and the primary estimand is its
-interaction with the identity cue:
+Context richness is consequently a factor crossed with every other factor, and
+the estimand is its interaction with the identity cue:
 
     [(Black - White)_realistic - (Black - White)_bare]
 
@@ -21,36 +20,28 @@ the bare arm a within-design control: it is what allows an observed identity
 effect to be attributed to context richness rather than to any property the two
 arms share.
 
-Two realistic variants are predeclared in a fixed order. Employer context alone
-is tested first; employer context plus a selectivity constraint is a fallback,
-evaluated only if the first fails and accepted only if it passes the same
-criterion without increasing saturation. The published direct-answer results
-were obtained with employer context alone; the selectivity constraint was
-required only to restore the effect under a chain-of-thought response format,
-which this design does not use.
+Three levels are measured together rather than one realistic template being
+bound per round. `bare` is the control. `employer` supplies organisational
+detail alone. `employer_selectivity` supplies the same organisation and adds the
+constraint that the posting has drawn many applications for one opening and that
+only the strongest applicants advance.
+
+The selectivity level is a first-class level rather than a fallback because of
+its mechanism. Under a selectivity constraint, clearing the stated requirements
+stops being sufficient for the answer, so whatever discretion the evidence
+carries has to decide the case. The published condition this design is anchored
+on combined organisational context with exactly such a constraint, so measuring
+organisational context alone reproduces only half of it.
 
 The employer is fictitious and its organisational description is authored here
 rather than taken from a real organisation's published material. A versioned
 stimulus set has to be freezable and quotable in full, which text belonging to a
 third party is not, and attributing authored culture text to a real employer
-would misdescribe that employer. What D-046 manipulates is context richness, not
-the identity of the employer; that the source amplification was obtained with a
-recognisable employer is recorded as a generalisation limit rather than
-reproduced.
-
-Two further levels exist for the development round only and never enter the
-confirmatory estimand. The fictitious employer preserves the richness
-manipulation but cannot say whether the published amplification also depended
-on the employer being recognisable, and if it did, a development round run on a
-fictitious employer alone under-measures the interaction and could fire the
-kill criterion for a reason that is about the stimulus rather than the models.
-The two development levels answer that directly: one names a real organisation,
-the other an invented one, and their descriptions are otherwise the same
-organisation type at the same scale in the same categories at the same
-granularity. Recognisability is the difference of their interactions. A single
-real-named level compared against the fictitious employer of the confirmatory
-arm would confound recognisability with everything else the two descriptions do
-not share.
+would misdescribe that employer. Whether the amplification depends on the
+employer being recognisable has been measured directly on a real-named level
+against its matched invented twin, and the invented employer produced the larger
+interaction, so recognisability is settled and those two development-only levels
+are retired rather than re-run.
 
 Context is constant within a counterfactual set, so byte-identity outside the
 identity block is preserved and the normalised-hash check is unchanged.
@@ -63,68 +54,51 @@ from dataclasses import dataclass
 from . import config, paths
 
 BARE = "bare"
-REALISTIC = "realistic"
 
 
 class ContextError(ValueError):
-    """Raised when a context level or variant is not one the design declares."""
+    """Raised when a context level is not one the design declares."""
 
 
 @dataclass(frozen=True)
 class Context:
     level: str
-    variant: str
     text: str
 
 
 def levels() -> tuple[str, ...]:
-    """The confirmatory levels. Development-only levels are not included."""
     return tuple(config.study()["context"]["levels"])
 
 
-def development_only_levels() -> tuple[str, ...]:
-    return tuple(config.study()["context"].get("development_only_levels", ()))
+def realistic_levels() -> tuple[str, ...]:
+    """The rich levels, each contrasted against `bare` to form an interaction."""
+    return tuple(level for level in levels() if level != BARE)
 
 
-def realistic_variants() -> tuple[str, ...]:
-    """Predeclared evaluation order for the realistic level."""
-    return tuple(config.study()["context"]["realistic_variants"])
-
-
-def _template(variant: str) -> str:
+def _template(level: str) -> str:
     templates = config.study()["context"]["templates"]
-    if variant not in templates:
+    if level not in templates:
         raise ContextError(
-            f"unknown context variant {variant!r}; declared: {sorted(templates)}"
+            f"unknown context level {level!r}; declared: {sorted(templates)}"
         )
-    path = paths.PROMPTS / templates[variant]
+    path = paths.PROMPTS / templates[level]
     if not path.exists():
         raise ContextError(f"missing context template: {path}")
     return path.read_text()
 
 
-def load(
-    realistic_variant: str | None = None,
-    include_development_levels: bool = False,
-) -> dict[str, Context]:
-    """Both context levels, with the realistic level bound to one variant.
+def load() -> dict[str, Context]:
+    """Every declared context level, keyed by level.
 
-    The variant is bound once for a whole round rather than per prompt. The
-    selected template is frozen before confirmation and is never tuned per
-    model: a template chosen against each model's own response would make the
-    manipulation a fitted parameter instead of a fixed stimulus.
+    All levels are rendered in one round. Measuring them together is what makes
+    the comparison between them internal to a single collection: a level
+    evaluated in a later round would differ from the others by whatever else
+    changed between rounds as well as by its own text.
     """
-    variant = realistic_variant or realistic_variants()[0]
-    if variant not in realistic_variants():
+    declared = levels()
+    if BARE not in declared:
         raise ContextError(
-            f"{variant!r} is not a predeclared realistic variant; declared in order: "
-            f"{list(realistic_variants())}"
+            f"the control level {BARE!r} is not among the declared levels {declared}; "
+            "the estimand is an interaction and has no baseline without it"
         )
-    loaded = {
-        BARE: Context(level=BARE, variant=BARE, text=_template(BARE)),
-        REALISTIC: Context(level=REALISTIC, variant=variant, text=_template(variant)),
-    }
-    if include_development_levels:
-        for level in development_only_levels():
-            loaded[level] = Context(level=level, variant=level, text=_template(level))
-    return loaded
+    return {level: Context(level=level, text=_template(level)) for level in declared}

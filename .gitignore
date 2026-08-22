@@ -7,9 +7,21 @@ __pycache__/
 .venv/
 *.egg-info/
 
-# Run outputs. Analysis summaries are committed explicitly; raw responses are not.
-output/
+# Run outputs. Raw readings stay on the run volume. The analysis summaries of the
+# final round are committed explicitly, because they are the result the decision
+# entries cite and a reader cannot check those numbers without them.
+# Each level is re-included in turn: git does not descend into an excluded
+# directory, so a negation below one never matches.
+output/*
+!output/analysis/
+output/analysis/*
+!output/analysis/p2a/
+!output/stage0/
+output/stage0/*
+!output/stage0/p2a/
 tmp/
 
-# Local working notes, not part of the project record.
+# Local working notes and operating instructions, not part of the project record.
 progress/
+CLAUDE.md
+AGENTS.md

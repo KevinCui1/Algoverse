@@ -344,13 +344,43 @@ def read_batch(
     encoded = {key: value.to(device) for key, value in encoded.items()}
 
     model.eval()
+    # Gemma 2 applies its registered final-logit softcap after materialising the
+    # full [batch, sequence, vocabulary] tensor. Each of the division, tanh and
+    # multiplication steps is out of place in transformers, so the first one
+    # needs a second full tensor (15.62 GiB at the registered shape) even though
+    # the readout consumes only one boundary row per prompt. Preserve the full-
+    # vocabulary LM-head multiplication, but defer that elementwise transform
+    # until after the boundary rows have been selected. The transform and its
+    # operation order are unchanged; only the number of values transformed is
+    # reduced. Models without a final softcap follow the original path exactly.
+    final_logit_softcap = getattr(
+        getattr(model, "config", None), "final_logit_softcapping", None
+    )
     with torch.inference_mode():
-        logits = model(**encoded, use_cache=False).logits
+        # Large-vocabulary checkpoints materialise a full-sequence logit tensor.
+        # Cached blocks left by earlier layouts can fragment enough free memory
+        # to make the batch-32 sensitivity disclosure fail despite its live
+        # tensors fitting the device. Releasing only unused cached blocks keeps
+        # the registered forward arithmetic unchanged while preventing an
+        # allocator-history artefact from deciding whether the reading runs.
+        torch.cuda.empty_cache()
+        if final_logit_softcap is not None:
+            model.config.final_logit_softcapping = None
+        try:
+            logits = model(**encoded, use_cache=False).logits
+        finally:
+            if final_logit_softcap is not None:
+                model.config.final_logit_softcapping = final_logit_softcap
 
     readings = []
     for index, (prompt_id, _) in enumerate(prompts):
         boundary = int(lengths[index]) - 1
-        row = logits[index, boundary, :].float().tolist()
+        boundary_logits = logits[index, boundary, :]
+        if final_logit_softcap is not None:
+            boundary_logits = boundary_logits / final_logit_softcap
+            boundary_logits = torch.tanh(boundary_logits)
+            boundary_logits = boundary_logits * final_logit_softcap
+        row = boundary_logits.float().tolist()
         value, probability, off_target = contrast(row, variants)
         greedy = int(max(range(len(row)), key=row.__getitem__))
         readings.append(

@@ -1,0 +1,1076 @@
+{
+  "models": {
+    "gemma3-27b": {
+      "instrument": {
+        "cross_batch_stability": {
+          "prompts": 1152,
+          "layouts": [
+            "reference",
+            "regrouped",
+            "reordered",
+            "warm_reference"
+          ],
+          "per_prompt_maximum_absolute_delta": 0.0,
+          "per_prompt_median_absolute_delta": 0.0,
+          "per_prompt_worst_id": "ceo__clear_fail__gated__bare__elite__concealed_white__vn_white_153",
+          "limit": 0.003,
+          "cells": 72,
+          "estimand_by_layout": {
+            "reference": 0.020833326039240842,
+            "regrouped": 0.020833326039240842,
+            "reordered": 0.020833326039240842,
+            "warm_reference": 0.020833326039240842
+          },
+          "estimand_range": 0.0,
+          "verdict": "PASS"
+        },
+        "logit_greedy_agreement": {
+          "sample": 500,
+          "agreeing": 498,
+          "agreement": 0.996,
+          "wilson_lower_bound": 0.9855342847848231,
+          "minimum_observed": 0.95,
+          "minimum_wilson_lower_bound": 0.9,
+          "verdict": "PASS"
+        }
+      },
+      "instrument_passes": true,
+      "cells": {
+        "gated/bare": {
+          "prompt_form": "gated",
+          "context_level": "bare",
+          "criteria": {
+            "saturation": {
+              "cells": 456,
+              "outside_share": 0.9254385964912281,
+              "maximum_outside_share": 0.4,
+              "probability_interval": [
+                0.02,
+                0.98
+              ],
+              "quantiles": {
+                "p05": 6.691587523955694e-10,
+                "median": 0.9999970976880148,
+                "p95": 0.9999999997210531
+              },
+              "verdict": "FAIL"
+            },
+            "differential_off_target_mass": {
+              "pairs": 216,
+              "paired_arm_difference": 3.733638912443119e-14,
+              "maximum_paired_arm_difference": 0.05,
+              "arm_means": {
+                "black": 9.772265301493194e-13,
+                "white": 1.0145629192737505e-12
+              },
+              "maximum_arm_mean": 0.5,
+              "verdict": "PASS"
+            },
+            "D1_rule_determinacy_r2": {
+              "observations": 912,
+              "r_squared": 0.8337465140635909,
+              "excluded_categorical_only": 24,
+              "verdict": "WARN"
+            },
+            "D2_free_parameter_response": {
+              "families": 24,
+              "median_absolute_movement": 1.1250001824869305,
+              "verdict": "PASS"
+            },
+            "D3_conditional_dispersion": {
+              "bands": 2,
+              "standard_deviation_by_band": {
+                "clear_pass": 8.403863774088784,
+                "near_pass": 13.167095894674476
+              },
+              "pooled_standard_deviation": 10.78547983438163,
+              "verdict": "PASS"
+            }
+          },
+          "arm_length_gap": {
+            "pairs": 216,
+            "mean_black_minus_white_tokens": 1.2222222222222223,
+            "maximum_absolute_gap": 3,
+            "share_exactly_equal": 0.1111111111111111
+          },
+          "identity_effect": {
+            "concealed": {
+              "standard_error": 0.23812384285208668,
+              "degrees_freedom": 19.322601818045726,
+              "statistic": -0.36909629728672516,
+              "p_value": 0.7160695250362932,
+              "interval_lower": -0.4038643120321771,
+              "interval_upper": 0.22808305464739465,
+              "interval_level": 0.8,
+              "families": 12,
+              "names": 8,
+              "components": {
+                "family": 0.5004755976832324,
+                "name": 0.05791522803725797,
+                "residual": 0.7446970774129918
+              },
+              "estimate": -0.08789062869239121
+            },
+            "direct": {
+              "standard_error": 0.25095992350481333,
+              "degrees_freedom": 11.0,
+              "statistic": -4.046960928123395,
+              "p_value": 0.0019254980536671097,
+              "interval_lower": -1.3577913732633937,
+              "interval_upper": -0.6734586366342374,
+              "interval_level": 0.8,
+              "families": 12,
+              "names": 0,
+              "components": {
+                "family": 0.755770598466501,
+                "name": 0.0,
+                "residual": 0.0
+              },
+              "estimate": -1.0156250049488156
+            }
+          },
+          "failed": [
+            "saturation"
+          ],
+          "warned": [
+            "D1_rule_determinacy_r2"
+          ],
+          "admissible": false
+        },
+        "gated/employer": {
+          "prompt_form": "gated",
+          "context_level": "employer",
+          "criteria": {
+            "saturation": {
+              "cells": 456,
+              "outside_share": 0.8728070175438597,
+              "maximum_outside_share": 0.4,
+              "probability_interval": [
+                0.02,
+                0.98
+              ],
+              "quantiles": {
+                "p05": 9.736201855598045e-10,
+                "median": 0.999985145724843,
+                "p95": 0.9999999990263799
+              },
+              "verdict": "FAIL"
+            },
+            "differential_off_target_mass": {
+              "pairs": 216,
+              "paired_arm_difference": 2.3510411724432573e-13,
+              "maximum_paired_arm_difference": 0.05,
+              "arm_means": {
+                "black": 6.742590025404988e-13,
+                "white": 9.093631197848245e-13
+              },
+              "maximum_arm_mean": 0.5,
+              "verdict": "PASS"
+            },
+            "D1_rule_determinacy_r2": {
+              "observations": 912,
+              "r_squared": 0.7611179581131506,
+              "excluded_categorical_only": 24,
+              "verdict": "PASS"
+            },
+            "D2_free_parameter_response": {
+              "families": 24,
+              "median_absolute_movement": 1.8750001372548653,
+              "verdict": "PASS"
+            },
+            "D3_conditional_dispersion": {
+              "bands": 2,
+              "standard_deviation_by_band": {
+                "clear_pass": 13.100139392891117,
+                "near_pass": 12.73650440065752
+              },
+              "pooled_standard_deviation": 12.91832189677432,
+              "verdict": "PASS"
+            }
+          },
+          "arm_length_gap": {
+            "pairs": 216,
+            "mean_black_minus_white_tokens": 1.2222222222222223,
+            "maximum_absolute_gap": 3,
+            "share_exactly_equal": 0.1111111111111111
+          },
+          "identity_effect": {
+            "concealed": {
+              "standard_error": 0.22842974503615907,
+              "degrees_freedom": 23.75157884139195,
+              "statistic": -0.8151211692359728,
+              "p_value": 0.4231016320950025,
+              "interval_lower": -0.487320021858878,
+              "interval_upper": 0.1149241801345798,
+              "interval_level": 0.8,
+              "families": 12,
+              "names": 8,
+              "components": {
+                "family": 0.2475142032908375,
+                "name": 0.18328936722014247,
+                "residual": 0.8297082150909153
+              },
+              "estimate": -0.18619792086214912
+            },
+            "direct": {
+              "standard_error": 0.401557861527869,
+              "degrees_freedom": 11.0,
+              "statistic": -3.125846734393573,
+              "p_value": 0.009648852969039173,
+              "interval_lower": -1.8027044929735463,
+              "interval_upper": -0.7077121672803653,
+              "interval_level": 0.8,
+              "families": 12,
+              "names": 0,
+              "components": {
+                "family": 1.9349845938580224,
+                "name": 0.0,
+                "residual": 0.0
+              },
+              "estimate": -1.2552083301269559
+            }
+          },
+          "failed": [
+            "saturation"
+          ],
+          "warned": [],
+          "interaction_vs_bare": {
+            "concealed": {
+              "standard_error": 0.21991647280901297,
+              "degrees_freedom": 22.62201815047494,
+              "statistic": -0.44702104810099025,
+              "p_value": 0.6591104237901587,
+              "interval_lower": -0.38862182345150836,
+              "interval_upper": 0.19200723911199252,
+              "interval_level": 0.8,
+              "families": 12,
+              "names": 8,
+              "components": {
+                "family": 0.09601384966896076,
+                "name": 0.20609062239398676,
+                "residual": 1.4016742151451775
+              },
+              "estimate": -0.0983072921697579
+            },
+            "direct": {
+              "standard_error": 0.3476307570681192,
+              "degrees_freedom": 11.0,
+              "statistic": -0.689189090167857,
+              "p_value": 0.5049821097073258,
+              "interval_lower": -0.7135536388412473,
+              "interval_upper": 0.2343869884849666,
+              "interval_level": 0.8,
+              "families": 12,
+              "names": 0,
+              "components": {
+                "family": 1.4501657191170445,
+                "name": 0.0,
+                "residual": 0.0
+              },
+              "estimate": -0.23958332517814038
+            }
+          },
+          "admissible": false
+        },
+        "gated/employer_selectivity": {
+          "prompt_form": "gated",
+          "context_level": "employer_selectivity",
+          "criteria": {
+            "saturation": {
+              "cells": 456,
+              "outside_share": 0.9385964912280702,
+              "maximum_outside_share": 0.4,
+              "probability_interval": [
+                0.02,
+                0.98
+              ],
+              "quantiles": {
+                "p05": 1.103256196532837e-09,
+                "median": 0.9999952149055051,
+                "p95": 0.999999999868235
+              },
+              "verdict": "FAIL"
+            },
+            "differential_off_target_mass": {
+              "pairs": 216,
+              "paired_arm_difference": 1.03752397619785e-13,
+              "maximum_paired_arm_difference": 0.05,
+              "arm_means": {
+                "black": 4.569513491872015e-13,
+                "white": 5.607037468069865e-13
+              },
+              "maximum_arm_mean": 0.5,
+              "verdict": "PASS"
+            },
+            "D1_rule_determinacy_r2": {
+              "observations": 912,
+              "r_squared": 0.7337482354204825,
+              "excluded_categorical_only": 24,
+              "verdict": "PASS"
+            },
+            "D2_free_parameter_response": {
+              "families": 24,
+              "median_absolute_movement": 1.5625000476760533,
+              "verdict": "PASS"
+            },
+            "D3_conditional_dispersion": {
+              "bands": 2,
+              "standard_deviation_by_band": {
+                "clear_pass": 14.397332883314338,
+                "near_pass": 12.89469943544222
+              },
+              "pooled_standard_deviation": 13.646016159378279,
+              "verdict": "PASS"
+            }
+          },
+          "arm_length_gap": {
+            "pairs": 216,
+            "mean_black_minus_white_tokens": 1.2222222222222223,
+            "maximum_absolute_gap": 3,
+            "share_exactly_equal": 0.1111111111111111
+          },
+          "identity_effect": {
+            "concealed": {
+              "standard_error": 0.28384675846584057,
+              "degrees_freedom": 22.401987210057037,
+              "statistic": -0.4266166472811822,
+              "p_value": 0.673730361827713,
+              "interval_lower": -0.49591424096579995,
+              "interval_upper": 0.2537267360891431,
+              "interval_level": 0.8,
+              "families": 12,
+              "names": 8,
+              "components": {
+                "family": 0.3978086525518031,
+                "name": 0.29041108565882195,
+                "residual": 1.0672200516699737
+              },
+              "estimate": -0.12109375243832843
+            },
+            "direct": {
+              "standard_error": 0.19147589098509116,
+              "degrees_freedom": 11.0,
+              "statistic": -2.9649076389817854,
+              "p_value": 0.012861926155543437,
+              "interval_lower": -0.8287723668016095,
+              "interval_upper": -0.30664429692347117,
+              "interval_level": 0.8,
+              "families": 12,
+              "names": 0,
+              "components": {
+                "family": 0.439956201942414,
+                "name": 0.0,
+                "residual": 0.0
+              },
+              "estimate": -0.5677083318625403
+            }
+          },
+          "failed": [
+            "saturation"
+          ],
+          "warned": [],
+          "interaction_vs_bare": {
+            "concealed": {
+              "standard_error": 0.2711306121560234,
+              "degrees_freedom": 19.43611988217565,
+              "statistic": -0.12246172972467723,
+              "p_value": 0.9037907492909889,
+              "interval_lower": -0.3929001000606499,
+              "interval_upper": 0.3264938525687755,
+              "interval_level": 0.8,
+              "families": 12,
+              "names": 8,
+              "components": {
+                "family": 0.235053519825557,
+                "name": 0.3285942567712154,
+                "residual": 1.2335744095585572
+              },
+              "estimate": -0.03320312374593722
+            },
+            "direct": {
+              "standard_error": 0.33901118433465494,
+              "degrees_freedom": 11.0,
+              "statistic": 1.3212445305170646,
+              "p_value": 0.21324324251361193,
+              "interval_lower": -0.014301453783643447,
+              "interval_upper": 0.9101347999561938,
+              "interval_level": 0.8,
+              "families": 12,
+              "names": 0,
+              "components": {
+                "family": 1.3791429972478244,
+                "name": 0.0,
+                "residual": 0.0
+              },
+              "estimate": 0.4479166730862752
+            }
+          },
+          "admissible": false
+        },
+        "holistic/bare": {
+          "prompt_form": "holistic",
+          "context_level": "bare",
+          "criteria": {
+            "saturation": {
+              "cells": 456,
+              "outside_share": 0.993421052631579,
+              "maximum_outside_share": 0.4,
+              "probability_interval": [
+                0.02,
+                0.98
+              ],
+              "quantiles": {
+                "p05": 1.13999195013805e-12,
+                "median": 1.4276905188818043e-09,
+                "p95": 0.9999999677581336
+              },
+              "verdict": "FAIL"
+            },
+            "differential_off_target_mass": {
+              "pairs": 216,
+              "paired_arm_difference": 2.8181572302114715e-13,
+              "maximum_paired_arm_difference": 0.05,
+              "arm_means": {
+                "black": 8.602830382221361e-13,
+                "white": 1.1420987612432833e-12
+              },
+              "maximum_arm_mean": 0.5,
+              "verdict": "PASS"
+            },
+            "D1_rule_determinacy_r2": {
+              "observations": 912,
+              "r_squared": 0.040601831800365695,
+              "excluded_categorical_only": 24,
+              "verdict": "PASS"
+            },
+            "D2_free_parameter_response": {
+              "families": 24,
+              "median_absolute_movement": 26.18749997354429,
+              "verdict": "PASS"
+            },
+            "D3_conditional_dispersion": {
+              "bands": 2,
+              "standard_deviation_by_band": {
+                "clear_pass": 16.89937029899861,
+                "near_pass": 4.982017895228486
+              },
+              "pooled_standard_deviation": 10.940694097113546,
+              "verdict": "PASS"
+            }
+          },
+          "arm_length_gap": {
+            "pairs": 216,
+            "mean_black_minus_white_tokens": 1.2222222222222223,
+            "maximum_absolute_gap": 3,
+            "share_exactly_equal": 0.1111111111111111
+          },
+          "identity_effect": {
+            "concealed": {
+              "standard_error": 0.12545969466340587,
+              "degrees_freedom": 17.898521180187355,
+              "statistic": 2.3351622261901954,
+              "p_value": 0.03138342275892625,
+              "interval_lower": 0.12602223282363936,
+              "interval_upper": 0.4599152469510427,
+              "interval_level": 0.8,
+              "families": 12,
+              "names": 8,
+              "components": {
+                "family": 0.14618316564024184,
+                "name": 0.011445018300822644,
+                "residual": 0.20424741383155612
+              },
+              "estimate": 0.292968739887341
+            },
+            "direct": {
+              "standard_error": 0.6043217525165459,
+              "degrees_freedom": 11.0,
+              "statistic": -1.9133019694820044,
+              "p_value": 0.08207997552560431,
+              "interval_lower": -1.9802005985110882,
+              "interval_upper": -0.3322994000703591,
+              "interval_level": 0.8,
+              "families": 12,
+              "names": 0,
+              "components": {
+                "family": 4.38245736677603,
+                "name": 0.0,
+                "residual": 0.0
+              },
+              "estimate": -1.1562499992907236
+            }
+          },
+          "failed": [
+            "saturation"
+          ],
+          "warned": [],
+          "admissible": false
+        },
+        "holistic/employer": {
+          "prompt_form": "holistic",
+          "context_level": "employer",
+          "criteria": {
+            "saturation": {
+              "cells": 456,
+              "outside_share": 0.881578947368421,
+              "maximum_outside_share": 0.4,
+              "probability_interval": [
+                0.02,
+                0.98
+              ],
+              "quantiles": {
+                "p05": 7.835042059236307e-13,
+                "median": 3.3982680000160707e-09,
+                "p95": 0.999998629042793
+              },
+              "verdict": "FAIL"
+            },
+            "differential_off_target_mass": {
+              "pairs": 216,
+              "paired_arm_difference": 9.388374851200584e-14,
+              "maximum_paired_arm_difference": 0.05,
+              "arm_means": {
+                "black": 3.516199677101718e-13,
+                "white": 4.4550371622217765e-13
+              },
+              "maximum_arm_mean": 0.5,
+              "verdict": "PASS"
+            },
+            "D1_rule_determinacy_r2": {
+              "observations": 912,
+              "r_squared": 0.01014386059923178,
+              "excluded_categorical_only": 24,
+              "verdict": "PASS"
+            },
+            "D2_free_parameter_response": {
+              "families": 24,
+              "median_absolute_movement": 21.624999976167537,
+              "verdict": "PASS"
+            },
+            "D3_conditional_dispersion": {
+              "bands": 2,
+              "standard_deviation_by_band": {
+                "clear_pass": 15.41082297699167,
+                "near_pass": 7.923501693017899
+              },
+              "pooled_standard_deviation": 11.667162335004784,
+              "verdict": "PASS"
+            }
+          },
+          "arm_length_gap": {
+            "pairs": 216,
+            "mean_black_minus_white_tokens": 1.2222222222222223,
+            "maximum_absolute_gap": 3,
+            "share_exactly_equal": 0.1111111111111111
+          },
+          "identity_effect": {
+            "concealed": {
+              "standard_error": 0.09958613382687742,
+              "degrees_freedom": 55.60356782768686,
+              "statistic": 2.811113372928917,
+              "p_value": 0.006805791660332717,
+              "interval_lower": 0.15078837249773702,
+              "interval_upper": 0.4091074526203108,
+              "interval_level": 0.8,
+              "families": 12,
+              "names": 8,
+              "components": {
+                "family": 0.038794052175544776,
+                "name": 0.015308988810070326,
+                "residual": 0.45800992973093274
+              },
+              "estimate": 0.2799479125590239
+            },
+            "direct": {
+              "standard_error": 0.3609259186942018,
+              "degrees_freedom": 11.0,
+              "statistic": -2.9438174066440226,
+              "p_value": 0.013356252410491065,
+              "interval_lower": -1.5545973420680679,
+              "interval_upper": -0.5704026618538851,
+              "interval_level": 0.8,
+              "families": 12,
+              "names": 0,
+              "components": {
+                "family": 1.5632102254230427,
+                "name": 0.0,
+                "residual": 0.0
+              },
+              "estimate": -1.0625000019609765
+            }
+          },
+          "failed": [
+            "saturation"
+          ],
+          "warned": [],
+          "interaction_vs_bare": {
+            "concealed": {
+              "standard_error": 0.11388829353400225,
+              "degrees_freedom": 32.474281997045644,
+              "statistic": -0.1143298132255326,
+              "p_value": 0.9096803103981803,
+              "interval_lower": -0.1620060650045685,
+              "interval_upper": 0.13596441034793427,
+              "interval_level": 0.8,
+              "families": 12,
+              "names": 8,
+              "components": {
+                "family": 0.05983876237747216,
+                "name": 0.0351139754533771,
+                "residual": 0.3450943623320551
+              },
+              "estimate": -0.013020827328317108
+            },
+            "direct": {
+              "standard_error": 0.38431455849513135,
+              "degrees_freedom": 11.0,
+              "statistic": 0.243940790837708,
+              "p_value": 0.8117666411247337,
+              "interval_lower": -0.43023612337919365,
+              "interval_upper": 0.6177361180386876,
+              "interval_level": 0.8,
+              "families": 12,
+              "names": 0,
+              "components": {
+                "family": 1.7723721584556922,
+                "name": 0.0,
+                "residual": 0.0
+              },
+              "estimate": 0.09374999732974694
+            }
+          },
+          "admissible": false
+        },
+        "holistic/employer_selectivity": {
+          "prompt_form": "holistic",
+          "context_level": "employer_selectivity",
+          "criteria": {
+            "saturation": {
+              "cells": 456,
+              "outside_share": 0.9166666666666666,
+              "maximum_outside_share": 0.4,
+              "probability_interval": [
+                0.02,
+                0.98
+              ],
+              "quantiles": {
+                "p05": 8.878265808920643e-13,
+                "median": 2.8675929137109824e-08,
+                "p95": 0.9999991684719722
+              },
+              "verdict": "FAIL"
+            },
+            "differential_off_target_mass": {
+              "pairs": 216,
+              "paired_arm_difference": 2.611902463858887e-14,
+              "maximum_paired_arm_difference": 0.05,
+              "arm_means": {
+                "black": 5.565260186846933e-13,
+                "white": 5.826450433232822e-13
+              },
+              "maximum_arm_mean": 0.5,
+              "verdict": "PASS"
+            },
+            "D1_rule_determinacy_r2": {
+              "observations": 912,
+              "r_squared": 0.003442473551448333,
+              "excluded_categorical_only": 24,
+              "verdict": "PASS"
+            },
+            "D2_free_parameter_response": {
+              "families": 24,
+              "median_absolute_movement": 20.749999951956973,
+              "verdict": "PASS"
+            },
+            "D3_conditional_dispersion": {
+              "bands": 2,
+              "standard_deviation_by_band": {
+                "clear_pass": 16.04581843094465,
+                "near_pass": 7.817796533597291
+              },
+              "pooled_standard_deviation": 11.93180748227097,
+              "verdict": "PASS"
+            }
+          },
+          "arm_length_gap": {
+            "pairs": 216,
+            "mean_black_minus_white_tokens": 1.2222222222222223,
+            "maximum_absolute_gap": 3,
+            "share_exactly_equal": 0.1111111111111111
+          },
+          "identity_effect": {
+            "concealed": {
+              "standard_error": 0.10743970547801251,
+              "degrees_freedom": 19.401178398858953,
+              "statistic": 2.6722836635641487,
+              "p_value": 0.014886298897778915,
+              "interval_lower": 0.14456483595395964,
+              "interval_upper": 0.42965390358011324,
+              "interval_level": 0.8,
+              "families": 12,
+              "names": 8,
+              "components": {
+                "family": 0.10349765938759238,
+                "name": 0.003248864706924877,
+                "residual": 0.24118821848356112
+              },
+              "estimate": 0.28710936976703644
+            },
+            "direct": {
+              "standard_error": 0.4949112691438659,
+              "degrees_freedom": 11.0,
+              "statistic": -1.694327285950243,
+              "p_value": 0.11829245749121502,
+              "interval_lower": -1.513318696515487,
+              "interval_upper": -0.16376463835394617,
+              "interval_level": 0.8,
+              "families": 12,
+              "names": 0,
+              "components": {
+                "family": 2.9392459719071042,
+                "name": 0.0,
+                "residual": 0.0
+              },
+              "estimate": -0.8385416674347166
+            }
+          },
+          "failed": [
+            "saturation"
+          ],
+          "warned": [],
+          "interaction_vs_bare": {
+            "concealed": {
+              "standard_error": 0.1614708285797487,
+              "degrees_freedom": 19.00665001079899,
+              "statistic": -0.03628748407276958,
+              "p_value": 0.9714315400319161,
+              "interval_lower": -0.22024604176157217,
+              "interval_upper": 0.20852730152096308,
+              "interval_level": 0.8,
+              "families": 12,
+              "names": 8,
+              "components": {
+                "family": 0.23417419258419003,
+                "name": 0.02051204075862431,
+                "residual": 0.38345350451712445
+              },
+              "estimate": -0.005859370120304537
+            },
+            "direct": {
+              "standard_error": 0.28542340646009895,
+              "degrees_freedom": 11.0,
+              "statistic": 1.1131123960585947,
+              "p_value": 0.2893931424041343,
+              "interval_lower": -0.07144659398439174,
+              "interval_upper": 0.7068632576964056,
+              "interval_level": 0.8,
+              "families": 12,
+              "names": 0,
+              "components": {
+                "family": 0.9775982514634424,
+                "name": 0.0,
+                "residual": 0.0
+              },
+              "estimate": 0.31770833185600694
+            }
+          },
+          "admissible": false
+        }
+      },
+      "selection": {
+        "selected": null,
+        "admissible": [],
+        "decision": "no_admissible_cell"
+      },
+      "kill_criterion": {
+        "minimum_meaningful_effect": 0.3,
+        "selected_cell": null,
+        "evaluated": [],
+        "verdict": "SKIP",
+        "reason": "no admissible cell was selected"
+      },
+      "authorised": false,
+      "variance_components": {
+        "gated/employer": {
+          "components": {
+            "family": 0.09601384966896076,
+            "name": 0.20609062239398676,
+            "residual": 1.4016742151451775
+          },
+          "standard_deviations": {
+            "family": 0.3098610166977459,
+            "name": 0.4539720502343583,
+            "residual": 1.1839232302582703
+          },
+          "sizing": {
+            "components": {
+              "family": 0.09601384966896076,
+              "name": 0.20609062239398676,
+              "residual": 1.4016742151451775
+            },
+            "minimum_meaningful_effect": 0.3,
+            "target_power": 0.9,
+            "family_grid": [
+              24,
+              30,
+              36,
+              48
+            ],
+            "name_grid": [
+              24
+            ],
+            "grid": [
+              {
+                "families": 24,
+                "names": 24,
+                "cells": 576,
+                "power": 0.6712,
+                "analytic_power": 0.6725220447292879
+              },
+              {
+                "families": 30,
+                "names": 24,
+                "cells": 720,
+                "power": 0.7037,
+                "analytic_power": 0.7099441053427349
+              },
+              {
+                "families": 36,
+                "names": 24,
+                "cells": 864,
+                "power": 0.73555,
+                "analytic_power": 0.7360588669125473
+              },
+              {
+                "families": 48,
+                "names": 24,
+                "cells": 1152,
+                "power": 0.7705,
+                "analytic_power": 0.7697861813777318
+              }
+            ],
+            "selected": null,
+            "decision": "do_not_collect"
+          }
+        },
+        "holistic/employer": {
+          "components": {
+            "family": 0.05983876237747216,
+            "name": 0.0351139754533771,
+            "residual": 0.3450943623320551
+          },
+          "standard_deviations": {
+            "family": 0.24461962794811082,
+            "name": 0.18738723396586304,
+            "residual": 0.5874473272830979
+          },
+          "sizing": {
+            "components": {
+              "family": 0.05983876237747216,
+              "name": 0.0351139754533771,
+              "residual": 0.3450943623320551
+            },
+            "minimum_meaningful_effect": 0.3,
+            "target_power": 0.9,
+            "family_grid": [
+              24,
+              30,
+              36,
+              48
+            ],
+            "name_grid": [
+              24
+            ],
+            "grid": [
+              {
+                "families": 24,
+                "names": 24,
+                "cells": 576,
+                "power": 0.99075,
+                "analytic_power": 0.99199815351716
+              },
+              {
+                "families": 30,
+                "names": 24,
+                "cells": 720,
+                "power": 0.99655,
+                "analytic_power": 0.9970378031787271
+              },
+              {
+                "families": 36,
+                "names": 24,
+                "cells": 864,
+                "power": 0.99855,
+                "analytic_power": 0.9987564435295498
+              },
+              {
+                "families": 48,
+                "names": 24,
+                "cells": 1152,
+                "power": 0.9998,
+                "analytic_power": 0.9997030362223605
+              }
+            ],
+            "selected": {
+              "families": 24,
+              "names": 24,
+              "cells": 576,
+              "power": 0.99075,
+              "analytic_power": 0.99199815351716
+            },
+            "decision": "collect"
+          }
+        },
+        "gated/employer_selectivity": {
+          "components": {
+            "family": 0.235053519825557,
+            "name": 0.3285942567712154,
+            "residual": 1.2335744095585572
+          },
+          "standard_deviations": {
+            "family": 0.4848231840842154,
+            "name": 0.5732314164202931,
+            "residual": 1.1106639498779804
+          },
+          "sizing": {
+            "components": {
+              "family": 0.235053519825557,
+              "name": 0.3285942567712154,
+              "residual": 1.2335744095585572
+            },
+            "minimum_meaningful_effect": 0.3,
+            "target_power": 0.9,
+            "family_grid": [
+              24,
+              30,
+              36,
+              48
+            ],
+            "name_grid": [
+              24
+            ],
+            "grid": [
+              {
+                "families": 24,
+                "names": 24,
+                "cells": 576,
+                "power": 0.45435,
+                "analytic_power": 0.4524065830568683
+              },
+              {
+                "families": 30,
+                "names": 24,
+                "cells": 720,
+                "power": 0.48685,
+                "analytic_power": 0.48886087623866414
+              },
+              {
+                "families": 36,
+                "names": 24,
+                "cells": 864,
+                "power": 0.52095,
+                "analytic_power": 0.5158968609618153
+              },
+              {
+                "families": 48,
+                "names": 24,
+                "cells": 1152,
+                "power": 0.5506,
+                "analytic_power": 0.5531200989363148
+              }
+            ],
+            "selected": null,
+            "decision": "do_not_collect"
+          }
+        },
+        "holistic/employer_selectivity": {
+          "components": {
+            "family": 0.23417419258419003,
+            "name": 0.02051204075862431,
+            "residual": 0.38345350451712445
+          },
+          "standard_deviations": {
+            "family": 0.48391548082716884,
+            "name": 0.1432202526133239,
+            "residual": 0.6192362267480194
+          },
+          "sizing": {
+            "components": {
+              "family": 0.23417419258419003,
+              "name": 0.02051204075862431,
+              "residual": 0.38345350451712445
+            },
+            "minimum_meaningful_effect": 0.3,
+            "target_power": 0.9,
+            "family_grid": [
+              24,
+              30,
+              36,
+              48
+            ],
+            "name_grid": [
+              24
+            ],
+            "grid": [
+              {
+                "families": 24,
+                "names": 24,
+                "cells": 576,
+                "power": 0.7802,
+                "analytic_power": 0.7808423190172394
+              },
+              {
+                "families": 30,
+                "names": 24,
+                "cells": 720,
+                "power": 0.85965,
+                "analytic_power": 0.8626381826861319
+              },
+              {
+                "families": 36,
+                "names": 24,
+                "cells": 864,
+                "power": 0.91375,
+                "analytic_power": 0.9144940401748627
+              },
+              {
+                "families": 48,
+                "names": 24,
+                "cells": 1152,
+                "power": 0.9663,
+                "analytic_power": 0.9669091705045025
+              }
+            ],
+            "selected": {
+              "families": 36,
+              "names": 24,
+              "cells": 864,
+              "power": 0.91375,
+              "analytic_power": 0.9144940401748627
+            },
+            "decision": "collect"
+          }
+        }
+      },
+      "batch_size_sensitivity": {
+        "prompts": 1152,
+        "layouts": [
+          "reference",
+          "small_batch",
+          "warm_large"
+        ],
+        "per_prompt_maximum_absolute_delta": 0.0,
+        "per_prompt_median_absolute_delta": 0.0,
+        "per_prompt_worst_id": "ceo__clear_fail__gated__bare__elite__concealed_white__vn_white_153",
+        "cells": 72,
+        "estimand_by_layout": {
+          "reference": 0.020833326039240842,
+          "small_batch": 0.020833326039240842,
+          "warm_large": 0.020833326039240842
+        },
+        "estimand_range": 0.0,
+        "disclosure_only": true
+      }
+    }
+  }
+}

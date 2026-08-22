@@ -25,6 +25,7 @@ from . import (
     estimate,
     paths,
     plan,
+    render,
     scenarios,
     stimuli,
     twins,
@@ -72,7 +73,7 @@ def cmd_validate(args) -> int:
     print(f"  development:         {len(development)}")
     print(f"  confirmatory:        {len(confirmatory)}")
     print(f"context levels:      {list(context.levels())}")
-    print(f"realistic variants:  {list(context.realistic_variants())}")
+    print(f"prompt forms:        {list(render.forms())}")
     if excluded:
         print(f"excluded:            {len(excluded)}")
         for slug, reason in excluded.items():
@@ -96,21 +97,7 @@ def cmd_plan(args) -> int:
     if not twin_profiles:
         print("no soft twins found; the free-parameter diagnostic will be unavailable")
     pairs = stimuli.load_pairs(args.pool)
-    # The development-only context levels are a stimulus probe, not part of the
-    # estimand. Pairing them with the confirmatory name pool would put them in a
-    # frozen collection, so the combination is refused rather than warned about.
-    if args.development_contexts and args.pool == stimuli.CONFIRMATORY:
-        raise SystemExit(
-            "--development-contexts is not available on the confirmatory pool; the "
-            "development-only context levels never enter the confirmatory estimand"
-        )
-    prompts = plan.build(
-        families=families,
-        pairs=pairs,
-        twins=twin_profiles,
-        realistic_variant=args.realistic_variant,
-        development_contexts=args.development_contexts,
-    )
+    prompts = plan.build(families=families, pairs=pairs, twins=twin_profiles)
     slots = plan.batch_manifest(prompts)
 
     out = _plan_dir(args)
@@ -120,7 +107,7 @@ def cmd_plan(args) -> int:
     summary["pool_role"] = args.pool
     (out / "plan_summary.json").write_text(json.dumps(summary, indent=2) + "\n")
     print(f"wrote {len(prompts)} prompts in {summary['batches']} batches to {out}")
-    print(json.dumps({key: summary[key] for key in ("by_role", "name_pairs", "context_variant")}, indent=2))
+    print(json.dumps({key: summary[key] for key in ("by_role", "name_pairs", "cells")}, indent=2))
     return 0
 
 
@@ -166,12 +153,26 @@ def cmd_diagnose(args) -> int:
     for file in sorted(readings.glob("readings__*.jsonl")) if readings.is_dir() else [readings]:
         model = json.loads(file.read_text().splitlines()[0])["model_key"]
         measured[model] = measure.agreement(file)
-    report = diagnostics.evaluate(rows, agreement=measured)
-    for model, entry in report["models"].items():
-        model_rows = [row for row in rows if row["model_key"] == model]
-        entry["development"] = diagnostics.development_estimates(model_rows)
+    # Cross-batch stability is a property of the checkpoint rather than of a
+    # cell, and it is measured in Stage 0 rather than here. It is nevertheless
+    # one of the instrument criteria admissibility depends on, so it is carried
+    # in rather than left in a file nothing downstream reads. Without it a cell
+    # could be declared admissible on a checkpoint whose readout does not
+    # reproduce.
+    stability = {}
     if args.stage0:
         stage0_report = json.loads(Path(args.stage0).read_text())
+        measured_stability = stage0_report.get("stability")
+        if measured_stability is not None:
+            stability[stage0_report["model_key"]] = measured_stability
+
+    report = diagnostics.evaluate(
+        rows, agreement=measured, stability=stability or None
+    )
+    for model, entry in report["models"].items():
+        model_rows = [row for row in rows if row["model_key"] == model]
+        entry["variance_components"] = diagnostics.variance_components(model_rows)
+    if args.stage0:
         disclosed = stage0_report.get("batch_size_sensitivity")
         if disclosed is not None:
             report["models"][stage0_report["model_key"]][
@@ -268,7 +269,6 @@ def cmd_submit(args) -> int:
         "__MODEL_ID__": entry["model_id"],
         "__MODEL_REVISION__": entry["revision"],
         "__GPU_PRODUCTS__": "[" + ", ".join(products) + "]",
-        "__CONTEXT_VARIANT__": args.context_variant or "",
         "__LABEL__": args.label or "",
     }
     for key, value in substitutions.items():
@@ -287,10 +287,9 @@ def main(argv=None) -> int:
     sub.add_parser("validate").set_defaults(func=cmd_validate)
 
     p_submit = sub.add_parser("submit")
-    p_submit.add_argument("--stage", required=True, choices=["stage0", "stage1"])
+    p_submit.add_argument("--stage", required=True, choices=["stage0", "p2"])
     p_submit.add_argument("--model", required=True)
     p_submit.add_argument("--label")
-    p_submit.add_argument("--context-variant")
     p_submit.set_defaults(func=cmd_submit)
 
     p_plan = sub.add_parser("plan")
@@ -300,17 +299,6 @@ def main(argv=None) -> int:
         choices=[stimuli.DEVELOPMENT, stimuli.CONFIRMATORY],
         default=stimuli.DEVELOPMENT,
         help="which disjoint name pool this round draws from",
-    )
-    p_plan.add_argument(
-        "--realistic-variant",
-        help="context template bound to the realistic level; defaults to the first "
-        "in the predeclared order",
-    )
-    p_plan.add_argument(
-        "--development-contexts",
-        action="store_true",
-        help="add the development-only context levels that measure whether the "
-        "amplification depends on the employer being recognisable",
     )
     p_plan.add_argument(
         "--occupations",

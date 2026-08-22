@@ -1,0 +1,60 @@
+# Deployment preflight for Gemma 2's deferred final-logit softcap. This is not
+# a study measurement; it compares native and deferred elementwise arithmetic
+# on identical checkpoint logits before the corrected Stage 0 retry.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hiringcue-softcap-check-gemma2-27b
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 86400
+  template:
+    spec:
+      restartPolicy: Never
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: nvidia.com/gpu.product
+                    operator: In
+                    values: [NVIDIA-A100-SXM4-80GB, NVIDIA-A100-80GB-PCIe]
+      containers:
+        - name: check
+          image: pytorch/pytorch:2.5.1-cuda12.1-cudnn9-runtime
+          command: ["/bin/bash", "-lc"]
+          args:
+            - |
+              set -euo pipefail
+              cd /cache/hiringcue-source-p1-d065
+              pip install --no-cache-dir -e .
+              SNAPSHOT=/cache/hf/hub/models--google--gemma-2-27b-it/snapshots/aaf20e6b9f4c0fcf043f6fb2a2068419086d77b0
+              test -d "$SNAPSHOT"
+              python3 scripts/check_softcap_equivalence.py \
+                --model gemma2-27b --model-path "$SNAPSHOT"
+          env:
+            - name: HF_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: hf-token
+                  key: token
+            - name: HF_HOME
+              value: /cache/hf
+            - name: PYTORCH_CUDA_ALLOC_CONF
+              value: expandable_segments:True
+          resources:
+            requests:
+              nvidia.com/a100: 1
+              cpu: "8"
+              memory: 64Gi
+            limits:
+              nvidia.com/a100: 1
+              cpu: "8"
+              memory: 64Gi
+          volumeMounts:
+            - name: cache
+              mountPath: /cache
+      volumes:
+        - name: cache
+          persistentVolumeClaim:
+            claimName: hiringcue-cache
